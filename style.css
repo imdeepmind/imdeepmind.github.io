@@ -4,6 +4,9 @@ body{
 .navbar{
     z-index: 999999999999999;
 }
+.navbar-brand{
+    text-transform: lowercase;
+}
 #home{
     width: 100%;
     min-height: 75vh;
@@ -18,13 +21,12 @@ body{
     min-height: 75vh;
     background: rgba(0,0,0,.7);
 }
-#contact ul li{
-    list-style: none;
-}
+
 footer{
     width: 100%;
     background: black;
-    height: 100px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 footer i{
     color: rgba(255, 255, 255, 0.585);
