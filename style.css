@@ -2,7 +2,7 @@ body{
     box-sizing: border-box;
 }
 .navbar{
-    z-index: 999999999999999;
+    z-index: 999;
 }
 .navbar-brand{
     text-transform: lowercase;
@@ -23,18 +23,40 @@ body{
 }
 
 footer{
-    width: 100%;
     background: black;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    min-height: 100vh;
 }
-footer i{
-    color: rgba(255, 255, 255, 0.585);
-    margin: 10px;
-    font-size: 1.5em;
+.footer-top .row{
+    min-height: 40vh;
 }
-footer ul li{
-    display: inline
+.footer-links ul{
+    list-style: none;
+    padding: 0;
+}
+.footer-links ul li a{
+    color: white;
+    text-transform: uppercase;
+}
+.footer-divider{
+    height: 1px;
+    width: 90%;
+    background: rgba(255, 255, 255, 0.367);
+}
+.footer-bottom{
+    min-height: 40vh;
+}
+.footer-social a{
+    margin: 5px;
+    padding: 3px 7px;
+    border: 1px solid white;
+    background: white;
+    border-radius: 50%;
+    color: black;
+    font-size: 1.5rem;
+} 
+.footer-copyright{
+    font-size: 1.1rem;
+    color: white;
 }
 html {
     font-size: 0.8rem;
