@@ -1,32 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
-
-<url>
-  <loc>https://imdeepmind.github.io/</loc>
-  <lastmod>2018-09-01T15:09:54+00:00</lastmod>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://imdeepmind.github.io/blogs/</loc>
-  <lastmod>2018-09-01T15:09:54+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://imdeepmind.github.io/projects/</loc>
-  <lastmod>2018-09-01T15:09:54+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://imdeepmind.github.io/contact/</loc>
-  <lastmod>2018-09-01T15:09:54+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://imdeepmind.github.io/</loc>
+    <priority>1.00</priority>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://imdeepmind.github.io/blogs/</loc>
+    <priority>0.90</priority>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://imdeepmind.github.io/projects/</loc>
+    <priority>0.85</priority>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://imdeepmind.github.io/contact/</loc>
+    <priority>0.80</priority>
+    <changefreq>never</changefreq>
+  </url>
 </urlset>
