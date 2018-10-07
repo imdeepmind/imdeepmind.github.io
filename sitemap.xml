@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://imdeepmind.github.io/</loc>
+    <loc>https://imdeepmind.ml/</loc>
     <priority>1.00</priority>
     <changefreq>daily</changefreq>
   </url>
+   <url>
+    <loc>https://imdeepmind.ml/about/</loc>
+    <priority>0.70</priority>
+    <changefreq>never</changefreq>
+  </url>
   <url>
-    <loc>https://imdeepmind.github.io/blogs/</loc>
+    <loc>https://imdeepmind.ml/blogs/</loc>
     <priority>0.90</priority>
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>https://imdeepmind.github.io/projects/</loc>
+    <loc>https://imdeepmind.ml/projects/</loc>
     <priority>0.85</priority>
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>https://imdeepmind.github.io/contact/</loc>
+    <loc>https://imdeepmind.ml/contact/</loc>
     <priority>0.80</priority>
     <changefreq>never</changefreq>
   </url>

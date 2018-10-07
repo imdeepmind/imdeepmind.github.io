@@ -1,0 +1,5 @@
+User-Agent: *
+Disallow: 
+Disallow: /assets/
+
+Sitemap: https://imdeepmind.ml/sitemap.xml
