@@ -16,6 +16,11 @@
     <changefreq>daily</changefreq>
   </url>
   <url>
+    <loc>https://imdeepmind.ml/blogs/2018/10/21</loc>
+    <priority>0.70</priority>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
     <loc>https://imdeepmind.ml/projects/</loc>
     <priority>0.85</priority>
     <changefreq>daily</changefreq>

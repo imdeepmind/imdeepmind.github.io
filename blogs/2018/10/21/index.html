@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="description" content="This is the unofficial guide the basics of Numpy library. In this post, we’ll learn the basics of Numpy with python 3 code. So let's learn!">
+		<meta name="robots" content="index, follow" />
+		<meta name="author" content="Abhishek Chatterjee (imdeepmind)">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+		<link rel="stylesheet" href="https://imdeepmind.ml/assets/css/base.css">
+		<link rel="stylesheet" href="https://imdeepmind.ml/assets/css/vendor.css">  
+		<link rel="stylesheet" href="https://imdeepmind.ml/assets/css/main.css">
+		<link rel="shortcut icon" href="https://imdeepmind.ml/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="https://imdeepmind.ml/favicon.ico" type="image/x-icon">
+
+		<script src="https://imdeepmind.ml/assets/js/modernizr.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.0/pace.min.js" integrity="sha256-V5oQokhQVemIM4vgVPhmy+cTyFEEQhMMvaDOEc7WxJ8=" crossorigin="anonymous"></script>
+
+		<title>An unofficial guide to the basics of Numpy | Blog | imdeepmind | Abhishek Chatterjee</title>
+	</head> 
+	<body id="top">
+		<header class="short-header">   
+			<div class="gradient-block"></div>	
+			<div class="row header-content">
+				<div class="logo">
+					<a href="https://imdeepmind.ml/">Abhishek Chatterjee (imdeepmind)</a>
+				</div>
+				<nav id="main-nav-wrap">
+					<ul class="main-navigation sf-menu">
+						<li><a href="https://imdeepmind.ml/" title="Home">Home</a></li>	
+						<li><a href="https://imdeepmind.ml/about/" title="About Me">About</a></li>									
+						<li class="current"><a href="https://imdeepmind.ml/blogs" title="My Blogs">Blogs</a></li>
+						<li><a href="https://imdeepmind.ml/projects" title="My Projects">Projects</a></li>
+						<li><a href="https://imdeepmind.ml/contact/" title="Contact Me">Contact</a></li>										
+					</ul>
+				<div class="search-wrap">
+					<form role="search" method="get" class="search-form" action="#">
+						<label>
+							<span class="hide-content">Search for:</span>
+							<input type="search" class="search-field" placeholder="Type Your Keywords" value="" name="s" title="Search for:" autocomplete="off">
+						</label>
+						<input type="submit" class="search-submit" value="Search">
+					</form>
+					<a href="#" id="close-search" class="close-btn">Close</a>
+				</div>
+				<div class="triggers">
+					<a class="search-trigger" href="#"><i class="fa fa-search"></i></a>
+					<a class="menu-toggle" href="#"><span>Menu</span></a>
+				</div> 
+			</div>     		
+		</header> 
+		<section id="content-wrap" class="blog-single">
+			<div class="row">
+				<div class="col-twelve">
+					<article class="format-standard">  
+						<div class="content-media">
+							<div class="post-thumb">
+								<img src="../../../../assets/images/blogs/hero/an-unofficial-guide-to-the-basics-of-numpy-hero.jpg"> 
+							</div>  
+						</div>
+						<div class="primary-content">
+							<h1 class="page-title">An unofficial guide to the basics of Numpy</h1>	
+							<ul class="entry-meta">
+								<li class="date">October 21, 2018 by Abhishek Chatterjee</li>		
+							</ul>						
+							<p class="lead">This is the unofficial guide the basics of Numpy library. In this post, we’ll learn the basics of Numpy with python 3 code. So let's learn!</p> 
+
+							<h2>What is Numpy?</h2>
+
+							<p>Numpy or ‘Numarical Python’ is a python package for scientific computing. It is very popular among Data Scientists and Machine Learning Engineers. It provides a very powerful N-dimensional array object ( like the python lists, but very advanced and efficient ) and different mathematical functions. Also, Numpy provides tools for integrating C/C++.</p>
+							<p>In Machine Learning, we generally use Numpy for its advanced array object and mathematical functions. We use the array object because it is very efficient and optimized. We can store an entire dataset as a numpy array object and then we can perform different operations on it. \</p>
+
+							<h2>Installing Numpy using pip</h2>
+
+							<p>Installing Numpy using pip is very simple. First, open terminal or command prompt and then type the following command</p>
+							<pre><code>pip install numpy</code></pre>
+							<p>After typing the command, hit enter. And then it’ll take some time to install. </p>
+							<p><i>Note - In windows, if you are having some permission issues then run cmd as administrator.</i></p>
+							<p>If you are having some error installing then you can download the <a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/#numpy">Numpy wheel file</a> from here and then install it with the following command</p>
+							<pre><code>pip install numpy_wheel_file.whl</code></pre>
+							<p><i>Note - Replace the numpy_wheel_file with the path to the wheel file.</i></p>
+							
+							<h2>Now let's create a Numpy array</h2>
+
+							<p>So, now let's create a python project. Use your favorite IDE and create a project. You can call it whatever you want.</p>
+							<p>Before we create a Numpy array, first we need to import Numpy for our project. To import Numpy use the following python code</p>
+							<pre><code>
+# Importing numpy
+import numpy as np
+</code></pre>
+							<p>Now as we’ve imported Numpy, we can create our first numpy array. To create a Numpy array, type the following code</p>
+							<pre><code>
+# Initializing an array
+a = np.array([1,2,3,4,5,6])
+
+# Initializing a multidimensional array
+b = np.array([[1,2,3], [4,5,6], [7,8,9]])									
+</code></pre>
+							<p>Here a is variable storing the array. Now we can print the values of a to confirm. Type the following code </p>
+							<pre><code>
+# Printing arrays
+print(a)
+print(b)
+								</code></pre>
+							<p>Now you should see the array printing in the console.</p>
+
+							<h2>Let's compare Numpy array with traditional python lists</h2>
+
+							<p>We know Numpy arrays are efficient, but how efficient, let's find out.</p>
+							<p>Numpy arrays are fast and use less space compare to python lists. So let's test it. First, we’ll test how fast ( in terms of time ) Numpy arrays are compared to python lists. For that let's write a small python program.</p>
+<pre>
+<code>
+# Importing libraries
+import numpy as np
+import time
+
+# Numpy arrays
+A = np.random.randn(10000000)
+B = np.random.randn(10000000)
+
+# Python lists
+C = range(10000000)
+D = range(10000000)
+
+# Storing time 
+TIME_NP = 0
+TIME_LT = 0
+
+# For storing the result
+RESULT = 0
+
+# Starting timer
+tic = time.time()
+
+# Calculating using np.dot method
+RESULT = np.dot(A,B)
+
+# Stopping timer
+toc = time.time()
+
+# Storing the time
+TIME_NP = toc-tic
+
+# Starting the timer
+tic = time.time()
+
+# Calculating using loop
+for i in range(len(C)):
+  RESULT += C[i] * D[i]
+  
+# Stopping the timer
+toc = time.time()
+
+# Storing the timer
+TIME_LT = toc-tic
+
+# Printing the result
+print(TIME_NP)
+print(TIME_LT)
+</code>
+</pre>
+<pre>
+<code>
+##########
+##OUTPUT##
+0.01577591896057129
+6.25635838508606
+</code>
+</pre>
+							<p>Python lists are taking over 6 seconds whereas Numpy arrays are just taking 0.015 seconds.</p>					
+							<p>Now let's check the efficiency in terms of space. So let's write a simple program the do that.</p>
+<pre>
+<code>
+# Importing libraries
+import numpy as np
+import time
+import sys
+
+
+# Python list
+S = range(1000)
+
+# Numpy array
+D = np.arange(1000)
+
+
+# Printing the results
+print(sys.getsizeof(S)*len(S))
+print(D.size*D.itemsize)
+</code>
+</pre>
+<pre>
+<code>
+##########
+##OUTPUT##
+28000
+8000
+</code>
+</pre>
+							<p>And the story is same here also. Numpy arrays are very efficient in terms of space.</p>					
+
+							<h2>Now lets discuss about the basic Numpy operations</h2>
+
+							<p>
+								<ol>
+									<li>
+										<h3>Indexing</h3>
+										<p>Like python lists, with Numpy arrays we use the square brackets ( [] ) to denote the indexing. Indexing provides random access to arrays. They are very powerful especially with array slicing.</p>
+										<p>In Numpy arryays, the indexing starts with zero. That means the element with index 0 is the first element in the array. Lets do some code to understand Numpy arrays</p>
+<pre>
+<code>
+# Importing numpy
+import numpy as np
+
+# Initializing the array
+a = np.arange(100)
+
+# Printing the 1st element
+print(a[0]) # Output 0
+
+# Printing the 5th element
+print(a[5]) # Output 0
+
+# Printing the 36th element
+print(a[36]) # Output 0
+
+# Printing the 35.3th element
+print(a[35.3]) # Output Error
+
+# Printing the 130th element
+print(a[120]) # Output Error
+</code>
+</pre>
+										<p>Look at the code, the last 2 lines here returning error becouse 
+											<ul>
+												<li>Array indexes are always positive integer number.</li>
+												<li>The index must always be smaller than the size of the array length.</li>
+											</ul>
+										</p>
+									</li>
+									<li>
+										<h3>Slicing</h3>
+
+										<p>Now let's discuss slicing. Slicing is another very powerful method provided in Numpy arrays. We know using Indexing, we can access and modify data stored in the Numpy array. Slicing also similar to indexing. With slicing, we can access and modify a part of the array. </p>
+
+										<p>To understand the concept easily let's initialize a Numpy array.</p>
+
+										<pre>
+											<code>
+import numpy as np
+
+arr = np.arange(100)
+
+print(arr) #  Output -  array([0,1,2,3................99])	
+											</code>
+										</pre>
+										<p>Now let's say we want to select the first 10 elements of the array. With slicing, we can do that. Here is the code for that.</p>
+										<pre><code>print(arr[0:10])  # Output - [0 1 2 3 4 5 6 7 8 9]</code></pre>
+										<p>Now let's discuss the syntax. Look at square brackets. It’s not like normal indexing. It is actually slicing. The first number 0 is basically telling the start point and the number after the colon ( : ) is the endpoint. So here we basically telling python to return all the elements of the array whose index is in the range of 0 to 10. And this is slicing.</p>
+										<p>Slicing is not only limited to one-dimensional Numpy arrays. We can use slicing with multidimensional arrays also. We can separate the indexes using commas (,) in case of multidimensional arrays. Let's write some code to demonstrate that.</p>
+										<pre><code>
+import numpy as np
+
+m = np.random.rand(10,10)
+
+# Print first row
+print(m[:,0])
+
+# Print first column
+print(m[0,:])
+
+# Print first two rows and columns
+print(m[0:2,0:2])
+
+# Print first 3 rows and 5 columns
+print(m[0:3,0:5])
+										</code></pre>
+									</li>
+									<li>
+										<h3>Math Operations</h3>
+										<p>Another power of Numpy is its support for rich highly optimized math operations. There are so many math functions that are supported by Numpy. Let's discuss some of the math operations supported by Numpy</p>
+										<pre><code>
+import numpy as np
+
+m = np.random.rand(10,10)
+n = np.random.rand(10,10)
+p = 4.0
+q = np.array([[3.5,4.2,3.6]])
+
+# Add two matrices
+Result = n + m # Alternatively we can use the np.add function also
+
+# Subtract two matrices
+Result = n - m
+
+# Multiplication of two matrices
+Result = np.multiply(n,m)
+
+# Dot product of two matrices
+Result = np.dot(n,m)
+
+# Inverse of a matrix
+Result = np.linalg.inv(n)
+
+# Transpose of a matrix
+Result = np.transpose(n) # Alternatively we can use the n.T method also
+
+# Trigonometric Functions
+Result = np.sin(n*(np.pi/180))
+
+Result = np.cos(n*(np.pi/180))
+
+# Average
+Result = np.average(q)
+
+# Mean
+Result = np.mean(q)
+
+# Median
+Result = np.median(q)
+
+# Standard Deviation
+Result = np.std(q)
+
+# Variance
+Result = np.var(q)
+
+# Floor 
+Result = np.floor(q)
+
+# Ceil
+Result = np.ceil(q)
+										</code></pre>
+									</li>
+									<li>
+										<h3>Data Types</h3>
+										<p>Every Numpy array is a grid of elements of the same data type. Numpy provides us with many different types of datatypes to choose from. When we initialize a Numpy array, Numpy tries to guess the datatype. And of course, we can specifically tell Numpy the datatype.</p>
+										<pre><code>
+m = np.random.rand(10,10)
+
+# Printing the datatype of the array
+print(m.dtype) # Output - dtype('float64')
+
+# Initializing an array with a specific data type
+N = np.array([1,2,3,4,5,6], dtype=np.float64)
+
+# Printing the datatype of the array
+print(n.dtype) # Output - dtype('float64')
+										</code></pre>
+									</li>
+									<li>
+										<h3>Broadcasting</h3>
+										<p>Broadcasting is a very powerful method. It basically describes how python treats arrays of different shapes for arithmetic operations. </p>
+										<p>To understand Broadcasting, let's assume two arrays of different shapes. Now generally arithmetic operations are not possible but with Numpy, it is possible. To do that, Numpy broadcast the smaller array into the shape of the larger array. </p>
+										<p>Here is an example program that shows python Broadcasting.</p>
+										<pre><code>
+import numpy as np
+
+a = np.array([[1,2,3],[4,5,6],[7,8,9]])
+b = np.array([[9,8,7]])
+
+
+# Printing the result
+print(a+b)
+
+###
+##OUTPUT##
+#[[10 10 10]
+# [13 13 13]
+# [16 16 16]]												
+										</code></pre>
+									</li>
+									<li>
+										<h3>Random Numbers</h3>
+										<p>Another very powerful feature of Numpy is its random module. Numpy provides a very powerful way to create arrays with random numbers. </p>
+										<p>First, let’s learn about seeding. Seeds actually make random numbers predictable and same every time. It is a very important feature, especially for debugging purposes. To use seeding we just need to type the following code.</p>
+										<pre>
+											<code>
+# Seed 
+np.random.seed(10)
+											</code>
+										</pre>
+										<p>And now we can generate predictable random numbers using numpy. To generate random numbers we can use the np.random.rand function. Here is an example</p>
+										<pre><code>
+A = np.random.rand(10)
+
+print(a)
+										</code></pre>
+									</li>
+								</ol>
+							</p>
+									
+						</div>  	
+					</article>
+				</div>
+			</div>
+		</section>
+		<footer>
+			<div class="footer-main">
+				<div class="row">  
+					<div class="col-four tab-full mob-full footer-info">            
+						<h4>About Me</h4>
+						<p>Hello, I'm Abhishek Chatterjee. I'm a Computer Science student. I'm interested in Artificial Intelligence and Machine Learning. This is my blogging website. Here I share my ideas, my knowledge, and my experience.</p>
+					</div>
+					<div class="col-two tab-1-3 mob-1-2 site-links">
+						<h4>Site Links</h4>
+						<ul>
+							<li><a href="https://imdeepmind.ml/">Home</a></li>
+							<li><a href="https://imdeepmind.ml/about/">About</a></li>
+							<li><a href="https://imdeepmind.ml/blogs/">Blogs</a></li>
+							<li><a href="https://imdeepmind.ml/projects/">Projects</a></li>
+							<li><a href="https://imdeepmind.ml/contact/">Contact</a></li>
+						</ul>
+					</div> 
+					<div class="col-two tab-1-3 mob-1-2 social-links">
+						<h4>Social</h4>
+						<ul>
+							<li><a href="https://twitter.com/imdeepmind">Twitter</a></li>
+							<li><a href="https://www.linkedin.com/in/imdeepmind/">LinkedIn</a></li>
+							<li><a href="https://github.com/imdeepmind/">GitHub</a></li>
+						</ul> 	
+					</div>
+					<div class="col-four tab-1-3 mob-full footer-subscribe">
+						<h4>Other Links</h4>
+						<ul>
+							<li><a href="https://www.kaggle.com/imdeepmind">Kaggle</a></li>
+							<li><a href="https://www.hackerrank.com/imdeepmind">HackerRank</a></li>
+							<li><a href="https://www.khanacademy.org/profile/imdeepmind/">KhanAcademy</a></li>
+							<li><a href="https://www.quora.com/profile/Abhishek-Chatterjee-184">Quora</a></li>
+						</ul>       	
+					</div>     
+				</div> 
+			</div>
+			<div class="footer-bottom">
+				<div class="row">
+					<div class="col-twelve">
+						<div class="copyright">
+							<span>© Copyright imdeepmind 2018</span> 
+							<span>Design by <a href="http://www.styleshout.com/">styleshout</a></span>		         	
+						</div>
+						<div id="go-top">
+							<a class="smoothscroll" title="Back to Top" href="#top"><i class="icon icon-arrow-up"></i></a>
+						</div>         
+					</div>
+				</div> 
+			</div> 
+		</footer>  
+		<div id="preloader"> 
+			<div id="loader"></div>
+		</div> 
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+		<script src="https://imdeepmind.ml/assets/js/plugins.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.appear/0.4.1/jquery.appear.min.js"></script>
+		<script src="https://imdeepmind.ml/assets/js/main.js"></script>
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-124685583-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-124685583-1');
+		</script>
+	</body>
+</html>
