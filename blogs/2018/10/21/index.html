@@ -16,6 +16,7 @@
 
 		<script src="https://imdeepmind.ml/assets/js/modernizr.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.0/pace.min.js" integrity="sha256-V5oQokhQVemIM4vgVPhmy+cTyFEEQhMMvaDOEc7WxJ8=" crossorigin="anonymous"></script>
+		<script src="https://imdeepmind.ml/assets/js/https.js"></script>
 
 		<title>An unofficial guide to the basics of Numpy | Blog | imdeepmind | Abhishek Chatterjee</title>
 	</head> 
@@ -246,15 +247,13 @@ print(a[120]) # Output Error
 
 										<p>To understand the concept easily let's initialize a Numpy array.</p>
 
-										<pre>
-											<code>
+										<pre><code>
 import numpy as np
 
 arr = np.arange(100)
 
 print(arr) #  Output -  array([0,1,2,3................99])	
-											</code>
-										</pre>
+										</code></pre>
 										<p>Now let's say we want to select the first 10 elements of the array. With slicing, we can do that. Here is the code for that.</p>
 										<pre><code>print(arr[0:10])  # Output - [0 1 2 3 4 5 6 7 8 9]</code></pre>
 										<p>Now let's discuss the syntax. Look at square brackets. It’s not like normal indexing. It is actually slicing. The first number 0 is basically telling the start point and the number after the colon ( : ) is the endpoint. So here we basically telling python to return all the elements of the array whose index is in the range of 0 to 10. And this is slicing.</p>
@@ -375,12 +374,10 @@ print(a+b)
 										<h3>Random Numbers</h3>
 										<p>Another very powerful feature of Numpy is its random module. Numpy provides a very powerful way to create arrays with random numbers. </p>
 										<p>First, let’s learn about seeding. Seeds actually make random numbers predictable and same every time. It is a very important feature, especially for debugging purposes. To use seeding we just need to type the following code.</p>
-										<pre>
-											<code>
+										<pre><code>
 # Seed 
 np.random.seed(10)
-											</code>
-										</pre>
+										</code></pre>
 										<p>And now we can generate predictable random numbers using numpy. To generate random numbers we can use the np.random.rand function. Here is an example</p>
 										<pre><code>
 A = np.random.rand(10)
@@ -390,7 +387,10 @@ print(a)
 									</li>
 								</ol>
 							</p>
-									
+							<h2>Conclusion</h2>
+							<p>There are a lot of other methods and features are in Numpy. I can not discuss everything here in this post. So I recommend <a href="https://docs.scipy.org/doc/">Numpy's official documentation.</a>  It contains a detailed description of all the methods and features provided in Numpy.</p>
+							<p>This is my first blog so I hope you like it. I hope you learned something new. Hope to see you in the next post.</p>	
+							<p>If you need the python code of this post then please visit this <a href="https://github.com/imdeepmind/An-unofficial-guide-to-the-basics-of-Numpy">GitHub repository</a>.</p>
 						</div>  	
 					</article>
 				</div>
