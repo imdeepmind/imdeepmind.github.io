@@ -26,6 +26,11 @@
     <changefreq>daily</changefreq>
   </url>
   <url>
+    <loc>https://imdeepmind.ml/datasets/</loc>
+    <priority>0.85</priority>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
     <loc>https://imdeepmind.ml/contact/</loc>
     <priority>0.80</priority>
     <changefreq>never</changefreq>
