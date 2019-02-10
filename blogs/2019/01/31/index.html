@@ -9,7 +9,7 @@
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
 		<link rel="stylesheet" href="https://imdeepmind.ml/assets/css/base.css">
-		<link rel="stylesheet" href="https://imdeepmind.ml/assets/css/vendor.css">  
+		<link rel="stylesheet" href="https://imdeepmind.ml/assets/css/vendor.css">
 		<link rel="stylesheet" href="https://imdeepmind.ml/assets/css/main.css">
 		<link rel="shortcut icon" href="https://imdeepmind.ml/favicon.ico" type="image/x-icon">
 		<link rel="icon" href="https://imdeepmind.ml/favicon.ico" type="image/x-icon">
@@ -19,22 +19,22 @@
 		<script src="https://imdeepmind.ml/assets/js/https.js"></script>
 
 		<title>Processing IMDB WIKI dataset for action | Blog | imdeepmind | Abhishek Chatterjee</title>
-	</head> 
+	</head>
 	<body id="top">
-		<header class="short-header">   
-			<div class="gradient-block"></div>	
+		<header class="short-header">
+			<div class="gradient-block"></div>
 			<div class="row header-content">
 				<div class="logo">
 					<a href="https://imdeepmind.ml/">Abhishek Chatterjee (imdeepmind)</a>
 				</div>
 				<nav id="main-nav-wrap">
 					<ul class="main-navigation sf-menu">
-						<li><a href="https://imdeepmind.ml/" title="Home">Home</a></li>	
-						<li><a href="https://imdeepmind.ml/about/" title="About Me">About</a></li>									
+						<li><a href="https://imdeepmind.ml/" title="Home">Home</a></li>
+						<li><a href="https://imdeepmind.ml/about/" title="About Me">About</a></li>
 						<li class="current"><a href="https://imdeepmind.ml/blogs" title="My Blogs">Blogs</a></li>
 						<li><a href="https://imdeepmind.ml/projects" title="My Projects">Projects</a></li>
 						<li><a href="https://imdeepmind.ml/datasets/" title="My Datasets">Datasets</a></li>
-						<li><a href="https://imdeepmind.ml/contact/" title="Contact Me">Contact</a></li>										
+						<li><a href="https://imdeepmind.ml/contact/" title="Contact Me">Contact</a></li>
 					</ul>
 				<div class="search-wrap">
 					<form role="search" method="get" class="search-form" action="https://google.com/search">
@@ -49,24 +49,24 @@
 				<div class="triggers">
 					<a class="search-trigger" href="#"><i class="fa fa-search"></i></a>
 					<a class="menu-toggle" href="#"><span>Menu</span></a>
-				</div> 
-			</div>     		
-		</header> 
+				</div>
+			</div>
+		</header>
 		<section id="content-wrap" class="blog-single">
 			<div class="row">
 				<div class="col-twelve">
-					<article class="format-standard">  
+					<article class="format-standard">
 						<div class="content-media">
 							<div class="post-thumb">
-								<img src="../../../../assets/images/blogs/hero/imdb_banner.png"> 
-							</div>  
+								<img src="../../../../assets/images/blogs/hero/imdb_banner.png">
+							</div>
 						</div>
 						<div class="primary-content">
-							<h1 class="page-title">Processing IMDB WIKI dataset for action</h1>	
+							<h1 class="page-title">Processing IMDB WIKI dataset for action</h1>
 							<ul class="entry-meta">
-								<li class="date">January 31, 2019 by Abhishek Chatterjee</li>		
-							</ul>						
-							<p class="lead">In this post, I’ll discuss how I processed and prepare the IMDB WIKI dataset for any Machine Learning project.</p> 
+								<li class="date">January 31, 2019 by Abhishek Chatterjee</li>
+							</ul>
+							<p class="lead">In this post, I’ll discuss how I processed and prepare the IMDB WIKI dataset for any Machine Learning project.</p>
 
 							<p>IMDB WIKI dataset is the largest dataset on human faces. This dataset contains more than 500 thousand + images of human faces with their age, gender, name etc.</p>
 
@@ -90,9 +90,9 @@
 
                             <p>Furthermore, the meta information ( age, name, gender etc) are in .mat files. Files with .mat extension contain MatLab formatted data. </p>
 
-                            <p>>Reading these .mat files are little hard in python. 
+                            <p>Reading these .mat files are little hard in python. 
 
-							
+
 							<h2>My Solution</h2>
 
                             <p>I want to use this dataset in one of my projects. But before using it, I need to preprocess it.</p>
@@ -113,7 +113,7 @@
                             <p>To read .mat files in python, we can use Scipy</p>
 
                             <p><i>This code is for the WIKI dataset. Check the GitHub repo for the IMDB dataset.</i></p>
-                        
+
                             <p>
                                 Here is the code for that.
 
@@ -127,7 +127,7 @@ data = loadmat(mat_file)</code></pre>
                                 Now the data variable is a dictionary. We don't need all the information. Here is the code for that.
                                 <pre><code>data = data['wiki']</code></pre>
                             </p>
-                        
+
                             <p>
                                 Now the data variable contains a very nested array. Here is the code for retrieving the data from the variable.
 
@@ -140,9 +140,9 @@ face_score2 = data[0][0][7][0]</code></pre>
                             </p>
 
                             <p><b><i>For information about the exact data, these .mat files contain, please visit the home page of the dataset.</i></b></p>
-                        
+
                             <p><b><i>After doing some experiments with the indexing, I figured the proper index of all the data.</i></b></p>
-                        
+
                             <p>I recovered the date of birth of each person from the path of the image. Here is the code for that.
 
 <pre><code>dob = []
@@ -152,8 +152,8 @@ for file in path:
 
                             <p><b><i>The date of birth information present on the original .mat files are in Matlab serial date number. Honestly, I don't know how to convert these dates on normal dates. So I feel a little comfortable with the approach I did in the code.</i></b></p>
 
-                        
-                        
+
+
                             <p>
                                     Now different pieces of information recovered from the .mat files need a little more preprocessing. Here is the code for that.
 
@@ -175,7 +175,7 @@ for n in range(len(gender)):
     else:
     genders.append('female')</code></pre>
                             </p>
-                        
+
                             <p>
                                 Finally, we have all the data that we need in the right format, so let's make one multidimensional array holding all the information.
 <pre><code>import numpy as np
@@ -212,7 +212,7 @@ wiki = wiki.drop(['Unnamed: 0'], axis=1)        </code></pre>
                             </p>
 
                             <p><b><i>I have a laptop with 8gb RAM and I use this laptop for all my projects. This dataset is big, so I can not process all the images in one shot. So instead, I built a batch system that processes a small chunk of the images at one time. By doing that, the dataset can easily be processed on a system with low RAM.</i></b></p>
-                        
+
                             <p>
                                     So now let's select the information from the wiki_meta.csv file that I need.
 <pre><code># Length of the dataset
@@ -257,7 +257,7 @@ ELEMENTS = []</code></pre>
 <pre><code>for batch in range(NO_BATCHES):
     if batch < (BATCH_NUMBER-1):
         break
-    …	
+    …
     …</code></pre>
                             </p>
 
@@ -295,7 +295,7 @@ for i in range(start,end):
         img = img.reshape(1,4096)
 
         row = np.hstack((img, details[i].reshape(1,4)))
-        
+
         data.append(row[0])</code></pre>
                             </p>
 
@@ -305,15 +305,15 @@ for i in range(start,end):
 
 for i in range(4096):
     columns.append('pixel' + str(i+1))
-    
+
     columns = columns + ['dob', 'photo_taken', 'gender', 'name']
-        
+
     dataFrame = pd.DataFrame(data)
 
     dataFrame.columns = columns
-    
+
     dataFrame.to_csv('processedData/images/wiki/wiki_'+str(batch)+'.csv')
-    
+
     print('-- (BATCH-'+ str(batch+1) +') data save in csv file --')</code></pre>
                             </p>
 
@@ -332,15 +332,15 @@ for i in range(4096):
                                     <li>We can align faces</li>
                                 </ol>
                             </p>
-                        </div>  	
+                        </div>
 					</article>
 				</div>
 			</div>
 		</section>
 		<footer>
 			<div class="footer-main">
-				<div class="row">  
-					<div class="col-four tab-full mob-full footer-info">            
+				<div class="row">
+					<div class="col-four tab-full mob-full footer-info">
 						<h4>About Me</h4>
 						<p>Hello, I'm Abhishek Chatterjee. I'm a Computer Science student. I'm interested in Artificial Intelligence and Machine Learning. This is my blogging website. Here I share my ideas, my knowledge, and my experience.</p>
 					</div>
@@ -353,14 +353,14 @@ for i in range(4096):
 							<li><a href="https://imdeepmind.ml/projects/">Projects</a></li>
 							<li><a href="https://imdeepmind.ml/contact/">Contact</a></li>
 						</ul>
-					</div> 
+					</div>
 					<div class="col-two tab-1-3 mob-1-2 social-links">
 						<h4>Social</h4>
 						<ul>
 							<li><a href="https://twitter.com/imdeepmind">Twitter</a></li>
 							<li><a href="https://www.linkedin.com/in/imdeepmind/">LinkedIn</a></li>
 							<li><a href="https://github.com/imdeepmind/">GitHub</a></li>
-						</ul> 	
+						</ul>
 					</div>
 					<div class="col-four tab-1-3 mob-full footer-subscribe">
 						<h4>Other Links</h4>
@@ -369,27 +369,27 @@ for i in range(4096):
 							<li><a href="https://www.hackerrank.com/imdeepmind">HackerRank</a></li>
 							<li><a href="https://www.khanacademy.org/profile/imdeepmind/">KhanAcademy</a></li>
 							<li><a href="https://www.quora.com/profile/Abhishek-Chatterjee-184">Quora</a></li>
-						</ul>       	
-					</div>     
-				</div> 
+						</ul>
+					</div>
+				</div>
 			</div>
 			<div class="footer-bottom">
 				<div class="row">
 					<div class="col-twelve">
 						<div class="copyright">
-							<span>© Copyright imdeepmind 2018</span> 
-							<span>Design by <a href="http://www.styleshout.com/">styleshout</a></span>		         	
+							<span>© Copyright imdeepmind 2018</span>
+							<span>Design by <a href="http://www.styleshout.com/">styleshout</a></span>
 						</div>
 						<div id="go-top">
 							<a class="smoothscroll" title="Back to Top" href="#top"><i class="icon icon-arrow-up"></i></a>
-						</div>         
+						</div>
 					</div>
-				</div> 
-			</div> 
-		</footer>  
-		<div id="preloader"> 
+				</div>
+			</div>
+		</footer>
+		<div id="preloader">
 			<div id="loader"></div>
-		</div> 
+		</div>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
 		<script src="https://imdeepmind.ml/assets/js/plugins.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.appear/0.4.1/jquery.appear.min.js"></script>
