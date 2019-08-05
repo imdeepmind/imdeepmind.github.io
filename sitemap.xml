@@ -1,38 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://imdeepmind.ml/</loc>
-    <priority>1.00</priority>
-    <changefreq>daily</changefreq>
-  </url>
-   <url>
-    <loc>https://imdeepmind.ml/about/</loc>
-    <priority>0.70</priority>
-    <changefreq>never</changefreq>
-  </url>
-  <url>
-    <loc>https://imdeepmind.ml/blogs/</loc>
-    <priority>0.90</priority>
-    <changefreq>daily</changefreq>
-  </url>
-  <url>
-    <loc>https://imdeepmind.ml/blogs/2018/10/21</loc>
-    <priority>0.70</priority>
-    <changefreq>daily</changefreq>
-  </url>
-  <url>
-    <loc>https://imdeepmind.ml/projects/</loc>
-    <priority>0.85</priority>
-    <changefreq>daily</changefreq>
-  </url>
-  <url>
-    <loc>https://imdeepmind.ml/datasets/</loc>
-    <priority>0.85</priority>
-    <changefreq>daily</changefreq>
-  </url>
-  <url>
-    <loc>https://imdeepmind.ml/contact/</loc>
-    <priority>0.80</priority>
-    <changefreq>never</changefreq>
-  </url>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://imdeepmind.com/</loc>
+  <lastmod>2019-08-04T12:16:10+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://imdeepmind.com/about/</loc>
+  <lastmod>2019-08-04T12:16:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://imdeepmind.com/blogs/</loc>
+  <lastmod>2019-08-04T12:16:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://imdeepmind.com/projects/</loc>
+  <lastmod>2019-08-04T12:16:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://projects.imdeepmind.com/</loc>
+  <lastmod>2019-08-04T12:16:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://imdeepmind.com/datasets/</loc>
+  <lastmod>2019-08-04T12:16:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://imdeepmind.com/contact/</loc>
+  <lastmod>2019-08-04T12:16:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://imdeepmind.com/blogs/2019/01/31/</loc>
+  <lastmod>2019-08-04T12:16:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://imdeepmind.com/blogs/2018/10/21/</loc>
+  <lastmod>2019-08-04T12:16:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+
 </urlset>
