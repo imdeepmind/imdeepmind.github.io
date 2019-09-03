@@ -1,5 +1,5 @@
-# https://imdeepmind.ml
+# https://imdeepmind.com
 
 My own personal blog website
 
-[Demo Link](https://imdeepmind.ml)
+[Demo Link](https://imdeepmind.com)
