@@ -5,7 +5,7 @@ $(document).ready(function(){
         e.preventDefault();
         var t = $('.search-field').val();
         console.log(t);
-        $('.search-field').val('site:imdeepmind.ml ' + t);
+        $('.search-field').val('site:imdeepmind.com ' + t);
         $('.search-form').submit();
     })
 });
