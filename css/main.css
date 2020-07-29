@@ -1526,7 +1526,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     padding: 0;
     outline: 0;
     border: none;
-    width: 80px;
+    width: 130px;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
@@ -1671,7 +1671,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 
 @media only screen and (max-width: 800px) {
     .header-logo {
-        left: 40px;
+        left: 14px;
     }
     .header-nav-wrap {
         display: none;
@@ -3323,7 +3323,7 @@ footer a:hover, footer a:focus {
 
 .footer-site-logo {
     display: block;
-    width: 130px;
+    width: 250px;
 }
 
 .footer-social {
@@ -3464,9 +3464,6 @@ footer a:hover, footer a:focus {
 }
 
 @media only screen and (max-width: 400px) {
-    .footer-site-logo {
-        width: 100px;
-    }
     .footer-social li {
         margin-right: 1.2rem;
     }
