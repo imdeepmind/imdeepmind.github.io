@@ -349,7 +349,7 @@
                 $.ajax({
     
                     type: "POST",
-                    url: "inc/sendEmail.php",
+                    url: "https://send-email-psi.vercel.app/api/send-email",
                     data: $(form).serialize(),
                     beforeSend: function() { 
     
