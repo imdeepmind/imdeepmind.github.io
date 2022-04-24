@@ -3048,6 +3048,7 @@ html.no-csstransitions .home-content__main {
     padding-bottom: 12rem;
     color: rgba(255, 255, 255, 0.5);
     position: relative;
+    background-size: cover;
 }
 
 .s-contact .overlay {
