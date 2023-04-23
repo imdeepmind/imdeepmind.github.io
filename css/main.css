@@ -4135,3 +4135,11 @@ article.blog-single .blog-content {
         display: none;
     }
 }
+
+
+.s-photography {
+    padding-top: 15rem;
+    padding-bottom: 9rem;
+    background-image: url('/images/photography.png');
+    position: relative;
+}
