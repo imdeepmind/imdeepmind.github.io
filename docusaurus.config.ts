@@ -66,12 +66,12 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: "img/docusaurus-social-card.jpg",
+    image: "img/logo.png",
     navbar: {
-      title: "imdeepmind",
+      title: "abhishek chatterjee",
       logo: {
         alt: "imdeepmind logo",
-        src: "img/logo.svg",
+        src: "img/logo.png",
       },
       items: [
         {
@@ -119,15 +119,15 @@ const config: Config = {
           items: [
             {
               label: "Profile.fyi",
-              href: "https://stackoverflow.com/questions/tagged/docusaurus",
+              href: "https://profile.fyi/imdeepmind",
             },
             {
               label: "GitHub",
-              href: "https://discordapp.com/invite/docusaurus",
+              href: "https://github.com/imdeepmind",
             },
             {
               label: "LinkedIn",
-              href: "https://x.com/docusaurus",
+              href: "https://linkedin.com/in/imdeepmind",
             },
           ],
         },
@@ -136,7 +136,7 @@ const config: Config = {
           items: [
             {
               label: "Blog",
-              to: "https://blog.rocketapi.net",
+              href: "https://blog.rocketapi.net",
             },
           ],
         },
