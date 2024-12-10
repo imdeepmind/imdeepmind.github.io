@@ -2,6 +2,17 @@
 sidebar_position: 1
 ---
 
-# Notes
+# Introduction
 
-My plan with this se
+This repository contains my personal collection of notes, primarily focused on Computer Science, Software Engineering, and Backend Development. As I explore various topics in these areas, I document my learnings and publish them on this website.
+
+If you come across any issues or errors in the notes, feel free to open an issue in the GitHub repository.
+
+## Content Table
+
+1. [Data Structure and Algorithms](/docs/data-structure-and-algorithms/array-and-hasing)
+   1. [Arrays and Hashing](/docs/data-structure-and-algorithms/array-and-hasing)
+
+## Sources
+
+The notes are primarily created by me or with the assistance of ChatGPT. Occasionally, they include content adapted from other sources, though I typically rework the material rather than copying it verbatim.
