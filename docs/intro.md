@@ -10,8 +10,9 @@ If you come across any issues or errors in the notes, feel free to open an issue
 
 ## Content Table
 
-1. [Data Structure and Algorithms](/docs/data-structure-and-algorithms/array-and-hasing)
-   1. [Arrays and Hashing](/docs/data-structure-and-algorithms/array-and-hasing)
+1. [Data Structure and Algorithms](/docs/data-structure-and-algorithms/arrays-and-hasing)
+   1. [Arrays and Hashing](/docs/data-structure-and-algorithms/arrays-and-hasing)
+   2. [Two Pointers](/docs/data-structure-and-algorithms/two-pointers)
 
 ## Sources
 
