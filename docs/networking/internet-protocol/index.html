@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-networking/internet-protocol" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.6.3">
+<title data-rh="true">Internet Protocol | imdeepmind</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://imdeepmind.com/img/logo.png"><meta data-rh="true" name="twitter:image" content="https://imdeepmind.com/img/logo.png"><meta data-rh="true" property="og:url" content="https://imdeepmind.com/docs/networking/internet-protocol"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Internet Protocol | imdeepmind"><meta data-rh="true" name="description" content="The Internet Protocol (IP) is a core protocol in the Internet protocol suite responsible for delivering data packets from a source to a destination across network boundaries. It operates at the Network Layer (Layer 3) of the OSI model and is designed to address, route, and transfer data efficiently in a packet-switched network."><meta data-rh="true" property="og:description" content="The Internet Protocol (IP) is a core protocol in the Internet protocol suite responsible for delivering data packets from a source to a destination across network boundaries. It operates at the Network Layer (Layer 3) of the OSI model and is designed to address, route, and transfer data efficiently in a packet-switched network."><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://imdeepmind.com/docs/networking/internet-protocol"><link data-rh="true" rel="alternate" href="https://imdeepmind.com/docs/networking/internet-protocol" hreflang="en"><link data-rh="true" rel="alternate" href="https://imdeepmind.com/docs/networking/internet-protocol" hreflang="x-default"><link rel="stylesheet" href="/assets/css/styles.84c90f14.css">
+<script src="/assets/js/runtime~main.c9c48351.js" defer="defer"></script>
+<script src="/assets/js/main.affdd073.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo.png" alt="imdeepmind logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/logo.png" alt="imdeepmind logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">abhishek chatterjee</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/intro">Notes</a></div><div class="navbar__items navbar__items--right"><a href="https://rocketapi.net" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">Rocket<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><a href="https://blog.rocketapi.net" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">Blogs<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><a href="https://linkedin.com/in/imdeepmind" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">LinkedIn<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><a href="https://github.com/imdeepmind" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite" aria-pressed="false"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/intro">Introduction</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/data-structure-and-algorithms/arrays-and-hasing">Data Structure and Algorithms</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/networking/client-server-architecture">Networking</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/networking/client-server-architecture">Client-Server Architecture</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/networking/osi-model">OSI Model</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/networking/internet-protocol">Internet Protocol</a></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Networking</span><meta itemprop="position" content="1"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">Internet Protocol</span><meta itemprop="position" content="2"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Internet Protocol</h1></header>
+<p>The <strong>Internet Protocol (IP)</strong> is a core protocol in the Internet protocol suite responsible for delivering data packets from a source to a destination across network boundaries. It operates at the <strong>Network Layer (Layer 3)</strong> of the OSI model and is designed to address, route, and transfer data efficiently in a packet-switched network.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="features-of-ip">Features of IP<a href="#features-of-ip" class="hash-link" aria-label="Direct link to Features of IP" title="Direct link to Features of IP">​</a></h2>
+<ol>
+<li><strong>Connectionless Protocol</strong>:<!-- -->
+<ul>
+<li>IP is a connectionless protocol, meaning it does not establish a dedicated connection between the sender and receiver before transmitting data.</li>
+</ul>
+</li>
+<li><strong>Packet Switching</strong>:<!-- -->
+<ul>
+<li>Data is divided into smaller units called <strong>packets</strong>, each transmitted independently and may take different routes to the destination.</li>
+</ul>
+</li>
+<li><strong>Addressing</strong>:<!-- -->
+<ul>
+<li>Each device on a network is identified by a unique <strong>IP address</strong> (logical address), enabling proper routing.</li>
+</ul>
+</li>
+<li><strong>Best-Effort Delivery</strong>:<!-- -->
+<ul>
+<li>IP does not guarantee the delivery of packets. It relies on higher-layer protocols (e.g., TCP) for reliability.</li>
+</ul>
+</li>
+<li><strong>Routing</strong>:<!-- -->
+<ul>
+<li>Determines the best path for packets to travel through interconnected networks using routers.</li>
+</ul>
+</li>
+<li><strong>Fragmentation and Reassembly</strong>:<!-- -->
+<ul>
+<li>Large packets are broken into smaller fragments for transmission and reassembled at the destination.</li>
+</ul>
+</li>
+<li><strong>Scalability</strong>:<!-- -->
+<ul>
+<li>IP is designed to support networks of various sizes, from local networks to the global Internet.</li>
+</ul>
+</li>
+<li><strong>Protocol Independence</strong>:<!-- -->
+<ul>
+<li>IP can work with a variety of transport-layer protocols like TCP, UDP, and ICMP.</li>
+</ul>
+</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="versions-of-ip">Versions of IP<a href="#versions-of-ip" class="hash-link" aria-label="Direct link to Versions of IP" title="Direct link to Versions of IP">​</a></h2>
+<p>The two primary versions of IP in use today are <strong>IPv4</strong> and <strong>IPv6</strong>.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="ipv4-internet-protocol-version-4">IPv4 (Internet Protocol Version 4)<a href="#ipv4-internet-protocol-version-4" class="hash-link" aria-label="Direct link to IPv4 (Internet Protocol Version 4)" title="Direct link to IPv4 (Internet Protocol Version 4)">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="overview">Overview:<a href="#overview" class="hash-link" aria-label="Direct link to Overview:" title="Direct link to Overview:">​</a></h4>
+<ul>
+<li>IPv4 is the fourth version of IP and was the first widely deployed protocol for network communication.</li>
+<li>It uses a <strong>32-bit address</strong> format.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="features">Features:<a href="#features" class="hash-link" aria-label="Direct link to Features:" title="Direct link to Features:">​</a></h4>
+<ol>
+<li>
+<p><strong>Address Format</strong>:</p>
+<ul>
+<li>IPv4 addresses are written in <strong>dot-decimal notation</strong>, e.g., <code>192.168.1.1</code>.</li>
+<li>Supports approximately <strong>4.3 billion unique addresses</strong>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Header</strong>:</p>
+<ul>
+<li>Contains fields like source address, destination address, version, and time-to-live (TTL).</li>
+<li>Header size: 20 bytes (minimum).</li>
+</ul>
+</li>
+<li>
+<p><strong>Protocol Support</strong>:</p>
+<ul>
+<li>Works with protocols like TCP, UDP, and ICMP.</li>
+</ul>
+</li>
+<li>
+<p><strong>Fragmentation</strong>:</p>
+<ul>
+<li>Supports packet fragmentation to fit smaller MTUs.</li>
+</ul>
+</li>
+<li>
+<p><strong>Broadcasting</strong>:</p>
+<ul>
+<li>Supports broadcast communication for sending packets to all devices in a network.</li>
+</ul>
+</li>
+<li>
+<p><strong>Address Exhaustion</strong>:</p>
+<ul>
+<li>IPv4 addresses are nearly exhausted, leading to the development of IPv6.</li>
+</ul>
+</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="ipv6-internet-protocol-version-6">IPv6 (Internet Protocol Version 6)<a href="#ipv6-internet-protocol-version-6" class="hash-link" aria-label="Direct link to IPv6 (Internet Protocol Version 6)" title="Direct link to IPv6 (Internet Protocol Version 6)">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="overview-1">Overview:<a href="#overview-1" class="hash-link" aria-label="Direct link to Overview:" title="Direct link to Overview:">​</a></h4>
+<ul>
+<li>IPv6 was developed to address the limitations of IPv4, particularly address exhaustion.</li>
+<li>It uses a <strong>128-bit address</strong> format.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="features-1">Features:<a href="#features-1" class="hash-link" aria-label="Direct link to Features:" title="Direct link to Features:">​</a></h4>
+<ol>
+<li>
+<p><strong>Address Format</strong>:</p>
+<ul>
+<li>IPv6 addresses are written in <strong>hexadecimal notation</strong>, separated by colons, e.g., <code>2001:0db8:85a3:0000:0000:8a2e:0370:7334</code>.</li>
+<li>Supports approximately <strong>340 undecillion (3.4 × 10³⁸)</strong> unique addresses.</li>
+</ul>
+</li>
+<li>
+<p><strong>Header</strong>:</p>
+<ul>
+<li>Simpler and more efficient compared to IPv4.</li>
+<li>Header size: 40 bytes (fixed).</li>
+</ul>
+</li>
+<li>
+<p><strong>No Fragmentation</strong>:</p>
+<ul>
+<li>Fragmentation is handled by the source device, not routers, improving efficiency.</li>
+</ul>
+</li>
+<li>
+<p><strong>No Broadcasting</strong>:</p>
+<ul>
+<li>Uses <strong>multicast</strong> and <strong>anycast</strong> instead of broadcasting, reducing unnecessary traffic.</li>
+</ul>
+</li>
+<li>
+<p><strong>Built-In Security</strong>:</p>
+<ul>
+<li>Includes <strong>IPSec</strong> for authentication and encryption.</li>
+</ul>
+</li>
+<li>
+<p><strong>Auto-Configuration</strong>:</p>
+<ul>
+<li>Supports automatic address configuration using stateless address autoconfiguration (SLAAC).</li>
+</ul>
+</li>
+<li>
+<p><strong>Improved QoS (Quality of Service)</strong>:</p>
+<ul>
+<li>Includes flow label fields for better handling of real-time traffic like video and voice.</li>
+</ul>
+</li>
+</ol>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="key-differences-between-ipv4-and-ipv6">Key Differences Between IPv4 and IPv6:<a href="#key-differences-between-ipv4-and-ipv6" class="hash-link" aria-label="Direct link to Key Differences Between IPv4 and IPv6:" title="Direct link to Key Differences Between IPv4 and IPv6:">​</a></h4>
+<table><thead><tr><th><strong>Feature</strong></th><th><strong>IPv4</strong></th><th><strong>IPv6</strong></th></tr></thead><tbody><tr><td><strong>Address Size</strong></td><td>32-bit</td><td>128-bit</td></tr><tr><td><strong>Address Format</strong></td><td>Dot-decimal (e.g., 192.168.1.1)</td><td>Hexadecimal (e.g., 2001:0db8::1)</td></tr><tr><td><strong>Number of Addresses</strong></td><td>~4.3 billion</td><td>~340 undecillion</td></tr><tr><td><strong>Header Size</strong></td><td>Variable (20-60 bytes)</td><td>Fixed (40 bytes)</td></tr><tr><td><strong>Security</strong></td><td>Optional (via IPSec)</td><td>Mandatory (IPSec included)</td></tr><tr><td><strong>Broadcasting</strong></td><td>Supported</td><td>Not supported</td></tr><tr><td><strong>Fragmentation</strong></td><td>Supported at routers</td><td>Handled by the source device</td></tr><tr><td><strong>Deployment</strong></td><td>Widely used</td><td>Gradually replacing IPv4</td></tr></tbody></table>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="ip-packets">IP Packets<a href="#ip-packets" class="hash-link" aria-label="Direct link to IP Packets" title="Direct link to IP Packets">​</a></h2>
+<p>An <strong>IP Packet</strong> is the fundamental unit of data that is transmitted across a network using the Internet Protocol (IP). It contains all the information required for routing and delivering data between devices across a network, including the source and destination IP addresses.</p>
+<div style="text-align:center"><img src="/img/ip-packets.png" alt="OSI Model"></div>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="structure-of-an-ip-packet">Structure of an IP Packet<a href="#structure-of-an-ip-packet" class="hash-link" aria-label="Direct link to Structure of an IP Packet" title="Direct link to Structure of an IP Packet">​</a></h3>
+<p>An IP packet consists of two main parts:</p>
+<ol>
+<li><strong>Header</strong>: Contains metadata about the packet, such as addressing and routing information.</li>
+<li><strong>Payload</strong>: Contains the actual data being transmitted (e.g., part of a file, an email, or a web page).</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="ip-packet-header">IP Packet Header<a href="#ip-packet-header" class="hash-link" aria-label="Direct link to IP Packet Header" title="Direct link to IP Packet Header">​</a></h3>
+<p>The header is crucial for ensuring that packets are routed correctly and arrive at their intended destination. Its structure varies between IPv4 and IPv6.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="ipv4-header-structure">IPv4 Header Structure<a href="#ipv4-header-structure" class="hash-link" aria-label="Direct link to IPv4 Header Structure" title="Direct link to IPv4 Header Structure">​</a></h3>
+<p>The IPv4 header is at least <strong>20 bytes</strong> long and can extend up to <strong>60 bytes</strong> if options are included.</p>
+<table><thead><tr><th><strong>Field</strong></th><th><strong>Size</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr><td><strong>Version</strong></td><td>4 bits</td><td>IP version number (always <code>4</code> for IPv4).</td></tr><tr><td><strong>Header Length</strong></td><td>4 bits</td><td>Length of the header in 32-bit words.</td></tr><tr><td><strong>Type of Service (TOS)</strong></td><td>8 bits</td><td>Specifies priority and QoS requirements.</td></tr><tr><td><strong>Total Length</strong></td><td>16 bits</td><td>Entire packet size (header + payload) in bytes.</td></tr><tr><td><strong>Identification</strong></td><td>16 bits</td><td>Identifies fragments of a single packet.</td></tr><tr><td><strong>Flags</strong></td><td>3 bits</td><td>Controls fragmentation.</td></tr><tr><td><strong>Fragment Offset</strong></td><td>13 bits</td><td>Position of this fragment in the original packet.</td></tr><tr><td><strong>Time-to-Live (TTL)</strong></td><td>8 bits</td><td>Limits the packet’s lifespan (measured in hops).</td></tr><tr><td><strong>Protocol</strong></td><td>8 bits</td><td>Identifies the protocol used in the payload (e.g., TCP, UDP).</td></tr><tr><td><strong>Header Checksum</strong></td><td>16 bits</td><td>Error-checking for the header.</td></tr><tr><td><strong>Source Address</strong></td><td>32 bits</td><td>IP address of the sender.</td></tr><tr><td><strong>Destination Address</strong></td><td>32 bits</td><td>IP address of the receiver.</td></tr><tr><td><strong>Options (Optional)</strong></td><td>Variable</td><td>Additional information for specific purposes (e.g., security, routing).</td></tr></tbody></table>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="ipv6-header-structure"><strong>IPv6 Header Structure</strong><a href="#ipv6-header-structure" class="hash-link" aria-label="Direct link to ipv6-header-structure" title="Direct link to ipv6-header-structure">​</a></h3>
+<p>The IPv6 header is <strong>fixed at 40 bytes</strong> in length, making it simpler and more efficient than IPv4.</p>
+<table><thead><tr><th><strong>Field</strong></th><th><strong>Size</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr><td><strong>Version</strong></td><td>4 bits</td><td>IP version number (always <code>6</code> for IPv6).</td></tr><tr><td><strong>Traffic Class</strong></td><td>8 bits</td><td>Defines priority and QoS requirements.</td></tr><tr><td><strong>Flow Label</strong></td><td>20 bits</td><td>Identifies flows for QoS management.</td></tr><tr><td><strong>Payload Length</strong></td><td>16 bits</td><td>Length of the payload in bytes.</td></tr><tr><td><strong>Next Header</strong></td><td>8 bits</td><td>Identifies the type of the next header (e.g., TCP, UDP, or extension headers).</td></tr><tr><td><strong>Hop Limit</strong></td><td>8 bits</td><td>Limits the packet’s lifespan (like TTL in IPv4).</td></tr><tr><td><strong>Source Address</strong></td><td>128 bits</td><td>IP address of the sender.</td></tr><tr><td><strong>Destination Address</strong></td><td>128 bits</td><td>IP address of the receiver.</td></tr></tbody></table>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="ip-packet-payload">IP Packet Payload<a href="#ip-packet-payload" class="hash-link" aria-label="Direct link to IP Packet Payload" title="Direct link to IP Packet Payload">​</a></h3>
+<p>The payload contains the actual data being transmitted. The type of payload is determined by the <strong>Protocol</strong> or <strong>Next Header</strong> field in the IP header. Common payload types include:</p>
+<ul>
+<li><strong>TCP segments</strong>: For reliable communication (e.g., web pages, emails).</li>
+<li><strong>UDP datagrams</strong>: For lightweight and fast communication (e.g., video streaming, DNS queries).</li>
+<li><strong>ICMP messages</strong>: For network diagnostics (e.g., ping).</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="fragmentation-in-ip-packets">Fragmentation in IP Packets<a href="#fragmentation-in-ip-packets" class="hash-link" aria-label="Direct link to Fragmentation in IP Packets" title="Direct link to Fragmentation in IP Packets">​</a></h3>
+<p>When a packet is too large to fit the maximum transmission unit (MTU) of a network link, it is <strong>fragmented</strong> into smaller packets.</p>
+<ul>
+<li><strong>IPv4</strong>: Routers can fragment packets, and the receiver reassembles them.</li>
+<li><strong>IPv6</strong>: Fragmentation is handled by the source device, not routers.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="lifecycle-of-an-ip-packet">Lifecycle of an IP Packet<a href="#lifecycle-of-an-ip-packet" class="hash-link" aria-label="Direct link to Lifecycle of an IP Packet" title="Direct link to Lifecycle of an IP Packet">​</a></h3>
+<ol>
+<li><strong>Creation</strong>:<!-- -->
+<ul>
+<li>Generated by the source device with the appropriate header and payload.</li>
+</ul>
+</li>
+<li><strong>Transmission</strong>:<!-- -->
+<ul>
+<li>Routed through intermediate networks toward the destination.</li>
+</ul>
+</li>
+<li><strong>Processing</strong>:<!-- -->
+<ul>
+<li>Each router reads the header to determine the next hop.</li>
+</ul>
+</li>
+<li><strong>Delivery</strong>:<!-- -->
+<ul>
+<li>Arrives at the destination device, where the payload is extracted.</li>
+</ul>
+</li>
+<li><strong>Reassembly</strong> (if fragmented):<!-- -->
+<ul>
+<li>Fragments are reassembled into the original packet at the destination.</li>
+</ul>
+</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="challenges-with-ip-packets">Challenges with IP Packets<a href="#challenges-with-ip-packets" class="hash-link" aria-label="Direct link to Challenges with IP Packets" title="Direct link to Challenges with IP Packets">​</a></h3>
+<ul>
+<li><strong>Packet Loss</strong>: Packets may be lost due to network congestion or errors.</li>
+<li><strong>Out-of-Order Delivery</strong>: Packets may arrive in a different order than they were sent.</li>
+<li><strong>Security Risks</strong>: Packets can be intercepted or tampered with during transmission.</li>
+<li><strong>Latency</strong>: Delays in routing can affect real-time communication.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="importance-of-ip-packets">Importance of IP Packets<a href="#importance-of-ip-packets" class="hash-link" aria-label="Direct link to Importance of IP Packets" title="Direct link to Importance of IP Packets">​</a></h3>
+<p>IP packets are the backbone of modern networking. They ensure that data can traverse diverse networks, enabling services like the web, email, video streaming, and more. Understanding IP packets is essential for network troubleshooting, optimization, and security.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="icmp-internet-control-message-protocol">ICMP (Internet Control Message Protocol)<a href="#icmp-internet-control-message-protocol" class="hash-link" aria-label="Direct link to ICMP (Internet Control Message Protocol)" title="Direct link to ICMP (Internet Control Message Protocol)">​</a></h3>
+<p>The <strong>Internet Control Message Protocol (ICMP)</strong> is a supporting protocol used within IP networks for error reporting and diagnostic purposes. It operates at the <strong>Network Layer (Layer 3)</strong> and is primarily used to communicate issues related to the delivery of packets.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="key-features">Key Features<a href="#key-features" class="hash-link" aria-label="Direct link to Key Features" title="Direct link to Key Features">​</a></h4>
+<ol>
+<li><strong>Error Reporting</strong>:<!-- -->
+<ul>
+<li>ICMP reports errors like unreachable destinations, time exceeded, or issues with packet fragmentation.</li>
+</ul>
+</li>
+<li><strong>Diagnostics</strong>:<!-- -->
+<ul>
+<li>Commonly used in network diagnostic tools like <strong>ping</strong> and <strong>traceroute</strong>.</li>
+</ul>
+</li>
+<li><strong>Connectionless</strong>:<!-- -->
+<ul>
+<li>Works without establishing a dedicated connection, like IP.</li>
+</ul>
+</li>
+<li><strong>Reliability</strong>:<!-- -->
+<ul>
+<li>Does not guarantee delivery of error messages.</li>
+</ul>
+</li>
+<li><strong>Limited Use for Data</strong>:<!-- -->
+<ul>
+<li>ICMP is not used for transferring application data but solely for control messages.</li>
+</ul>
+</li>
+</ol>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="icmp-packet-structure">ICMP Packet Structure<a href="#icmp-packet-structure" class="hash-link" aria-label="Direct link to ICMP Packet Structure" title="Direct link to ICMP Packet Structure">​</a></h4>
+<table><thead><tr><th><strong>Field</strong></th><th><strong>Size</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr><td><strong>Type</strong></td><td>8 bits</td><td>Specifies the type of message (e.g., Echo Request, Destination Unreachable).</td></tr><tr><td><strong>Code</strong></td><td>8 bits</td><td>Provides additional context for the message type.</td></tr><tr><td><strong>Checksum</strong></td><td>16 bits</td><td>Ensures the integrity of the ICMP packet.</td></tr><tr><td><strong>Message-Specific Data</strong></td><td>Variable</td><td>Contains information specific to the message type.</td></tr></tbody></table>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="common-icmp-message-types">Common ICMP Message Types<a href="#common-icmp-message-types" class="hash-link" aria-label="Direct link to Common ICMP Message Types" title="Direct link to Common ICMP Message Types">​</a></h3>
+<table><thead><tr><th><strong>Type</strong></th><th><strong>Code</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr><td><strong>0</strong> (Echo Reply)</td><td>0</td><td>Response to a ping request.</td></tr><tr><td><strong>3</strong> (Destination Unreachable)</td><td>0–15</td><td>Indicates the destination cannot be reached.</td></tr><tr><td><strong>8</strong> (Echo Request)</td><td>0</td><td>Used to test network connectivity (ping).</td></tr><tr><td><strong>11</strong> (Time Exceeded)</td><td>0 or 1</td><td>Indicates that the packet&#x27;s TTL expired.</td></tr></tbody></table>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="ping">PING<a href="#ping" class="hash-link" aria-label="Direct link to PING" title="Direct link to PING">​</a></h3>
+<p><strong>PING</strong> (Packet Internet Groper) is a network diagnostic utility that uses ICMP to test the reachability of a host on a network and measure the round-trip time (RTT) for messages.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="how-it-works">How It Works<a href="#how-it-works" class="hash-link" aria-label="Direct link to How It Works" title="Direct link to How It Works">​</a></h4>
+<ol>
+<li>The source sends an <strong>ICMP Echo Request</strong> message to the destination.</li>
+<li>If the destination is reachable, it responds with an <strong>ICMP Echo Reply</strong>.</li>
+<li>The tool calculates:<!-- -->
+<ul>
+<li><strong>RTT</strong>: The time taken for a message to travel to the destination and back.</li>
+<li><strong>Packet Loss</strong>: Percentage of packets lost during transmission.</li>
+</ul>
+</li>
+</ol>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="features-2">Features<a href="#features-2" class="hash-link" aria-label="Direct link to Features" title="Direct link to Features">​</a></h4>
+<ol>
+<li><strong>Connectivity Testing</strong>:<!-- -->
+<ul>
+<li>Verifies if a host is reachable.</li>
+</ul>
+</li>
+<li><strong>Performance Metrics</strong>:<!-- -->
+<ul>
+<li>Measures latency and packet loss.</li>
+</ul>
+</li>
+<li><strong>Simple Syntax</strong>:<!-- -->
+<ul>
+<li>Example: <code>ping www.example.com</code>.</li>
+</ul>
+</li>
+</ol>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="output-example">Output Example<a href="#output-example" class="hash-link" aria-label="Direct link to Output Example" title="Direct link to Output Example">​</a></h4>
+<div class="language-plaintext codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-plaintext codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">PING www.example.com (93.184.216.34): 56 data bytes</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">64 bytes from 93.184.216.34: icmp_seq=0 ttl=56 time=12.3 ms</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">64 bytes from 93.184.216.34: icmp_seq=1 ttl=56 time=11.8 ms</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">--- www.example.com ping statistics ---</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">2 packets transmitted, 2 received, 0% packet loss, time 1001ms</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">rtt min/avg/max/mdev = 11.8/12.0/12.3/0.3 ms</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="traceroute">TraceRoute<a href="#traceroute" class="hash-link" aria-label="Direct link to TraceRoute" title="Direct link to TraceRoute">​</a></h3>
+<p><strong>TraceRoute</strong> is a diagnostic tool that maps the route packets take from a source to a destination, identifying each hop along the way.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="how-it-works-1">How It Works<a href="#how-it-works-1" class="hash-link" aria-label="Direct link to How It Works" title="Direct link to How It Works">​</a></h4>
+<ol>
+<li>TraceRoute sends a series of packets with incrementing <strong>Time-To-Live (TTL)</strong> values.</li>
+<li>Each router along the path decrements the TTL. When TTL reaches 0, the router sends an <strong>ICMP Time Exceeded</strong> message back to the source.</li>
+<li>By analyzing these messages, TraceRoute determines the path and delay for each hop.</li>
+</ol>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="key-features-1">Key Features<a href="#key-features-1" class="hash-link" aria-label="Direct link to Key Features" title="Direct link to Key Features">​</a></h4>
+<ol>
+<li><strong>Path Discovery</strong>:<!-- -->
+<ul>
+<li>Identifies intermediate routers between the source and destination.</li>
+</ul>
+</li>
+<li><strong>Latency Measurement</strong>:<!-- -->
+<ul>
+<li>Measures delay at each hop.</li>
+</ul>
+</li>
+<li><strong>Diagnostic Information</strong>:<!-- -->
+<ul>
+<li>Helps identify bottlenecks or failed hops in the network.</li>
+</ul>
+</li>
+</ol>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="traceroute-command-example">TraceRoute Command Example<a href="#traceroute-command-example" class="hash-link" aria-label="Direct link to TraceRoute Command Example" title="Direct link to TraceRoute Command Example">​</a></h4>
+<div class="language-plaintext codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-plaintext codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">traceroute www.example.com</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">1  192.168.1.1 (192.168.1.1)  1.032 ms  0.895 ms  0.765 ms</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">2  10.10.0.1 (10.10.0.1)      2.345 ms  2.213 ms  2.087 ms</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">3  93.184.216.34 (93.184.216.34) 11.456 ms 11.312 ms 11.276 ms</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="use-cases">Use Cases<a href="#use-cases" class="hash-link" aria-label="Direct link to Use Cases" title="Direct link to Use Cases">​</a></h4>
+<ul>
+<li>Detecting network routing issues.</li>
+<li>Identifying latency at specific hops.</li>
+<li>Diagnosing unreachable hosts.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="comparison-of-ping-and-traceroute">Comparison of PING and TraceRoute<a href="#comparison-of-ping-and-traceroute" class="hash-link" aria-label="Direct link to Comparison of PING and TraceRoute" title="Direct link to Comparison of PING and TraceRoute">​</a></h3>
+<table><thead><tr><th><strong>Feature</strong></th><th><strong>PING</strong></th><th><strong>TraceRoute</strong></th></tr></thead><tbody><tr><td><strong>Purpose</strong></td><td>Tests connectivity and measures RTT.</td><td>Maps the path packets take to a destination.</td></tr><tr><td><strong>Protocol Used</strong></td><td>ICMP Echo Request/Reply.</td><td>ICMP Time Exceeded and optionally UDP/TCP.</td></tr><tr><td><strong>Output</strong></td><td>Reachability and round-trip time.</td><td>List of hops with latency information.</td></tr><tr><td><strong>Use Case</strong></td><td>Quick connectivity checks.</td><td>Detailed network route analysis.</td></tr></tbody></table>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="arp-address-resolution-protocol">ARP (Address Resolution Protocol)<a href="#arp-address-resolution-protocol" class="hash-link" aria-label="Direct link to ARP (Address Resolution Protocol)" title="Direct link to ARP (Address Resolution Protocol)">​</a></h3>
+<p>The <strong>Address Resolution Protocol (ARP)</strong> is a protocol used to map <strong>IP addresses</strong> (Network Layer addresses) to <strong>MAC addresses</strong> (Data Link Layer addresses) within a local network. This mapping is essential for devices to communicate over Ethernet-based networks (e.g., LANs) where communication occurs using MAC addresses, but IP addresses are used for routing.</p>
+<p>ARP is crucial because, even though devices use IP addresses to send data packets, actual delivery is based on the MAC address of the device.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arp-functionality">ARP Functionality<a href="#arp-functionality" class="hash-link" aria-label="Direct link to ARP Functionality" title="Direct link to ARP Functionality">​</a></h4>
+<p>When a device on the network needs to send data to another device within the same local network, it must first determine the MAC address associated with the destination device’s IP address.</p>
+<ol>
+<li><strong>ARP Request</strong>:<!-- -->
+<ul>
+<li>The device sends a <strong>broadcast</strong> message to all devices on the local network. This message contains the target IP address, asking for the corresponding MAC address.</li>
+</ul>
+</li>
+<li><strong>ARP Reply</strong>:<!-- -->
+<ul>
+<li>The device with the matching IP address responds directly to the sender with its MAC address.</li>
+<li>This reply is sent as a <strong>unicast</strong> message, so only the requesting device receives it.</li>
+</ul>
+</li>
+<li><strong>Cache</strong>:<!-- -->
+<ul>
+<li>After receiving the ARP reply, the requesting device stores the IP-to-MAC mapping in its <strong>ARP cache</strong> for future use.</li>
+<li>The ARP cache stores this mapping for a specific period before it expires and needs to be refreshed.</li>
+</ul>
+</li>
+</ol></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/imdeepmind/imdeepmind.github.io/tree/main/packages/create-docusaurus/templates/shared/docs/networking/internet-protocol.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/networking/osi-model"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">OSI Model</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#features-of-ip" class="table-of-contents__link toc-highlight">Features of IP</a></li><li><a href="#versions-of-ip" class="table-of-contents__link toc-highlight">Versions of IP</a><ul><li><a href="#ipv4-internet-protocol-version-4" class="table-of-contents__link toc-highlight">IPv4 (Internet Protocol Version 4)</a></li><li><a href="#ipv6-internet-protocol-version-6" class="table-of-contents__link toc-highlight">IPv6 (Internet Protocol Version 6)</a></li></ul></li><li><a href="#ip-packets" class="table-of-contents__link toc-highlight">IP Packets</a><ul><li><a href="#structure-of-an-ip-packet" class="table-of-contents__link toc-highlight">Structure of an IP Packet</a></li><li><a href="#ip-packet-header" class="table-of-contents__link toc-highlight">IP Packet Header</a></li><li><a href="#ipv4-header-structure" class="table-of-contents__link toc-highlight">IPv4 Header Structure</a></li><li><a href="#ipv6-header-structure" class="table-of-contents__link toc-highlight"><strong>IPv6 Header Structure</strong></a></li><li><a href="#ip-packet-payload" class="table-of-contents__link toc-highlight">IP Packet Payload</a></li><li><a href="#fragmentation-in-ip-packets" class="table-of-contents__link toc-highlight">Fragmentation in IP Packets</a></li><li><a href="#lifecycle-of-an-ip-packet" class="table-of-contents__link toc-highlight">Lifecycle of an IP Packet</a></li><li><a href="#challenges-with-ip-packets" class="table-of-contents__link toc-highlight">Challenges with IP Packets</a></li><li><a href="#importance-of-ip-packets" class="table-of-contents__link toc-highlight">Importance of IP Packets</a></li><li><a href="#icmp-internet-control-message-protocol" class="table-of-contents__link toc-highlight">ICMP (Internet Control Message Protocol)</a></li><li><a href="#common-icmp-message-types" class="table-of-contents__link toc-highlight">Common ICMP Message Types</a></li><li><a href="#ping" class="table-of-contents__link toc-highlight">PING</a></li><li><a href="#traceroute" class="table-of-contents__link toc-highlight">TraceRoute</a></li><li><a href="#comparison-of-ping-and-traceroute" class="table-of-contents__link toc-highlight">Comparison of PING and TraceRoute</a></li><li><a href="#arp-address-resolution-protocol" class="table-of-contents__link toc-highlight">ARP (Address Resolution Protocol)</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/intro">Notes</a></li></ul></div><div class="col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://profile.fyi/imdeepmind" target="_blank" rel="noopener noreferrer" class="footer__link-item">Profile.fyi<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://github.com/imdeepmind" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://linkedin.com/in/imdeepmind" target="_blank" rel="noopener noreferrer" class="footer__link-item">LinkedIn<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div><div class="col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://blog.rocketapi.net" target="_blank" rel="noopener noreferrer" class="footer__link-item">Blog<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2024 Abhishek Chatterjee. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>
