@@ -17,6 +17,8 @@ If you come across any issues or errors in the notes, feel free to open an issue
    1. [Client Server Architecture](/docs/networking/client-server-architecture.md)
    2. [OSI Model](/docs/networking/osi-model.md)
    3. [Internet Protocol](/docs/networking/internet-protocol.md)
+3. [Database](/docs/databases/hash-tables.md)
+   1. [Hash Tables](/docs/databases/hash-tables.md)
 
 ## Sources
 
