@@ -1,7 +1,7 @@
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
-name: Build Test
+name: Deploy Docusaurus
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
     branches: ["main"]
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     strategy:
@@ -20,10 +20,18 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-      - run: npm ci
-      - run: npm run deploy
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Deploy Docusaurus
+        env:
+          GIT_USER: ${{ secrets.GITHUB_ACTOR }} # GitHub actor as the deployer
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Authentication token
+        run: npm run deploy
