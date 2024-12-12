@@ -32,6 +32,6 @@ jobs:
 
       - name: Deploy Docusaurus
         env:
-          GIT_USER: ${{ secrets.GITHUB_ACTOR }} # GitHub actor as the deployer
+          GIT_USER: ${{ github.actor }} # GitHub actor as the deployer
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Authentication token
         run: npm run deploy
