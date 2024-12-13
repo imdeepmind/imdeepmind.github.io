@@ -21,6 +21,10 @@ If you come across any issues or errors in the notes, feel free to open an issue
    1. [Introduction](/docs/databases/introduction.md)
    2. [SQL](/docs/databases/sql.md)
    3. [Hash Tables](/docs/databases/hash-tables.md)
+4. [System Design](/docs/system-design/vertical-and-horizontal-scaling.md)
+   1. [Vertical and Horizontal Scaling](/docs/system-design/vertical-and-horizontal-scaling.md)
+   2. [Latency and Throughput](/docs/system-design/latency-and-throughput.md)
+   3. [CAP Theorem](/docs/system-design/cap-theorem.md)
 
 ## Sources
 
