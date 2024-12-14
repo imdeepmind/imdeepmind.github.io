@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# CAP Theorem: An Overview
+# CAP Theorem
 
 The **CAP Theorem**, also known as Brewer's Theorem, is a fundamental principle in distributed systems. It was introduced by Eric Brewer in 2000 and formally proven by Seth Gilbert and Nancy Lynch in 2002. The theorem states that in a distributed system, it is impossible to simultaneously guarantee all three of the following properties:
 
