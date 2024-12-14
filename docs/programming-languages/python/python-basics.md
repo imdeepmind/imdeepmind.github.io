@@ -12,7 +12,6 @@ sidebar_position: 2
 age = 25  # Integer
 name = "Alice"  # String
 is_student = True  # Boolean
-
 ```
 
 **Data Types**:
@@ -95,45 +94,12 @@ add = lambda x, y: x + y
 print(add(3, 4))  # Outputs 7
 ```
 
-## Variable Scope
-
-**Local Scope**: Variables defined inside a function are local to that function.
-
-**Global Scope**: Variables defined outside of functions are global and can be accessed throughout the code.
-
-**The `global` keyword**: Used to modify a global variable inside a function.
-
-```python
-x = 5
-
-def update():
-    global x
-    x = 10
-
-update()
-print(x)  # Outputs 10
-```
-
 ## List Comprehension
 
 A concise way to create lists based on existing iterables.
 
 ```python
 squares = [x**2 for x in range(10)]
-
-```
-
-## Exception Handling
-
-Handling errors using `try`, `except`, and `finally` blocks.
-
-```python
-try:
-    result = 10 / 0
-except ZeroDivisionError:
-    print("Cannot divide by zero!")
-finally:
-    print("Execution complete.")
 ```
 
 ## Basic I/O
