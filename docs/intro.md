@@ -27,6 +27,12 @@ If you come across any issues or errors in the notes, feel free to open an issue
 3. [Data Structure and Algorithms](/docs/data-structure-and-algorithms/arrays-and-hasing)
    1. [Arrays and Hashing](/docs/data-structure-and-algorithms/arrays-and-hasing)
    2. [Two Pointers](/docs/data-structure-and-algorithms/two-pointers)
+4. [Programming Languages](/docs/programming-languages/introduction.md)
+   1. [Python](/docs/programming-languages/python/introduction.md)
+      1. [Introduction](/docs/programming-languages/python/introduction.md)
+      2. [Python Basics](/docs/programming-languages/python/python-basics.md)
+      3. [Variable Scoping](/docs/programming-languages/python/scoping.md)
+      4. [Common Data Structures in Python](/docs/programming-languages/python/data-structure.md)
 
 ## Sources
 
