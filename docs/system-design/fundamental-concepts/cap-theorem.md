@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 6
 ---
 
 # CAP Theorem
@@ -48,7 +48,7 @@ Spanner operates in the CP space of the CAP theorem, prioritizing consistency an
 - **Minimizing Partition Effects:** Spanner's reliance on Google's highly reliable and low-latency network infrastructure significantly reduces the likelihood and impact of network partitions.
 - **Bounded Delays:** Spanner introduces controlled delays using TrueTime to maintain strong consistency without sacrificing availability significantly. These delays are often imperceptible to users.
 
-## Limitations and Practical Considerations
+### Limitations and Practical Considerations
 
 While Spanner's design is groundbreaking, it doesn't completely escape the CAP theorem. Instead, it mitigates the trade-offs by operating in a controlled environment with:
 

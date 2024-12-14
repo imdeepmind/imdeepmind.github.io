@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Scaling
+# Scalability
 
 Scaling in computing refers to the ability to handle increasing workloads by expanding resources. There are two primary types of scaling: horizontal scaling and vertical scaling. Below is a detailed breakdown of both approaches, including their definitions, benefits, challenges, and use cases.
 
