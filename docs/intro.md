@@ -40,6 +40,11 @@ If you come across any issues or errors in the notes, feel free to open an issue
       2. [Python Basics](/docs/programming-languages/python/python-basics.md)
       3. [Variable Scoping](/docs/programming-languages/python/scoping.md)
       4. [Common Data Structures in Python](/docs/programming-languages/python/data-structure.md)
+   2. [JavaScript](/docs/programming-languages/javascript/introduction.md)
+      1. [Introduction](/docs/programming-languages/javascript/introduction.md)
+      2. [Variables](/docs/programming-languages/javascript/variables.md)
+      3. [Data Types](/docs/programming-languages/javascript/data-types.md)
+      4. [Mutation](/docs/programming-languages/javascript/mutation.md)
 
 ## Sources
 
