@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-databases/database-systems/database-storage" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.6.3">
+<title data-rh="true">Database Storage | imdeepmind</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://imdeepmind.com/img/logo.png"><meta data-rh="true" name="twitter:image" content="https://imdeepmind.com/img/logo.png"><meta data-rh="true" property="og:url" content="https://imdeepmind.com/docs/databases/database-systems/database-storage"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Database Storage | imdeepmind"><meta data-rh="true" name="description" content="Database storage is the physical representation of data within a database system. It&#x27;s typically organized into files and pages."><meta data-rh="true" property="og:description" content="Database storage is the physical representation of data within a database system. It&#x27;s typically organized into files and pages."><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://imdeepmind.com/docs/databases/database-systems/database-storage"><link data-rh="true" rel="alternate" href="https://imdeepmind.com/docs/databases/database-systems/database-storage" hreflang="en"><link data-rh="true" rel="alternate" href="https://imdeepmind.com/docs/databases/database-systems/database-storage" hreflang="x-default"><link rel="stylesheet" href="/assets/css/styles.1d03fb8d.css">
+<script src="/assets/js/runtime~main.53f3521d.js" defer="defer"></script>
+<script src="/assets/js/main.97dc11f5.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo.png" alt="imdeepmind logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/logo.png" alt="imdeepmind logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">abhishek chatterjee</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/intro">Notes</a></div><div class="navbar__items navbar__items--right"><a href="https://rocketapi.net" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">Rocket<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><a href="https://blog.rocketapi.net" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">Blogs<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><a href="https://linkedin.com/in/imdeepmind" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">LinkedIn<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><a href="https://github.com/imdeepmind" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite" aria-pressed="false"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input"><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/intro">Introduction</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/databases/introduction">Databases</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/databases/introduction">Introduction</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/databases/sql/">SQL</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" tabindex="0" href="/docs/databases/database-systems/introduction">Database Systems</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/databases/database-systems/introduction">Introduction</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/databases/database-systems/database-storage">Database Storage</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/databases/database-systems/hash-tables">Hash Tables</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/databases/database-systems/b-tree">B-Trees</a></li></ul></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/system-design/introduction">System Design</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/data-structure-and-algorithms/introduction">Data Structure and Algorithms</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/programming-languages/introduction">Programming Languages</a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Databases</span><meta itemprop="position" content="1"></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Database Systems</span><meta itemprop="position" content="2"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">Database Storage</span><meta itemprop="position" content="3"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Database Storage</h1></header>
+<p><strong>Database storage</strong> is the physical representation of data within a database system. It&#x27;s typically organized into <strong>files</strong> and <strong>pages</strong>.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="storage-hierarchy">Storage Hierarchy<a href="#storage-hierarchy" class="hash-link" aria-label="Direct link to Storage Hierarchy" title="Direct link to Storage Hierarchy">​</a></h2>
+<p>A storage hierarchy is a systematic arrangement of storage devices based on their speed, capacity, and cost. This hierarchy is essential for optimizing data access and storage costs in computer systems.</p>
+<p><strong>Common Levels of Storage Hierarchy:</strong></p>
+<ol>
+<li><strong>Primary Storage (Main Memory):</strong></li>
+</ol>
+<ul>
+<li>Fastest storage device.</li>
+<li>Directly accessible by the CPU.</li>
+<li>Volatile (loses data when power is off).</li>
+<li>Used for active programs and data.</li>
+</ul>
+<ol start="2">
+<li><strong>Secondary Storage:</strong></li>
+</ol>
+<ul>
+<li>Slower than primary storage but larger capacity.</li>
+<li>Non-volatile (retains data when power is off).</li>
+<li>Examples: Hard Disk Drives (HDDs), Solid-State Drives (SSDs).</li>
+</ul>
+<ol start="3">
+<li><strong>Tertiary Storage:</strong></li>
+</ol>
+<ul>
+<li>Slowest storage device but has the largest capacity.</li>
+<li>Used for long-term data storage and archiving.</li>
+<li>Examples: Magnetic tapes, optical discs.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="storage-hierarchy-access-speed">Storage Hierarchy Access Speed<a href="#storage-hierarchy-access-speed" class="hash-link" aria-label="Direct link to Storage Hierarchy Access Speed" title="Direct link to Storage Hierarchy Access Speed">​</a></h3>
+<p>Storage hierarchy refers to the various types of data storage systems arranged by speed and cost. Here&#x27;s a breakdown of access speeds for different types of storage:</p>
+<ol>
+<li>
+<p><strong>Registers</strong>:</p>
+<ul>
+<li><strong>Access Time</strong>: Nanoseconds (ns)</li>
+<li>Fastest storage, used for immediate data manipulation by the CPU.</li>
+</ul>
+</li>
+<li>
+<p><strong>Cache Memory</strong> (L1, L2, L3):</p>
+<ul>
+<li><strong>Access Time</strong>: Typically 1-10 ns</li>
+<li>Very fast, located close to the CPU to speed up access to frequently used data.</li>
+</ul>
+</li>
+<li>
+<p><strong>RAM (Random Access Memory)</strong>:</p>
+<ul>
+<li><strong>Access Time</strong>: Approximately 10-100 ns</li>
+<li>Primary volatile storage used for active processes and data.</li>
+</ul>
+</li>
+<li>
+<p><strong>SSD (Solid State Drive)</strong>:</p>
+<ul>
+<li><strong>Access Time</strong>: Around 100-500 µs (microseconds)</li>
+<li>Much faster than traditional hard drives, using flash memory to store data.</li>
+</ul>
+</li>
+<li>
+<p><strong>HDD (Hard Disk Drive)</strong>:</p>
+<ul>
+<li><strong>Access Time</strong>: Generally 5-15 ms (milliseconds)</li>
+<li>Slower due to mechanical parts; access times vary depending on seek time and rotational speed.</li>
+</ul>
+</li>
+<li>
+<p><strong>Optical Discs</strong> (e.g., CDs, DVDs):</p>
+<ul>
+<li><strong>Access Time</strong>: 150-300 ms</li>
+<li>Slower than HDDs; uses lasers to read data.</li>
+</ul>
+</li>
+<li>
+<p><strong>Magnetic Tape</strong>:</p>
+<ul>
+<li><strong>Access Time</strong>: Seconds to minutes</li>
+<li>Primarily used for archival storage; very slow access due to sequential reading.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Why is Storage Hierarchy Important?</strong></p>
+<ul>
+<li><strong>Performance Optimization:</strong> Data is stored at the appropriate level based on its usage frequency. Frequently accessed data is kept in faster storage, while less frequently accessed data is stored in slower, cheaper storage.</li>
+<li><strong>Cost Optimization:</strong> By using a hierarchy, organizations can balance performance and cost by storing data at the most suitable level.</li>
+<li><strong>Data Availability:</strong> Critical data can be replicated across multiple storage levels to ensure high availability and redundancy.</li>
+</ul>
+<p><strong>Example of Storage Hierarchy in a Database System:</strong></p>
+<ul>
+<li><strong>Primary Storage:</strong> Active database buffers, query results, and frequently accessed data.</li>
+<li><strong>Secondary Storage:</strong> Main database files, indexes, and temporary data.</li>
+<li><strong>Tertiary Storage:</strong> Historical data, backups, and archived data.</li>
+</ul>
+<p><strong>Key Factors Influencing Storage Hierarchy:</strong></p>
+<ul>
+<li><strong>Access Frequency:</strong> How often data is accessed.</li>
+<li><strong>Data Size:</strong> The amount of data to be stored.</li>
+<li><strong>Data Retention Requirements:</strong> How long data needs to be retained.</li>
+<li><strong>Cost Constraints:</strong> Budgetary limitations.</li>
+</ul>
+<p><strong>Emerging Trends:</strong></p>
+<ul>
+<li><strong>Cloud Storage:</strong> Leveraging external storage providers for scalable and flexible storage solutions.</li>
+<li><strong>Hybrid Cloud Storage:</strong> Combining on-premises and cloud storage for optimal performance and cost.</li>
+<li><strong>Object Storage:</strong> Designed for storing large amounts of unstructured data.</li>
+</ul>
+<p>Understanding the storage hierarchy is crucial for designing efficient and cost-effective storage systems in various applications, including databases, cloud computing, and data centers.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="sequential-vs-random-access">Sequential vs. Random Access<a href="#sequential-vs-random-access" class="hash-link" aria-label="Direct link to Sequential vs. Random Access" title="Direct link to Sequential vs. Random Access">​</a></h2>
+<p><strong>Sequential Access:</strong></p>
+<ul>
+<li>Data is accessed in a linear order, starting from the beginning of a file.</li>
+<li>Typically used for tapes and older storage devices.</li>
+<li>Requires reading all preceding data to access a specific data item.</li>
+<li><strong>Example:</strong> Reading a book from the beginning to reach a specific page.</li>
+</ul>
+<p><strong>Random Access:</strong></p>
+<ul>
+<li>Data can be accessed directly without reading intermediate data.</li>
+<li>Typically used for modern storage devices like hard disk drives (HDDs) and solid-state drives (SSDs).</li>
+<li>Allows for efficient data retrieval and modification.</li>
+<li><strong>Example:</strong> Jumping directly to a specific page in a book using the table of contents.</li>
+</ul>
+<blockquote>
+<p>Random access on <strong>non-volatile</strong> storage is almost always <strong>much slower</strong> than sequential access.<br>
+<!-- -->DBMS will want to maximize sequential access.</p>
+</blockquote>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="storage-manager">Storage Manager<a href="#storage-manager" class="hash-link" aria-label="Direct link to Storage Manager" title="Direct link to Storage Manager">​</a></h2>
+<p>The Storage Manager is a critical component of a Database Management System (DBMS) responsible for managing the physical storage and retrieval of data. It acts as an interface between the DBMS and the underlying storage devices, such as hard disk drives (HDDs) or solid-state drives (SSDs).</p>
+<p><strong>Key Functions of the Storage Manager:</strong></p>
+<ul>
+<li><strong>Data Storage:</strong> Allocates physical storage space for data and indexes.</li>
+<li><strong>Data Retrieval:</strong> Retrieves data from storage based on user queries or application requests.</li>
+<li><strong>Data Modification:</strong> Updates, inserts, and deletes data within the storage system.</li>
+<li><strong>Concurrency Control:</strong> Ensures that multiple transactions can access and modify data simultaneously without conflicts.</li>
+<li><strong>Recovery Management:</strong> Recovers the database to a consistent state in case of failures or errors.</li>
+</ul>
+<p><strong>Components of the Storage Manager:</strong></p>
+<ul>
+<li><strong>Buffer Manager:</strong> Manages a cache of data pages in memory to improve performance.</li>
+<li><strong>File Manager:</strong> Organizes data into files and manages file structures.</li>
+<li><strong>Page Manager:</strong> Handles the allocation and deallocation of pages within files.</li>
+<li><strong>Access Methods:</strong> Provides mechanisms for efficiently accessing data, such as B-trees, hash indexes, and sequential scans.</li>
+<li><strong>Concurrency Control Manager:</strong> Implements techniques like locking or timestamping to prevent conflicts.</li>
+<li><strong>Recovery Manager:</strong> Maintains a log of transactions and uses it to undo or redo operations in case of failures.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="database-pages">Database Pages<a href="#database-pages" class="hash-link" aria-label="Direct link to Database Pages" title="Direct link to Database Pages">​</a></h2>
+<div style="text-align:center"><img src="/img/DatabasePage.png" alt="Client Server"></div>
+<p><strong>Database pages</strong> are the fundamental units of data storage within a database system. They are fixed-size blocks of data that are read from and written to disk. Pages provide a structured and efficient way to organize and manage data.</p>
+<p><strong>Key Characteristics of Database Pages:</strong></p>
+<ul>
+<li><strong>Fixed Size:</strong> Pages have a predetermined size, typically measured in bytes. This ensures consistent data access and storage management.</li>
+<li><strong>Header:</strong> The header section of a page contains metadata information, such as the page number, transaction ID, and flags indicating the page&#x27;s status (e.g., dirty, free).</li>
+<li><strong>Data Area:</strong> The data area stores the actual data, which can be organized in various ways depending on the database system and data structure.</li>
+<li><strong>Free Space:</strong> Pages often include a free space area to accommodate insertions and updates without requiring the entire page to be rewritten.</li>
+</ul>
+<blockquote>
+<p>Oracle and some other databases can have different page sizes for each table.</p>
+</blockquote>
+<p><strong>Page Management Techniques:</strong></p>
+<ul>
+<li><strong>Page Allocation:</strong> Determining which page to use for storing new data. This can be done using techniques like sequential allocation, linked allocation, or indexed allocation.</li>
+<li><strong>Page Replacement:</strong> Deciding which page to remove from the buffer pool (in-memory cache) when a new page needs to be loaded. Common algorithms include LRU (Least Recently Used), FIFO (First-In-First-Out), and LFU (Least Frequently Used).</li>
+<li><strong>Page Splitting and Merging:</strong> Handling situations where a page becomes full or nearly empty. Splitting a page creates two new pages, while merging combines two pages into one.</li>
+</ul>
+<p><strong>Page Types:</strong></p>
+<ul>
+<li><strong>Data Pages:</strong> Store the actual data records.</li>
+<li><strong>Index Pages:</strong> Store index entries that point to data pages, enabling efficient data retrieval.</li>
+<li><strong>Metadata Pages:</strong> Store information about the database structure, such as table definitions, indexes, and constraints.</li>
+</ul>
+<p><strong>Page-Based Storage Advantages:</strong></p>
+<ul>
+<li><strong>Efficiency:</strong> Pages provide a convenient size for reading and writing data to disk.</li>
+<li><strong>Simplicity:</strong> They offer a uniform way to manage data storage.</li>
+<li><strong>Performance:</strong> Page-based storage can improve performance by reducing the number of I/O operations required.</li>
+</ul>
+<p><strong>Considerations:</strong></p>
+<ul>
+<li><strong>Page Size:</strong> The choice of page size can impact performance and storage efficiency. Larger pages may reduce the number of I/O operations but can also lead to wasted space if pages are not fully utilized. Also write operations can be slow if the page size is too large.</li>
+<li><strong>Page Organization:</strong> The way data is organized within a page can affect retrieval efficiency. Techniques like B-trees, hash tables, and heap files are commonly used.</li>
+<li><strong>Page Compression:</strong> Compressing data within pages can reduce storage requirements and improve I/O performance.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="default-page-sizes-in-different-databases">Default Page Sizes in Different Databases<a href="#default-page-sizes-in-different-databases" class="hash-link" aria-label="Direct link to Default Page Sizes in Different Databases" title="Direct link to Default Page Sizes in Different Databases">​</a></h3>
+<p>The default page size varies among different database systems. Here are some common default page sizes:</p>
+<p><strong>Relational Databases:</strong></p>
+<ul>
+<li><strong>MySQL:</strong> 16KB</li>
+<li><strong>PostgreSQL:</strong> 8KB</li>
+<li><strong>Oracle Database:</strong> 8KB</li>
+<li><strong>SQL Server:</strong> 8KB</li>
+<li><strong>DB2:</strong> 4KB</li>
+</ul>
+<p><strong>NoSQL Databases:</strong></p>
+<ul>
+<li><strong>MongoDB:</strong> 16KB</li>
+<li><strong>Cassandra:</strong> 64KB</li>
+<li><strong>Couchbase:</strong> 16KB</li>
+<li><strong>Redis:</strong> 4KB</li>
+<li><strong>Riak:</strong> 16KB</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="page-heap">Page Heap<a href="#page-heap" class="hash-link" aria-label="Direct link to Page Heap" title="Direct link to Page Heap">​</a></h3>
+<img src="/img/DatabaseHeap.png" alt="Client Server" style="width:100%">
+<p>A <strong>page heap</strong> is a data structure used in database systems to manage the allocation and deallocation of storage pages. It&#x27;s essentially a collection of free and used pages within a database file.</p>
+<p>The DBMS can locate a page on disk given a page id by using a linked list of pages or a page directory.</p>
+<ul>
+<li><strong>Linked List:</strong> Header page holds pointers to a list of free pages and a list of data pages. However, if the DBMS is looking for a specific page, it has to do a sequential scan on the data page list until it finds the page it is looking for.</li>
+<li><strong>Page Directory:</strong> DBMS maintains special pages, called page directory, to track locations of data pages, the amount of free space on each page, a list of free/empty pages and the page type. These special pages have one entry for each database object.</li>
+</ul>
+<p><strong>Page Heap Algorithms:</strong></p>
+<p>Different database systems use various algorithms to manage the page heap:</p>
+<ol>
+<li><strong>First-Fit:</strong> The first free page that is large enough to accommodate the new data object is allocated.</li>
+<li><strong>Best-Fit:</strong> The smallest free page that is large enough is allocated.</li>
+<li><strong>Worst-Fit:</strong> The largest free page is allocated.</li>
+</ol>
+<p>The choice of algorithm can impact the performance and efficiency of the database system. For example, first-fit is often a good choice for simplicity and speed, but it can lead to fragmentation over time. Best-fit can reduce fragmentation but may require more overhead to find the best-fit page.</p>
+<p><strong>Page Heap Fragmentation:</strong></p>
+<p>Fragmentation occurs when free space is scattered across the page heap, resulting in small, non-contiguous free blocks. Fragmentation can reduce storage utilization and performance.</p>
+<p>To mitigate fragmentation, database systems may employ techniques like:</p>
+<ul>
+<li><strong>Coalescing:</strong> Combining adjacent free pages into larger free blocks.</li>
+<li><strong>Defragmentation:</strong> Reorganizing the data to consolidate free space and improve performance.</li>
+<li><strong>Page Splitting and Merging:</strong> Splitting large pages or merging small pages to optimize storage utilization.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="page-layout-in-database-storage">Page Layout in Database Storage<a href="#page-layout-in-database-storage" class="hash-link" aria-label="Direct link to Page Layout in Database Storage" title="Direct link to Page Layout in Database Storage">​</a></h3>
+<p>A <strong>page</strong> is a fixed-size block of data that is the fundamental unit of storage in a database system. The layout of a page defines how data is organized within the page, including the header, data area, and free space.</p>
+<p><strong>Header Structure:</strong></p>
+<ul>
+<li><strong>Page ID:</strong> A unique identifier for the page.</li>
+<li><strong>Page Type:</strong> Indicates the type of page (e.g., data page, index page, metadata page).</li>
+<li><strong>Free Space:</strong> The amount of free space available on the page.</li>
+<li><strong>Transaction ID:</strong> The transaction that last modified the page.</li>
+<li><strong>Checksum:</strong> A value used to verify data integrity.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="tuple-oriented-storage---slotted-pages">Tuple Oriented Storage - Slotted Pages<a href="#tuple-oriented-storage---slotted-pages" class="hash-link" aria-label="Direct link to Tuple Oriented Storage - Slotted Pages" title="Direct link to Tuple Oriented Storage - Slotted Pages">​</a></h3>
+<img src="/img/DatabasePageWithSlots.png" alt="Client Server" style="width:100%">
+<p>A <strong>slotted page</strong> is a type of page layout commonly used in database systems to efficiently store variable-length records. In a slotted page, a fixed-size header is followed by a variable-length data area. The header contains information about the number of slots and the offset of each slot within the data area.</p>
+<p><strong>Key Components of a Slotted Page:</strong></p>
+<ol>
+<li><strong>Header:</strong>
+<ul>
+<li><strong>Number of Slots:</strong> The total number of slots in the page.</li>
+<li><strong>Slot Directory:</strong> An array of slot descriptors, each containing the offset of the corresponding record and its length.</li>
+</ul>
+</li>
+<li><strong>Data Area:</strong>
+<ul>
+<li>Stores the actual data records.</li>
+<li>Records can be of varying lengths and are stored contiguously.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Advantages of Slotted Pages:</strong></p>
+<ul>
+<li><strong>Efficient Storage:</strong> Slotted pages allow for efficient storage of variable-length records.</li>
+<li><strong>Flexible Record Insertion:</strong> New records can be inserted into free space within the page, reducing the need for page splits.</li>
+<li><strong>Efficient Record Deletion:</strong> Deleted records can be marked as deleted without physically removing them from the page, allowing for potential reuse of the space.</li>
+</ul>
+<p><strong>Disadvantages of Slotted Pages:</strong></p>
+<ul>
+<li><strong>Fragmentation:</strong> Over time, as records are inserted and deleted, fragmentation can occur, reducing storage utilization.</li>
+<li><strong>Complexity:</strong> Slotted pages require more complex management compared to fixed-width record pages.</li>
+</ul>
+<p><strong>Slotted Page Management:</strong></p>
+<ul>
+<li><strong>Slot Allocation:</strong> When a new record is inserted, the system selects a free slot and updates the slot directory.</li>
+<li><strong>Slot Deallocation:</strong> When a record is deleted, the slot is marked as free, but the data may remain on the page until it is overwritten by a new record.</li>
+<li><strong>Fragmentation Management:</strong> To minimize fragmentation, database systems may employ techniques like coalescing adjacent free slots or defragmenting the page.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="record-ids-in-databases">Record IDs in Databases<a href="#record-ids-in-databases" class="hash-link" aria-label="Direct link to Record IDs in Databases" title="Direct link to Record IDs in Databases">​</a></h2>
+<p><strong>Record IDs (RIDs)</strong> are unique identifiers assigned to tuples (rows) in a database. They help pinpoint the exact location of data in storage, which is essential for efficient data retrieval and manipulation. RIDs typically consist of two components:</p>
+<ul>
+<li><strong>Page Number</strong>: Indicates the specific page in storage where the tuple resides.</li>
+<li><strong>Tuple Offset</strong>: Specifies the position of the tuple within that page.</li>
+</ul>
+<p>This structure allows database management systems to quickly access records without scanning the entire dataset.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="record-ids-in-different-databases">Record IDs in Different Databases<a href="#record-ids-in-different-databases" class="hash-link" aria-label="Direct link to Record IDs in Different Databases" title="Direct link to Record IDs in Different Databases">​</a></h3>
+<ol>
+<li>
+<p><strong>Relational Databases (e.g., MySQL, PostgreSQL, Oracle)</strong>:</p>
+<ul>
+<li><strong>Implementation</strong>: In relational databases, RIDs usually represent a combination of a page number and a tuple offset. For example, MySQL&#x27;s InnoDB storage engine uses RIDs to locate rows within clustered indexes.</li>
+<li><strong>Usage</strong>: RIDs facilitate efficient data retrieval and support operations like updates and deletes by referencing specific tuples directly.</li>
+</ul>
+</li>
+<li>
+<p><strong>NoSQL Databases (e.g., MongoDB)</strong>:</p>
+<ul>
+<li><strong>Implementation</strong>: MongoDB utilizes <strong>ObjectIDs</strong> as unique identifiers for its documents. While not traditional RIDs, ObjectIDs serve a similar function by providing unique access points for documents.</li>
+<li><strong>Usage</strong>: These IDs enable quick document retrieval and ensure that each document is uniquely identifiable across collections.</li>
+</ul>
+</li>
+<li>
+<p><strong>Key-Value Stores (e.g., Redis, Amazon DynamoDB)</strong>:</p>
+<ul>
+<li><strong>Implementation</strong>: In key-value databases, the key acts as a unique identifier for records. Although not RIDs in the classic sense, the keys function similarly by providing direct access to values.</li>
+<li><strong>Usage</strong>: Keys allow for rapid data access without the need for additional indexing, making operations very efficient.</li>
+</ul>
+</li>
+<li>
+<p><strong>Column-Family Stores (e.g., Apache Cassandra)</strong>:</p>
+<ul>
+<li><strong>Implementation</strong>: Cassandra uses a unique primary key for each row, which can be considered a form of RID. This key is crucial for directly accessing data within the distributed architecture.</li>
+<li><strong>Usage</strong>: The primary key structure allows for efficient data retrieval and supports horizontal scalability, ensuring that data can be accessed quickly even in large datasets.</li>
+</ul>
+</li>
+<li>
+<p><strong>Graph Databases (e.g., Neo4j)</strong>:</p>
+<ul>
+<li><strong>Implementation</strong>: In Neo4j, every node and relationship has a unique internal identifier, functioning similarly to RIDs. These IDs allow for efficient traversal and querying of the graph structure.</li>
+<li><strong>Usage</strong>: Unique identifiers facilitate quick access to nodes and relationships, which is essential for graph-based queries.</li>
+</ul>
+</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="tuple-layout">Tuple Layout<a href="#tuple-layout" class="hash-link" aria-label="Direct link to Tuple Layout" title="Direct link to Tuple Layout">​</a></h2>
+<div style="text-align:center"><img src="/img/TupleLayout.png" alt="Client Server"></div>
+<p>A tuple is essentially a sequence of bytes (these bytes do not have to be contiguous). It is the DBMS’s job to interpret those bytes into attribute types and values.</p>
+<ul>
+<li><strong>Tuple Header:</strong> Contains meta-data about the tuple.<!-- -->
+<ul>
+<li>Visibility information for the DBMS’s concurrency control protocol (i.e., information about which transaction created/modified that tuple).</li>
+<li>Bit Map for NULL values.</li>
+<li>Note that the DBMS does not need to store meta-data about the schema of the database here.</li>
+</ul>
+</li>
+<li><strong>Tuple Data:</strong> Actual data for attributes.<!-- -->
+<ul>
+<li>Attributes are typically stored in the order that you specify them when you create the table.</li>
+<li>Most DBMSs do not allow a tuple to exceed the size of a page.</li>
+</ul>
+</li>
+<li><strong>Unique Identifier:</strong>
+<ul>
+<li>Each tuple in the database is assigned a unique identifier.</li>
+<li>Most common: page id + (offset or slot).</li>
+<li>An application cannot rely on these ids to mean anything.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Denormalized Tuple Data</strong>: If two tables are related, the DBMS can “pre-join” them, so the tables end up on the same page. This makes reads faster since the DBMS only has to load in one page rather than two separate pages. However, it makes updates more expensive since the DBMS needs more space for each tuple.</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/imdeepmind/imdeepmind.github.io/tree/main/packages/create-docusaurus/templates/shared/docs/databases/database-systems/database-storage.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"><span class="theme-last-updated">Last updated<!-- --> on <b><time datetime="2024-12-16T15:46:09.000Z" itemprop="dateModified">Dec 16, 2024</time></b> by <b>Abhishek Chatterjee</b></span></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/databases/database-systems/introduction"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Introduction</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/databases/database-systems/hash-tables"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Hash Tables</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#storage-hierarchy" class="table-of-contents__link toc-highlight">Storage Hierarchy</a><ul><li><a href="#storage-hierarchy-access-speed" class="table-of-contents__link toc-highlight">Storage Hierarchy Access Speed</a></li></ul></li><li><a href="#sequential-vs-random-access" class="table-of-contents__link toc-highlight">Sequential vs. Random Access</a></li><li><a href="#storage-manager" class="table-of-contents__link toc-highlight">Storage Manager</a></li><li><a href="#database-pages" class="table-of-contents__link toc-highlight">Database Pages</a><ul><li><a href="#default-page-sizes-in-different-databases" class="table-of-contents__link toc-highlight">Default Page Sizes in Different Databases</a></li><li><a href="#page-heap" class="table-of-contents__link toc-highlight">Page Heap</a></li><li><a href="#page-layout-in-database-storage" class="table-of-contents__link toc-highlight">Page Layout in Database Storage</a></li><li><a href="#tuple-oriented-storage---slotted-pages" class="table-of-contents__link toc-highlight">Tuple Oriented Storage - Slotted Pages</a></li></ul></li><li><a href="#record-ids-in-databases" class="table-of-contents__link toc-highlight">Record IDs in Databases</a><ul><li><a href="#record-ids-in-different-databases" class="table-of-contents__link toc-highlight">Record IDs in Different Databases</a></li></ul></li><li><a href="#tuple-layout" class="table-of-contents__link toc-highlight">Tuple Layout</a></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/intro">Notes</a></li></ul></div><div class="col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://profile.fyi/imdeepmind" target="_blank" rel="noopener noreferrer" class="footer__link-item">Profile.fyi<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://github.com/imdeepmind" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://linkedin.com/in/imdeepmind" target="_blank" rel="noopener noreferrer" class="footer__link-item">LinkedIn<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div><div class="col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://blog.rocketapi.net" target="_blank" rel="noopener noreferrer" class="footer__link-item">Blog<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2024 Abhishek Chatterjee. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>
