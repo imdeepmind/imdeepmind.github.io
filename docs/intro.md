@@ -21,6 +21,8 @@ If you come across any issues or errors in the notes, feel free to open an issue
       7. [Bloom Filter](/docs/databases/database-systems/bloom-filter.md)
       8. [Skip List](/docs/databases/database-systems/skip-list.md)
       9. [Trie](/docs/databases/database-systems/trie.md)
+      10. [Inverted Index](/docs/databases/database-systems/inverted-index.md)
+      11. [Vector Index](/docs/databases/database-systems/vector-index.md)
    2. [SQL](/docs/databases/sql/sql.md)
 2. [System Design](/docs/system-design/introduction.md)
    1. [Networking](/docs/system-design/networking/client-server-architecture.md)
