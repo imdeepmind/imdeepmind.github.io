@@ -62,6 +62,7 @@ If you come across any issues or errors in the notes, feel free to open an issue
    1. [React](/docs/frontend/react/introduction.md)
       1. [Introduction](/docs/frontend/react/introduction.md)
       2. [React Foundation](/docs/frontend/react/foundation.md)
+      3. [Hooks](/docs/frontend/react/hooks.md)
 
 ## Sources
 
