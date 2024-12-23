@@ -6,6 +6,8 @@ sidebar_position: 7
 
 A **Bloom Filter** is a probabilistic data structure designed for efficient membership testing. It is highly space-efficient and is particularly useful in scenarios where false positives are acceptable but false negatives are not. In other words, it may incorrectly report that an element is in the set when it is not (false positive) but will never incorrectly report that an element is not in the set when it is (no false negatives).
 
+<img src="/img/bloom-filter.gif" alt="LSM Tree" style={{width: '100%'}} />
+
 1. **Probabilistic Nature**:
    - Can return **false positives**, but **no false negatives**.
 2. **Space Efficiency**:
