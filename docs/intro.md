@@ -31,6 +31,8 @@ If you come across any issues or errors in the notes, feel free to open an issue
       3. [Internet Protocol](/docs/system-design/networking/internet-protocol.md)
       4. [UDP](/docs/system-design/networking/udp.md)
       5. [TCP](/docs/system-design/networking/tcp.md)
+      6. [TLS](/docs/system-design/networking/tls.md)
+      7. [DNS](/docs/system-design/networking/dns.md)
    2. [Fundamental Concepts](/docs/system-design/fundamental-concepts/high-and-low-level-design.md)
       1. [High and Low Level Design](/docs/system-design/fundamental-concepts/high-and-low-level-design.md)
       2. [Scalability](/docs/system-design/fundamental-concepts/scalability.md)
