@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# `git config`
+# Git config
 
 The `git config` command is used to configure Git settings, including user information, repository-specific settings, and system-wide configurations. These configurations help customize how Git behaves in different scenarios, like defining who commits to the repository, setting editor preferences, and more.
 
