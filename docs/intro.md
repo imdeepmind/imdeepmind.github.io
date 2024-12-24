@@ -66,6 +66,7 @@ If you come across any issues or errors in the notes, feel free to open an issue
 6. [Git](/docs/git/introduction.md)
    1. [Introduction](/docs/git/introduction.md)
    2. [Git Internals](/docs/git/git-internals.md)
+   3. [`git config`](/docs/git/git-config.md)
 
 ## Sources
 
