@@ -72,6 +72,7 @@ If you come across any issues or errors in the notes, feel free to open an issue
    2. [Git Internals](/docs/git/git-internals.md)
    3. [Git config](/docs/git/git-config.md)
    4. [Merge and Rebase](/docs/git/merge-and-rebase.md)
+   5. [Remote Repositories](/docs/git/remote-repositories.md)
 
 ## Sources
 
