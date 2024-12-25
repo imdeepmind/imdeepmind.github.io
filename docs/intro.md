@@ -66,6 +66,7 @@ If you come across any issues or errors in the notes, feel free to open an issue
       5. [Functions](/docs/programming-languages/javascript/functions.md)
       6. [Callbacks and Higher-Order Functions](/docs/programming-languages/javascript/callback-hof.md)
       7. [Conditions and Loops](/docs/programming-languages/javascript/conditions-loops.md)
+      8. [Asynchronous Programming](/docs/programming-languages/javascript/asynchronous.md)
    3. [Go](/docs/programming-languages/go/introduction.md)
       1. [Introduction](/docs/programming-languages/go/introduction.md)
 5. [Frontend](/docs/frontend/introduction.md)
