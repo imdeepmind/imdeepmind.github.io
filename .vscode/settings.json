@@ -1,7 +1,4 @@
 {
-    "editor.formatOnSave": true,
-    "cSpell.words": [
-        "Hocrox",
-        "imdeepmind"
-    ]
+  "editor.formatOnSave": true,
+  "cSpell.words": ["Hocrox", "imdeepmind", "reflog"]
 }
