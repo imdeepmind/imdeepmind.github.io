@@ -63,6 +63,8 @@ If you come across any issues or errors in the notes, feel free to open an issue
       2. [Variables](/docs/programming-languages/javascript/variables.md)
       3. [Data Types](/docs/programming-languages/javascript/data-types.md)
       4. [Mutation](/docs/programming-languages/javascript/mutation.md)
+      5. [Functions](/docs/programming-languages/javascript/functions.md)
+      6. [Callbacks and Higher-Order Functions](/docs/programming-languages/javascript/callback-hof.md)
    3. [Go](/docs/programming-languages/go/introduction.md)
       1. [Introduction](/docs/programming-languages/go/introduction.md)
 5. [Frontend](/docs/frontend/introduction.md)
