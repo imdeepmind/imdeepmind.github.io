@@ -74,6 +74,7 @@ If you come across any issues or errors in the notes, feel free to open an issue
    4. [Merge and Rebase](/docs/git/merge-and-rebase.md)
    5. [Remote Repositories](/docs/git/remote-repositories.md)
    6. [HEAD and reflog](/docs/git/head-reflog.md)
+   7. [Stashing](/docs/git/stashing.md)
 
 ## Sources
 
