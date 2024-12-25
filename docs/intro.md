@@ -57,6 +57,7 @@ If you come across any issues or errors in the notes, feel free to open an issue
       4. [Common Data Structures in Python](/docs/programming-languages/python/data-structure.md)
       5. [Loops, Control Structures, and Functions](/docs/programming-languages/python/loop-control-functions.md)
       6. [Standard Library](/docs/programming-languages/python/standard-library.md)
+      7. [Pythonic Code](/docs/programming-languages/python/pythonic-code.md)
    2. [JavaScript](/docs/programming-languages/javascript/introduction.md)
       1. [Introduction](/docs/programming-languages/javascript/introduction.md)
       2. [Variables](/docs/programming-languages/javascript/variables.md)
