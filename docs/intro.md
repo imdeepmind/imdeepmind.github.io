@@ -85,6 +85,8 @@ If you come across any issues or errors in the notes, feel free to open an issue
       1. [Introduction](/docs/frontend/react/introduction.md)
       2. [React Foundation](/docs/frontend/react/foundation.md)
       3. [Hooks](/docs/frontend/react/hooks.md)
+      4. [Component Composition and Design](/docs/frontend/react/components.md)
+      5. [Statement Management](/docs/frontend/react/state-management.md)
 6. [Backend](/docs/backend/introduction.md)
    1. [Django](/docs/backend/django/introduction.md)
       1. [Introduction](/docs/backend/django/introduction.md)
