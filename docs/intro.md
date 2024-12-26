@@ -10,12 +10,14 @@ If you come across any issues or errors in the notes, feel free to open an issue
 
 ## Content Table
 
-1. [Database](/docs/databases/introduction.md) 2. [SQL](/docs/databases/sql/sql.md) 3. [Database Engineering](/docs/databases/database-engineering/introduction.md)
-   1. [Connection Pooling](/docs/databases/database-engineering/pooling.md)
-   2. [Transactions](/docs/databases/database-engineering/transactions.md)
-   3. [ACID](/docs/databases/database-engineering/acid.md)
-   4. [Locks](/docs/databases/database-engineering/locks.md)
-   5. [Database Systems](/docs/databases/database-systems/introduction.md)
+1. [Database](/docs/databases/introduction.md)
+   1. [SQL](/docs/databases/sql/sql.md)
+   2. [Database Engineering](/docs/databases/database-engineering/introduction.md)
+      1. [Connection Pooling](/docs/databases/database-engineering/pooling.md)
+      2. [Transactions](/docs/databases/database-engineering/transactions.md)
+      3. [ACID](/docs/databases/database-engineering/acid.md)
+      4. [Locks](/docs/databases/database-engineering/locks.md)
+   3. [Database Systems](/docs/databases/database-systems/introduction.md)
       1. [Introduction](/docs/databases/database-systems/introduction.md)
       2. [Database Storage](/docs/databases/database-systems/database-storage.md)
       3. [Log Structured Tree](/docs/databases/database-systems/lsm-tree.md)
