@@ -79,6 +79,7 @@ If you come across any issues or errors in the notes, feel free to open an issue
       11. [Iterator and Generator](/docs/programming-languages/python/iterators-generators.md)
       12. [File Handling](/docs/programming-languages/python/file-handling.md)
       13. [Multithreading, Multiprocessing, and Asyncio](/docs/programming-languages/python/multiprocessing.md)
+      14. [Decorator](/docs/programming-languages/python/decorator.md)
    2. [JavaScript](/docs/programming-languages/javascript/introduction.md)
       1. [Introduction](/docs/programming-languages/javascript/introduction.md)
       2. [Variables](/docs/programming-languages/javascript/variables.md)
