@@ -80,7 +80,7 @@ def greet(name):
 print(greet("Alice"))
 ```
 
-**Default Arguments**: You can set default values for parameters.
+**Default Arguments**: We can set default values for parameters.
 
 ```python
 def greet(name="World"):
@@ -107,7 +107,7 @@ squares = [x**2 for x in range(10)]
 **Input**: `input()` function to take user input.
 
 ```python
-name = input("Enter your name: ")
+name = input("Enter Our name: ")
 ```
 
 **Output**: `print()` function to display output.

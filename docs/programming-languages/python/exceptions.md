@@ -44,7 +44,7 @@ finally:
 
 1. **try Block**: The `try` block contains code that might raise an exception. If an exception occurs, the rest of the `try` block is skipped, and control is transferred to the `except` block.
 
-2. **except Block**: This block catches the exception. You can catch specific exceptions (e.g., `except ZeroDivisionError`) or use a general `except Exception` to catch any exception. The exception object is optionally bound to a variable, allowing you to access the error details.
+2. **except Block**: This block catches the exception. We can catch specific exceptions (e.g., `except ZeroDivisionError`) or use a general `except Exception` to catch any exception. The exception object is optionally bound to a variable, allowing We to access the error details.
 
 3. **else Block**: The `else` block, if present, will run only if no exceptions were raised in the `try` block. It’s useful for code that should execute if everything goes well, such as clean up operations or actions after successful execution.
 
@@ -52,7 +52,7 @@ finally:
 
 ## Example of Multiple Except Clauses
 
-You can handle different types of exceptions in separate `except` clauses.
+We can handle different types of exceptions in separate `except` clauses.
 
 ```python
 try:
@@ -72,7 +72,7 @@ finally:
 
 ## Raising Exceptions
 
-You can raise exceptions manually using the `raise` keyword, which is useful for error handling in custom logic.
+We can raise exceptions manually using the `raise` keyword, which is useful for error handling in custom logic.
 
 ```python
 def check_positive(value):
@@ -88,7 +88,7 @@ except ValueError as e:
 
 ## Custom Exceptions
 
-You can define custom exceptions by subclassing the built-in `Exception` class. This is useful for creating domain-specific error messages.
+We can define custom exceptions by subclassing the built-in `Exception` class. This is useful for creating domain-specific error messages.
 
 ```python
 class CustomError(Exception):
@@ -103,7 +103,7 @@ except CustomError as e:
 ## Best Practices
 
 1. **Avoid Catching Broad Exceptions**: It’s best practice to catch specific exceptions rather than catching all exceptions using `except Exception`. This ensures that only the expected exceptions are handled, and unexpected ones are not silently ignored.
-2. **Use `else` for Clean Code**: If you need to run code after the `try` block that only depends on the absence of exceptions, place it in the `else` block. This keeps the code clean and readable.
+2. **Use `else` for Clean Code**: If We need to run code after the `try` block that only depends on the absence of exceptions, place it in the `else` block. This keeps the code clean and readable.
 
 3. **Use `finally` for Cleanup**: Use the `finally` block for cleanup actions such as closing files or releasing resources, regardless of whether an exception occurred.
 

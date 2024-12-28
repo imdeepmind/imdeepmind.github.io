@@ -18,7 +18,7 @@ An overview of common data structures in Python, including properties, pros, con
 - **Cons**:
   - Slower in search operations compared to sets.
   - More memory usage compared to arrays in other languages.
-- **Use Cases**: Managing ordered collections where you may need to add, modify, or remove elements frequently.
+- **Use Cases**: Managing ordered collections where We may need to add, modify, or remove elements frequently.
 
 ## Tuples
 

@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Variable Scoping
 
-Variable scoping in Python determines the accessibility of variables within different parts of the code. It defines where a variable can be read or modified. Python follows specific scoping rules, which are influenced by the **LEGB rule** (Local, Enclosing, Global, Built-in). Understanding scoping is crucial to avoid conflicts and unexpected behavior in your programs.
+Variable scoping in Python determines the accessibility of variables within different parts of the code. It defines where a variable can be read or modified. Python follows specific scoping rules, which are influenced by the **LEGB rule** (Local, Enclosing, Global, Built-in). Understanding scoping is crucial to avoid conflicts and unexpected behavior in Our programs.
 
 ## Scope of Variables
 
@@ -100,7 +100,7 @@ outer_function()
 
 ### 1. Using `global` Keyword
 
-- If you want to modify a **global variable** inside a function, use the `global` keyword.
+- If We want to modify a **global variable** inside a function, use the `global` keyword.
 
 Example:
 

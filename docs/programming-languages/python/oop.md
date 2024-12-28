@@ -169,7 +169,7 @@ print(rectangle.area())  # Output: 50
 
 ## Dunder (Magic) Methods
 
-Dunder (double underscore) or magic methods allow you to define behaviors for built-in operators and functions for your objects.
+Dunder (double underscore) or magic methods allow We to define behaviors for built-in operators and functions for Our objects.
 
 ### Common Dunder Methods:
 
@@ -256,7 +256,7 @@ print(Calculator.description())   # Output: This is a calculator class.
 
 ## super() Method in Python
 
-The `super()` function in Python is used to call methods from a parent class in a child class. It allows you to invoke a method from the superclass (parent class) without explicitly referring to the parent class by name. This is particularly useful in inheritance, where you want to extend or modify the behavior of a parent class method in a child class while still preserving the parent class's functionality.
+The `super()` function in Python is used to call methods from a parent class in a child class. It allows We to invoke a method from the superclass (parent class) without explicitly referring to the parent class by name. This is particularly useful in inheritance, where We want to extend or modify the behavior of a parent class method in a child class while still preserving the parent class's functionality.
 
 ### Key Points
 
@@ -269,7 +269,7 @@ The `super()` function in Python is used to call methods from a parent class in 
 super().method_name(arguments)
 ```
 
-Here, `super()` refers to the parent class, and `method_name` is the method that you want to call.
+Here, `super()` refers to the parent class, and `method_name` is the method that We want to call.
 
 ### Examples
 
@@ -331,7 +331,7 @@ In this case, the `super()` call in class `C` ensures that the `method` from cla
 
 #### Using `super()` to Avoid Redundant Code:
 
-When overriding methods, `super()` helps avoid redundant code by allowing you to call the parent class's implementation without re-implementing it.
+When overriding methods, `super()` helps avoid redundant code by allowing We to call the parent class's implementation without re-implementing it.
 
 ```python
 class Base:

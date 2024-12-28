@@ -4,13 +4,13 @@ sidebar_position: 6
 
 # `*args` and `**kwargs`
 
-In Python, `*args` and `**kwargs` are used to handle variable numbers of arguments passed to a function. These allow you to write more flexible functions that can accept a range of input values without needing to explicitly define every parameter.
+In Python, `*args` and `**kwargs` are used to handle variable numbers of arguments passed to a function. These allow We to write more flexible functions that can accept a range of input values without needing to explicitly define every parameter.
 
 ## `*args` (Non-keyword Arguments)
 
 - **Definition**: The `*args` syntax allows a function to accept an arbitrary number of positional arguments.
 - **How it works**: The `*args` collects additional positional arguments passed to the function into a tuple.
-- **Use case**: When you do not know in advance how many arguments will be passed to the function.
+- **Use case**: When We do not know in advance how many arguments will be passed to the function.
 
 ```python
 def print_args(*args):
@@ -26,14 +26,14 @@ print_args(1, 2, 3, 4)
 ```
 
 - **Important Notes**:
-  - `args` is just a convention. You can name it anything, but the `*` is required.
+  - `args` is just a convention. We can name it anything, but the `*` is required.
   - It must be placed at the end of the function signature (after regular parameters and before `**kwargs` if both are used).
 
 ## `**kwargs` (Keyword Arguments)
 
 - **Definition**: The `**kwargs` syntax allows a function to accept an arbitrary number of keyword arguments (arguments passed by name).
 - **How it works**: The `**kwargs` collects keyword arguments into a dictionary, where the keys are the argument names and the values are the corresponding values passed to the function.
-- **Use case**: When you need to pass a varying number of named arguments to a function.
+- **Use case**: When We need to pass a varying number of named arguments to a function.
 
 ```python
 def print_kwargs(**kwargs):
@@ -47,12 +47,12 @@ print_kwargs(name="Alice", age=25)
 ```
 
 - **Important Notes**:
-  - `kwargs` is a convention, but you can name it anything you like, just like `*args`.
+  - `kwargs` is a convention, but We can name it anything We like, just like `*args`.
   - It must also be placed after regular parameters and `*args` (if both are used).
 
 ## Combining `*args` and `**kwargs`
 
-You can use both `*args` and `**kwargs` in the same function to accept both variable positional and keyword arguments.
+We can use both `*args` and `**kwargs` in the same function to accept both variable positional and keyword arguments.
 
 ```python
 def greet(name, *args, **kwargs):
@@ -89,7 +89,7 @@ greet("Alice", 25, "Engineer", country="USA", city="New York")
         pass
     ```
 
-3.  **Default Values**: You can combine default values with `*args` and `**kwargs`. Just ensure the default arguments appear before `*args`.
+3.  **Default Values**: We can combine default values with `*args` and `**kwargs`. Just ensure the default arguments appear before `*args`.
 
 ## Example: Function with Default Arguments, `*args`, and `**kwargs`
 

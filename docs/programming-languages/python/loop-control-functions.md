@@ -6,7 +6,7 @@ sidebar_position: 5
 
 ## Python Loops
 
-Loops allow you to iterate over a sequence (like a list, tuple, string, or range) and execute a block of code repeatedly. Python supports two primary types of loops: `for` and `while`.
+Loops allow We to iterate over a sequence (like a list, tuple, string, or range) and execute a block of code repeatedly. Python supports two primary types of loops: `for` and `while`.
 
 ### For Loop
 
@@ -120,7 +120,7 @@ while condition:
   4
   ```
 
-- **pass**: Does nothing, used as a placeholder where code is syntactically required but you don't want any action to be taken.
+- **pass**: Does nothing, used as a placeholder where code is syntactically required but We don't want any action to be taken.
   ```python
   for i in range(5):
       if i == 3:
@@ -169,7 +169,7 @@ else:
 
 ### If-Elif-Else
 
-You can chain multiple conditions using `elif` (else if). If the `if` condition fails, the `elif` condition is checked. If no condition is `True`, the `else` block runs.
+We can chain multiple conditions using `elif` (else if). If the `if` condition fails, the `elif` condition is checked. If no condition is `True`, the `else` block runs.
 
 ```python
 x = 10
@@ -205,7 +205,7 @@ x is greater than 5
 
 ## Python Functions
 
-Functions allow you to organize your code into reusable blocks, improving modularity and readability. Functions can accept parameters and return values.
+Functions allow We to organize Our code into reusable blocks, improving modularity and readability. Functions can accept parameters and return values.
 
 ### Defining a Function
 
@@ -251,7 +251,7 @@ Output:
 
 ### Default Arguments
 
-Python allows you to define default values for function parameters. If no argument is provided, the default value is used.
+Python allows We to define default values for function parameters. If no argument is provided, the default value is used.
 
 ```python
 def greet(name="Guest"):
@@ -327,7 +327,7 @@ Output:
 - **Global Scope**: Variables defined outside any function are accessible everywhere in the code.
 - **Local Scope**: Variables defined inside a function are accessible only within that function.
 
-Python allows you to use the `global` keyword to modify a global variable inside a function.
+Python allows We to use the `global` keyword to modify a global variable inside a function.
 
 ```python
 x = 10  # Global variable
