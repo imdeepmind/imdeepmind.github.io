@@ -1,5 +1,5 @@
 ---
-sidebar_position: 11
+sidebar_position: 10
 ---
 
 # Microtask Queue, Macrotask Queue, and Rendering Queue

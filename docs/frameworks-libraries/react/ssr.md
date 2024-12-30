@@ -1,5 +1,5 @@
 ---
-sidebar_position: 9R
+sidebar_position: 9
 ---
 
 # Server-Side Rendering (SSR)
