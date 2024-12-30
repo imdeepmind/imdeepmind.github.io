@@ -2,7 +2,7 @@
 sidebar_position: 5
 ---
 
-# Statement Management
+# State Management
 
 ## Context API
 
