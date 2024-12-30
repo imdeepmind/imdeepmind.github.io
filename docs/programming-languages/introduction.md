@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Introduction
 
-Notes on different programming languages
+Currently, I have notes on Python, JavaScript, and Go. I plan to learn C, C++, Rust, and Assembly next. Although I have previously learned C, C++, and Assembly, I don't remember these languages very well. As a developer, I believe it's important to have a solid understanding of C, C++, and Assembly, as they form the foundation for many modern languages and systems.
 
 ## Content Table
 
@@ -23,7 +23,14 @@ Notes on different programming languages
       11. [Iterator and Generator](/docs/programming-languages/python/iterators-generators.md)
       12. [File Handling](/docs/programming-languages/python/file-handling.md)
       13. [Multithreading, Multiprocessing, and Asyncio](/docs/programming-languages/python/multiprocessing.md)
-      14. [Decorator](/docs/programming-languages/python/decorator.md)
+      14. [Metaprogramming](/docs/programming-languages/python/metaprogramming.md)
+      15. [Decorator](/docs/programming-languages/python/decorator.md)
+      16. [Unit Test](/docs/programming-languages/python/unit-test.md)
+      17. [Pytest](/docs/programming-languages/python/pytest.md)
+      18. [Execution Flow](/docs/programming-languages/python/execution-flow.md)
+      19. [Memory Management](/docs/programming-languages/python/memory-management.md)
+      20. [Reference Counting](/docs/programming-languages/python/reference-counting.md)
+      21. [Generational Garbage Collection](/docs/programming-languages/python/generational-garbage-collector.md)
    2. [JavaScript](/docs/programming-languages/javascript/introduction.md)
       1. [Introduction](/docs/programming-languages/javascript/introduction.md)
       2. [Variables](/docs/programming-languages/javascript/variables.md)
@@ -33,6 +40,10 @@ Notes on different programming languages
       6. [Callbacks and Higher-Order Functions](/docs/programming-languages/javascript/callback-hof.md)
       7. [Conditions and Loops](/docs/programming-languages/javascript/conditions-loops.md)
       8. [Asynchronous Programming](/docs/programming-languages/javascript/asynchronous.md)
+      9. [Execution Context](/docs/programming-languages/javascript/execution-context.md)
+      10. [Call Stack](/docs/programming-languages/javascript/call-stack.md)
+      11. [Queues](/docs/programming-languages/javascript/queues.md)
+      12. [Event Loop](/docs/programming-languages/javascript/event-loop.md)
    3. [Go](/docs/programming-languages/go/introduction.md)
       1. [Introduction](/docs/programming-languages/go/introduction.md)
       2. [Variable](/docs/programming-languages/go/variable.md)
