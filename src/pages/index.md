@@ -6,6 +6,10 @@ title: Abhishek's Homepage
 
 > Founder of Rocket | Senior Software Engineer | Travel Freak | Amateur Photographer
 
+<div style={{textAlign: 'center'}}>
+    <img src="/img/me.jpg" width="50%" />
+</div>
+
 ## Software Engineering
 
 I'm a Senior Software Engineer with over 5 years of experience. I specialize in full-stack development, working with both frontend and backend technologies. My skill set includes programming languages like Python, GoLang and JavaScript, and a variety of frameworks/libraries for both front-end and backend.
