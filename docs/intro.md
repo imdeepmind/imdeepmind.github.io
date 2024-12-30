@@ -64,6 +64,7 @@ If you come across any issues or errors in the notes, feel free to open an issue
       15. [Decorator](/docs/programming-languages/python/decorator.md)
       16. [Unit Test](/docs/programming-languages/python/unit-test.md)
       17. [Pytest](/docs/programming-languages/python/pytest.md)
+      18. [Execution Flow](/docs/programming-languages/python/execution-flow.md)
    2. [JavaScript](/docs/programming-languages/javascript/introduction.md)
       1. [Introduction](/docs/programming-languages/javascript/introduction.md)
       2. [Variables](/docs/programming-languages/javascript/variables.md)
