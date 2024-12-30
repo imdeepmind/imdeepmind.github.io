@@ -2,7 +2,7 @@
 sidebar_position: 8
 ---
 
-# Database Partitioning
+# Partitioning
 
 Database partitioning is a technique used to divide a large table or database into smaller, more manageable pieces, called **partitions**. It helps improve performance, manageability, and scalability of the database system by reducing the amount of data a query must process and allowing for efficient data access patterns.
 

@@ -2,7 +2,7 @@
 sidebar_position: 9
 ---
 
-# Database Sharding
+# Sharding
 
 Sharding is a database architecture pattern where data is horizontally partitioned across multiple databases or nodes, often referred to as **shards**. Each shard contains a subset of the total data, making the overall system more scalable and resilient. It is particularly useful for handling very large datasets and high-throughput applications.
 
