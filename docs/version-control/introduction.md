@@ -4,6 +4,8 @@ sidebar_position: 1
 
 # Introduction
 
+Notes on version control software.
+
 ## Contents
 
 1. [Git](/docs/version-control/git/introduction.md)
