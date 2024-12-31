@@ -63,14 +63,8 @@ If you come across any issues or errors in the notes, feel free to open an issue
       4. [File Structure](/docs/frameworks-libraries/django/file-structure.md)
       5. [Project Structure](/docs/frameworks-libraries/django/project-structure.md)
       6. [Model and ORM](/docs/frameworks-libraries/django/model-orm.md)
-6. [Git](/docs/git/introduction.md)
-   1. [Introduction](/docs/git/introduction.md)
-   2. [Git Internals](/docs/git/git-internals.md)
-   3. [Git config](/docs/git/git-config.md)
-   4. [Merge and Rebase](/docs/git/merge-and-rebase.md)
-   5. [Remote Repositories](/docs/git/remote-repositories.md)
-   6. [HEAD and reflog](/docs/git/head-reflog.md)
-   7. [Stashing](/docs/git/stashing.md)
+6. [Version Control](/docs/version-control/introduction.md)
+   1. [Git](/docs/version-control/git/introduction.md)
 
 ## Sources
 
