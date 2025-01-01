@@ -1,338 +1,314 @@
 ---
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 # State Management
 
-## Context API
+State management refers to the process of managing the state of an application efficiently. In React, the "state" represents the dynamic data of a component or application, which can change over time as users interact with the UI.
 
-The **Context API** is a feature built into React that enables you to manage global state across a component tree without having to manually pass props down the hierarchy (i.e., avoiding "prop drilling").
+State management ensures:
 
-### Key Concepts
+1. **Data consistency** across components.
+2. **Efficient updates** to the UI based on state changes.
+3. **Simplified communication** between components.
 
-- **Context**: Provides a way to share data (state) between components without explicitly passing props.
-- **Provider**: The component that holds the global state and makes it available to all its children.
-- **Consumer**: Components that access the context's data.
+## State Management with `useState`
 
-### Use Cases
+The `useState` hook is the most basic way to manage state in a React functional component.
 
-- Managing global themes (e.g., light/dark mode).
-- User authentication and session management.
-- Sharing data that doesn't change frequently across deeply nested components.
+### Characteristics
 
-### Basic Example
+- Manages **local state** for a single component.
+- Best for simple, isolated state needs.
 
-```tsx
-import React, { createContext, useContext, useState } from "react";
+### Syntax
 
-// Create a context
-const ThemeContext = createContext<{ theme: string; toggleTheme: () => void }>({
-  theme: "light",
-  toggleTheme: () => {},
-});
-
-// Provide the context to children
-const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [theme, setTheme] = useState("light");
-
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
-  };
-
-  return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  );
-};
-
-// Consume the context
-const ThemedComponent = () => {
-  const { theme, toggleTheme } = useContext(ThemeContext);
-
-  return (
-    <div
-      style={{
-        background: theme === "light" ? "#fff" : "#333",
-        color: theme === "light" ? "#000" : "#fff",
-      }}
-    >
-      <p>The current theme is {theme}</p>
-      <button onClick={toggleTheme}>Toggle Theme</button>
-    </div>
-  );
-};
-
-const App = () => (
-  <ThemeProvider>
-    <ThemedComponent />
-  </ThemeProvider>
-);
+```jsx
+const [state, setState] = useState(initialState);
 ```
 
-### Limitations
+- `state`: The current state value.
+- `setState`: A function to update the state.
 
-- Can lead to **unnecessary re-renders** if the context value changes frequently.
-- Doesn't scale well for large and complex applications with many interdependent states.
+### Example
 
-## Redux
+```jsx
+import React, { useState } from "react";
 
-**Redux** is a state management library commonly used in React applications to handle complex state and interactions in a predictable way.
-
-### Core Concepts
-
-- **Store**: A single source of truth where the global state is stored.
-- **Actions**: Plain JavaScript objects that describe what should change in the state.
-- **Reducers**: Pure functions that take the current state and an action and return the new state.
-- **Dispatch**: A method to send actions to the store.
-- **Selectors**: Functions to extract data from the state.
-
-### Redux Flow
-
-1. Dispatch an action.
-2. The reducer processes the action and updates the store.
-3. The updated state is propagated to the React components.
-
-### Basic Example
-
-```tsx
-import { createStore } from "redux";
-import { Provider, useDispatch, useSelector } from "react-redux";
-
-// Define actions
-const INCREMENT = "INCREMENT";
-const DECREMENT = "DECREMENT";
-
-const increment = () => ({ type: INCREMENT });
-const decrement = () => ({ type: DECREMENT });
-
-// Reducer
-const counterReducer = (state = 0, action: { type: string }) => {
-  switch (action.type) {
-    case INCREMENT:
-      return state + 1;
-    case DECREMENT:
-      return state - 1;
-    default:
-      return state;
-  }
-};
-
-// Create store
-const store = createStore(counterReducer);
-
-// React components
-const Counter = () => {
-  const dispatch = useDispatch();
-  const count = useSelector((state: number) => state);
+function Counter() {
+  const [count, setCount] = useState(0);
 
   return (
     <div>
       <p>Count: {count}</p>
-      <button onClick={() => dispatch(increment())}>Increment</button>
-      <button onClick={() => dispatch(decrement())}>Decrement</button>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <button onClick={() => setCount(count - 1)}>Decrement</button>
     </div>
   );
-};
-
-const App = () => (
-  <Provider store={store}>
-    <Counter />
-  </Provider>
-);
+}
 ```
 
-## Middleware in Redux
+### When to Use
 
-Middleware in Redux extends its functionality by allowing custom logic to be executed between the action being dispatched and the reducer handling the action. It's commonly used for handling **asynchronous operations** and **side effects**.
+- For **simple state logic**.
+- For **component-specific state**.
 
-### Redux Thunk
+## State Management with `useReducer`
 
-- Allows you to write action creators that return a function instead of an action.
-- Used for handling asynchronous actions (e.g., API calls).
-- Example:
+The `useReducer` hook is a more powerful alternative to `useState` for managing complex state logic.
 
-  ```tsx
-  import { createSlice, configureStore } from "@reduxjs/toolkit";
-  import thunk from "redux-thunk";
-  import { Provider, useDispatch, useSelector } from "react-redux";
+### Characteristics
 
-  const dataSlice = createSlice({
-    name: "data",
-    initialState: { loading: false, items: [] },
-    reducers: {
-      fetchStart: (state) => {
-        state.loading = true;
-      },
-      fetchSuccess: (state, action) => {
-        state.loading = false;
-        state.items = action.payload;
-      },
-    },
-  });
+- Suitable for **complex state transitions**.
+- Uses a **reducer function** to determine how state updates based on actions.
 
-  const { fetchStart, fetchSuccess } = dataSlice.actions;
+### Syntax
 
-  const fetchData = () => async (dispatch: any) => {
-    dispatch(fetchStart());
-    const response = await fetch("https://api.example.com/data");
-    const data = await response.json();
-    dispatch(fetchSuccess(data));
-  };
+```jsx
+const [state, dispatch] = useReducer(reducer, initialState);
+```
 
-  const store = configureStore({
-    reducer: dataSlice.reducer,
-    middleware: [thunk],
-  });
+- `reducer`: A function `(state, action) => newState` that defines state transitions.
+- `dispatch`: A function to trigger state changes.
 
-  const DataComponent = () => {
-    const dispatch = useDispatch();
-    const { loading, items } = useSelector((state: any) => state);
+### Example
 
-    React.useEffect(() => {
-      dispatch(fetchData());
-    }, [dispatch]);
+```jsx
+import React, { useReducer } from "react";
 
-    return (
-      <div>
-        {loading ? (
-          <p>Loading...</p>
-        ) : (
-          <ul>
-            {items.map((item: any) => (
-              <li key={item.id}>{item.name}</li>
-            ))}
-          </ul>
-        )}
-      </div>
-    );
-  };
-
-  const App = () => (
-    <Provider store={store}>
-      <DataComponent />
-    </Provider>
-  );
-  ```
-
-### Redux Saga
-
-- Uses generator functions (`function*`) to handle side effects in a more declarative way.
-- Useful for managing complex asynchronous workflows and tasks.
-- Example (simplified):
-
-  ```tsx
-  import createSagaMiddleware from "redux-saga";
-  import { takeEvery, put } from "redux-saga/effects";
-
-  // Worker saga
-  function* fetchUser(action: any) {
-    const user = yield fetch(
-      `https://api.example.com/users/${action.payload}`
-    ).then((res) => res.json());
-    yield put({ type: "USER_FETCH_SUCCESS", payload: user });
+function reducer(state, action) {
+  switch (action.type) {
+    case "increment":
+      return { count: state.count + 1 };
+    case "decrement":
+      return { count: state.count - 1 };
+    case "reset":
+      return { count: 0 };
+    default:
+      throw new Error("Unknown action type");
   }
+}
 
-  // Watcher saga
-  function* watchFetchUser() {
-    yield takeEvery("USER_FETCH_REQUEST", fetchUser);
-  }
-
-  // Create Saga middleware
-  const sagaMiddleware = createSagaMiddleware();
-
-  // Add sagaMiddleware to the Redux store
-  const store = configureStore({
-    reducer: userReducer,
-    middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware().concat(sagaMiddleware),
-  });
-
-  sagaMiddleware.run(watchFetchUser);
-  ```
-
-## Redux Toolkit (RTK)
-
-**Redux Toolkit (RTK)** is the official, recommended way to use Redux. It simplifies Redux setup by providing utilities for writing less boilerplate code.
-
-### Key Features
-
-- **`createSlice`**: Combines reducers, actions, and action creators in one place.
-- **`configureStore`**: Simplifies store configuration with built-in middleware.
-- **`createAsyncThunk`**: Handles asynchronous logic like API calls.
-- **DevTools Support**: Automatically configures Redux DevTools for debugging.
-
-### Basic Example
-
-```tsx
-import {
-  createSlice,
-  configureStore,
-  createAsyncThunk,
-} from "@reduxjs/toolkit";
-import { Provider, useDispatch, useSelector } from "react-redux";
-
-// Async thunk
-const fetchUsers = createAsyncThunk("users/fetch", async () => {
-  const response = await fetch("https://api.example.com/users");
-  return await response.json();
-});
-
-// Create slice
-const usersSlice = createSlice({
-  name: "users",
-  initialState: { loading: false, data: [] },
-  reducers: {},
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchUsers.pending, (state) => {
-        state.loading = true;
-      })
-      .addCase(fetchUsers.fulfilled, (state, action) => {
-        state.loading = false;
-        state.data = action.payload;
-      });
-  },
-});
-
-// Create store
-const store = configureStore({
-  reducer: usersSlice.reducer,
-});
-
-const UsersComponent = () => {
-  const dispatch = useDispatch();
-  const { loading, data } = useSelector((state: any) => state);
-
-  React.useEffect(() => {
-    dispatch(fetchUsers());
-  }, [dispatch]);
+function Counter() {
+  const [state, dispatch] = useReducer(reducer, { count: 0 });
 
   return (
     <div>
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
-        <ul>
-          {data.map((user: any) => (
-            <li key={user.id}>{user.name}</li>
-          ))}
-        </ul>
-      )}
+      <p>Count: {state.count}</p>
+      <button onClick={() => dispatch({ type: "increment" })}>Increment</button>
+      <button onClick={() => dispatch({ type: "decrement" })}>Decrement</button>
+      <button onClick={() => dispatch({ type: "reset" })}>Reset</button>
     </div>
   );
-};
-
-const App = () => (
-  <Provider store={store}>
-    <UsersComponent />
-  </Provider>
-);
+}
 ```
 
-### Benefits
+### When to Use
 
-- Simplifies the Redux development process.
-- Integrates seamlessly with TypeScript.
-- Reduces boilerplate code significantly.
-- Supports advanced use cases like asynchronous operations with minimal configuration.
+- For **complex state logic** involving multiple actions.
+- When the next state depends on the **previous state**.
+
+## State Management with Context API
+
+The Context API provides a way to share state across multiple components without passing props down manually at every level.
+
+### Characteristics
+
+- Solves the **prop drilling** problem (passing props through many levels).
+- Not suitable for **frequent state updates** (due to performance overhead).
+
+### Key Components
+
+1. **Context Provider**:
+
+   - Wraps components and provides the shared state.
+
+   ```jsx
+   const MyContext = React.createContext();
+   ```
+
+2. **Context Consumer**:
+   - Consumes the shared state.
+
+### Example
+
+```jsx
+import React, { useState, useContext } from "react";
+
+// Create context
+const ThemeContext = React.createContext();
+
+function App() {
+  const [theme, setTheme] = useState("light");
+
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      <Toolbar />
+    </ThemeContext.Provider>
+  );
+}
+
+function Toolbar() {
+  const { theme, setTheme } = useContext(ThemeContext);
+
+  return (
+    <div>
+      <p>Current Theme: {theme}</p>
+      <button onClick={() => setTheme("dark")}>Switch to Dark Theme</button>
+    </div>
+  );
+}
+```
+
+### When to Use
+
+- To **share state globally** across the component tree.
+- For **static or infrequently changing state** (e.g., theme, user authentication).
+
+## State Management with Redux
+
+Redux is a predictable state management library often used with React for managing application-level state.
+
+### Characteristics
+
+- Centralizes state in a **single store**.
+- State is updated using **pure reducer functions**.
+- Provides **predictable state transitions**.
+
+### Core Concepts
+
+1. **Store**: The centralized state container.
+2. **Actions**: Objects describing what to do (e.g., `{ type: 'INCREMENT' }`).
+3. **Reducer**: A function `(state, action) => newState` that handles state transitions.
+
+### Example
+
+```jsx
+import { createStore } from "redux";
+
+// Reducer
+function counterReducer(state = { count: 0 }, action) {
+  switch (action.type) {
+    case "INCREMENT":
+      return { count: state.count + 1 };
+    case "DECREMENT":
+      return { count: state.count - 1 };
+    default:
+      return state;
+  }
+}
+
+// Create Store
+const store = createStore(counterReducer);
+
+// Dispatch Actions
+store.dispatch({ type: "INCREMENT" });
+console.log(store.getState()); // { count: 1 }
+```
+
+### When to Use
+
+- For **large applications** where state needs to be shared across many components.
+- When **state transitions need to be predictable** and easy to debug.
+
+## Redux Middleware (Thunk and Saga)
+
+Middleware in Redux extends the store's capabilities by handling side effects like asynchronous actions.
+
+### Redux Thunk
+
+- A middleware for handling **async actions** in Redux.
+- Allows action creators to return functions (instead of objects).
+
+Example:
+
+```jsx
+// Action Creator with Thunk
+function fetchData() {
+  return async (dispatch) => {
+    const response = await fetch("/api/data");
+    const data = await response.json();
+    dispatch({ type: "SET_DATA", payload: data });
+  };
+}
+```
+
+### Redux Saga
+
+- A middleware for handling **complex side effects** using generator functions.
+- Provides better control over side effects compared to Thunk.
+
+Example:
+
+```jsx
+import { call, put, takeEvery } from "redux-saga/effects";
+
+function* fetchDataSaga() {
+  const data = yield call(fetch, "/api/data");
+  yield put({ type: "SET_DATA", payload: data });
+}
+
+function* watchFetchData() {
+  yield takeEvery("FETCH_DATA", fetchDataSaga);
+}
+```
+
+### When to Use
+
+- Use **Thunk** for simple async logic (e.g., API calls).
+- Use **Saga** for complex async workflows (e.g., orchestrating multiple side effects).
+
+## State Management with Redux Toolkit
+
+Redux Toolkit (RTK) simplifies Redux by providing utilities for setting up a Redux store with less boilerplate.
+
+### Features
+
+1. **`configureStore`**: Sets up the store with middleware pre-configured.
+2. **`createSlice`**: Automatically generates actions and reducers.
+3. **`createAsyncThunk`**: Simplifies async actions.
+
+### Example
+
+```jsx
+import { configureStore, createSlice } from "@reduxjs/toolkit";
+
+// Slice
+const counterSlice = createSlice({
+  name: "counter",
+  initialState: { count: 0 },
+  reducers: {
+    increment: (state) => {
+      state.count += 1;
+    },
+    decrement: (state) => {
+      state.count -= 1;
+    },
+  },
+});
+
+const store = configureStore({
+  reducer: { counter: counterSlice.reducer },
+});
+
+// Dispatch Actions
+store.dispatch(counterSlice.actions.increment());
+console.log(store.getState()); // { counter: { count: 1 } }
+```
+
+### When to Use
+
+- For **simplified Redux setup**.
+- When you want to avoid the boilerplate of traditional Redux.
+
+## Summary Table
+
+| **Method**        | **Use Case**                                    | **Complexity** |
+| ----------------- | ----------------------------------------------- | -------------- |
+| **useState**      | Local state, simple components                  | Low            |
+| **useReducer**    | Complex state logic, multiple actions           | Medium         |
+| **Context API**   | Sharing global state across the component tree  | Medium         |
+| **Redux**         | Large-scale apps with shared, predictable state | High           |
+| **Redux Thunk**   | Async actions in Redux                          | Medium         |
+| **Redux Saga**    | Complex async workflows                         | High           |
+| **Redux Toolkit** | Simplified Redux setup, reduced boilerplate     | Medium         |
