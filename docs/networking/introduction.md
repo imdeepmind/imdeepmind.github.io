@@ -14,3 +14,4 @@ sidebar_position: 1
    5. [TCP](/docs/networking/protocols/tcp.md)
    6. [TLS](/docs/networking/protocols/tls.md)
    7. [DNS](/docs/networking/protocols/dns.md)
+   8. [QUIC](/docs/networking/protocols/quic.md)

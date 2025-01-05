@@ -30,3 +30,8 @@
   --ifm-background-color: #0e1320 !important;
   --ifm-background-surface-color: #0e1320 !important;
 }
+
+.mermaid-container {
+  margin: 20px 0; /* Optional: Adjust spacing around the diagram */
+  text-align: center;
+}
