@@ -4,8 +4,6 @@ sidebar_position: 4
 
 # Two Pointers
 
-## Definition
-
 The **Two Pointers** technique involves using two pointers (or indices) to traverse or manipulate a data structure, typically an array or string. These pointers can move in the same direction, opposite directions, or with one pointer lagging behind the other.
 
 This technique is particularly useful for problems involving searching, sorting, or comparing elements in arrays.
@@ -39,7 +37,7 @@ This technique is particularly useful for problems involving searching, sorting,
 
 ## Example Algorithms and Problems
 
-### A. Finding Pairs with a Target Sum
+### Finding Pairs with a Target Sum
 
 Two pointers approach is ideal for sorted arrays.  
 **Problem**: Find if a pair in the array sums to a given target.
@@ -117,7 +115,3 @@ def remove_duplicates(nums):
 1.  **Array or String Problems**: Involve ranges, pairs, or comparisons.
 2.  **Sorted Data**: Exploit order for quick navigation.
 3.  **Optimization Problems**: Maximize/minimize a value within constraints.
-
-## Summary
-
-The **Two Pointers** technique is a versatile and efficient approach for solving a variety of problems in arrays and strings. By carefully managing the movement of pointers, you can achieve significant performance improvements, especially for sorted or linear data structures.
