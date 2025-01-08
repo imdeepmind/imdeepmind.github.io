@@ -32,6 +32,7 @@ If you come across any issues or errors in the notes, feel free to open an issue
    3. [Database Systems](/docs/databases/database-systems/introduction.md)
 2. [Networking](/docs/networking/introduction.md)
    1. [Protocols](/docs/networking/protocols/client-server-architecture.md)
+   2. [Communication Design Patterns](/docs/networking/communication-design-patterns/request-response.md)
 3. [System Design](/docs/system-design/introduction.md)
    1. [Fundamental Concepts](/docs/system-design/fundamental-concepts/high-and-low-level-design.md)
    2. [Communication in Distributed Systems](/docs/system-design/distributed-system-communication/mq-vs-ms.md)
