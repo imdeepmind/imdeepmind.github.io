@@ -20,3 +20,7 @@ sidebar_position: 1
 2. [Communication Design Patterns](/docs/networking/communication-design-patterns/request-response.md)
    1. [Request Response](/docs/networking/communication-design-patterns/request-response.md)
    2. [Pub Sub](/docs/networking/communication-design-patterns/pub-sub.md)
+   3. [Event Streaming](/docs/networking/communication-design-patterns/event-streaming.md)
+   4. [Short Pooling](/docs/networking/communication-design-patterns/short-pooling.md)
+   5. [Long Pooling](/docs/networking/communication-design-patterns/long-pooling.md)
+   6. [SSE](/docs/networking/communication-design-patterns/sse.md)
