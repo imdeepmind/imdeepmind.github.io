@@ -20,9 +20,6 @@ If you come across any issues or errors in the notes, feel free to open an issue
    1. [React](/docs/frameworks-libraries/react/introduction.md)
    2. [Django](/docs/frameworks-libraries/django/introduction.md)
 3. [Data Structure and Algorithms](/docs/data-structure-and-algorithms/arrays-and-hasing)
-   1. [Arrays and Hashing](/docs/data-structure-and-algorithms/arrays-and-hasing)
-   2. [Sorting](/docs/data-structure-and-algorithms/sorting.md)
-   3. [Two Pointers](/docs/data-structure-and-algorithms/two-pointers)
 
 ### System Design and Databases
 
