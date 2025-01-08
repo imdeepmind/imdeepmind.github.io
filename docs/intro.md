@@ -42,6 +42,7 @@ If you come across any issues or errors in the notes, feel free to open an issue
 
 1. [Version Control](/docs/version-control/introduction.md)
    1. [Git](/docs/version-control/git/introduction.md)
+2. [Design Patterns](/docs/design-patterns/introduction.md)
 
 ## Sources
 
