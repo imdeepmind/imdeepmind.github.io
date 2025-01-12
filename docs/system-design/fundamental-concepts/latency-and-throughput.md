@@ -1,5 +1,5 @@
 ---
-sidebar_position: 7
+sidebar_position: 3
 ---
 
 # Latency and Throughput
@@ -10,7 +10,7 @@ Latency and throughput are key performance metrics often used to assess the perf
 
 Latency refers to the time it takes for a single operation, message, or task to be completed or to travel through a system.
 
-### Key Points:
+### Key Points
 
 - **Definition:** Latency is typically measured as the time delay between the initiation of a request and the receipt of the response.
 - **Units:** Measured in units of time (e.g., milliseconds or microseconds).
@@ -23,14 +23,14 @@ Latency refers to the time it takes for a single operation, message, or task to 
   2.  **Disk Latency:** Time to read/write data to/from storage.
   3.  **Processing Latency:** Time taken by a CPU or application to process a task.
 
-### Factors Affecting Latency:
+### Factors Affecting Latency
 
 - Physical distance in networks (e.g., between data centers).
 - Network congestion.
 - Hardware limitations (e.g., disk read/write speeds, CPU speed).
 - Software inefficiencies, such as poorly optimized algorithms.
 
-### Latency in Real-Time Applications:
+### Latency in Real-Time Applications
 
 - Real-time systems, such as online gaming, video conferencing, or high-frequency trading, require low latency to ensure smooth performance.
 - High latency in such applications leads to noticeable delays and degraded user experiences.
@@ -39,7 +39,7 @@ Latency refers to the time it takes for a single operation, message, or task to 
 
 Throughput refers to the amount of work or data processed in a given period of time.
 
-### Key Points:
+### Key Points
 
 - **Definition:** Throughput is the rate at which tasks, operations, or data are completed or processed.
 - **Units:** Typically measured as tasks/second, requests/second, bits/second (bps), or transactions/second (TPS).
@@ -48,14 +48,14 @@ Throughput refers to the amount of work or data processed in a given period of t
   - Amount of data transmitted over a network per second.
   - Number of transactions a database processes per second.
 
-### Factors Affecting Throughput:
+### Factors Affecting Throughput
 
 - System capacity (e.g., bandwidth, CPU speed, memory).
 - Concurrency and parallelism (e.g., ability to handle multiple tasks simultaneously).
 - Efficiency of resource utilization (e.g., minimizing idle times and bottlenecks).
 - System configuration (e.g., load balancers, caching mechanisms).
 
-#### Maximizing Throughput:
+#### Maximizing Throughput
 
 - Increasing system resources (e.g., upgrading hardware, scaling horizontally).
 - Optimizing software (e.g., better algorithms, efficient use of threads).
