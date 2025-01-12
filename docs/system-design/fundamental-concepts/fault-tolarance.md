@@ -6,7 +6,7 @@ sidebar_position: 5
 
 Fault tolerance is the ability of a system to continue operating properly in the event of a failure of one or more of its components.
 
-## Key Concepts:
+## Key Concepts
 
 1. **Redundancy:**
 
@@ -23,7 +23,7 @@ Fault tolerance is the ability of a system to continue operating properly in the
 4. **Failover Systems:**
    - Automatically switching to a backup system in case of a primary system failure.
 
-## Fault Tolerance Techniques:
+## Fault Tolerance Techniques
 
 - **Active-Active Systems:** All systems are actively serving requests, providing load balancing and redundancy.
 - **Active-Passive Systems:** A standby system is kept ready to take over if the active system fails.

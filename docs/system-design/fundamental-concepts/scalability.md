@@ -8,29 +8,29 @@ Scaling in computing refers to the ability to handle increasing workloads by exp
 
 ## Vertical Scaling
 
-**Definition:** Vertical scaling, also known as scaling up, involves adding more resources (e.g., CPU, memory, or storage) to an existing server. Instead of adding more servers, the capacity of a single machine is enhanced.
+Vertical scaling, also known as scaling up, involves adding more resources (e.g., CPU, memory, or storage) to an existing server. Instead of adding more servers, the capacity of a single machine is enhanced.
 
-### Key Characteristics:
+### Key Characteristics
 
 1.  **Resource Augmentation:** Upgrades a single machine with better hardware.
 2.  **Centralized Architecture:** Focuses on improving the performance of one node.
 3.  **Easier Management:** Fewer nodes to manage compared to horizontal scaling.
 
-### Benefits:
+### Benefits
 
 1.  **Simplified Architecture:** No need for load balancers or distributed systems.
 2.  **Ease of Implementation:** Easier to upgrade an existing server than to manage a cluster.
 3.  **Consistency:** Single-node systems do not face distributed consistency issues.
 4.  **Optimized Resource Utilization:** Makes full use of hardware capabilities.
 
-### Challenges:
+### Challenges
 
 1.  **Hardware Limits:** Physical hardware imposes a ceiling on how much you can scale.
 2.  **Downtime:** Upgrading a server often requires downtime.
 3.  **Cost:** High-performance servers are more expensive.
 4.  **Single Point of Failure:** If the server fails, the entire system is affected.
 
-### Use Cases:
+### Use Cases
 
 1.  **Legacy Systems:** Applications not designed for distributed architecture.
 2.  **Databases:** High-performance databases that require more memory or CPU.
@@ -39,30 +39,30 @@ Scaling in computing refers to the ability to handle increasing workloads by exp
 
 ### Horizontal Scaling
 
-**Definition:** Horizontal scaling, also known as scaling out, involves adding more machines or nodes to a system. Instead of increasing the power of a single server, additional servers are introduced to distribute the workload.
+Horizontal scaling, also known as scaling out, involves adding more machines or nodes to a system. Instead of increasing the power of a single server, additional servers are introduced to distribute the workload.
 
-### Key Characteristics:
+### Key Characteristics
 
 1.  **Node Addition:** Increases capacity by adding more servers to the cluster.
 2.  **Redundancy:** Multiple nodes improve fault tolerance.
 3.  **Distribution:** Requires load balancing to distribute traffic among the nodes.
 4.  **Decentralized Architecture:** Often associated with distributed systems like microservices.
 
-### Benefits:
+### Benefits
 
 1.  **Improved Fault Tolerance:** If one server fails, others can take over the workload.
 2.  **Cost-Effective Scaling:** Commodity hardware can be used instead of investing in high-end servers.
 3.  **Infinite Scalability:** There is theoretically no limit to how many nodes you can add.
 4.  **Geographic Distribution:** Nodes can be deployed across different regions for better latency and user experience.
 
-### Challenges:
+### Challenges
 
 1.  **Complexity:** Managing and orchestrating multiple nodes can be complex.
 2.  **Consistency Issues:** Data consistency can be harder to maintain in distributed databases.
 3.  **Load Balancing:** Requires robust mechanisms to evenly distribute traffic.
 4.  **Inter-node Communication:** High latency between nodes can affect performance.
 
-### Use Cases:
+### Use Cases
 
 1.  **Web Applications:** High-traffic websites like e-commerce platforms.
 2.  **Cloud Services:** Systems like Amazon Web Services (AWS), Google Cloud Platform (GCP), and Microsoft Azure.

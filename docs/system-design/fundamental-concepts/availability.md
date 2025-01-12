@@ -6,7 +6,7 @@ sidebar_position: 3
 
 Availability refers to the degree to which a system is operational and accessible when needed. It is typically expressed as a percentage (e.g., 99.9% uptime).
 
-## Factors Influencing Availability:
+## Factors Influencing Availability
 
 1. **Redundancy:**
 
@@ -19,7 +19,7 @@ Availability refers to the degree to which a system is operational and accessibl
 3. **Monitoring and Alerts:**
    - Proactive identification of issues through health checks and notifications.
 
-## Measuring Availability:
+## Measuring Availability
 
 - **Formula:** `Availability = (Uptime / Total Time) * 100`
 
