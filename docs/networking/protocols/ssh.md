@@ -2,7 +2,7 @@
 sidebar_position: 10
 ---
 
-# SSH
+# Secure Shell
 
 SSH (Secure Shell) is a cryptographic network protocol used to securely access remote systems over an unsecured network. It ensures **confidentiality**, **integrity**, and **authentication** for data communication between a client and a server. SSH is widely used for remote login, file transfers, and secure command execution.
 

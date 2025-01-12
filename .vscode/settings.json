@@ -9,6 +9,7 @@
     "Pythonic",
     "QUIC",
     "reflog",
+    "RETR",
     "Tracemalloc"
   ]
 }
