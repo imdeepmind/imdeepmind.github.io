@@ -24,3 +24,4 @@ sidebar_position: 1
    3. [`chroot` in Linux](/docs/system-design/containers/chroot.md)
    4. [Linux Namespaces](/docs/system-design/containers/namespaces.md)
    5. [`cgroup` in Linux](/docs/system-design/containers/cgroups.md)
+   6. [Docker Images](/docs/system-design/containers/docker-images.md)
