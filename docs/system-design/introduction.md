@@ -12,6 +12,7 @@ sidebar_position: 1
    3. [Latency and Throughput](/docs/system-design/fundamental-concepts/latency-and-throughput.md)
    4. [Caching](/docs/system-design/fundamental-concepts/caching.md)
    5. [Load Balancer](/docs/system-design/fundamental-concepts/load-balancer.md)
+   6. [Proxies](/docs/system-design/fundamental-concepts/proxies.md)
 2. [Communication in Distributed Systems](/docs/system-design/distributed-system-communication/mq-vs-ms.md)
    1. [Message Queue and Message Streaming](/docs/system-design/distributed-system-communication/mq-vs-ms.md)
    2. [AWS SQS](/docs/system-design/distributed-system-communication/sqs.md)
