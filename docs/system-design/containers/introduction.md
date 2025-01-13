@@ -4,8 +4,6 @@ sidebar_position: 1
 
 # Introduction
 
-## What are Containers?
-
 Containers are lightweight, portable, and self-sufficient units that allow developers to package applications along with their dependencies, libraries, and configuration files. They ensure that the application runs consistently across different environments, such as development, testing, and production. Containers isolate applications from their underlying host system, enabling them to operate in a predictable and repeatable manner.
 
 Containers solve the classic problem of "it works on my machine but not on yours" by encapsulating everything an application needs to run. Unlike traditional virtual machines (VMs), containers share the host operating system kernel, making them more efficient in terms of resource usage.

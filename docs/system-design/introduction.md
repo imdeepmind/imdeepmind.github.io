@@ -25,3 +25,5 @@ sidebar_position: 1
    4. [Linux Namespaces](/docs/system-design/containers/namespaces.md)
    5. [`cgroup` in Linux](/docs/system-design/containers/cgroups.md)
    6. [Docker Images](/docs/system-design/containers/docker-images.md)
+   7. [Docker CLI](/docs/system-design/containers/docker-cli.md)
+   8. [Dockerfile](/docs/system-design/containers/dockerfile.md)
