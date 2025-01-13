@@ -18,6 +18,8 @@ sidebar_position: 1
    9. [HTTP](/docs/networking/protocols/http.md)
    10. [SSH](/docs/networking/protocols/ssh.md)
    11. [FTP](/docs/networking/protocols/ftp.md)
+   12. [BGP](/docs/networking/protocols/bgp.md)
+   13. [MQTT and AMQP](/docs/networking/protocols/mqtt-amqp.md)
 2. [Communication Design Patterns](/docs/networking/communication-design-patterns/request-response.md)
    1. [Request Response](/docs/networking/communication-design-patterns/request-response.md)
    2. [Pub Sub](/docs/networking/communication-design-patterns/pub-sub.md)
