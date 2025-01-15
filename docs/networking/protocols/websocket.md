@@ -19,16 +19,18 @@ WebSocket is a communication protocol that provides full-duplex (two-way) commun
 
 The WebSocket connection starts with an HTTP handshake, where the client requests an upgrade from HTTP to WebSocket. After the handshake, the protocol switches to WebSocket, allowing for continuous communication. Here's how the handshake process works:
 
-```mermaid
-sequenceDiagram
-    participant C as Client
-    participant S as Server
-    C->>S: HTTP Request (Upgrade to WebSocket)
-    Note over C: Client requests WebSocket connection
-    S->>C: HTTP Response (101 Switching Protocols)
-    Note over S: Server agrees to upgrade the protocol
-    Note over C,S: WebSocket connection established
-```
+<div style={{textAlign: 'center'}}>
+   ```mermaid
+   sequenceDiagram
+      participant C as Client
+      participant S as Server
+      C->>S: HTTP Request (Upgrade to WebSocket)
+      Note over C: Client requests WebSocket connection
+      S->>C: HTTP Response (101 Switching Protocols)
+      Note over S: Server agrees to upgrade the protocol
+      Note over C,S: WebSocket connection established
+   ```
+</div>
 
 - **Step 1**: The client sends an HTTP request with an `Upgrade: websocket` header to the server.
 - **Step 2**: The server responds with a `101 Switching Protocols` status code, signaling that the protocol is now WebSocket.
@@ -38,16 +40,18 @@ sequenceDiagram
 
 Once the WebSocket connection is established, both the client and server can exchange data through frames. These frames can carry either text or binary data, enabling efficient real-time communication.
 
-```mermaid
-sequenceDiagram
-    participant C as Client
-    participant S as Server
-    C->>S: Data Frame (Client to Server)
-    Note over C: Client sends data in a frame
-    S->>C: Data Frame (Server to Client)
-    Note over S: Server responds with data in a frame
-    Note over C,S: Continuous communication (Full-Duplex)
-```
+<div style={{textAlign: 'center'}}>
+   ```mermaid
+   sequenceDiagram
+      participant C as Client
+      participant S as Server
+      C->>S: Data Frame (Client to Server)
+      Note over C: Client sends data in a frame
+      S->>C: Data Frame (Server to Client)
+      Note over S: Server responds with data in a frame
+      Note over C,S: Continuous communication (Full-Duplex)
+   ```
+</div>
 
 - **Text Frames**: UTF-8 encoded text data.
 - **Binary Frames**: Data such as images or videos.
@@ -58,16 +62,18 @@ Both parties can send and receive data simultaneously over the same connection, 
 
 Either the client or server can initiate the closure of the WebSocket connection. When this happens, a close frame is exchanged, signaling that the connection is being terminated.
 
-```mermaid
-sequenceDiagram
-    participant C as Client
-    participant S as Server
-    C->>S: Close Frame (Client Initiates)
-    Note over C: Client sends a close request
-    S->>C: Close Frame (Server Acknowledges)
-    Note over S: Server acknowledges the close request
-    Note over C,S: WebSocket connection closed
-```
+<div style={{textAlign: 'center'}}>
+   ```mermaid
+   sequenceDiagram
+      participant C as Client
+      participant S as Server
+      C->>S: Close Frame (Client Initiates)
+      Note over C: Client sends a close request
+      S->>C: Close Frame (Server Acknowledges)
+      Note over S: Server acknowledges the close request
+      Note over C,S: WebSocket connection closed
+   ```
+</div>
 
 - **Step 1**: The client or server sends a close frame to indicate that the connection should be closed.
 - **Step 2**: The receiving party responds with its own close frame, confirming the termination.
@@ -77,21 +83,23 @@ sequenceDiagram
 
 The following diagram illustrates the internal flow of WebSocket communication between the client and server:
 
-```mermaid
-sequenceDiagram
-    participant C as Client
-    participant S as Server
-    C->>S: Send HTTP Request (Upgrade)
-    Note over C: Client sends request to switch protocols
-    S->>C: HTTP 101 Response (Switching Protocols)
-    Note over S: Server accepts WebSocket upgrade
-    C->>S: Send WebSocket Frame (Text/Binary Data)
-    S->>C: Send WebSocket Frame (Text/Binary Data)
-    Note over C,S: Bi-directional data exchange
-    C->>S: Send Close Frame (Optional)
-    S->>C: Send Close Frame (Optional)
-    Note over C,S: WebSocket connection terminates
-```
+<div style={{textAlign: 'center'}}>
+   ```mermaid
+   sequenceDiagram
+      participant C as Client
+      participant S as Server
+      C->>S: Send HTTP Request (Upgrade)
+      Note over C: Client sends request to switch protocols
+      S->>C: HTTP 101 Response (Switching Protocols)
+      Note over S: Server accepts WebSocket upgrade
+      C->>S: Send WebSocket Frame (Text/Binary Data)
+      S->>C: Send WebSocket Frame (Text/Binary Data)
+      Note over C,S: Bi-directional data exchange
+      C->>S: Send Close Frame (Optional)
+      S->>C: Send Close Frame (Optional)
+      Note over C,S: WebSocket connection terminates
+   ```
+</div>
 
 This flow illustrates the following process:
 
@@ -153,45 +161,46 @@ A WebSocket frame consists of several parts:
    - These frames are used to keep the connection alive and verify that the connection is still open. A `Ping` frame is sent by one party, and a `Pong` frame is sent back as a response.
 
 ```mermaid
-classDiagram
-    class WebSocketFrame {
-        +1 bit FIN
-        +1 bit RSV1
-        +1 bit RSV2
-        +1 bit RSV3
-        +4 bits Opcode
-        +1 bit Mask
-        +7 bits Payload Length
-        +Payload Length (16 or 64 bits if needed)
-        +Payload Data (Masked if client sends)
-    }
+   classDiagram
+      class WebSocketFrame {
+         +1 bit FIN
+         +1 bit RSV1
+         +1 bit RSV2
+         +1 bit RSV3
+         +4 bits Opcode
+         +1 bit Mask
+         +7 bits Payload Length
+         +Payload Length (16 or 64 bits if needed)
+         +Payload Data (Masked if client sends)
+      }
 
-    WebSocketFrame : "Text Frame (0x1)"
-    WebSocketFrame : "Binary Frame (0x2)"
-    WebSocketFrame : "Close Frame (0x8)"
-    WebSocketFrame : "Ping Frame (0x9)"
-    WebSocketFrame : "Pong Frame (0xA)"
+         WebSocketFrame : "Text Frame (0x1)"
+         WebSocketFrame : "Binary Frame (0x2)"
+         WebSocketFrame : "Close Frame (0x8)"
+         WebSocketFrame : "Ping Frame (0x9)"
+         WebSocketFrame : "Pong Frame (0xA)"
 ```
 
 ### Example of WebSocket Frame
 
 - **Text Frame (Opcode `0x1`)**:
-  - The client sends a text message `Hello, Server!`.
-  - This message is encoded in UTF-8 and sent as a text frame.
+- The client sends a text message `Hello, Server!`.
+- This message is encoded in UTF-8 and sent as a text frame.
 - **Binary Frame (Opcode `0x2`)**:
-  - The client sends an image in binary format.
-  - The binary data is split into multiple frames if necessary.
+- The client sends an image in binary format.
+- The binary data is split into multiple frames if necessary.
 
 ### Frame Processing
 
 1. **Frame Parsing**:
 
-   - The receiver reads the header of the frame to understand its type (text, binary, close, ping, pong).
-   - If the frame contains data, the receiver processes the payload accordingly.
+- The receiver reads the header of the frame to understand its type (text, binary, close, ping, pong).
+- If the frame contains data, the receiver processes the payload accordingly.
 
 2. **Masking**:
-   - If the frame is from the client, the receiver must apply the masking key (XOR operation) to the payload data to retrieve the original content.
-   - For the server, no masking is required, so the data is used directly.
+
+- If the frame is from the client, the receiver must apply the masking key (XOR operation) to the payload data to retrieve the original content.
+- For the server, no masking is required, so the data is used directly.
 
 ### Use of Frames in WebSocket Communication
 
@@ -201,18 +210,19 @@ Frames enable **efficient data transmission** by splitting larger messages into 
 
 1. **Real-time Communication**:
 
-   - WebSocket is perfect for applications that require continuous data transfer, such as live chat apps, collaborative tools, and instant messaging platforms.
+- WebSocket is perfect for applications that require continuous data transfer, such as live chat apps, collaborative tools, and instant messaging platforms.
 
 2. **Online Games**:
 
-   - In multiplayer games, WebSocket allows real-time updates and actions between players and the game server, providing an interactive gaming experience.
+- In multiplayer games, WebSocket allows real-time updates and actions between players and the game server, providing an interactive gaming experience.
 
 3. **Live Updates**:
 
-   - WebSocket is used in stock market applications, sports apps, and news platforms, where real-time data feeds are critical.
+- WebSocket is used in stock market applications, sports apps, and news platforms, where real-time data feeds are critical.
 
 4. **IoT Devices**:
-   - WebSocket is often used to establish persistent communication channels between IoT devices and central servers, where real-time data exchange is necessary.
+
+- WebSocket is often used to establish persistent communication channels between IoT devices and central servers, where real-time data exchange is necessary.
 
 ## Advantages of WebSocket
 
