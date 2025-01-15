@@ -2,7 +2,7 @@
 sidebar_position: 9
 ---
 
-# Hypertext Transfer Protocol
+# HTTP
 
 HTTP (Hypertext Transfer Protocol) is the foundation of data communication on the World Wide Web. It is an application layer protocol used to request and transfer hypertext data between a client (usually a web browser) and a server (hosting the website or service). HTTP is stateless, meaning each request and response are independent, with no stored state between requests. It follows a client-server architecture, where the client sends requests, and the server responds with the appropriate resource or status message.
 

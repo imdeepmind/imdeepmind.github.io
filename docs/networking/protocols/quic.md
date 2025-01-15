@@ -1,8 +1,8 @@
 ---
-sidebar_position: 8
+sidebar_position: 7
 ---
 
-# Quick UDP Internet Connections
+# QUIC
 
 QUIC (Quick UDP Internet Connections) is a modern transport layer protocol developed by Google to address the limitations of older protocols like TCP (Transmission Control Protocol) and improve web performance, especially in high-latency and unreliable network conditions. QUIC runs on top of UDP (User Datagram Protocol), which is a connectionless protocol, and provides features typically associated with TCP, such as reliability, flow control, and congestion control, but with lower latency and better performance.
 

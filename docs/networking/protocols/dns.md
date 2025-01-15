@@ -1,8 +1,8 @@
 ---
-sidebar_position: 7
+sidebar_position: 14
 ---
 
-# Domain Name Server (DNS)
+# DNS
 
 The **Domain Name System (DNS)** is a hierarchical and decentralized naming system used to resolve human-readable domain names (like `www.example.com`) into machine-readable IP addresses (such as `192.0.2.1`). It acts as the "phonebook" of the internet, translating friendly domain names into IP addresses that computers use to communicate with each other.
 

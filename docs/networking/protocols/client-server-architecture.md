@@ -23,12 +23,9 @@ Client-Server Architecture is a foundational model in network computing that str
             Application -->|Responds to Client| Server
             Server -->|Sends Response| Browser
             Browser -->|Displays Response| Client
-
     ```
 
 </div>
-
-## Introduction
 
 Client-Server Architecture is a distributed application structure that partitions tasks or workloads between providers of a resource or service, called servers, and service requesters, called clients. This model is prevalent in various domains, including web services, database management, and enterprise applications.
 

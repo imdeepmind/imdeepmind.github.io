@@ -1,8 +1,8 @@
 ---
-sidebar_position: 11
+sidebar_position: 15
 ---
 
-# File Transfer Protocol
+# FTP
 
 **File Transfer Protocol (FTP)** is a standard network protocol used to transfer files between a client and a server over a TCP/IP-based network, like the internet or an intranet. It operates on the client-server model, where the client initiates a connection to the server and requests files to be uploaded or downloaded.
 

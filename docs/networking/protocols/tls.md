@@ -1,8 +1,8 @@
 ---
-sidebar_position: 6
+sidebar_position: 8
 ---
 
-# Transport Layer Security (TLS)
+# TLS
 
 Transport Layer Security (TLS) is a cryptographic protocol that ensures secure communication over a computer network. It is the successor to Secure Sockets Layer (SSL) and provides confidentiality, integrity, and authentication between applications. TLS is widely used in securing web traffic (HTTPS), email, voice over IP (VoIP), and other internet services.
 

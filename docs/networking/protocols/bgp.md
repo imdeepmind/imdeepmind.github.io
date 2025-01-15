@@ -1,8 +1,8 @@
 ---
-sidebar_position: 12
+sidebar_position: 4
 ---
 
-# Border Gateway Protocol
+# BGP
 
 The Border Gateway Protocol (BGP) is the protocol that powers the internet's routing system. It is responsible for exchanging routing information between autonomous systems (AS), which are networks or groups of networks managed by a single organization. BGP is classified as a **path-vector protocol**, and it operates on **TCP port 179**.
 
