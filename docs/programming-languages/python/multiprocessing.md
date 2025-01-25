@@ -10,7 +10,7 @@ Python offers two popular approaches for concurrent programming: **Multithreadin
 
 ### Threading Basics
 
-Threading allows We to run multiple threads (smaller units of a process) concurrently. This is ideal for I/O-bound tasks, where the program spends time waiting for external resources like file I/O, network operations, or user input.
+Threading allows us to run multiple threads (smaller units of a process) concurrently. This is ideal for I/O-bound tasks, where the program spends time waiting for external resources like file I/O, network operations, or user input.
 
 **Key Features:**
 
@@ -44,7 +44,7 @@ thread2.join()
 
 ### Multiprocessing Module
 
-The **multiprocessing module** is used when We need to parallelize CPU-bound tasks. Unlike threads, processes are independent and do not share memory. Each process runs in its own memory space, which allows true parallel execution, bypassing the GIL.
+The **multiprocessing module** is used when we need to parallelize CPU-bound tasks. Unlike threads, processes are independent and do not share memory. Each process runs in its own memory space, which allows true parallel execution, bypassing the GIL.
 
 **Key Features:**
 

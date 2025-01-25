@@ -19,6 +19,7 @@ If you come across any issues or errors in the notes, feel free to open an issue
 2. [Frameworks and Libraries](/docs/frameworks-libraries/introduction.md)
    1. [React](/docs/frameworks-libraries/react/introduction.md)
    2. [Django](/docs/frameworks-libraries/django/introduction.md)
+   3. [Flask](/docs/frameworks-libraries/flask/introduction.md)
 3. [Data Structure and Algorithms](/docs/data-structure-and-algorithms/arrays-and-hasing)
 
 ### System Design and Databases

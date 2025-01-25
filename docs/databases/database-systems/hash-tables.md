@@ -56,26 +56,140 @@ Popular Hash Functions:
 
 ## Collision Handling Mechanisms
 
-1.  **Chaining** (Separate Chaining):
+Hash functions can produce the same index for different keys, resulting in a **collision**. Effective collision handling is crucial for maintaining the performance and integrity of a hash table.
 
-    - Each array index stores a linked list (or another data structure) of elements.
-    - Pros: Easy to implement, handles varying data sizes.
-    - Cons: May degrade performance to O(n) if chains are long.
+Two common techniques for handling collisions are **chaining** and **open addressing**.
 
-2.  **Open Addressing**:
+### Chaining
 
-    - Resolves collisions by finding another available slot in the array.
-    - Techniques:
+**Chaining** resolves collisions by storing all elements with the same hash index in a separate data structure, typically a linked list or a dynamic array. Each index of the hash table contains a pointer to the head of the chain.
 
-      - **Linear Probing**: Look for the next available index.
+#### Steps:
 
-        - Issue: Clustering can occur.
+1. Compute the hash index using the hash function.
+2. If the index is empty, insert the element there.
+3. If the index already contains a chain, append the new element to the chain.
 
-      - **Quadratic Probing**: Use quadratic increments to search for an available slot.
-      - **Double Hashing**: Use a second hash function to determine probe sequence.
+#### Example:
 
-    - Pros: Avoids the overhead of pointers in chaining.
-    - Cons: May require resizing when the load factor is high.
+When inserting values `10`, `20`, and `30` into a hash table of size 10, all map to index `0` (assuming `hash(key) = key % size`):
+
+```mermaid
+graph TD
+    A[Hash Table]
+    A --> B[Index 0]
+    B --> C[10]
+    B --> D[20]
+    B --> E[30]
+```
+
+#### Advantages:
+
+- Simple to implement.
+- Hash table size doesn't limit the number of elements (beyond memory constraints).
+- Works well with a good hash function and low load factor.
+
+#### Disadvantages:
+
+- Performance degrades if chains grow long, especially with poor hash functions.
+- Extra memory overhead for pointers or additional data structures.
+
+#### Optimization Tips:
+
+- Use a balanced tree or dynamic array instead of a linked list for better performance.
+- Keep the load factor low (e.g., rehash when the load factor exceeds a threshold).
+
+### Open Addressing
+
+In **open addressing**, all elements are stored directly within the hash table array. When a collision occurs, the algorithm searches for the next available slot according to a specific probing sequence.
+
+#### Types of Probing:
+
+**1. Linear Probing:**
+
+- If a collision occurs, incrementally check the next slot (i.e., $$ \text{index} = (\text{hash} + i) \% \text{size} $$).
+- For example, if the hash table size is `10` and `hash(20) = 2`, inserting `30` (also mapping to `2`) results in probing the next available slot.
+
+```mermaid
+graph TD
+    A[Hash Table]
+    A --> B[Index 0]
+    A --> C[Index 1]
+    A --> D[Index 2]
+    D --> E[20]
+    A --> F[Index 3]
+    F --> G[30]
+```
+
+##### Advantages:
+
+- Simple to implement.
+- Efficient for low load factors.
+
+##### Disadvantages:
+
+- **Clustering:** A chain of consecutive filled slots increases the probability of further collisions.
+
+**2. Quadratic Probing:**
+
+- Uses a quadratic function to compute the next slot: $$ \text{index} = (\text{hash} + c_1 \cdot i^2 + c_2 \cdot i) \% \text{size} $$.
+- For example, if `hash(20) = 2`, the next slots probed would be \( (2 + 1^2) \% 10 \), \( (2 + 2^2) \% 10 \), and so on.
+
+```mermaid
+graph TD
+    A[Hash Table]
+    A --> B[Index 0]
+    A --> C[Index 1]
+    A --> D[Index 2]
+    D --> E[20]
+    A --> F[Index 6]
+    F --> G[30]
+    A --> H[Index 3]
+```
+
+##### Advantages:
+
+- Reduces clustering compared to linear probing.
+
+##### Disadvantages:
+
+- May leave gaps in the table, reducing overall efficiency.
+
+**3. Double Hashing:**
+
+- Uses a secondary hash function to determine the step size for probing: $$ \text{index} = (\text{hash}\_1 + i \cdot \text{hash}\_2) \% \text{size} $$.
+- The second hash function ensures the probing sequence is more distributed.
+- For example, with `hash1(key) = key % size` and `hash2(key) = 7 - (key % 7)`, inserting values follows this pattern:
+
+```mermaid
+graph TD
+    A[Hash Table]
+    A --> B[Index 0]
+    A --> C[Index 1]
+    A --> D[Index 2]
+    D --> E[20]
+    A --> F[Index 9]
+    F --> G[30]
+    A --> H[Index 5]
+```
+
+##### Advantages:
+
+- Reduces clustering significantly, making it one of the most efficient methods.
+
+##### Disadvantages:
+
+- More complex than other probing techniques.
+
+### Comparison of Chaining and Open Addressing
+
+| Feature                                  | Chaining                         | Open Addressing                  |
+| ---------------------------------------- | -------------------------------- | -------------------------------- |
+| **Storage**                              | Requires extra memory for chains | Stores all elements in the table |
+| **Load Factor**                          | Can exceed 1                     | Must remain below 1              |
+| **Deletion**                             | Easy                             | Complex                          |
+| **Cache Performance**                    | Poor (pointer traversal)         | Better (contiguous memory)       |
+| **Performance with Poor Hash Functions** | Degrades significantly           | Degrades significantly           |
 
 ## Static Hash Tables
 
