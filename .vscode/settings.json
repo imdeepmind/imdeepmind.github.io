@@ -3,13 +3,18 @@
   "cSpell.words": [
     "Hocrox",
     "imdeepmind",
+    "kwargs",
     "Macrotask",
     "Metaprogramming",
     "Microtask",
+    "myapp",
     "Pythonic",
+    "queryset",
     "QUIC",
     "reflog",
     "RETR",
-    "Tracemalloc"
+    "Tracemalloc",
+    "urlpatterns",
+    "Viewsets"
   ]
 }
