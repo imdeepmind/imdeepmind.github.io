@@ -15,6 +15,7 @@ Permissions in DRF define whether a request should be granted or denied based on
 1. **Global Permissions**:
 
    - Apply to all views by setting the `DEFAULT_PERMISSION_CLASSES` in your settings:
+
      ```python
      REST_FRAMEWORK = {
          'DEFAULT_PERMISSION_CLASSES': [
@@ -73,7 +74,9 @@ Access control ensures specific user roles or groups have access to certain reso
    - Assign users to groups and attach permissions to groups.
 
 2. **Object-Level Access**:
+
    - Determine whether a user can interact with a specific object. For example:
+
      ```python
      def has_object_permission(self, request, view, obj):
          return obj.created_by == request.user
@@ -82,6 +85,7 @@ Access control ensures specific user roles or groups have access to certain reso
 ### Setting Access Control at View Level
 
 - Permissions can be layered to enforce both global and per-object rules:
+
   ```python
   permission_classes = [IsAuthenticated, IsOwnerOrReadOnly]
   ```

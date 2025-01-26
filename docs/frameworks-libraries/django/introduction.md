@@ -25,14 +25,14 @@ Django follows the **MTV (Model-Template-View)** pattern, which is a variation o
 
 ## Components of a Django Project
 
-1.  **Project:** The entire Django setup, including configurations and applications. Created using `django-admin startproject`.
-2.  **App:** A web application that performs specific tasks (e.g., a blog app). Created using `python manage.py startapp`.
-3.  **URLs:** Maps URLs to views using a URL dispatcher (`urls.py`).
-4.  **Settings:** Contains project configurations like database settings, middleware, and installed apps.
+1. **Project:** The entire Django setup, including configurations and applications. Created using `django-admin startproject`.
+2. **App:** A web application that performs specific tasks (e.g., a blog app). Created using `python manage.py startapp`.
+3. **URLs:** Maps URLs to views using a URL dispatcher (`urls.py`).
+4. **Settings:** Contains project configurations like database settings, middleware, and installed apps.
 
 ## Installing and Setting Up Django
 
-1.  **Install Django:** `pip install django`
-2.  **Create a Django Project:** `django-admin startproject myproject`
-3.  **Run the Development Server:** `python manage.py runserver`
-4.  **Create an Application:** `python manage.py startapp myapp`
+1. **Install Django:** `pip install django`
+2. **Create a Django Project:** `django-admin startproject myproject`
+3. **Run the Development Server:** `python manage.py runserver`
+4. **Create an Application:** `python manage.py startapp myapp`

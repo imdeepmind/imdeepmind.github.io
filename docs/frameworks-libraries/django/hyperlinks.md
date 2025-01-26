@@ -178,9 +178,9 @@ Django Rest Framework (DRF) offers tools to manage related models effectively. T
 
    - **Limitations**: `depth` is read-only and doesn’t support writable nested objects.
 
-### \*\*Key Considerations
+### Key Considerations
 
-### When to Use Hyperlinked vs Nested Relationships
+## When to Use Hyperlinked vs Nested Relationships
 
 | **Hyperlinked Relationships**   | **Nested Relationships**                   |
 | ------------------------------- | ------------------------------------------ |
@@ -188,16 +188,16 @@ Django Rest Framework (DRF) offers tools to manage related models effectively. T
 | Keeps responses smaller.        | Can lead to larger payloads.               |
 | Best for referencing resources. | Best for including detailed, related data. |
 
-### Performance
+## Performance
 
 - **Hyperlinked Relationships**: May require multiple database queries to resolve related object URLs.
 - **Nested Relationships**: Can lead to large payloads, so ensure efficient queries using techniques like `select_related` and `prefetch_related`.
 
-### Validation
+## Validation
 
 - When using writable nested serializers, ensure proper validation for related objects.
 
-### Example: Combining Hyperlinked and Nested Relationships
+## Example: Combining Hyperlinked and Nested Relationships
 
 ```python
 from rest_framework import serializers

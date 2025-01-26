@@ -10,7 +10,7 @@ In Django Rest Framework (DRF) projects, the project is typically structured to 
 
 A typical DRF project structure looks like this:
 
-```
+```bash
 project_name/
 │
 ├── manage.py
@@ -133,7 +133,7 @@ graph TB
     H -.->|connected to app| H
 ```
 
-## Example Flow:
+## Example Flow
 
 1. A client sends a GET request to `/posts/`.
 2. The `urls.py` file maps this URL to the `PostListView` in `views.py`.

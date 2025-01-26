@@ -40,6 +40,7 @@ DRF provides several built-in authentication classes that handle common use case
 - Credentials (username and password) are sent as a Base64-encoded string in the `Authorization` header.
 - Suitable for testing but not recommended for production due to security concerns.
 - **Example Configuration**:
+
   ```python
   REST_FRAMEWORK = {
       'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -54,6 +55,7 @@ DRF provides several built-in authentication classes that handle common use case
 - Typically used for browser-based clients.
 - Requires the user to log in via Django’s login system.
 - **Example Configuration**:
+
   ```python
   REST_FRAMEWORK = {
       'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -70,14 +72,18 @@ DRF provides several built-in authentication classes that handle common use case
 - **Setup**:
 
   1. Install `djangorestframework` if not already installed:
+
      ```bash
      pip install djangorestframework
      ```
+
   2. Add `rest_framework.authtoken` to `INSTALLED_APPS`.
   3. Migrate the database:
+
      ```bash
      python manage.py migrate
      ```
+
   4. Generate tokens for users:
 
      ```python
@@ -90,6 +96,7 @@ DRF provides several built-in authentication classes that handle common use case
      ```
 
   - **Example Configuration**:
+
     ```python
     REST_FRAMEWORK = {
         'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -204,6 +211,7 @@ REST_FRAMEWORK = {
    ```
 
 4. **Usage**:
+
    ```bash
    curl -X GET http://localhost:8000/protected/ \
         -H "Authorization: Token your_token_here"

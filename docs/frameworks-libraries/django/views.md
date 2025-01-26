@@ -34,8 +34,6 @@ Django Rest Framework (DRF) views are a core component used to define the behavi
 
 ## Function-Based Views
 
-### Definition
-
 - Decorated with `@api_view` to ensure they handle API requests.
 
 ### Example

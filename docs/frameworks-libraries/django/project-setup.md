@@ -81,35 +81,35 @@ REST_FRAMEWORK = {
 
 Update `settings.py` to use PostgreSQL.
 
-1.  Install PostgreSQL and create a database:
+1. Install PostgreSQL and create a database:
 
-    ```sql
-    CREATE DATABASE myprojectdb;
-    CREATE USER myprojectuser WITH PASSWORD 'mypassword';
-    GRANT ALL PRIVILEGES ON DATABASE myprojectdb TO myprojectuser;
-    ```
+   ```sql
+   CREATE DATABASE myprojectdb;
+   CREATE USER myprojectuser WITH PASSWORD 'mypassword';
+   GRANT ALL PRIVILEGES ON DATABASE myprojectdb TO myprojectuser;
+   ```
 
-2.  Update `DATABASES` in `settings.py`:
+2. Update `DATABASES` in `settings.py`:
 
-    ```python
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'myprojectdb',
-            'USER': 'myprojectuser',
-            'PASSWORD': 'mypassword',
-            'HOST': 'localhost',
-            'PORT': '5432',
-        }
-    }
-    ```
+   ```python
+   DATABASES = {
+       'default': {
+           'ENGINE': 'django.db.backends.postgresql',
+           'NAME': 'myprojectdb',
+           'USER': 'myprojectuser',
+           'PASSWORD': 'mypassword',
+           'HOST': 'localhost',
+           'PORT': '5432',
+       }
+   }
+   ```
 
-3.  Apply migrations to set up the database schema:
+3. Apply migrations to set up the database schema:
 
-    ```cmd
-    python manage.py makemigrations
-    python manage.py migrate
-    ```
+   ```cmd
+   python manage.py makemigrations
+   python manage.py migrate
+   ```
 
 ## Run the Development Server
 
