@@ -1,6 +1,7 @@
 {
   "editor.formatOnSave": true,
   "cSpell.words": [
+    "Gunicorn",
     "Hocrox",
     "imdeepmind",
     "kwargs",
@@ -15,6 +16,7 @@
     "RETR",
     "Tracemalloc",
     "urlpatterns",
-    "Viewsets"
+    "Viewsets",
+    "wsgi"
   ]
 }
