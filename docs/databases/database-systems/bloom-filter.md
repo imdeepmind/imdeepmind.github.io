@@ -6,7 +6,9 @@ sidebar_position: 7
 
 A **Bloom Filter** is a probabilistic data structure designed for efficient membership testing. It is highly space-efficient and is particularly useful in scenarios where false positives are acceptable but false negatives are not. In other words, it may incorrectly report that an element is in the set when it is not (false positive) but will never incorrectly report that an element is not in the set when it is (no false negatives).
 
-<img src="/img/bloom-filter.gif" alt="LSM Tree" style={{width: '100%'}} />
+<div style={{textAlign: 'center'}}>
+   <img src="/img/bloom-filter.gif" alt="Bloom Filter" style={{width: '100%'}} />
+</div>
 
 1. **Probabilistic Nature**:
    - Can return **false positives**, but **no false negatives**.
@@ -149,3 +151,7 @@ Position 9 is `0`, so "fish" is **definitely not** in the set.
   - Removing elements is not supported (except in Counting Bloom Filters).
 - **Hash Function Dependency**:
   - Performance relies heavily on the choice of hash functions. Poor hash functions can lead to high collision rates.
+
+## Working Example
+
+I have created a complete example for Bloom Filter in Python using MurMurHashV3. Here the link to the repository: [https://github.com/imdeepmind/BloomFilter](https://github.com/imdeepmind/BloomFilter)
