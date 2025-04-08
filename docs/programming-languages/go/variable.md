@@ -48,11 +48,71 @@ If a variable is declared but not initialized, it gets a default value based on 
 - Booleans: `false`
 - Pointers, slices, maps, channels, interfaces: `nil`
 
-## Data Types in Go
+### Constants in Go
+
+In addition to variables, Go also supports **constants**, which are similar to variables but, once assigned, cannot be changed. Constants can be typed or untyped.
+
+#### Declaring Constants
+
+1. **Using `const` keyword:**
+
+   Constants are declared using the `const` keyword. A constant's value must be known at compile time, and it can be of any basic or derived type.
+
+   ```go
+   const pi = 3.14      // Untyped constant
+   const radius = 10    // Untyped constant
+   const isActive = true // Untyped constant
+   ```
+
+2. **Typed Constants:**
+
+   You can also declare typed constants by specifying the type explicitly.
+
+   ```go
+   const daysInWeek int = 7
+   ```
+
+#### Advantages of Constants
+
+- **Immutability:** Constants are read-only. Once assigned, their values cannot be changed.
+- **Performance:** Because constants are evaluated at compile time, using constants can improve performance (no need to re-evaluate the value during runtime).
+- **Expressiveness:** Constants make code more expressive and easier to understand, especially for values that are logically constant, like mathematical constants or configuration settings.
+
+#### Example of Constants in Go
+
+```go
+package main
+
+import "fmt"
+
+const Pi = 3.14159
+const Greeting = "Hello, Go!"
+
+func main() {
+    fmt.Println("Pi:", Pi)
+    fmt.Println(Greeting)
+}
+```
+
+In the example above, `Pi` and `Greeting` are constants that cannot be changed during the program’s execution.
+
+#### Constant Expressions
+
+Go allows you to use constants in expressions. For example:
+
+```go
+const (
+    x = 5
+    y = 10
+    sum = x + y // sum is a constant, evaluated at compile time
+)
+```
+
+### Data Types in Go
 
 Go is a statically typed language, meaning the type of a variable is determined at compile time.
 
-### Basic Data Types
+#### Basic Data Types
 
 1. **Numeric Types:**
 
@@ -184,6 +244,7 @@ func main() {
 2. Use short declarations (`:=`) for concise code, but only within functions.
 3. Use descriptive variable names to make the code readable.
 4. Keep variable scope as narrow as possible to reduce side effects.
+5. Use constants for values that do not change during program execution to improve performance and readability.
 
 **Example Code**
 
@@ -194,6 +255,7 @@ import "fmt"
 
 // Package-level variable
 var packageVar = "I'm accessible within this package!"
+const pi = 3.14159 // Constant
 
 func main() {
     // Local variables
@@ -203,6 +265,7 @@ func main() {
     fmt.Println(packageVar)
     fmt.Println(localVar)
     fmt.Println(shortVar)
+    fmt.Println("Pi constant:", pi)
 
     demonstrateScope()
 }
