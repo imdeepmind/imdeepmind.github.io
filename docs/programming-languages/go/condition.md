@@ -364,10 +364,70 @@ for index, value := range collection {
    }
    ```
 
-## Best Practices
+### Range
 
-1. Avoid infinite loops unless necessary (e.g., in servers).
-2. Use `switch` for cleaner, more readable conditional branching.
-3. Minimize deeply nested loops or conditions by refactoring logic.
-4. Prefer `range` loops for iterating over collections.
-5. Use labeled control statements sparingly to avoid confusing flow control.
+The `range` keyword in Go is used to iterate over elements in various data structures like arrays, slices, maps, and channels. It simplifies iteration by automatically providing both the index (or key) and the value for each element in the collection.
+
+#### Syntax
+
+```go
+for index, value := range collection {
+    // Use index and value
+}
+```
+
+- `index` is the current position (or key) in the collection.
+- `value` is the current element at that index or key.
+
+If you only need the value and not the index, you can omit the index:
+
+```go
+for _, value := range collection {
+    // Use value only
+}
+```
+
+#### Example: Iterating Over an Array
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    arr := [3]int{1, 2, 3}
+    for index, value := range arr {
+        fmt.Printf("Index: %d, Value: %d\n", index, value)
+    }
+}
+```
+
+#### Output
+
+```
+Index: 0, Value: 1
+Index: 1, Value: 2
+Index: 2, Value: 3
+```
+
+#### Example: Iterating Over a Map
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    m := map[string]int{"apple": 5, "banana": 2}
+    for key, value := range m {
+        fmt.Printf("Key: %s, Value: %d\n", key, value)
+    }
+}
+```
+
+#### Output
+
+```
+Key: apple, Value: 5
+Key: banana, Value: 2
+```
