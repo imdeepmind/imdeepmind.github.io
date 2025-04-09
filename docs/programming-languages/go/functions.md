@@ -372,10 +372,58 @@ func main() {
 }
 ```
 
-## Best Practices for Functions
+## Recursion
 
-1. **Keep Functions Small:** Each function should perform one task.
-2. **Use Descriptive Names:** Function names should clearly indicate their purpose.
-3. **Avoid Side Effects:** Minimize unexpected changes to global or shared variables.
-4. **Use Errors Effectively:** Return and handle errors appropriately.
-5. **Use Variadic Functions Sparingly:** Use them only when necessary, as they can reduce clarity.
+Recursion occurs when a function calls itself in order to solve smaller instances of the same problem. It is often used in problems that can be broken down into smaller subproblems, such as in tree traversal, factorial calculation, and searching algorithms.
+
+In Go, recursion follows the same principles as in other programming languages. For recursion to work correctly, it is essential to have a **base case** that stops the recursion, preventing it from continuing indefinitely.
+
+### Example of Recursion: Factorial Calculation
+
+The factorial of a number `n` is the product of all positive integers less than or equal to `n`. It can be defined recursively as:
+
+- `factorial(n) = n * factorial(n-1)` for `n > 0`
+- `factorial(0) = 1` (base case)
+
+#### Syntax
+
+```go
+func factorial(n int) int {
+    if n == 0 {
+        return 1 // Base case
+    }
+    return n * factorial(n-1) // Recursive call
+}
+```
+
+#### Example
+
+```go
+package main
+
+import "fmt"
+
+func factorial(n int) int {
+    if n == 0 {
+        return 1 // Base case: factorial of 0 is 1
+    }
+    return n * factorial(n-1) // Recursive call
+}
+
+func main() {
+    result := factorial(5)
+    fmt.Println("Factorial of 5:", result)
+}
+```
+
+#### Output
+
+```
+Factorial of 5: 120
+```
+
+### Important Points about Recursion
+
+- **Base Case**: The function should have a base case that terminates the recursion. Without a base case, the function would call itself indefinitely, leading to a stack overflow.
+- **Memory Usage**: Recursive functions use the call stack to keep track of function calls. Deep recursion can result in high memory usage or a stack overflow if the recursion goes too deep.
+- **Tail Recursion**: Go does not optimize tail recursion, so recursive functions with large depths may lead to stack overflow. If you need to optimize recursion, consider using iteration instead.
