@@ -59,3 +59,7 @@ Notes various frameworks and libraries.
       12. [Async in Flask](/docs/frameworks-libraries/flask/async-flask.md)
       13. [Deployment and Scaling](/docs/frameworks-libraries/flask/deployment.md)
       14. [Thread Safety](/docs/frameworks-libraries/flask/thread-safety.md)
+   4. [FastAPI](/docs/frameworks-libraries//fastapi//introduction.md)
+      1. [Introduction](/docs/frameworks-libraries/fastapi/introduction.md)
+      2. [Routes](/docs/frameworks-libraries/fastapi/routes.md)
+      3. [Serialization & Validation](/docs/frameworks-libraries/fastapi/serialization-validation.md)
