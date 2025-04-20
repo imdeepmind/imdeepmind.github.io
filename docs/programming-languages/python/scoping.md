@@ -100,7 +100,7 @@ outer_function()
 
 ### 1. Using `global` Keyword
 
-- If We want to modify a **global variable** inside a function, use the `global` keyword.
+- If we want to modify a **global variable** inside a function, use the `global` keyword.
 
 Example:
 

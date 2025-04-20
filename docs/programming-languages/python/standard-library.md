@@ -231,7 +231,7 @@ OrderedDict([('a', 1), ('b', 2), ('c', 3)])
 
 The `functools` module provides higher-order functions that act on or return other functions. It includes tools for memoization, function composition, and partial function application.
 
-### `partial(func, \*args, **kwargs)`\*
+### `partial(func, *args, **kwargs)`
 
 Creates a new function with some arguments pre-filled.
 

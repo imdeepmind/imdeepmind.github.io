@@ -73,6 +73,29 @@ A `dict` is Python’s implementation of a **hash table**, mapping keys to value
 - Uses a **hash table** with open addressing for collision resolution.
 - Keys are hashed using Python’s `hash()` function to determine their position in the table.
 
+### Dictionary Keys
+
+In Python, dictionary keys must be hashable objects. That means they must implement:
+
+- a **hash**() method (returns a constant hash value during its lifetime),
+- and an **eq**() method (to check equality),
+- and be immutable (i.e., their contents can't change).
+
+**Following are the valid key types:**
+
+- strings
+- numbers
+- tuples
+- boolean
+- frozenset
+
+**Following are invalid key types:**
+
+- lists
+- dictionaries
+- sets
+- User-defined mutable objects, unless you override **hash** and **eq** properly
+
 ### Time Complexity
 
 | Operation              | Complexity |

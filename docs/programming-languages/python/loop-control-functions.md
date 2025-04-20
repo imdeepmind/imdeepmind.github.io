@@ -6,7 +6,7 @@ sidebar_position: 5
 
 ## Python Loops
 
-Loops allow We to iterate over a sequence (like a list, tuple, string, or range) and execute a block of code repeatedly. Python supports two primary types of loops: `for` and `while`.
+Loops allow us to iterate over a sequence (like a list, tuple, string, or range) and execute a block of code repeatedly. Python supports two primary types of loops: `for` and `while`.
 
 ### For Loop
 
@@ -120,7 +120,7 @@ while condition:
   4
   ```
 
-- **pass**: Does nothing, used as a placeholder where code is syntactically required but We don't want any action to be taken.
+- **pass**: Does nothing, used as a placeholder where code is syntactically required but we don't want any action to be taken.
   ```python
   for i in range(5):
       if i == 3:
@@ -205,7 +205,7 @@ x is greater than 5
 
 ## Python Functions
 
-Functions allow We to organize Our code into reusable blocks, improving modularity and readability. Functions can accept parameters and return values.
+Functions allow us to organize our code into reusable blocks, improving modularity and readability. Functions can accept parameters and return values.
 
 ### Defining a Function
 

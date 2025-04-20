@@ -256,7 +256,7 @@ print(Calculator.description())   # Output: This is a calculator class.
 
 ## super() Method in Python
 
-The `super()` function in Python is used to call methods from a parent class in a child class. It allows We to invoke a method from the superclass (parent class) without explicitly referring to the parent class by name. This is particularly useful in inheritance, where We want to extend or modify the behavior of a parent class method in a child class while still preserving the parent class's functionality.
+The `super()` function in Python is used to call methods from a parent class in a child class. It allows us to invoke a method from the superclass (parent class) without explicitly referring to the parent class by name. This is particularly useful in inheritance, where we want to extend or modify the behavior of a parent class method in a child class while still preserving the parent class's functionality.
 
 ### Key Points
 

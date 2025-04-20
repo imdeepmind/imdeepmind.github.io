@@ -10,7 +10,7 @@ In Python, `*args` and `**kwargs` are used to handle variable numbers of argumen
 
 - **Definition**: The `*args` syntax allows a function to accept an arbitrary number of positional arguments.
 - **How it works**: The `*args` collects additional positional arguments passed to the function into a tuple.
-- **Use case**: When We do not know in advance how many arguments will be passed to the function.
+- **Use case**: When we do not know in advance how many arguments will be passed to the function.
 
 ```python
 def print_args(*args):
@@ -33,7 +33,7 @@ print_args(1, 2, 3, 4)
 
 - **Definition**: The `**kwargs` syntax allows a function to accept an arbitrary number of keyword arguments (arguments passed by name).
 - **How it works**: The `**kwargs` collects keyword arguments into a dictionary, where the keys are the argument names and the values are the corresponding values passed to the function.
-- **Use case**: When We need to pass a varying number of named arguments to a function.
+- **Use case**: When we need to pass a varying number of named arguments to a function.
 
 ```python
 def print_kwargs(**kwargs):
