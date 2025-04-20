@@ -69,36 +69,98 @@ print(account.get_balance())  # Output: 1500
 
 ## Inheritance
 
-Inheritance allows a class (child) to inherit attributes and methods from another class (parent), promoting code reuse. The child class can also override or extend the behavior of the parent class.
-
-**Does Python Support Multiple Inheritance?**  
-Yes, Python supports multiple inheritance, which means that a class can inherit from more than one class.
-
-### Example of Inheritance
+Inheritance allows a class to inherit attributes and methods from another class.
 
 ```python
 class Animal:
     def __init__(self, name):
         self.name = name
 
-    def sound(self):
-        raise NotImplementedError("Subclasses must implement this method")
+    def speak(self):
+        return "Sound"
 
-class Dog(Animal):
-    def sound(self):
-        return f"{self.name} barks"
-
-class Cat(Animal):
-    def sound(self):
-        return f"{self.name} meows"
+class Dog(Animal):  # Inherits from Animal
+    def speak(self):  # Method overriding
+        return "Bark"
 
 dog = Dog("Buddy")
-cat = Cat("Whiskers")
-print(dog.sound())  # Output: Buddy barks
-print(cat.sound())  # Output: Whiskers meows
+print(dog.name)    # "Buddy" (inherited)
+print(dog.speak()) # "Bark"  (overridden)
 ```
 
-### Example of Multiple Inheritance
+### Multiple Inheritance
+
+Python supports inheriting from multiple parent classes.
+
+```python
+class Flyer:
+    def fly(self):
+        return "Flying"
+
+class Swimmer:
+    def swim(self):
+        return "Swimming"
+
+class Duck(Flyer, Swimmer):  # Multiple inheritance
+    pass
+
+duck = Duck()
+print(duck.fly())  # "Flying"
+print(duck.swim()) # "Swimming"
+```
+
+### Method Resolution Order (MRO)
+
+MRO determines the order in which Python searches for methods in inheritance hierarchies.
+
+```python
+class A:
+    def show(self):
+        print("A")
+
+class B(A):
+    def show(self):
+        print("B")
+
+class C(A):
+    def show(self):
+        print("C")
+
+class D(B, C):
+    pass
+
+print(D.mro())
+# Output: [D, B, C, A, object]
+# This is the search order for methods
+```
+
+### The `super()` Function
+
+`super()` provides a way to call methods from parent classes.
+
+```python
+class Parent:
+    def __init__(self, name):
+        self.name = name
+
+class Child(Parent):
+    def __init__(self, name, age):
+        super().__init__(name)  # Calls Parent.__init__
+        self.age = age
+
+child = Child("Alice", 10)
+print(child.name, child.age)  # "Alice 10"
+```
+
+### Key Points
+
+1. **Single Inheritance**: Simple parent-child relationship
+2. **Multiple Inheritance**: Inherit from multiple classes (order matters)
+3. **MRO**: Determines method lookup order (`Class.mro()`)
+4. **super()**: Delegates method calls to parent classes
+5. **Diamond Problem**: Handled by Python's MRO algorithm (C3 linearization)
+
+### Practical Example with super()
 
 ```python
 class Person:
@@ -106,23 +168,20 @@ class Person:
         self.name = name
 
     def greet(self):
-        return f"Hello, my name is {self.name}"
+        return f"Hello, I'm {self.name}"
 
-class Worker:
-    def __init__(self, job):
-        self.job = job
+class Employee(Person):
+    def __init__(self, name, id):
+        super().__init__(name)
+        self.id = id
 
-    def work(self):
-        return f"I am working as a {self.job}"
+    def greet(self):
+        base_greet = super().greet()
+        return f"{base_greet} (ID: {self.id})"
 
-class Employee(Person, Worker):
-    def __init__(self, name, job):
-        Person.__init__(self, name)
-        Worker.__init__(self, job)
-
-employee = Employee("John", "Developer")
-print(employee.greet())  # Output: Hello, my name is John
-print(employee.work())   # Output: I am working as a Developer
+emp = Employee("John", "E123")
+print(emp.greet())
+# "Hello, I'm John (ID: E123)"
 ```
 
 ## Polymorphism
