@@ -47,5 +47,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.DEPLOY_TOKEN }} # Authentication token
         run: |
           echo "GIT_USER: $GIT_USER"
-          echo "Token available: ${{ secrets.GITHUB_TOKEN != '' }}" 
+          echo "Token available: ${{ secrets.GITHUB_TOKEN }}" 
           npm run deploy
