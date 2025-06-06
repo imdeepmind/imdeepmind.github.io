@@ -12,10 +12,15 @@ If you come across any issues or errors in the notes, feel free to open an issue
 
 ### Programming Fundamentals
 
-1. [Programming Languages](/docs/programming-languages/introduction.md)
-   1. [Python](/docs/programming-languages/python/introduction.md)
-   2. [JavaScript](/docs/programming-languages/javascript/introduction.md)
-   3. [Go](/docs/programming-languages/go/introduction.md)
+1. [Programming](/docs/programming/introduction.md)
+   1. [Programming](/docs/programming/introduction.md)
+      1. [Python](/docs/programming/programming-languages/python/introduction.md)
+      2. [JavaScript](/docs/programming/programming-languages/javascript/introduction.md)
+      3. [Go](/docs/programming/programming-languages/go/introduction.md)
+   2. [Fundamentals](/docs/programming/introduction.md)
+      1. [RegEx](/docs/programming/fundamentals/regex.md)
+
+<!--
 2. [Frameworks and Libraries](/docs/frameworks-libraries/introduction.md)
    1. [React](/docs/frameworks-libraries/react/introduction.md)
    2. [Django](/docs/frameworks-libraries/django/introduction.md)
@@ -42,7 +47,7 @@ If you come across any issues or errors in the notes, feel free to open an issue
 1. [Version Control](/docs/version-control/introduction.md)
    1. [Git](/docs/version-control/git/introduction.md)
 2. [Design Patterns](/docs/design-patterns/introduction.md)
-3. [Other](/docs/other/regex.md)
+3. [Other](/docs/other/regex.md) -->
 
 ## Sources
 

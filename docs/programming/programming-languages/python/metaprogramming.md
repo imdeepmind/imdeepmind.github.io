@@ -35,7 +35,7 @@ print(getattr(obj, 'my_method')())  # Calls 'my_method' dynamically
 
 ## Decorators
 
-Check note on [Decorators](/docs/programming-languages/python/decorator.md).
+Check note on [Decorators](/docs/programming/programming-languages/python/decorator.md).
 
 ## Metaclasses
 
