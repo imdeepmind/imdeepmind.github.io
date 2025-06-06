@@ -30,7 +30,9 @@ If you come across any issues or errors in the notes, feel free to open an issue
 
 ### Data Structure and Algorithms
 
-3. [Data Structure and Algorithms](/docs/data-structure-and-algorithms/arrays-and-hasing)
+3. [Data Structure and Algorithms](/docs/data-structure-and-algorithms/introduction.md)
+   1. [Algorithms](/docs/data-structure-and-algorithms/introduction.md)
+   2. [Time and Space Complexity](/docs/data-structure-and-algorithms/introduction.md)
 
 <!--
 ### System Design and Databases
