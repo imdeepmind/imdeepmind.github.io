@@ -4,11 +4,9 @@ sidebar_position: 2
 
 # `main` in Go
 
-Not just in go, but in many programming languages the `main` function/module/package mean something special. It is 
+Not just in go, but in many programming languages the `main` function/module/package mean something special.
 
 ## Go Modules
-
-### What are Go Modules?
 
 Go Modules are the official dependency management system introduced in Go 1.11 and became the default in Go 1.16+. They provide a way to manage versioned dependencies and project structure.
 
@@ -48,9 +46,7 @@ go 1.21
 
 ## `package main`
 
-### Purpose
-
-In Go, every file must declare a `package`. The `main` package is special—it tells the Go compiler that this package is **executable**, not a shared library.
+In Go, every file must declare a `package`. The `main` package is special. It tells the Go compiler that this package is **executable**, not a shared library.
 
 ### Rules
 
@@ -71,7 +67,7 @@ func main() {
 }
 ```
 
-If you change `package main` to something else (like `package utils`), Go will not generate an executable for it—it becomes a reusable library.
+If you change `package main` to something else (like `package utils`), Go will not generate an executable for it. It will be a reusable library.
 
 ## `func main()`
 
