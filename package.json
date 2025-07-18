@@ -2,6 +2,11 @@
   "name": "imdeepmind",
   "version": "0.0.0",
   "private": true,
+  "author": {
+    "name": "Abhishek Chatterjee",
+    "email": "abhishek@imdeepmind.com",
+    "url": "https://imdeepmind.com"
+  },
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
