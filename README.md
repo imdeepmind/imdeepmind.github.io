@@ -1,41 +1,17 @@
-# Website
+# imdeepmind
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+Welcome to the repository for my personal website, [imdeepmind.com](https://imdeepmind.com). This website serves as a platform where I put my study notes on various topics.
 
-### Installation
+## About
 
-```
-$ yarn
-```
+This website is built to organize and present my study notes in a structured and accessible way. It is designed to be a resource for myself and anyone interested in the topics I explore.
 
-### Local Development
+## Features
 
-```
-$ yarn start
-```
+- A collection of study notes on various subjects.
+- Clean and minimal design for easy readability.
+- Regular updates with new content as I continue learning.
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+## Access the Website
 
-### Build
-
-```
-$ yarn build
-```
-
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
-
-### Deployment
-
-Using SSH:
-
-```
-$ USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+You can access the website at [imdeepmind.com](https://imdeepmind.com).
