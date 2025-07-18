@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Variables and Scope
 
-## Variables in Go
+## Variables
 
 A variable in Go is a storage location with a name, associated with a type, that holds a value. Variables can be declared using the `var` keyword or short declaration syntax.
 
@@ -26,6 +26,7 @@ Go supports three ways to declare variables:
    ```
 
 3. **Short variable declaration (only inside functions):**
+
    ```go
    name := "Alice"
    ```
@@ -56,8 +57,6 @@ In addition to variables, Go also supports **constants**, which are similar to v
 
 1. **Using `const` keyword:**
 
-   Constants are declared using the `const` keyword. A constant's value must be known at compile time, and it can be of any basic or derived type.
-
    ```go
    const pi = 3.14      // Untyped constant
    const radius = 10    // Untyped constant
@@ -66,17 +65,15 @@ In addition to variables, Go also supports **constants**, which are similar to v
 
 2. **Typed Constants:**
 
-   You can also declare typed constants by specifying the type explicitly.
-
    ```go
    const daysInWeek int = 7
    ```
 
 #### Advantages of Constants
 
-- **Immutability:** Constants are read-only. Once assigned, their values cannot be changed.
-- **Performance:** Because constants are evaluated at compile time, using constants can improve performance (no need to re-evaluate the value during runtime).
-- **Expressiveness:** Constants make code more expressive and easier to understand, especially for values that are logically constant, like mathematical constants or configuration settings.
+- **Immutability** – constants cannot be changed
+- **Performance** – evaluated at compile-time
+- **Expressiveness** – improves code readability
 
 #### Example of Constants in Go
 
@@ -94,107 +91,174 @@ func main() {
 }
 ```
 
-In the example above, `Pi` and `Greeting` are constants that cannot be changed during the program’s execution.
-
 #### Constant Expressions
-
-Go allows you to use constants in expressions. For example:
 
 ```go
 const (
     x = 5
     y = 10
-    sum = x + y // sum is a constant, evaluated at compile time
+    sum = x + y // evaluated at compile time
 )
 ```
 
-### Data Types in Go
+## Data Types
 
-Go is a statically typed language, meaning the type of a variable is determined at compile time.
+Go is a statically typed language, meaning the type of a variable is known and checked at compile time.
 
-#### Basic Data Types
+### Basic Data Types
 
-1. **Numeric Types:**
+1. **Numeric Types**
 
-   - Integer: `int`, `int8`, `int16`, `int32`, `int64` (and their unsigned counterparts `uint`, etc.)
+   - Integer: `int`, `int8`, `int16`, `int32`, `int64`
+   - Unsigned: `uint`, `uint8`, `uint16`, `uint32`, `uint64`
    - Floating-point: `float32`, `float64`
-   - Complex numbers: `complex64`, `complex128`
+   - Complex: `complex64`, `complex128`
 
-2. **String:**
+2. **Boolean**
 
-   - UTF-8 encoded sequence of characters.
-   - Immutable.
+   - `true` or `false`
 
-3. **Boolean:**
-   - Represented as `true` or `false`.
+3. **String**
+
+   - Immutable UTF-8 character sequence
 
 ### Composite Data Types
 
-#### Array
+1. **Array**
 
-Fixed-size, homogeneous collection of elements.
+   - Fixed size and homogeneous
 
-```go
-var arr [5]int
-arr[0] = 10
-```
+   ```go
+   var arr [3]int = [3]int{1, 2, 3}
+   ```
 
-#### Slice
+2. **Slice**
 
-Dynamic-sized, more powerful abstraction over arrays.
+   - Dynamically sized
 
-```go
-nums := []int{1, 2, 3, 4}
-```
+   ```go
+   nums := []int{1, 2, 3}
+   ```
 
-#### Map
+3. **Map**
 
-Key-value pairs.
+   - Key-value pairs
 
-```go
-scores := map[string]int{"Alice": 90, "Bob": 85}
-```
+   ```go
+   m := map[string]int{"A": 1}
+   ```
 
-#### Struct
+4. **Struct**
 
-Custom data structure grouping multiple fields.
+   - Custom type grouping multiple fields
 
-```go
-type Person struct {
-    Name string
-    Age  int
-}
-```
+   ```go
+   type Person struct {
+       Name string
+       Age  int
+   }
+   ```
 
-#### Pointer
+5. **Pointer**
 
-Holds the memory address of a variable.
+   - Stores memory address of a value
 
-```go
-var p *int
-```
+   ```go
+   var ptr *int
+   ```
 
 ### Special Types
 
-#### Interface
+1. **Interface**
 
-Defines a set of methods that a type must implement.
+   - Defines a set of method signatures
+
+   ```go
+   type Shape interface {
+       Area() float64
+   }
+   ```
+
+2. **Function Types**
+
+   - Functions can be assigned to variables
+
+   ```go
+   var f func(int, int) int
+   ```
+
+## Type Casting
+
+Go is strongly typed and does not support implicit type conversions. Type casting must be done explicitly.
+
+### Syntax
 
 ```go
-type Shape interface {
-    Area() float64
+var a int = 42
+var b float64 = float64(a)
+```
+
+### Common Conversions
+
+- **Integer to Float**
+
+  ```go
+  var i int = 10
+  var f float64 = float64(i)
+  ```
+
+- **Float to Integer** (truncates decimal part)
+
+  ```go
+  var f float64 = 3.14
+  var i int = int(f) // i = 3
+  ```
+
+- **Integer to String**
+
+  ```go
+  import "strconv"
+  s := strconv.Itoa(42) // "42"
+  ```
+
+- **String to Integer**
+
+  ```go
+  import "strconv"
+  i, err := strconv.Atoi("42")
+  ```
+
+- **Rune to String**
+
+  ```go
+  var r rune = 'A'
+  var s string = string(r) // "A"
+  ```
+
+- **Byte to String**
+
+  ```go
+  var b byte = 65
+  s := string(b) // "A"
+  ```
+
+### Type Assertion (for interfaces)
+
+```go
+var i interface{} = "hello"
+s := i.(string) // type assertion
+```
+
+Use the comma-ok idiom to avoid panic:
+
+```go
+s, ok := i.(string)
+if ok {
+    fmt.Println("Conversion successful:", s)
 }
 ```
 
-#### Function Type
-
-Functions are first-class citizens and can be assigned to variables.
-
-```go
-var add func(int, int) int
-```
-
-## Variable Scope in Go
+## Variable Scope
 
 The scope of a variable defines where it can be accessed in a program.
 
@@ -204,61 +268,51 @@ Variables declared inside a function or block are accessible only within that bl
 
 ```go
 func main() {
-    x := 10 // Local to main
+    x := 10
     fmt.Println(x)
 }
 ```
 
 ### Package Scope
 
-Variables declared outside functions (at the package level) are accessible across the same package.
+Variables declared outside any function are accessible to all functions in the same package.
 
 ```go
-var count int // Accessible by all functions in the package
+var count int // package-scoped
 ```
 
-### Global Scope
+### Exported Scope (Cross-Package Access)
 
-Go doesn't have true "global variables" because all variables are bound to a package. However, public variables (starting with an uppercase letter) can be accessed by other packages if exported.
+A variable is **exported** (accessible from other packages) if it starts with an uppercase letter.
 
 ```go
-var PublicVar int // Accessible from other packages
+var PublicVar = "Visible to other packages"
 ```
 
 ### Shadowing
 
-A local variable can shadow a package-level or global variable with the same name.
+A local variable can **shadow** a package-level variable with the same name.
 
 ```go
 var x = 5
 
 func main() {
-    x := 10 // Shadows the package-level variable
-    fmt.Println(x) // Prints 10
+    x := 10
+    fmt.Println(x) // prints 10, not 5
 }
 ```
 
-## Best Practices
-
-1. Always initialize variables when possible to avoid confusion with default values.
-2. Use short declarations (`:=`) for concise code, but only within functions.
-3. Use descriptive variable names to make the code readable.
-4. Keep variable scope as narrow as possible to reduce side effects.
-5. Use constants for values that do not change during program execution to improve performance and readability.
-
-**Example Code**
+## Example Code
 
 ```go
 package main
 
 import "fmt"
 
-// Package-level variable
 var packageVar = "I'm accessible within this package!"
-const pi = 3.14159 // Constant
+const pi = 3.14159
 
 func main() {
-    // Local variables
     var localVar int = 42
     shortVar := "I was declared using short syntax!"
 
@@ -268,13 +322,19 @@ func main() {
     fmt.Println("Pi constant:", pi)
 
     demonstrateScope()
+    demonstrateCasting()
 }
 
 func demonstrateScope() {
-    // Access package-level variable
     fmt.Println(packageVar)
+}
 
-    // localVar is not accessible here, so the following line would cause an error:
-    // fmt.Println(localVar)
+func demonstrateCasting() {
+    var i int = 42
+    var f float64 = float64(i)
+    fmt.Println("Int to Float:", f)
+
+    s := fmt.Sprintf("%d", i)
+    fmt.Println("Int to String:", s)
 }
 ```
