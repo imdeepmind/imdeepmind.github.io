@@ -33,12 +33,12 @@ func main() {
 
 Output:
 
-```
+```bash
 Before mutation: [1 2 3]
 After mutation: [10 2 3]
 ```
 
-### Key Points:
+### Key Points
 
 - A slice's elements can be modified directly.
 - Appending to a slice (`append`) may create a new underlying array if the capacity is exceeded, but mutations on existing elements will still affect the original data.
@@ -73,12 +73,12 @@ func main() {
 
 Output:
 
-```
+```bash
 Before mutation: map[Alice:90 Bob:85]
 After mutation: map[Alice:95 Charlie:92]
 ```
 
-### Key Points:
+### Key Points
 
 - Maps are always passed by reference.
 - Mutating a map in one function affects the original map in the calling function.
@@ -119,12 +119,12 @@ func mutateAge(person *Person, newAge int) {
 
 Output:
 
-```
+```bash
 Before mutation: {John 30}
 After mutation: {Alice 35}
 ```
 
-### Key Points:
+### Key Points
 
 - Struct fields are mutable by default.
 - Passing a pointer to a struct allows the function to mutate its fields.
@@ -154,7 +154,7 @@ func main() {
 }
 ```
 
-### Key Points:
+### Key Points
 
 - Strings cannot be modified in place.
 - To "mutate" a string, create a new string using operations like concatenation or slicing.
@@ -186,12 +186,12 @@ func mutate(num *int) {
 
 Output:
 
-```
+```bash
 Before mutation: 10
 After mutation: 20
 ```
 
-### Key Points:
+### Key Points
 
 - Pointers enable mutation of variables outside their original scope.
 - Care must be taken to avoid unintended side effects when sharing pointers.
@@ -221,7 +221,7 @@ func main() {
 }
 ```
 
-### Key Points:
+### Key Points
 
 - Data passed through channels is immutable if it’s a value type (like integers or structs).
 - If you pass a reference type (like slices or pointers), the data can still be mutated.
@@ -260,15 +260,24 @@ func main() {
 }
 ```
 
-### Key Points:
+### Key Points
 
 - Use `sync.Mutex` to protect shared mutable data in concurrent programs.
 - Avoid race conditions by synchronizing access to shared variables.
 
-## Best Practices for Mutation in Go
+## Mutable vs Immutable Data Types
 
-1. **Minimize Mutation:** Prefer immutable data structures where possible to avoid unintended side effects.
-2. **Use Pointers Wisely:** Only pass pointers when necessary, as they can introduce complexity and side effects.
-3. **Document Mutations:** Clearly indicate functions or methods that perform mutations.
-4. **Handle Concurrency Carefully:** Use synchronization mechanisms like `sync.Mutex` or atomic operations to avoid race conditions.
-5. **Immutable Alternatives:** When working with strings or immutable data, prefer creating new instances rather than attempting mutations.
+| **Category**      | **Type**                  | **Mutable?**     | **Notes**                                                                   |
+| ----------------- | ------------------------- | ---------------- | --------------------------------------------------------------------------- |
+| **Numeric Types** | `int`, `float64`, etc.    | Yes              | Value can be changed by assigning a new value.                              |
+| **Boolean**       | `bool`                    | Yes              | Can be reassigned.                                                          |
+| **String**        | `string`                  | No               | Strings are immutable. Any operation returns a new string.                  |
+| **Array**         | `[N]T` (fixed-size array) | Yes (by element) | Array elements can be modified, but the array size is fixed.                |
+| **Slice**         | `[]T`                     | Yes              | Backed by an array; resizable; elements and length can be changed.          |
+| **Map**           | `map[K]V`                 | Yes              | Keys/values can be added, modified, or removed.                             |
+| **Struct**        | `struct`                  | Yes              | Fields can be updated if the struct is addressable and not constant.        |
+| **Pointer**       | `*T`                      | Yes              | The pointed-to value can be mutated.                                        |
+| **Function**      | `func`                    | No               | Functions are not modifiable at runtime; can be reassigned but not mutated. |
+| **Interface**     | `interface{}`             | Depends          | The underlying value may be mutable or immutable depending on the type.     |
+| **Channel**       | `chan T`                  | Yes              | You can send/receive values over it, modifying its internal state.          |
+| **Constant**      | `const` values            | No               | Immutable by definition.                                                    |
