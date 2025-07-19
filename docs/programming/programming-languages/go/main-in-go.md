@@ -4,6 +4,8 @@ sidebar_position: 2
 
 # `main` in Go
 
+<!-- markdownlint-disable MD024 -->
+
 Not just in go, but in many programming languages the `main` function/module/package mean something special.
 
 ## Go Modules

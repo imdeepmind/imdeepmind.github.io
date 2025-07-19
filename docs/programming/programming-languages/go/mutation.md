@@ -2,9 +2,9 @@
 sidebar_position: 3
 ---
 
-<!-- markdownlint-disable MD024 -->
-
 # Mutation
+
+<!-- markdownlint-disable MD024 -->
 
 Mutation refers to the process of altering the state or value of a variable, object, or data structure after it has been created. In Go, mutation is a common concept, especially in data structures like slices, maps, and structs. Go provides mechanisms to perform mutations while also emphasizing immutability in certain contexts (like strings).
 
