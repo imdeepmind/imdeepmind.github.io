@@ -38,17 +38,20 @@ If you come across any issues or errors in the notes, feel free to open an issue
 
 1. [Operating Systems](/docs/operating-systems/introduction.md)
 
-<!--
 ### System Design and Databases
 
-1. [Database](/docs/databases/introduction.md)
+1. [Networking](/docs/networking/introduction.md)
+   1. [Protocols](/docs/networking/protocols/client-server-architecture.md)
+   2. [Communication Design Patterns](/docs/networking/communication-design-patterns/request-response.md)
+
+<!--
+
+2. [Database](/docs/databases/introduction.md)
    1. [SQL](/docs/databases/sql/sql.md)
    2. [Database Engineering](/docs/databases/database-engineering/introduction.md)
    3. [Database Systems](/docs/databases/database-systems/introduction.md)
-2. [Networking](/docs/networking/introduction.md)
-   1. [Protocols](/docs/networking/protocols/client-server-architecture.md)
-   2. [Communication Design Patterns](/docs/networking/communication-design-patterns/request-response.md)
-3. [System Design](/docs/system-design/introduction.md)
+   4. [Communication Design Patterns](/docs/networking/communication-design-patterns/request-response.md)
+2. [System Design](/docs/system-design/introduction.md)
    1. [Fundamental Concepts](/docs/system-design/fundamental-concepts/high-and-low-level-design.md)
    2. [Communication in Distributed Systems](/docs/system-design/distributed-system-communication/mq-vs-ms.md)
    3. [Containers](/docs/system-design/containers/introduction.md)
