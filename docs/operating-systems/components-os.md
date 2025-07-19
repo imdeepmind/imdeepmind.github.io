@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Components of OS
 
 Operating Systems are complex software systems composed of various components, each responsible for managing different aspects of the computer system. Their architecture defines how these components interact with one another and with hardware and applications.
