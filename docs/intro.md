@@ -22,7 +22,7 @@ If you come across any issues or errors in the notes, feel free to open an issue
 
 ### Framework and Libraries
 
-2. [Frameworks and Libraries](/docs/frameworks-libraries/introduction.md)
+1. [Frameworks and Libraries](/docs/frameworks-libraries/introduction.md)
    1. [React](/docs/frameworks-libraries/frontend/react/introduction.md)
    2. [Django](/docs/frameworks-libraries/backend/django/introduction.md)
    3. [Flask](/docs/frameworks-libraries/backend/flask/introduction.md)
@@ -30,9 +30,13 @@ If you come across any issues or errors in the notes, feel free to open an issue
 
 ### Data Structure and Algorithms
 
-3. [Data Structure and Algorithms](/docs/data-structure-and-algorithms/introduction.md)
+1. [Data Structure and Algorithms](/docs/data-structure-and-algorithms/introduction.md)
    1. [Algorithms](/docs/data-structure-and-algorithms/introduction.md)
    2. [Time and Space Complexity](/docs/data-structure-and-algorithms/introduction.md)
+
+### Operating Systems
+
+1. [Operating Systems](/docs/operating-systems/introduction.md)
 
 <!--
 ### System Design and Databases
