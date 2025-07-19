@@ -34,6 +34,10 @@ If you come across any issues or errors in the notes, feel free to open an issue
    1. [Algorithms](/docs/data-structure-and-algorithms/introduction.md)
    2. [Time and Space Complexity](/docs/data-structure-and-algorithms/introduction.md)
 
+### Operating Systems
+
+4. [Operating Systems](/docs/operating-systems/introduction.md)
+
 <!--
 ### System Design and Databases
 
