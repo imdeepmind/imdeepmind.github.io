@@ -1,5 +1,5 @@
 ---
-sidebar_position: 16
+sidebar_position: 7
 ---
 
 # MQTT and AMQP
