@@ -4,6 +4,8 @@ sidebar_position: 60
 
 # Pointers
 
+<!-- markdownlint-disable MD024 -->
+
 Pointers are one of the fundamental concepts in Go (and many other programming languages). A pointer is a variable that stores the memory address of another variable. By using pointers, you can directly access and modify the value stored in a particular memory location.
 
 ## What Are Pointers?
@@ -18,7 +20,7 @@ Pointers are one of the fundamental concepts in Go (and many other programming l
 
 Use the `*` symbol to declare a pointer type.
 
-#### Syntax:
+#### Syntax
 
 ```go
 var ptr *int // Pointer to an integer
@@ -28,7 +30,7 @@ var ptr *int // Pointer to an integer
 
 Pointers are initialized using the address-of operator `&`.
 
-#### Example:
+#### Example
 
 ```go
 package main
@@ -46,7 +48,7 @@ func main() {
 
 Output:
 
-```
+```text
 Value of num: 10
 Address of num: 0xc000018090
 Value of ptr (address of num): 0xc000018090
@@ -56,7 +58,7 @@ Value of ptr (address of num): 0xc000018090
 
 The dereference operator `*` is used to access or modify the value stored at the memory address a pointer refers to.
 
-#### Example:
+### Example
 
 ```go
 package main
@@ -77,7 +79,7 @@ func main() {
 
 Output:
 
-```
+```text
 Value of num: 20
 Value of num using pointer: 20
 Updated value of num: 30
@@ -89,7 +91,7 @@ Updated value of num: 30
 
 You can pass pointers to functions to modify the original variable.
 
-#### Example:
+#### Example
 
 ```go
 package main
@@ -111,7 +113,7 @@ func main() {
 
 Output:
 
-```
+```text
 Before: 10
 After: 50
 ```
@@ -120,7 +122,7 @@ After: 50
 
 Functions can return pointers.
 
-#### Example:
+#### Example
 
 ```go
 package main
@@ -142,7 +144,7 @@ func main() {
 
 Pointers are often used with structs to modify fields without copying the entire struct.
 
-#### Example:
+### Example
 
 ```go
 package main
@@ -169,7 +171,7 @@ func main() {
 
 Output:
 
-```
+```text
 Before: {John 25}
 After: {John 30}
 ```
@@ -180,7 +182,7 @@ After: {John 30}
 
 You can use pointers to manipulate arrays.
 
-#### Example:
+#### Example
 
 ```go
 package main
@@ -202,7 +204,7 @@ func main() {
 
 Output:
 
-```
+```text
 Before: [1 2 3]
 After: [100 2 3]
 ```
@@ -211,7 +213,7 @@ After: [100 2 3]
 
 Slices inherently use references to an underlying array, so you don’t need explicit pointers to mutate them.
 
-#### Example:
+#### Example
 
 ```go
 package main
@@ -233,7 +235,7 @@ func main() {
 
 Output:
 
-```
+```text
 Before: [1 2 3]
 After: [100 2 3]
 ```
@@ -242,7 +244,7 @@ After: [100 2 3]
 
 Go supports pointers to pointers (though not commonly used).
 
-#### Example:
+### Example
 
 ```go
 package main
@@ -265,7 +267,7 @@ func main() {
 
 A pointer with no value assigned defaults to `nil`. Dereferencing a `nil` pointer causes a runtime panic.
 
-#### Example:
+### Example
 
 ```go
 package main
@@ -285,7 +287,7 @@ func main() {
 
 Output:
 
-```
+```text
 Pointer is nil
 ```
 
@@ -293,7 +295,7 @@ Pointer is nil
 
 Pointers can be useful in concurrent programming to share data between goroutines.
 
-#### Example:
+### Example
 
 ```go
 package main

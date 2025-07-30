@@ -1,8 +1,10 @@
 ---
-sidebar_position: 50
+sidebar_position: 7
 ---
 
 # Functions
+
+<!-- markdownlint-disable MD024 -->
 
 Functions are fundamental building blocks in Go, allowing you to write reusable, modular, and maintainable code. A function is a group of statements that perform a specific task and can optionally return a result.
 
@@ -18,7 +20,7 @@ Functions are fundamental building blocks in Go, allowing you to write reusable,
 
 The `func` keyword is used to define a function.
 
-#### Syntax:
+#### Syntax
 
 ```go
 func functionName(parameters) returnType {
@@ -26,7 +28,7 @@ func functionName(parameters) returnType {
 }
 ```
 
-#### Example:
+#### Example
 
 ```go
 package main
@@ -47,7 +49,7 @@ func main() {
 
 To execute a function, simply call it by its name and pass the required arguments.
 
-#### Example:
+#### Example
 
 ```go
 package main
@@ -70,7 +72,7 @@ func main() {
 
 A function can take a single parameter.
 
-#### Example:
+#### Example
 
 ```go
 func square(num int) int {
@@ -82,7 +84,7 @@ func square(num int) int {
 
 A function can take multiple parameters.
 
-#### Example:
+#### Example
 
 ```go
 func multiply(a int, b int) int {
@@ -94,7 +96,7 @@ func multiply(a int, b int) int {
 
 If multiple consecutive parameters share the same type, you can omit the type for all but the last parameter.
 
-#### Example:
+#### Example
 
 ```go
 func subtract(a, b int) int {
@@ -106,7 +108,7 @@ func subtract(a, b int) int {
 
 A variadic function accepts a variable number of arguments of the same type, denoted by `...`.
 
-#### Syntax:
+#### Syntax
 
 ```go
 func functionName(args ...type) returnType {
@@ -114,7 +116,7 @@ func functionName(args ...type) returnType {
 }
 ```
 
-#### Example:
+#### Example
 
 ```go
 package main
@@ -141,7 +143,7 @@ func main() {
 
 A function can return a single value.
 
-#### Example:
+#### Example
 
 ```go
 func add(a, b int) int {
@@ -153,7 +155,7 @@ func add(a, b int) int {
 
 Functions in Go can return multiple values, making it easy to return results and errors.
 
-#### Example:
+#### Example
 
 ```go
 package main
@@ -181,7 +183,7 @@ func main() {
 
 You can name return values in the function signature, which acts like declaring variables.
 
-#### Example:
+#### Example
 
 ```go
 func calculate(a, b int) (sum, product int) {
@@ -195,7 +197,7 @@ func calculate(a, b int) (sum, product int) {
 
 Functions in Go can be defined without a name, known as anonymous functions. These are often used for short-lived purposes or as arguments to higher-order functions.
 
-#### Example:
+### Example
 
 ```go
 package main
@@ -220,7 +222,7 @@ func main() {
 
 A closure is a function value that captures variables from its surrounding scope. These variables remain accessible even after the scope in which they were declared ends.
 
-#### Example:
+### Example
 
 ```go
 package main
@@ -249,7 +251,7 @@ func main() {
 
 The `defer` keyword postpones the execution of a statement until the surrounding function completes.
 
-#### Example:
+#### Example
 
 ```go
 package main
@@ -264,7 +266,7 @@ func main() {
 
 Output:
 
-```
+```text
 This is executed first
 This is deferred
 ```
@@ -273,7 +275,7 @@ This is deferred
 
 The `panic` function stops the normal execution of a program and begins the process of unwinding the stack.
 
-#### Example:
+#### Example
 
 ```go
 package main
@@ -291,7 +293,7 @@ func main() {
 
 The `recover` function is used to regain control of a panicking program. It is typically used inside a `defer` block.
 
-#### Example:
+#### Example
 
 ```go
 package main
@@ -312,7 +314,7 @@ func main() {
 
 Output:
 
-```
+```text
 Before panic
 Recovered from panic: Something went wrong
 ```
@@ -325,7 +327,7 @@ In Go, functions are first-class citizens, meaning they can be:
 - Passed as arguments to other functions.
 - Returned from other functions.
 
-#### Example:
+### Example
 
 ```go
 package main
@@ -350,7 +352,7 @@ func main() {
 
 In Go, functions can be associated with types, making them methods. A method is simply a function with a receiver.
 
-#### Example:
+### Example
 
 ```go
 package main
@@ -418,7 +420,7 @@ func main() {
 
 #### Output
 
-```
+```text
 Factorial of 5: 120
 ```
 
