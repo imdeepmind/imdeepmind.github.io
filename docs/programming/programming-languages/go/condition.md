@@ -1,8 +1,10 @@
 ---
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 # Conditions and Loops
+
+<!-- markdownlint-disable MD024 -->
 
 Go provides concise and flexible syntax for implementing conditional statements and loops. These constructs are essential for controlling the flow of execution and iterating over data structures.
 
@@ -14,7 +16,7 @@ Conditional statements allow decision-making in Go. The most common conditional 
 
 The `if` statement evaluates a condition, and if the condition is `true`, the code block inside the `if` statement is executed.
 
-#### Syntax:
+#### Syntax
 
 ```go
 if condition {
@@ -22,7 +24,7 @@ if condition {
 }
 ```
 
-#### Example:
+#### Example
 
 ```go
 package main
@@ -41,7 +43,7 @@ func main() {
 
 The `if-else` statement provides an alternative code block to execute if the condition is `false`.
 
-#### Syntax:
+#### Syntax
 
 ```go
 if condition {
@@ -51,7 +53,7 @@ if condition {
 }
 ```
 
-#### Example:
+#### Example
 
 ```go
 package main
@@ -72,7 +74,7 @@ func main() {
 
 This construct allows multiple conditions to be checked sequentially.
 
-#### Syntax:
+#### Syntax
 
 ```go
 if condition1 {
@@ -84,7 +86,7 @@ if condition1 {
 }
 ```
 
-#### Example:
+#### Example
 
 ```go
 package main
@@ -107,7 +109,7 @@ func main() {
 
 The `switch` statement is used for multiple conditional branches, often cleaner than an `if-else if` ladder.
 
-#### Syntax:
+#### Syntax
 
 ```go
 switch variable {
@@ -120,7 +122,7 @@ default:
 }
 ```
 
-#### Example:
+#### Example
 
 ```go
 package main
@@ -140,9 +142,10 @@ func main() {
 }
 ```
 
-#### Key Points:
+#### Key Points
 
 - You can use `switch` without a variable:
+
   ```go
   switch {
   case x < 10:
@@ -153,13 +156,14 @@ func main() {
       fmt.Println("x is greater than 20")
   }
   ```
+
 - Cases don't require explicit `break` statements; Go automatically exits the `switch` after the matching case.
 
 ### `fallthrough` in `switch`
 
 The `fallthrough` keyword forces the execution of the next case, even if it doesn’t match.
 
-#### Example:
+#### Example
 
 ```go
 package main
@@ -184,7 +188,7 @@ func main() {
 
 Output:
 
-```
+```text
 Two
 Three
 ```
@@ -197,7 +201,7 @@ Loops are used to repeat a block of code multiple times. Go only provides the `f
 
 The basic `for` loop iterates a specified number of times.
 
-#### Syntax:
+#### Syntax
 
 ```go
 for initialization; condition; post {
@@ -205,7 +209,7 @@ for initialization; condition; post {
 }
 ```
 
-#### Example:
+#### Example
 
 ```go
 package main
@@ -223,7 +227,7 @@ func main() {
 
 If only the condition is specified, the `for` loop behaves like a `while` loop.
 
-#### Syntax:
+#### Syntax
 
 ```go
 for condition {
@@ -231,7 +235,7 @@ for condition {
 }
 ```
 
-#### Example:
+#### Example
 
 ```go
 package main
@@ -251,7 +255,7 @@ func main() {
 
 A `for` loop without any condition creates an infinite loop.
 
-#### Syntax:
+#### Syntax
 
 ```go
 for {
@@ -259,7 +263,7 @@ for {
 }
 ```
 
-#### Example:
+#### Example
 
 ```go
 package main
@@ -282,7 +286,7 @@ func main() {
 
 The `range` keyword is used to iterate over elements of arrays, slices, maps, and strings.
 
-#### Syntax:
+#### Syntax
 
 ```go
 for index, value := range collection {
@@ -290,7 +294,7 @@ for index, value := range collection {
 }
 ```
 
-#### Examples:
+#### Examples
 
 1. **Iterating over a Slice:**
 
@@ -311,6 +315,7 @@ for index, value := range collection {
    ```
 
 3. **Iterating over a String:**
+
    ```go
    str := "Go"
    for index, char := range str {
@@ -318,9 +323,10 @@ for index, value := range collection {
    }
    ```
 
-#### Key Points:
+#### Key Points
 
 - Use `_` to ignore either the index or value:
+
   ```go
   for _, value := range nums {
       fmt.Println("Value:", value)
@@ -352,6 +358,7 @@ for index, value := range collection {
    ```
 
 3. **Labeled `break` and `continue`:** Used to control outer loops.
+
    ```go
    outer:
    for i := 0; i < 3; i++ {
@@ -404,7 +411,7 @@ func main() {
 
 #### Output
 
-```
+```text
 Index: 0, Value: 1
 Index: 1, Value: 2
 Index: 2, Value: 3
@@ -427,7 +434,7 @@ func main() {
 
 #### Output
 
-```
+```text
 Key: apple, Value: 5
 Key: banana, Value: 2
 ```
