@@ -1,5 +1,5 @@
 ---
-sidebar_position: 60
+sidebar_position: 10
 ---
 
 # Pointers
@@ -340,17 +340,3 @@ func main() {
 
 3. **Pointer Arithmetic:**
    Unlike languages like C, Go does not support pointer arithmetic for safety and simplicity.
-
-## Best Practices with Pointers
-
-1. **Use Pointers for Large Data Structures:**
-   Pass large structs or arrays by pointer to avoid unnecessary copying.
-
-2. **Avoid Overusing Pointers:**
-   Use pointers only when necessary. For example, slices and maps are already reference types and do not require pointers.
-
-3. **Initialize Pointers Properly:**
-   Always initialize pointers before dereferencing to avoid `nil` pointer dereference errors.
-
-4. **Document Pointer Usage:**
-   Clearly document when a function modifies a value through a pointer to avoid confusion.

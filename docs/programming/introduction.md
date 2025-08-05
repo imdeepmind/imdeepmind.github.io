@@ -66,5 +66,6 @@ These are my notes on programming, covering both programming languages and core 
       6. [Condition and Loops](/docs/programming/programming-languages/go/condition.md)
       7. [Functions](/docs/programming/programming-languages/go/functions.md)
       8. [Error Handling](/docs/programming/programming-languages/go/error-handling.md)
-      9. [Array, Slices, and Maps](/docs/programming/programming-languages/go/array-maps.md)
+      9. [File Handling](/docs/programming/programming-languages/go/files.md)
       10. [Pointers](/docs/programming/programming-languages/go/pointers.md)
+      11. [Array, Slices, and Maps](/docs/programming/programming-languages/go/array-maps.md)
