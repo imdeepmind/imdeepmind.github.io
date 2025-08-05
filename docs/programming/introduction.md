@@ -68,4 +68,5 @@ These are my notes on programming, covering both programming languages and core 
       8. [Error Handling](/docs/programming/programming-languages/go/error-handling.md)
       9. [File Handling](/docs/programming/programming-languages/go/files.md)
       10. [Pointers](/docs/programming/programming-languages/go/pointers.md)
-      11. [Array, Slices, and Maps](/docs/programming/programming-languages/go/array-maps.md)
+      11. [Structs and Custom Types](/docs/programming/programming-languages/go/structs.md)
+      12. [Array, Slices, and Maps](/docs/programming/programming-languages/go/array-maps.md)
