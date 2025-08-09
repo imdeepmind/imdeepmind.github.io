@@ -1,3 +1,7 @@
+---
+sidebar_position: 7
+---
+
 # Queue
 
 A **queue** is a linear data structure that follows the **First In First Out (FIFO)** principle. Elements are added at one end (called the **rear**) and removed from the other end (called the **front**).
