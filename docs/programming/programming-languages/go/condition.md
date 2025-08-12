@@ -144,7 +144,7 @@ func main() {
 
 #### Key Points
 
-- You can use `switch` without a variable:
+- We can use `switch` without a variable:
 
   ```go
   switch {
@@ -386,7 +386,7 @@ for index, value := range collection {
 - `index` is the current position (or key) in the collection.
 - `value` is the current element at that index or key.
 
-If you only need the value and not the index, you can omit the index:
+If we only need the value and not the index, we can omit the index:
 
 ```go
 for _, value := range collection {

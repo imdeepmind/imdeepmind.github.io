@@ -200,7 +200,7 @@ After mutation: 20
 
 ## Mutation in Channels
 
-Channels are used to communicate between goroutines, and the data sent through a channel is immutable (copies are sent). However, if you send a reference type (like a slice or a pointer), the referenced data can still be mutated.
+Channels are used to communicate between goroutines, and the data sent through a channel is immutable (copies are sent). However, if we send a reference type (like a slice or a pointer), the referenced data can still be mutated.
 
 ### Example: Mutating Data Passed Through Channels
 
@@ -226,7 +226,7 @@ func main() {
 ### Key Points
 
 - Data passed through channels is immutable if it’s a value type (like integers or structs).
-- If you pass a reference type (like slices or pointers), the data can still be mutated.
+- If we pass a reference type (like slices or pointers), the data can still be mutated.
 
 ## Concurrent Mutation
 
@@ -281,5 +281,5 @@ func main() {
 | **Pointer**       | `*T`                      | Yes              | The pointed-to value can be mutated.                                        |
 | **Function**      | `func`                    | No               | Functions are not modifiable at runtime; can be reassigned but not mutated. |
 | **Interface**     | `interface{}`             | Depends          | The underlying value may be mutable or immutable depending on the type.     |
-| **Channel**       | `chan T`                  | Yes              | You can send/receive values over it, modifying its internal state.          |
+| **Channel**       | `chan T`                  | Yes              | We can send/receive values over it, modifying its internal state.           |
 | **Constant**      | `const` values            | No               | Immutable by definition.                                                    |

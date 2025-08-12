@@ -71,3 +71,6 @@ These are my notes on programming, covering both programming languages and core 
       11. [Structs and Custom Types](/docs/programming/programming-languages/go/structs.md)
       12. [Interfaces](/docs/programming/programming-languages/go/interfaces.md)
       13. [Array, Slices, and Maps](/docs/programming/programming-languages/go/array-maps.md)
+      14. [Goroutines](/docs/programming/programming-languages/go/goroutines/introduction.md)
+          1. [Introduction](/docs/programming/programming-languages/go/goroutines/introduction.md)
+          2. [Channels](/docs/programming/programming-languages/go/goroutines/channels.md)

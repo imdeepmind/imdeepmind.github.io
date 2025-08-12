@@ -37,7 +37,7 @@ if err != nil {
 
 ## Creating Errors
 
-You can create errors using the `errors.New` function or `fmt.Errorf` for formatted errors:
+We can create errors using the `errors.New` function or `fmt.Errorf` for formatted errors:
 
 ```go
 import (
@@ -51,7 +51,7 @@ err2 := fmt.Errorf("failed to open file: %s", filename)
 
 ## Custom Error Types
 
-For more context, you can define custom error types:
+For more context, we can define custom error types:
 
 ```go
 type MyError struct {
@@ -80,7 +80,7 @@ if errors.Is(wrappedErr, err) {
 
 ## Sentinel Errors
 
-Sometimes, you define package-level variables for common errors (sentinel errors):
+Sometimes, we define package-level variables for common errors (sentinel errors):
 
 ```go
 var ErrNotFound = errors.New("not found")
