@@ -131,7 +131,7 @@ func describe(i interface{}) {
 
 ## Generics
 
-**Generics** allow you to write functions, types, and data structures that work with any type, increasing code reuse and type safety. Generics were introduced in Go 1.18.
+**Generics** allow us to write functions, types, and data structures that work with any type, increasing code reuse and type safety. Generics were introduced in Go 1.18.
 
 ### Defining Generic Functions
 
@@ -184,7 +184,7 @@ squares := Map(nums, func(x int) int { return x * x })
 
 ### Generic Constraints
 
-You can restrict type parameters using interfaces or built-in constraints.
+We can restrict type parameters using interfaces or built-in constraints.
 
 ```go
 // Only types that implement Stringer can be used

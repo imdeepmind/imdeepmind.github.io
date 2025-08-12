@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Channels
 
-A channel is a typed conduit through which you can send and receive values between goroutines. Channels are first-class objects in Go and are managed by the Go runtime.
+A channel is a typed conduit through which we can send and receive values between goroutines. Channels are first-class objects in Go and are managed by the Go runtime.
 
 - Channels are created using the `make` function.
 - They are strongly typed (e.g., `chan int`, `chan string`).
@@ -121,7 +121,7 @@ func main() {
 ### When to Use Each
 
 - **Unbuffered channels** are best for direct handoff and synchronization between goroutines.
-- **Buffered channels** are useful when you want to decouple sender and receiver, smooth out bursts, or implement queues.
+- **Buffered channels** are useful when we want to decouple sender and receiver, smooth out bursts, or implement queues.
 
 ### Real-World Use Cases
 

@@ -4,7 +4,7 @@ sidebar_position: 11
 
 # Structs and Custom Types
 
-Structs are Go's way of creating user-defined types that group together related data. They are similar to classes in other languages but without inheritance. Go also allows you to create custom types based on existing types, providing flexibility and type safety.
+Structs are Go's way of creating user-defined types that group together related data. They are similar to classes in other languages but without inheritance. Go also allows us to create custom types based on existing types, providing flexibility and type safety.
 
 ## Defining Structs
 
@@ -76,7 +76,7 @@ p.Email = "newemail@example.com"
 
 ## Anonymous Structs
 
-You can create structs without defining a named type:
+We can create structs without defining a named type:
 
 ```go
 person := struct {
@@ -153,7 +153,7 @@ fmt.Println(dog.Species) // Same as dog.Animal.Species
 
 ## Methods on Structs
 
-You can define methods on structs using receiver functions:
+We can define methods on structs using receiver functions:
 
 ```go
 type Rectangle struct {
@@ -183,7 +183,7 @@ fmt.Println(rect.Height) // 10
 
 ## Custom Types
 
-Go allows you to create custom types based on existing types:
+Go allows us to create custom types based on existing types:
 
 ```go
 type UserID int

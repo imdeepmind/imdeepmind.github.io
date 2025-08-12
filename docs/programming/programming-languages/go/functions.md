@@ -6,7 +6,7 @@ sidebar_position: 7
 
 <!-- markdownlint-disable MD024 -->
 
-Functions are fundamental building blocks in Go, allowing you to write reusable, modular, and maintainable code. A function is a group of statements that perform a specific task and can optionally return a result.
+Functions are fundamental building blocks in Go, allowing us to write reusable, modular, and maintainable code. A function is a group of statements that perform a specific task and can optionally return a result.
 
 ## What Are Functions?
 
@@ -94,7 +94,7 @@ func multiply(a int, b int) int {
 
 ### Shortened Syntax for Same Type Parameters
 
-If multiple consecutive parameters share the same type, you can omit the type for all but the last parameter.
+If multiple consecutive parameters share the same type, we can omit the type for all but the last parameter.
 
 #### Example
 
@@ -181,7 +181,7 @@ func main() {
 
 ### Named Return Values
 
-You can name return values in the function signature, which acts like declaring variables.
+We can name return values in the function signature, which acts like declaring variables.
 
 #### Example
 
@@ -428,4 +428,4 @@ Factorial of 5: 120
 
 - **Base Case**: The function should have a base case that terminates the recursion. Without a base case, the function would call itself indefinitely, leading to a stack overflow.
 - **Memory Usage**: Recursive functions use the call stack to keep track of function calls. Deep recursion can result in high memory usage or a stack overflow if the recursion goes too deep.
-- **Tail Recursion**: Go does not optimize tail recursion, so recursive functions with large depths may lead to stack overflow. If you need to optimize recursion, consider using iteration instead.
+- **Tail Recursion**: Go does not optimize tail recursion, so recursive functions with large depths may lead to stack overflow. If we need to optimize recursion, consider using iteration instead.

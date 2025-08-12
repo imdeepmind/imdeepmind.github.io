@@ -54,7 +54,7 @@ Permissions are specified as an octal number (e.g., `0644`). They control who ca
 
 ## Writing to Files
 
-You can write to files using several methods:
+We can write to files using several methods:
 
 - **Write bytes:**
 

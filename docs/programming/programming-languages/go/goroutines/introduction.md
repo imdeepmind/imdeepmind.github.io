@@ -11,7 +11,7 @@ A **goroutine** is a lightweight, independently executing function managed by th
 A goroutine is a function that runs concurrently with other goroutines in the same program.
 
 - They are much **cheaper** than operating system threads.
-- You create them by prefixing a function call with the `go` keyword.
+- We create them by prefixing a function call with the `go` keyword.
 - Once started, a goroutine is scheduled and managed by the Go runtime, not by the operating system.
 
 **Example:**
@@ -82,7 +82,7 @@ By default, the number of processors is equal to the number of CPU cores (`GOMAX
 
 ## Lifecycle of a Goroutine
 
-1. **Creation** — Starts when you call a function with the `go` keyword.
+1. **Creation** — Starts when we call a function with the `go` keyword.
 2. **Execution** — Runs independently, sharing the program’s memory space with other goroutines.
 3. **Termination** — Ends when the function returns.
 4. **Program Exit** — If `main()` finishes, all goroutines are stopped immediately.

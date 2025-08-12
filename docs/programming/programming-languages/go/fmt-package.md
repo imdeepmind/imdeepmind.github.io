@@ -98,7 +98,7 @@ Useful for constructing strings dynamically or logging.
 
 ## Formatting Width and Alignment
 
-You can control **width**, **padding**, and **alignment** with formatting directives.
+We can control **width**, **padding**, and **alignment** with formatting directives.
 
 ### Examples
 

@@ -6,7 +6,7 @@ sidebar_position: 10
 
 <!-- markdownlint-disable MD024 -->
 
-Pointers are one of the fundamental concepts in Go (and many other programming languages). A pointer is a variable that stores the memory address of another variable. By using pointers, you can directly access and modify the value stored in a particular memory location.
+Pointers are one of the fundamental concepts in Go (and many other programming languages). A pointer is a variable that stores the memory address of another variable. By using pointers, we can directly access and modify the value stored in a particular memory location.
 
 ## What Are Pointers?
 
@@ -89,7 +89,7 @@ Updated value of num: 30
 
 ### Passing Pointers to Functions
 
-You can pass pointers to functions to modify the original variable.
+We can pass pointers to functions to modify the original variable.
 
 #### Example
 
@@ -180,7 +180,7 @@ After: {John 30}
 
 ### Pointers and Arrays
 
-You can use pointers to manipulate arrays.
+We can use pointers to manipulate arrays.
 
 #### Example
 
@@ -211,7 +211,7 @@ After: [100 2 3]
 
 ### Slices
 
-Slices inherently use references to an underlying array, so you don’t need explicit pointers to mutate them.
+Slices inherently use references to an underlying array, so we don’t need explicit pointers to mutate them.
 
 #### Example
 

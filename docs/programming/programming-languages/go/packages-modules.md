@@ -67,7 +67,7 @@ func main() {
 }
 ```
 
-If you change `package main` to something else (like `package utils`), Go will not generate an executable for it. It will be a reusable library.
+If we change `package main` to something else (like `package utils`), Go will not generate an executable for it. It will be a reusable library.
 
 ## `func main()`
 
@@ -79,12 +79,12 @@ The `main()` function is the **entry point** of a Go application.
 
 - It **must** have the signature `func main()`
 - It **cannot** take arguments or return values
-- You can define other functions and call them from `main()`
+- We can define other functions and call them from `main()`
 - There can only be **one `main()` function** per `main` package
 
 ### Behavior
 
-- When you run `go run .` or build and execute the binary, Go looks for `main.main()` to start execution.
+- When we run `go run .` or build and execute the binary, Go looks for `main.main()` to start execution.
 
 ### Example
 
