@@ -4,7 +4,14 @@ sidebar_position: 1
 
 # Introduction
 
-MCP is a protocol specification that defines how context, metadata, and control signals are exchanged between AI models and their consumers (applications, services, or other models). It provides a standardized way to describe the environment, user intent, session state, and other relevant information that can influence model behavior. MCP is designed to be framework-agnostic, supporting integration with models built in TensorFlow, PyTorch, ONNX, and other platforms.
+MCP is an open protocol that standardizes how applications provide context to large language models (LLMs) and other AI models. Much like a USB-C port offers a universal connection for devices and accessories, MCP serves as a universal interface for AI applications, enabling seamless integration between models, data sources, and tools. This standardization empowers developers to build intelligent agents and sophisticated workflows on top of LLMs, connecting models to the broader digital ecosystem with ease.
+
+Key features of MCP include:
+
+- **Pre-built Integrations:** MCP offers a growing library of ready-to-use integrations, allowing LLMs and other models to connect directly to various data sources, APIs, and services.
+- **Custom Integration Framework:** Developers can build their own integrations in a standardized way, ensuring compatibility and ease of maintenance across AI applications.
+- **Open Protocol:** MCP is open and free for anyone to implement, fostering innovation and collaboration within the AI community.
+- **Portability of Context:** MCP enables users to switch between different applications while retaining their context, making AI solutions more flexible and user-centric.
 
 ## Key Components of MCP
 
