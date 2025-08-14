@@ -169,9 +169,3 @@ $$
 | Max height for $N$ nodes (full)     | $\frac{N - 1}{n}$                                |
 | Max height for $N$ nodes (non-full) | $N - 1$                                          |
 | Full n-ary tree relation            | $E = (n-1)I + 1$                                 |
-
----
-
-If you want, I can now **draw a mermaid diagram showing a perfect vs minimal full n-ary tree for a given height**, so the min/max formula is visually easy to remember.
-
-Do you want me to add that visual?
