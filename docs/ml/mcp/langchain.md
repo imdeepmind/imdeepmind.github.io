@@ -14,21 +14,21 @@ LangChain is a framework that helps Large Language Models (LLMs) interact with e
 - Deciding which tool to call and when, based on user requests.
 - Orchestrating multi-step reasoning so LLMs can chain different tool calls together.
 
-Without LangChain, an LLM would need a custom integration for every API. With LangChain, you can register APIs (including MCP servers) as "tools," describe what they do, and let LangChain handle tool selection, argument parsing, and result formatting.
+Without LangChain, an LLM would need a custom integration for every API. With LangChain, we can register APIs (including MCP servers) as "tools," describe what they do, and let LangChain handle tool selection, argument parsing, and result formatting.
 
 ## MCP Recap
 
-MCP (Model Context Protocol) is a protocol that allows you to create servers exposing capabilities (e.g., `get_weather`, `get_weather_news`) with metadata so an LLM knows:
+MCP (Model Context Protocol) is a protocol that allows us to create servers exposing capabilities (e.g., `get_weather`, `get_weather_news`) with metadata so an LLM knows:
 
 - What functions exist
 - What parameters they take
 - What they return
 
-When you connect an MCP server to an LLM, the LLM can directly call those MCP tools.
+When we connect an MCP server to an LLM, the LLM can directly call those MCP tools.
 
 ## Where LangChain Fits
 
-If you have multiple MCP servers or want more control and reasoning, LangChain acts as:
+If we have multiple MCP servers or want more control and reasoning, LangChain acts as:
 
 1. A middle layer between the LLM and MCP servers.
 2. A tool manager — it registers MCP functions as LangChain tools.
@@ -43,7 +43,7 @@ If you have multiple MCP servers or want more control and reasoning, LangChain a
 
 **User query:**
 
-> Do I need an umbrella in Mumbai tomorrow and what’s the latest news about the rain?
+> Do we need an umbrella in Mumbai tomorrow and what’s the latest news about the rain?
 
 ## How LangChain Handles It
 
@@ -62,7 +62,7 @@ If you have multiple MCP servers or want more control and reasoning, LangChain a
    - News MCP → `"Heavy rainfall expected in Mumbai tomorrow…"`
 5. **LLM Final Response**
    - LangChain passes both results back to the LLM, which combines them into a natural response:
-     > Yes, you’ll need an umbrella tomorrow in Mumbai. Heavy rainfall is expected according to the latest news.
+     > Yes, we’ll need an umbrella tomorrow in Mumbai. Heavy rainfall is expected according to the latest news.
 
 ## Under the Hood
 
@@ -86,7 +86,7 @@ LangChain internally does:
   It generates a system message like:
 
   ```text
-  You are an assistant with access to the following tools:
+  We are an assistant with access to the following tools:
   1. get_weather(city, date) → Get temperature and rain status.
   2. get_weather_news(city) → Get latest weather news.
   ```
@@ -122,7 +122,7 @@ sequenceDiagram
     participant MCP1 as Weather MCP
     participant MCP2 as Weather News MCP
 
-    U->>LC: "Do I need an umbrella in Mumbai tomorrow and news about rain?"
+    U->>LC: "Do we need an umbrella in Mumbai tomorrow and news about rain?"
     LC->>LLM: Send query + tool descriptions
     LLM-->>LC: Call get_weather("Mumbai", "2025-08-15")
     LC->>MCP1: get_weather("Mumbai", "2025-08-15")
@@ -134,7 +134,7 @@ sequenceDiagram
 
     LC->>LLM: Return both results
     LLM-->>LC: Form final natural language answer
-    LC-->>U: "Yes, you’ll need an umbrella..."
+    LC-->>U: "Yes, we’ll need an umbrella..."
 ```
 
 ## Why LangChain is Useful with MCP

@@ -11,7 +11,7 @@ Key features of MCP include:
 - **Pre-built Integrations:** MCP offers a growing library of ready-to-use integrations, allowing LLMs and other models to connect directly to various data sources, APIs, and services.
 - **Custom Integration Framework:** Developers can build their own integrations in a standardized way, ensuring compatibility and ease of maintenance across AI applications.
 - **Open Protocol:** MCP is open and free for anyone to implement, fostering innovation and collaboration within the AI community.
-- **Portability of Context:** MCP enables users to switch between different applications while retaining their context, making AI solutions more flexible and user-centric.
+- **Portability of Context:** MCP enables us to switch between different applications while retaining our context, making AI solutions more flexible and user-centric.
 
 ## Key Components of MCP
 

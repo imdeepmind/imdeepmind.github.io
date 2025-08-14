@@ -26,7 +26,7 @@ if __name__ == "__main__":
 
 **Key Points:**
 
-- Define your MCP server with `FastMCP`.
+- Define our MCP server with `FastMCP`.
 - Register tools using the `@mcp.tool` decorator.
 - Start the server with `mcp.run()`.
 - This approach is high-level, Pythonic, and aligns with the official FastMCP 2.0 documentation.
