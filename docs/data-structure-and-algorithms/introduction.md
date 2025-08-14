@@ -18,7 +18,6 @@ These are my notes on Data Structure Algorithms
 6. [Queue](/docs/data-structure-and-algorithms/algorithms/queue.md)
 7. [Tree](/docs/data-structure-and-algorithms/algorithms/tree/introduction.md)
    1. [Introduction](/docs/data-structure-and-algorithms/algorithms/tree/introduction.md)
-   2. [Height and Nodes](/docs/data-structure-and-algorithms/algorithms/tree/height-node.md)
 
 ### Time and Space Complexity
 
