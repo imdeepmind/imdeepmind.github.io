@@ -50,7 +50,7 @@ $$
 
 ## Number of Labelled Strict Binary Trees
 
-If you have $n$ internal nodes (thus $2n+1$ total labelled nodes), the number of labelled strict binary trees is:
+If we have $n$ internal nodes (thus $2n+1$ total labelled nodes), the number of labelled strict binary trees is:
 
 $$
 \text{Count} = C_n \cdot (2n+1)!

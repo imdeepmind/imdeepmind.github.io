@@ -65,7 +65,7 @@ So, **5 distinct BSTs** can be formed.
 
 ## Number of Labelled Binary Trees
 
-If you have `n` **labelled** nodes (distinct labels), the number of **labelled binary trees** is:
+If we have `n` **labelled** nodes (distinct labels), the number of **labelled binary trees** is:
 
 $$
 \text{Count} = C_n \cdot n!
