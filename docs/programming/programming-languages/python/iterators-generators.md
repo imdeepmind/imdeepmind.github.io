@@ -10,12 +10,12 @@ sidebar_position: 12
 
 An **iterator** is an object that implements two key methods:
 
-1.  `__iter__()`: Returns the iterator object itself. This method is required for an object to be considered iterable.
-2.  `__next__()`: Returns the next item in the sequence. If there are no more items, it raises a `StopIteration` exception.
+1. `__iter__()`: Returns the iterator object itself. This method is required for an object to be considered iterable.
+2. `__next__()`: Returns the next item in the sequence. If there are no more items, it raises a `StopIteration` exception.
 
 In Python, most collections such as lists, tuples, and dictionaries are iterables. This means We can loop over them using a `for` loop. However, these collections are not iterators themselves. They are iterable objects because they implement the `__iter__()` method. When We pass an iterable object to the `iter()` function, it returns an iterator.
 
-### Example of Using an Iterator:
+### Example of Using an Iterator
 
 ```python
 # Creating an iterator for a list
@@ -29,7 +29,7 @@ print(next(iterator))  # Output: 4
 # print(next(iterator))  # This will raise StopIteration
 ```
 
-### Custom Iterator:
+### Custom Iterator
 
 We can create Our own iterator by defining a class with `__iter__()` and `__next__()` methods.
 
@@ -53,7 +53,7 @@ for num in countdown:
     print(num)  # Output: 4, 3, 2, 1, 0
 ```
 
-### Advantages of Iterators:
+### Advantages of Iterators
 
 - **Memory efficient:** Iterators yield one item at a time, which makes them more memory-efficient than lists, especially for large datasets.
 - **Lazy evaluation:** Iterators do not generate all items at once, which allows for processing large data sets one element at a time.
@@ -64,7 +64,7 @@ for num in countdown:
 
 A **generator** is a special type of iterator that is defined using a function with the `yield` keyword. Instead of returning a value with `return`, the generator function produces a sequence of values one at a time using `yield`. The state of the generator is saved between calls, so the generator function can continue where it left off after each `yield`.
 
-### Example of a Simple Generator:
+### Example of a Simple Generator
 
 ```python
 def count_up_to(max):
@@ -80,7 +80,7 @@ print(next(counter))  # Output: 3
 # print(next(counter))  # This will raise StopIteration
 ```
 
-### Generator Expression:
+### Generator Expression
 
 We can also create generators using generator expressions, which have a syntax similar to list comprehensions but with parentheses.
 
@@ -91,13 +91,13 @@ for square in squares:
     print(square)  # Output: 0, 1, 4, 9, 16
 ```
 
-### Advantages of Generators:
+### Advantages of Generators
 
 - **Memory Efficient:** Like iterators, generators do not store all values in memory at once. Instead, they generate values on the fly, which is especially useful for working with large datasets.
 - **Concise:** Generators allow We to write cleaner and more concise code for producing sequences of data.
 - **Lazy Evaluation:** Generators evaluate values lazily, which means values are only generated when requested.
 
-### When to Use Generators:
+### When to Use Generators
 
 - When working with large datasets, like reading lines from a file, or streaming data from an external source.
 - When We want to avoid storing large amounts of data in memory at once.

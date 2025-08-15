@@ -4,6 +4,8 @@ sidebar_position: 13
 
 # Threading
 
+<!-- markdownlint-disable MD024 -->
+
 Threading is a technique that allows a program to perform multiple operations concurrently within the same process. In Python, the `threading` module provides a way to create and manage threads, enabling developers to write programs that can execute multiple tasks seemingly simultaneously.
 
 ## What is a Thread?
@@ -113,17 +115,17 @@ These are critical for avoiding race conditions, deadlocks, and maintaining cons
 
 A `Lock` is the most basic synchronization primitive. It allows **only one thread** to enter a critical section at a time.
 
-#### Behavior:
+#### Behavior
 
 - Initially unlocked.
 - A thread must acquire it before entering the critical section and release it when done.
 - If a second thread tries to acquire it while it’s locked, it will block until the lock is available.
 
-#### Use Case:
+#### Use Case
 
 Protecting shared data (counters, file handles, database connections) from concurrent modification.
 
-#### Example:
+#### Example
 
 ```python
 import threading
@@ -148,16 +150,16 @@ print("Final counter value:", shared_counter)
 
 An `RLock` (Reentrant Lock) is similar to `Lock` but can be **acquired multiple times** by the same thread without blocking itself.
 
-#### Behavior:
+#### Behavior
 
 - Maintains a count of acquisitions/releases.
 - Only fully releases when the count drops to zero.
 
-#### Use Case:
+#### Use Case
 
 When a function that acquires a lock calls another function that also tries to acquire the same lock (e.g., nested locking).
 
-#### Example:
+#### Example
 
 ```python
 import threading
@@ -184,15 +186,15 @@ Without `RLock`, this would deadlock because `Lock` is not reentrant.
 
 A `Semaphore` is a counter-based lock. It allows up to **N threads** to enter a critical section at once. When the counter reaches zero, additional threads block.
 
-#### Behavior:
+#### Behavior
 
 - Useful to limit concurrent access to a resource (e.g., a database connection pool).
 
-#### Use Case:
+#### Use Case
 
 Rate-limiting or controlling the number of concurrent threads accessing a shared resource.
 
-#### Example:
+#### Example
 
 ```python
 import threading
@@ -215,21 +217,21 @@ Only 3 threads run concurrently; the others wait until a slot becomes available.
 
 ### Event (`threading.Event`)
 
-#### Overview:
+#### Overview
 
 An `Event` is a simple flag used for communication between threads. One thread signals an event, and others wait for it.
 
-#### Behavior:
+#### Behavior
 
 - `set()`: Marks the event as signaled.
 - `clear()`: Resets the flag.
 - `wait()`: Blocks until the event is set.
 
-#### Use Case:
+#### Use Case
 
 One thread must wait until another completes some task or reaches a specific state.
 
-#### Example:
+#### Example
 
 ```python
 import threading
@@ -253,21 +255,21 @@ threading.Thread(target=controller).start()
 
 ### Condition (`threading.Condition`)
 
-#### Overview:
+#### Overview
 
 A `Condition` variable allows **complex communication** between threads. It combines a lock with a signaling mechanism.
 
-#### Behavior:
+#### Behavior
 
 - Threads can `wait()` for a certain condition.
 - Another thread calls `notify()` (or `notify_all()`) to wake up waiting threads.
 - Must acquire the lock before calling `wait()` or `notify()`.
 
-#### Use Case:
+#### Use Case
 
 Useful for producer-consumer problems or when a thread must wait until a specific condition is true.
 
-#### Example:
+#### Example
 
 ```python
 import threading

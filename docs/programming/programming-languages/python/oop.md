@@ -4,6 +4,8 @@ sidebar_position: 9
 
 # Object-Oriented Programming (OOP)
 
+<!-- markdownlint-disable MD024 -->
+
 Object-Oriented Programming (OOP) is a programming paradigm that uses "objects" to model real-world or abstract entities. Objects contain data (attributes) and behaviors (methods). Python supports OOP principles like encapsulation, inheritance, polymorphism, and abstraction, which help in creating structured, reusable, and modular code.
 
 ## Classes and Objects
@@ -230,7 +232,7 @@ print(rectangle.area())  # Output: 50
 
 Dunder (double underscore) or magic methods allow We to define behaviors for built-in operators and functions for Our objects.
 
-### Common Dunder Methods:
+### Common Dunder Methods
 
 - `__init__`: Constructor to initialize objects.
 - `__str__`: Defines how the object is represented as a string.
@@ -240,7 +242,7 @@ Dunder (double underscore) or magic methods allow We to define behaviors for bui
 - `__eq__`: Compares objects for equality.
 - `__lt__`: Compares objects for less-than relationship.
 
-### Examples of Dunder Methods:
+### Examples of Dunder Methods
 
 ```python
 class Book:
@@ -332,7 +334,7 @@ Here, `super()` refers to the parent class, and `method_name` is the method that
 
 ### Examples
 
-#### Using `super()` in Single Inheritance:
+#### Using `super()` in Single Inheritance
 
 ```python
 class Animal:
@@ -361,7 +363,7 @@ dog.speak()
 
 In this example, `super().__init__(name)` calls the `__init__` method of the `Animal` class from the `Dog` class. Similarly, `super().speak()` calls the `speak` method of the parent class `Animal`.
 
-#### Using `super()` in Multiple Inheritance:
+#### Using `super()` in Multiple Inheritance
 
 In the case of multiple inheritance, `super()` helps manage the method resolution order (MRO) to call methods from all parent classes properly.
 
@@ -388,7 +390,7 @@ c.method()
 
 In this case, the `super()` call in class `C` ensures that the `method` from class `A` is called before executing the logic in class `C`. The MRO ensures that methods are called in the correct order in multiple inheritance.
 
-#### Using `super()` to Avoid Redundant Code:
+#### Using `super()` to Avoid Redundant Code
 
 When overriding methods, `super()` helps avoid redundant code by allowing We to call the parent class's implementation without re-implementing it.
 

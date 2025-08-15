@@ -4,6 +4,8 @@ sidebar_position: 17
 
 # Decorators
 
+<!-- markdownlint-disable MD024 -->
+
 ## What are Decorators?
 
 Decorators in Python are a powerful feature that allows you to modify or enhance the behavior of functions or classes **without modifying their actual code**. They are often used to wrap another function or method, adding extra functionality in a clean and reusable manner.
@@ -52,7 +54,7 @@ my_function()
 
 **Output**:
 
-```
+```text
 Before the function call.
 This is my function.
 After the function call.
@@ -82,7 +84,7 @@ greet("Abhishek")
 
 **Output**:
 
-```
+```text
 Function 'greet' is being called.
 Hello, Abhishek!
 Function 'greet' finished execution.
@@ -109,7 +111,7 @@ print(f"Result: {result}")
 
 **Output**:
 
-```
+```text
 Calling add with arguments (10, 20) and {}
 Result: 30
 ```
@@ -141,7 +143,7 @@ print(greet())
 
 **Output**:
 
-```
+```text
 HELLO!
 ```
 
@@ -167,7 +169,7 @@ print(multiply(5, 3))
 
 **Output**:
 
-```
+```text
 30
 ```
 
@@ -193,7 +195,7 @@ say_hello()
 
 **Output**:
 
-```
+```text
 Hello!
 Hello!
 Hello!
@@ -291,17 +293,18 @@ slow_function()
 ## Best Practices for Using Decorators
 
 1. **Use `functools.wraps`**:
+
    - When defining a decorator, use `functools.wraps` to preserve the metadata (e.g., function name, docstring) of the original function.
 
-```python
-from functools import wraps
+   ```python
+   from functools import wraps
 
-def decorator(func):
-    @wraps(func)
-    def wrapper(*args, **kwargs):
-        return func(*args, **kwargs)
-    return wrapper
-```
+   def decorator(func):
+       @wraps(func)
+       def wrapper(*args, **kwargs):
+           return func(*args, **kwargs)
+       return wrapper
+   ```
 
 2. **Keep Decorators Simple**:
 

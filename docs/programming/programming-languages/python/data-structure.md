@@ -4,6 +4,8 @@ sidebar_position: 4
 
 # Common Data Structures in Python
 
+<!-- markdownlint-disable MD024 -->
+
 Python provides several **built-in data structures** that are highly optimized and allow developers to efficiently manage and manipulate data. The key ones are `list`, `dict`, `set`, `tuple`, and `str` (string). Let’s explore these data structures, their implementations, and the common methods associated with each.
 
 ## List

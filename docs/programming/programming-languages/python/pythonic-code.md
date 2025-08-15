@@ -4,6 +4,8 @@ sidebar_position: 8
 
 # Pythonic Code
 
+<!-- markdownlint-disable MD024 -->
+
 "**Pythonic**" refers to writing code that adheres to the conventions, idioms, and best practices that are considered natural and efficient in Python. Pythonic code is not only functional but also elegant, readable, and maintainable. Writing Pythonic code typically involves using the language’s features in a way that is most efficient and idiomatic, making it easy to understand for others who are familiar with Python.
 
 In this note, we’ll explore the key ideas behind Pythonic code, focusing on Python's **Zen of Python**, **list comprehensions**, **generator expressions**, and **unpacking**.
@@ -50,7 +52,7 @@ Python supports clear separation of concerns using namespaces, modules, and clas
 
 List comprehensions are a concise, readable, and efficient way to create lists in Python. They allow We to generate a new list by applying an expression to each element of an iterable, optionally filtering elements based on a condition.
 
-### Syntax of List Comprehensions:
+### Syntax of List Comprehensions
 
 ```python
 [expression for item in iterable if condition]
@@ -67,7 +69,7 @@ print(squares)
 
 Output:
 
-```
+```text
 [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
 ```
 
@@ -82,7 +84,7 @@ print(even_squares)
 
 Output:
 
-```
+```text
 [0, 4, 16, 36, 64]
 ```
 
@@ -98,7 +100,7 @@ print(flattened)
 
 Output:
 
-```
+```text
 [1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 
@@ -106,7 +108,7 @@ Output:
 
 Generator expressions are similar to list comprehensions but are more memory efficient. Instead of creating an entire list in memory, a generator yields items one by one, which is especially useful when working with large datasets or infinite sequences.
 
-### Syntax of Generator Expressions:
+### Syntax of Generator Expressions
 
 ```python
 (expression for item in iterable if condition)
@@ -134,7 +136,7 @@ print(total)
 
 Output:
 
-```
+```text
 285
 ```
 
@@ -159,7 +161,7 @@ print(x, y)
 
 Output:
 
-```
+```text
 3 4
 ```
 
@@ -174,7 +176,7 @@ print(a, middle, b)
 
 Output:
 
-```
+```text
 1 [2, 3, 4] 5
 ```
 
@@ -192,7 +194,7 @@ print(add(*args))
 
 Output:
 
-```
+```text
 8
 ```
 
@@ -208,7 +210,7 @@ for num, letter in pairs:
 
 Output:
 
-```
+```text
 1 a
 2 b
 3 c
@@ -229,7 +231,7 @@ for idx, value in enumerate(['a', 'b', 'c']):
 
 Output:
 
-```
+```text
 0 a
 1 b
 2 c
@@ -248,7 +250,7 @@ for name, age in zip(names, ages):
 
 Output:
 
-```
+```text
 Alice 25
 Bob 30
 Charlie 35

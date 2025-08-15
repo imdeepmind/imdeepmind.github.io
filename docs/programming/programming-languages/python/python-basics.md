@@ -4,6 +4,8 @@ sidebar_position: 2
 
 # Python Basics
 
+<!-- markdownlint-disable MD024 -->
+
 ## Variables and Data Types
 
 **Variables**: Variables in Python are used to store data and do not require explicit declaration. They are created when a value is assigned.
@@ -50,11 +52,14 @@ Here, `5 * 2` is evaluated first, and then `10 + 10`.
 When operators of the same precedence appear together, associativity determines their evaluation order:
 
 - **Left-to-right associativity**: Most operators (e.g., `+`, `-`, `*`, `/`, etc.) are evaluated from left to right.
+
   ```python
   result = 10 - 5 + 2  # Evaluated as (10 - 5) + 2
   print(result)  # Output: 7
   ```
+
 - **Right-to-left associativity**: Some operators (e.g., `**` for exponentiation and assignment operators like `=`) are evaluated from right to left.
+
   ```python
   result = 2 ** 3 ** 2  # Evaluated as 2 ** (3 ** 2)
   print(result)  # Output: 512
@@ -274,7 +279,7 @@ func(1, b=2, c=3)  # Output: 1 and {'b': 2, 'c': 3}
 
 You can use both `*` and `**` together in function definitions to handle both extra positional and keyword arguments.
 
-##### Example
+#### Example
 
 ```python
 def func(a, *args, **kwargs):

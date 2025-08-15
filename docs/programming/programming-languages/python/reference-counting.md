@@ -22,6 +22,7 @@ Whenever an object is **referenced** or **dereferenced**, its reference count is
 
 ### Lifecycle of an Object (Reference Counting)
 
+<div style={{textAlign: 'center'}}>
 ```mermaid
 graph TD
     A[Object Created] -->|Reference Count = 1| B[More References Added]
@@ -29,6 +30,7 @@ graph TD
     C -->|References Removed| D[Reference Count = 0]
     D -->|Deallocated| E[Memory Released]
 ```
+</div>
 
 ## Reference Count Updates
 
@@ -89,7 +91,9 @@ Reference count updates occur during **assignment**, **function calls**, and whe
    ```
 
 3. **Removing from a Data Structure**:
+
    - Removing an object from a container decreases its reference count.
+
    ```python
    my_list = []
    x = [1, 2, 3]
@@ -184,12 +188,14 @@ print(gc.get_objects())
 
 ### Reference Count Increment/Decrement Flow
 
+<div style={{textAlign: 'center'}}>
 ```mermaid
 graph TD
     A[Object in Memory] -->|New Reference| B[Increment Reference Count]
     A -->|Reference Removed| C[Decrement Reference Count]
     C -->|Reference Count = 0| D[Deallocate Object]
 ```
+</div>
 
 ### Circular Reference Problem
 

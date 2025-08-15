@@ -26,9 +26,9 @@ Where:
 
 ## How Do Context Managers Work?
 
-1.  **Enter the Context:** The `__enter__` method is called when the `with` block is entered. It can perform setup actions like opening a file or acquiring a resource.
-2.  **Execute the Block:** The code inside the `with` block is executed.
-3.  **Exit the Context:** The `__exit__` method is called after the block is executed, even if an exception occurs. This method is responsible for performing cleanup tasks like closing a file or releasing a resource.
+1. **Enter the Context:** The `__enter__` method is called when the `with` block is entered. It can perform setup actions like opening a file or acquiring a resource.
+2. **Execute the Block:** The code inside the `with` block is executed.
+3. **Exit the Context:** The `__exit__` method is called after the block is executed, even if an exception occurs. This method is responsible for performing cleanup tasks like closing a file or releasing a resource.
 
 ## Example: Using a Built-in Context Manager
 
@@ -69,7 +69,7 @@ with MyContextManager() as cm:
     # Uncomment the following line to see exception handling
     # raise ValueError("An error occurred")
 
-# Output:
+# Output
 # Entering the context
 # Inside the context
 # Exiting the context
@@ -80,7 +80,7 @@ In this custom context manager:
 - `__enter__()` prints "Entering the context" and returns the instance of the context manager, which can be used inside the block.
 - `__exit__()` handles the exit logic, including printing "Exiting the context" and checking if an exception occurred. If an exception is raised inside the block, it is passed to `__exit__()` where it can be handled or suppressed.
 
-### `__exit__()` Method Parameters:
+### `__exit__()` Method Parameters
 
 - `exc_type`: The exception type (e.g., `ValueError`).
 - `exc_val`: The exception value.
@@ -92,7 +92,7 @@ If `__exit__()` returns `True`, the exception is suppressed (not re-raised). If 
 
 Python’s `contextlib` module provides utilities for creating context managers without having to define a class with `__enter__()` and `__exit__()`. One of the most commonly used functions from this module is `contextlib.contextmanager`, which allows We to create context managers using a generator function.
 
-### Example with `contextlib.contextmanager`:
+### Example with `contextlib.contextmanager`
 
 ```python
 from contextlib import contextmanager
