@@ -236,3 +236,16 @@ def sorted_array_to_bst(arr):
 inorder = [20, 30, 40, 50, 60, 70, 80]
 root = sorted_array_to_bst(inorder)
 ```
+
+## Summary
+
+Here’s the **time and space complexity table** for the BST operations we discussed.
+Assuming **n** nodes in the BST:
+
+| Operation                      | Average Time Complexity | Worst-Case Time Complexity | Space Complexity                |
+| ------------------------------ | ----------------------- | -------------------------- | ------------------------------- |
+| Search                         | O(log n)                | O(n)                       | O(1) iterative / O(h) recursive |
+| Insert                         | O(log n)                | O(n)                       | O(1) iterative / O(h) recursive |
+| Delete                         | O(log n)                | O(n)                       | O(1) iterative / O(h) recursive |
+| BST Construction from Preorder | O(n)                    | O(n)                       | O(n)                            |
+| BST Construction from Inorder  | O(n)                    | O(n)                       | O(log n) recursive              |
