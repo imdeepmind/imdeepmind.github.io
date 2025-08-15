@@ -12,6 +12,7 @@
     "Gunicorn",
     "Hocrox",
     "imdeepmind",
+    "inorder",
     "kwargs",
     "LINEMERGE",
     "Macrotask",
