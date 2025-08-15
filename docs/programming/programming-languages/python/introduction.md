@@ -4,6 +4,8 @@ sidebar_position: 1
 
 # Introduction
 
+<!-- markdownlint-disable MD024 -->
+
 Python is a versatile, high-level, and general-purpose programming language known for its readability, simplicity, and extensive ecosystem. Created by **Guido van Rossum** and first released in **1991**, Python has grown to be one of the most popular programming languages in the world. Its design philosophy emphasizes **code readability** and uses significant **indentation** to define blocks of code.
 
 ## Key Features of Python
@@ -22,6 +24,7 @@ Python is a versatile, high-level, and general-purpose programming language know
 
    - Variables do not require explicit declaration of data types.  
      Example:
+
      ```python
      x = 10       # Integer
      y = "hello"  # String
@@ -73,6 +76,7 @@ Python is a versatile, high-level, and general-purpose programming language know
 
    - `pip` is the default package manager for Python.
    - Example:
+
      ```bash
      pip install requests
      ```
@@ -82,8 +86,10 @@ Python is a versatile, high-level, and general-purpose programming language know
    - Python 2.x (legacy) vs. Python 3.x (current, recommended).
 
 4. **Virtual Environments:**
+
    - Isolate dependencies for projects using `venv` or `virtualenv`.  
      Example:
+
    ```bash
    python3 -m venv myenv
    source myenv/bin/activate  # On Linux/macOS

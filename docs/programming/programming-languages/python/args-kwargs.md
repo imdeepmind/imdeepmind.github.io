@@ -71,25 +71,25 @@ greet("Alice", 25, "Engineer", country="USA", city="New York")
 
 ## Key Points to Remember
 
-1.  **Order of Arguments**:
+1. **Order of Arguments**:
 
-    - Normal parameters first.
-    - Then `*args` for variable positional arguments.
-    - Then `**kwargs` for variable keyword arguments.
+   - Normal parameters first.
+   - Then `*args` for variable positional arguments.
+   - Then `**kwargs` for variable keyword arguments.
 
-    ```python
-    def func(param1, param2, *args, **kwargs):
-        pass
-    ```
+   ```python
+   def func(param1, param2, *args, **kwargs):
+       pass
+   ```
 
-2.  **Single `*` in function**: Sometimes, a single `*` is used in function signatures to indicate that all following parameters must be specified as keyword arguments.
+2. **Single `*` in function**: Sometimes, a single `*` is used in function signatures to indicate that all following parameters must be specified as keyword arguments.
 
-    ```python
-    def func(param1, param2, *, kwarg1, kwarg2):
-        pass
-    ```
+   ```python
+   def func(param1, param2, *, kwarg1, kwarg2):
+       pass
+   ```
 
-3.  **Default Values**: We can combine default values with `*args` and `**kwargs`. Just ensure the default arguments appear before `*args`.
+3. **Default Values**: We can combine default values with `*args` and `**kwargs`. Just ensure the default arguments appear before `*args`.
 
 ## Example: Function with Default Arguments, `*args`, and `**kwargs`
 

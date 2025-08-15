@@ -89,7 +89,9 @@ Reference count updates occur during **assignment**, **function calls**, and whe
    ```
 
 3. **Removing from a Data Structure**:
+
    - Removing an object from a container decreases its reference count.
+
    ```python
    my_list = []
    x = [1, 2, 3]

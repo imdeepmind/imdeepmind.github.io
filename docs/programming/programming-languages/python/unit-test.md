@@ -145,7 +145,7 @@ unittest.TextTestRunner().run(test_suite)
 
 Mocking is used in unit testing to replace parts of the system that are either difficult or unnecessary to test in isolation. The `unittest.mock` module provides tools to create mock objects and replace real implementations.
 
-#### Example of mocking
+### Example of mocking
 
 ```python
 from unittest import mock

@@ -4,6 +4,8 @@ sidebar_position: 15
 
 # Asynchronous Programming
 
+<!-- markdownlint-disable MD024 -->
+
 Python's `asyncio` is a library introduced in Python 3.4 to enable asynchronous programming, allowing developers to write concurrent code that can handle I/O-bound operations efficiently. It’s particularly useful for tasks like network programming, web scraping, or any scenario where operations spend significant time waiting (e.g., for network responses or file I/O). Below is a detailed exploration of `asyncio` and its core components: **Event Loop**, **Coroutines**, **Tasks**, **Futures**, and **Synchronization**.
 
 ## What is `asyncio`?
@@ -47,7 +49,7 @@ asyncio.run(main())
 
 **Output** (prints with a 1-second delay between "Hello" and "World" for each coroutine):
 
-```
+```text
 Hello
 Hello
 World
@@ -107,7 +109,7 @@ finally:
 
 **Output**:
 
-```
+```text
 Task 1 started
 Task 2 started
 Task 2 finished
@@ -166,7 +168,7 @@ asyncio.run(main())
 
 **Output**:
 
-```
+```text
 Fetching data...
 Processing data...
 Results: {'data': 42}, Processed
@@ -269,7 +271,7 @@ print(f"Total time: {time.time() - start_time:.2f} seconds")
 
 **Output**:
 
-```
+```text
 Fetching data from server 1
 Fetching data from server 2
 Fetching data from server 3
@@ -312,7 +314,7 @@ asyncio.run(main())
 
 **Output**:
 
-```
+```text
 Starting operation 0
 Starting operation 1
 Starting operation 2
@@ -362,7 +364,7 @@ except Exception as e:
 
 **Output**:
 
-```
+```text
 Processing item 1
 Processing item 2
 Processing item 3
@@ -410,7 +412,7 @@ asyncio.run(main())
 
 **Output**:
 
-```
+```text
 Main step 0
 Monitoring...
 Main step 1
@@ -459,7 +461,7 @@ asyncio.run(main())
 
 **Output**:
 
-```
+```text
 Task 1 started
 Task 2 started
 Task 3 started
@@ -550,7 +552,7 @@ asyncio.run(main())
 
 **Output**:
 
-```
+```text
 Future resolved!
 ```
 
@@ -616,7 +618,7 @@ asyncio.run(main())
 
 **Output**:
 
-```
+```text
 Task 0 read counter: 0
 Task 0 set counter: 1
 Task 1 read counter: 1
@@ -688,7 +690,7 @@ asyncio.run(main())
 
 **Output**:
 
-```
+```text
 Waiter 0 waiting for event
 Waiter 1 waiting for event
 Waiter 2 waiting for event
@@ -769,7 +771,7 @@ asyncio.run(main())
 
 **Output** (order may vary slightly due to scheduling):
 
-```
+```text
 Consumer 1 waiting for items
 Consumer 2 waiting for items
 Produced 0, buffer: [0]
@@ -837,7 +839,7 @@ asyncio.run(main())
 
 **Output**:
 
-```
+```text
 Task 0 making API call
 Task 1 making API call
 Task 0 finished API call
@@ -910,7 +912,7 @@ asyncio.run(main())
 
 **Output**:
 
-```
+```text
 Task 0 acquired resource
 Task 1 acquired resource
 Task 0 released resource

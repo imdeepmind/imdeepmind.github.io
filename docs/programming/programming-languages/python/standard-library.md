@@ -4,6 +4,8 @@ sidebar_position: 7
 
 # Standard Library
 
+<!-- markdownlint-disable MD024 -->
+
 Python's **Standard Library** is a collection of modules that are included with Python. These modules provide a wide variety of functionalities that help solve common programming tasks like working with files, handling data, and performing operations on collections, strings, etc. The great thing about the Python Standard Library is that it’s built-in and doesn’t require any external installation.
 
 Below, we’ll cover some important modules from the standard library, focusing on `itertools`, `collections`, `functools`, and `os`.
@@ -25,7 +27,7 @@ for num in itertools.count(10, 2):
 
 Output:
 
-```
+```text
 10
 12
 14
@@ -49,7 +51,7 @@ for val in itertools.cycle([1, 2, 3]):
 
 Output:
 
-```
+```text
 1
 2
 3
@@ -70,7 +72,7 @@ for val in itertools.repeat("Hello", 3):
 
 Output:
 
-```
+```text
 Hello
 Hello
 Hello
@@ -88,7 +90,7 @@ for perm in itertools.permutations([1, 2, 3]):
 
 Output:
 
-```
+```text
 (1, 2, 3)
 (1, 3, 2)
 (2, 1, 3)
@@ -109,7 +111,7 @@ for comb in itertools.combinations([1, 2, 3]):
 
 Output:
 
-```
+```text
 (1,)
 (2,)
 (3,)
@@ -130,7 +132,7 @@ for prod in itertools.product([1, 2], repeat=2):
 
 Output:
 
-```
+```text
 (1, 1)
 (1, 2)
 (2, 1)
@@ -154,7 +156,7 @@ print(p1.name, p1.age)
 
 Output:
 
-```
+```text
 Alice 30
 ```
 
@@ -172,7 +174,7 @@ print(d)
 
 Output:
 
-```
+```text
 deque([0, 1, 2, 3, 4])
 ```
 
@@ -189,7 +191,7 @@ print(count)
 
 Output:
 
-```
+```text
 Counter({'apple': 2, 'orange': 1})
 ```
 
@@ -206,7 +208,7 @@ print(d)
 
 Output:
 
-```
+```text
 defaultdict(<class 'int'>, {'a': 1})
 ```
 
@@ -223,7 +225,7 @@ print(d)
 
 Output:
 
-```
+```text
 OrderedDict([('a', 1), ('b', 2), ('c', 3)])
 ```
 
@@ -245,7 +247,7 @@ print(double(5))  # 2 * 5
 
 Output:
 
-```
+```text
 10
 ```
 
@@ -267,7 +269,7 @@ print(fibonacci(6))  # 8
 
 Output:
 
-```
+```text
 5
 8
 ```
@@ -285,7 +287,7 @@ print(result)
 
 Output:
 
-```
+```text
 24
 ```
 
@@ -323,7 +325,7 @@ print(path)
 
 Output:
 
-```
+```text
 folder/subfolder/file.txt
 ```
 
@@ -371,7 +373,7 @@ print(nums)
 
 Output:
 
-```
+```text
 [10, 20, 15, 30, 40]
 ```
 
@@ -390,7 +392,7 @@ print(heap)
 
 Output:
 
-```
+```text
 [5, 10, 15, 20]
 ```
 
@@ -410,7 +412,7 @@ print(heap)      # [10, 20, 15]
 
 Output:
 
-```
+```text
 5
 [10, 20, 15]
 ```
@@ -431,7 +433,7 @@ print(heap)    # [15, 20, 30]
 
 Output:
 
-```
+```text
 10
 [15, 20, 30]
 ```
@@ -452,7 +454,7 @@ print(heap)    # [5, 20, 30]
 
 Output:
 
-```
+```text
 10
 [5, 20, 30]
 ```
@@ -472,7 +474,7 @@ print(largest)
 
 Output:
 
-```
+```text
 [30, 20, 15]
 ```
 
@@ -491,7 +493,7 @@ print(smallest)
 
 Output:
 
-```
+```text
 [5, 10, 15]
 ```
 

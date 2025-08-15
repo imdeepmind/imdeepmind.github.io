@@ -4,6 +4,8 @@ sidebar_position: 5
 
 # Loops, Control Structures, and Functions
 
+<!-- markdownlint-disable MD024 -->
+
 ## Python Loops
 
 Loops allow us to iterate over a sequence (like a list, tuple, string, or range) and execute a block of code repeatedly. Python supports two primary types of loops: `for` and `while`.
@@ -19,7 +21,7 @@ for i in range(5):
 
 This will output:
 
-```
+```text
 0
 1
 2
@@ -44,7 +46,7 @@ for i in range(2, 10, 2):
 
 Output:
 
-```
+```text
 2
 4
 6
@@ -64,7 +66,7 @@ while i < 5:
 
 Output:
 
-```
+```text
 0
 1
 2
@@ -94,7 +96,7 @@ while condition:
 
   Output:
 
-  ```
+  ```text
   0
   1
   2
@@ -113,7 +115,7 @@ while condition:
 
   Output:
 
-  ```
+  ```text
   0
   1
   2
@@ -121,14 +123,17 @@ while condition:
   ```
 
 - **pass**: Does nothing, used as a placeholder where code is syntactically required but we don't want any action to be taken.
+
   ```python
   for i in range(5):
       if i == 3:
           pass
       print(i)
   ```
+
   Output:
-  ```
+
+  ```text
   0
   1
   2
@@ -152,7 +157,7 @@ if x > 5:
 
 Output:
 
-```
+```text
 x is greater than 5
 ```
 
@@ -183,7 +188,7 @@ else:
 
 Output:
 
-```
+```text
 x is greater than 5
 ```
 
@@ -199,7 +204,7 @@ print(result)
 
 Output:
 
-```
+```text
 x is greater than 5
 ```
 
@@ -220,7 +225,7 @@ greet("Abhishek")
 
 Output:
 
-```
+```text
 Hello, Abhishek!
 ```
 
@@ -245,7 +250,7 @@ print(result)
 
 Output:
 
-```
+```text
 5
 ```
 
@@ -263,7 +268,7 @@ greet("Abhishek")
 
 Output:
 
-```
+```text
 Hello, Guest!
 Hello, Abhishek!
 ```
@@ -284,7 +289,7 @@ Python supports functions that accept a variable number of arguments using `*arg
 
   Output:
 
-  ```
+  ```text
   1
   2
   3
@@ -302,7 +307,7 @@ Python supports functions that accept a variable number of arguments using `*arg
 
   Output:
 
-  ```
+  ```text
   name: Abhishek
   age: 25
   ```
@@ -318,7 +323,7 @@ print(add(3, 5))
 
 Output:
 
-```
+```text
 8
 ```
 

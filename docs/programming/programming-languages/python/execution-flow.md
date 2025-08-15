@@ -41,7 +41,7 @@ Example for `x = 10 + 2`:
 
 Example AST:
 
-```
+```text
 Assign(
     targets=[Name(id='x', ctx=Store())],
     value=BinOp(
@@ -59,7 +59,7 @@ Assign(
 
 Example bytecode:
 
-```
+```text
 LOAD_CONST 10
 LOAD_CONST 2
 BINARY_ADD
