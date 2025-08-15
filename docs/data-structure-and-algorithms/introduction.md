@@ -26,6 +26,9 @@ These are my notes on Data Structure Algorithms
    7. [Tree Representation](/docs/data-structure-and-algorithms/algorithms/tree/tree-representation.md)
    8. [Tree Traversal](/docs/data-structure-and-algorithms/algorithms/tree/tree-traversal.md)
    9. [Common Algorithms](/docs/data-structure-and-algorithms/algorithms/tree/common-algorithms.md)
+8. [Binary Search Tree](/docs/data-structure-and-algorithms/algorithms/bst/introduction.md)
+   1. [Introduction](/docs/data-structure-and-algorithms/algorithms/bst/introduction.md)
+   2. [Key Operations](/docs/data-structure-and-algorithms/algorithms/bst/key-operations.md)
 
 ### Time and Space Complexity
 
