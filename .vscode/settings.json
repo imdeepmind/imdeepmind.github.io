@@ -1,12 +1,14 @@
 {
   "editor.formatOnSave": true,
   "cSpell.words": [
+    "backpressure",
     "btool",
     "colddb",
     "Creational",
     "deploymentclient",
     "Frotnend",
     "frozenset",
+    "goroutines",
     "Gunicorn",
     "Hocrox",
     "imdeepmind",
@@ -17,6 +19,8 @@
     "Microtask",
     "modelcontextprotocol",
     "myapp",
+    "nums",
+    "Println",
     "Pydantic",
     "Pythonic",
     "queryset",
