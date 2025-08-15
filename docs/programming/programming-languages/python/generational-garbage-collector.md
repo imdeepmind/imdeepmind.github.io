@@ -12,11 +12,13 @@ In Python, all objects are part of an **object graph**. An **object graph** is a
 
 For example, if object A references object B, and object B references object A, a **cyclic reference** exists. The object graph looks like this:
 
+<div style={{textAlign: 'center'}}>
 ```mermaid
 graph TD
     A[Object A] --> B[Object B]
     B --> |"Circular Reference"|A
 ```
+</div>
 
 In this scenario:
 
@@ -120,6 +122,7 @@ Here’s a step-by-step explanation of how garbage collection works with the gen
 
 ### Generational Garbage Collection
 
+<div style={{textAlign: 'center'}}>
 ```mermaid
 graph TD
     A[Generation 0] -->|Collect frequently| B[Mark & Sweep]
@@ -128,6 +131,7 @@ graph TD
     D -->|Promote to Gen 2| E[Generation 2]
     E -->|Collect rarely| F[Mark & Sweep]
 ```
+</div>
 
 ### Circular Reference Detection in the Object Graph
 

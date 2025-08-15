@@ -215,6 +215,7 @@ tracemalloc.stop()
 
 ### Memory Allocation Flow
 
+<div style={{textAlign: 'center'}}>
 ```mermaid
 graph TD
     A[Private Heap Space] -->|Managed by Memory Manager| B[Memory Allocators]
@@ -223,6 +224,7 @@ graph TD
     D -->|Handles| E[Garbage Collection]
     E -->|Reclaims| A
 ```
+</div>
 
 ### Garbage Collection Process
 

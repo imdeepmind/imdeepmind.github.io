@@ -8,6 +8,7 @@ sidebar_position: 20
 
 CPython processes Python code through the following steps:
 
+<div style={{textAlign: 'center'}}>
 ```mermaid
 graph TD
     A["Python Source Code (.py)"] -->|Tokenization| B[Tokens]
@@ -16,6 +17,7 @@ graph TD
     D -->|Interpretation| E[Python Virtual Machine]
     E -->|Execute Bytecode| F[Final Output]
 ```
+</div>
 
 ### Source Code (.py file)
 
