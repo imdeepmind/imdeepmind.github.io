@@ -34,6 +34,7 @@ These are my notes on programming, covering both programming languages and core 
       22. [Memory Management](/docs/programming/programming-languages/python/memory-management.md)
       23. [Reference Counting](/docs/programming/programming-languages/python/reference-counting.md)
       24. [Generational Garbage Collection](/docs/programming/programming-languages/python/generational-garbage-collector.md)
+      25. [Package Managers](/docs/programming/programming-languages/python/package-managers.md)
    2. [JavaScript](/docs/programming/programming-languages/javascript/introduction.md)
       1. [Introduction](/docs/programming/programming-languages/javascript/introduction.md)
       2. [Variables](/docs/programming/programming-languages/javascript/variables.md)
