@@ -15,7 +15,7 @@ A **Binary Search Tree** supports a variety of operations to insert, find, delet
 - If the target value is **less**, search in the left subtree.
 - If the target value is **greater**, search in the right subtree.
 
-**Mermaid diagram example** (searching for 40 in the given tree):
+**Diagram example** (searching for 40 in the given tree):
 
 <div style={{textAlign: 'center'}}>
 ```mermaid
@@ -68,7 +68,7 @@ print("Found" if result else "Not found")
 - If larger → go right.
 - Insert when a `None` spot is found.
 
-**Mermaid diagram example** (inserting 35):
+**Diagram example** (inserting 35):
 
 <div style={{textAlign: 'center'}}>
 ```mermaid
@@ -107,7 +107,7 @@ root = insert(root, 35)
 - **Case 2**: Node has one child → replace with the child.
 - **Case 3**: Node has two children → replace with **inorder successor** (minimum in right subtree) and delete the successor.
 
-**Mermaid diagram example** (deleting 30):
+**Diagram example** (deleting 30):
 
 <div style={{textAlign: 'center'}}>
 ```mermaid
@@ -163,7 +163,7 @@ root = delete_node(root, 30)
 - All values smaller than root form the left subtree, rest form the right subtree.
 - Recursively build left and right subtrees.
 
-**Mermaid diagram example** (Preorder: \[50, 30, 20, 40, 70, 60, 80]):
+**Diagram example** (Preorder: \[50, 30, 20, 40, 70, 60, 80]):
 
 <div style={{textAlign: 'center'}}>
 ```mermaid
@@ -207,7 +207,7 @@ root = construct_bst_preorder(preorder)
 - **A BST cannot be uniquely constructed from inorder traversal alone** because many BSTs can have the same inorder sequence.
 - If the inorder is **sorted array**, and we want a **balanced BST**, we pick the middle element as root, recursively build left and right.
 
-**Mermaid diagram example** (Inorder: \[20, 30, 40, 50, 60, 70, 80]):
+**Diagram example** (Inorder: \[20, 30, 40, 50, 60, 70, 80]):
 
 <div style={{textAlign: 'center'}}>
 ```mermaid

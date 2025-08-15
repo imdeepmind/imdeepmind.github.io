@@ -4,7 +4,7 @@ Welcome to the repository for my personal website, [imdeepmind.com](https://imde
 
 ## About
 
-This website is built to organize and present my study notes in a structured and accessible way. It is designed to be a resource for myself and anyone interested in the topics I explore.
+This website is built to organize and present my study notes in a structured and accessible way. It is designed to be a resource for myself and anyone interested in the topics I explored.
 
 ## Features
 
