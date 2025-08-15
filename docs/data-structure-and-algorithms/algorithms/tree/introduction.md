@@ -24,7 +24,7 @@ A **tree** is a widely used abstract data structure that simulates a hierarchica
 - **Descendant**: Any node on the path from a node to a leaf.
 - **Path**: A sequence of nodes and edges connecting a node with a descendant.
 
-Below is a binary tree diagram with levels and height highlighted using Mermaid:
+Below is a binary tree diagram with levels and height highlighted:
 
 <div style={{textAlign: 'center'}}>
 ```mermaid

@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Docker Internals
 
-Docker is a tool designed to make it easier to create, deploy, and run applications using containers. The internal working of Docker involves several components, each playing a specific role in the containerization process. Below, I will explain the key components and how they interact within Docker using diagrams in **Mermaid**.
+Docker is a tool designed to make it easier to create, deploy, and run applications using containers. The internal working of Docker involves several components, each playing a specific role in the containerization process. Below, I will explain the key components and how they interact within Docker using diagrams.
 
 ## Docker Architecture Overview
 
