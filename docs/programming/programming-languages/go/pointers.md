@@ -4,8 +4,6 @@ sidebar_position: 10
 
 # Pointers
 
-<!-- markdownlint-disable MD024 -->
-
 Pointers are one of the fundamental concepts in Go (and many other programming languages). A pointer is a variable that stores the memory address of another variable. By using pointers, we can directly access and modify the value stored in a particular memory location.
 
 ## What Are Pointers?

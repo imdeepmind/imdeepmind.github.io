@@ -4,8 +4,6 @@ sidebar_position: 17
 
 # Decorators
 
-<!-- markdownlint-disable MD024 -->
-
 ## What are Decorators?
 
 Decorators in Python are a powerful feature that allows you to modify or enhance the behavior of functions or classes **without modifying their actual code**. They are often used to wrap another function or method, adding extra functionality in a clean and reusable manner.

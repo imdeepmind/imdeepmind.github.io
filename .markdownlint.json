@@ -2,5 +2,5 @@
   "default": true,
   "line-length": false,
   "no-trailing-spaces": true,
-  "no-duplicate-header": true
+  "no-duplicate-heading": false
 }

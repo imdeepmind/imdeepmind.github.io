@@ -4,8 +4,6 @@ sidebar_position: 1
 
 # Introduction
 
-<!-- markdownlint-disable MD024 -->
-
 Python is a versatile, high-level, and general-purpose programming language known for its readability, simplicity, and extensive ecosystem. Created by **Guido van Rossum** and first released in **1991**, Python has grown to be one of the most popular programming languages in the world. Its design philosophy emphasizes **code readability** and uses significant **indentation** to define blocks of code.
 
 ## Key Features of Python

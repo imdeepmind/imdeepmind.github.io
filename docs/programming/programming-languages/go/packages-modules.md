@@ -4,8 +4,6 @@ sidebar_position: 2
 
 # Packages and Modules
 
-<!-- markdownlint-disable MD024 -->
-
 ## Go Modules
 
 Go Modules are the official dependency management system introduced in Go 1.11 and became the default in Go 1.16+. They provide a way to manage versioned dependencies and project structure.

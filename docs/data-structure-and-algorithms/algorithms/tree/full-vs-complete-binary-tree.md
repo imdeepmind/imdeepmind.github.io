@@ -4,8 +4,6 @@ sidebar_position: 6
 
 # Full vs Complete Binary Tree
 
-<!-- markdownlint-disable MD024 -->
-
 ## Full Binary Tree
 
 A **Full Binary Tree** is a binary tree in which every node has either 0 or 2 children. No node can have only one child.

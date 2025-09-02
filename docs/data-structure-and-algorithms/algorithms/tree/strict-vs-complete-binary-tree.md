@@ -4,8 +4,6 @@ sidebar_position: 7
 
 # Strict vs Complete Binary Tree
 
-<!-- markdownlint-disable MD024 -->
-
 ## Strict Binary Tree
 
 A **Strict Tree** (also called a _Proper Binary Tree_ in the binary case) is a tree in which **every non-leaf node has exactly the same number of children**.

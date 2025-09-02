@@ -4,8 +4,6 @@ sidebar_position: 7
 
 # Functions
 
-<!-- markdownlint-disable MD024 -->
-
 Functions are fundamental building blocks in Go, allowing us to write reusable, modular, and maintainable code. A function is a group of statements that perform a specific task and can optionally return a result.
 
 ## What Are Functions?

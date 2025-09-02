@@ -4,8 +4,6 @@ sidebar_position: 15
 
 # Asynchronous Programming
 
-<!-- markdownlint-disable MD024 -->
-
 Python's `asyncio` is a library introduced in Python 3.4 to enable asynchronous programming, allowing developers to write concurrent code that can handle I/O-bound operations efficiently. It’s particularly useful for tasks like network programming, web scraping, or any scenario where operations spend significant time waiting (e.g., for network responses or file I/O). Below is a detailed exploration of `asyncio` and its core components: **Event Loop**, **Coroutines**, **Tasks**, **Futures**, and **Synchronization**.
 
 ## What is `asyncio`?

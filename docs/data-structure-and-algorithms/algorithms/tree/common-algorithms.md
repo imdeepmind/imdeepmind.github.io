@@ -4,8 +4,6 @@ sidebar_position: 9
 
 # Common Tree Algorithms
 
-<!-- markdownlint-disable MD024 -->
-
 ## Generating Binary Tree from In-order and Post-order Traversals
 
 ### Algorithm

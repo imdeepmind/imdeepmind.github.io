@@ -4,8 +4,6 @@ sidebar_position: 5
 
 # Loops, Control Structures, and Functions
 
-<!-- markdownlint-disable MD024 -->
-
 ## Python Loops
 
 Loops allow us to iterate over a sequence (like a list, tuple, string, or range) and execute a block of code repeatedly. Python supports two primary types of loops: `for` and `while`.

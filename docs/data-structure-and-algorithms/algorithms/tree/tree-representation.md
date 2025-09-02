@@ -4,8 +4,6 @@ sidebar_position: 5
 
 # Tree Representation in Memory
 
-<!-- markdownlint-disable MD024 -->
-
 A tree can be stored in memory mainly in two ways:
 
 1. **Array Representation**

@@ -4,8 +4,6 @@ sidebar_position: 2
 
 # Python Basics
 
-<!-- markdownlint-disable MD024 -->
-
 ## Variables and Data Types
 
 **Variables**: Variables in Python are used to store data and do not require explicit declaration. They are created when a value is assigned.

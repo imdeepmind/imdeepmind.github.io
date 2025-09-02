@@ -4,8 +4,6 @@ sidebar_position: 7
 
 # Standard Library
 
-<!-- markdownlint-disable MD024 -->
-
 Python's **Standard Library** is a collection of modules that are included with Python. These modules provide a wide variety of functionalities that help solve common programming tasks like working with files, handling data, and performing operations on collections, strings, etc. The great thing about the Python Standard Library is that it’s built-in and doesn’t require any external installation.
 
 Below, we’ll cover some important modules from the standard library, focusing on `itertools`, `collections`, `functools`, and `os`.

@@ -4,8 +4,6 @@ sidebar_position: 12
 
 # Interfaces and Generics
 
-<!-- markdownlint-disable MD024 -->
-
 Go provides powerful features for abstraction and code reuse through **interfaces** and, since Go 1.18, **generics**. These concepts are essential for writing flexible, maintainable, and idiomatic Go code.
 
 ## Interfaces

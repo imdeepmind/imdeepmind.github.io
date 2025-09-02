@@ -4,8 +4,6 @@ sidebar_position: 6
 
 # Conditions and Loops
 
-<!-- markdownlint-disable MD024 -->
-
 Go provides concise and flexible syntax for implementing conditional statements and loops. These constructs are essential for controlling the flow of execution and iterating over data structures.
 
 ## Conditional Statements

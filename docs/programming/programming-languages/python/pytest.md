@@ -4,8 +4,6 @@ sidebar_position: 19
 
 # Pytest
 
-<!-- markdownlint-disable MD024 -->
-
 **Pytest** is one of the most widely used testing frameworks in Python. It is known for its simplicity, scalability, and rich feature set. Pytest allows developers to write simple unit tests as well as complex functional tests, and it can easily integrate with other tools to provide a powerful testing experience. It also supports various testing styles, including functional, object-oriented, and parameterized testing.
 
 ## Key Features of Pytest

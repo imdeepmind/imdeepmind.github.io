@@ -4,8 +4,6 @@ sidebar_position: 5
 
 # `fmt` Package
 
-<!-- markdownlint-disable MD024 -->
-
 The `fmt` package in Go provides **formatted I/O functions** similar to C’s `printf` family. It is one of the most commonly used standard libraries in Go and supports:
 
 - Printing to the console (`Print`, `Printf`, `Println`)

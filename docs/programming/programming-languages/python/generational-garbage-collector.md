@@ -4,8 +4,6 @@ sidebar_position: 23
 
 # Generational Garbage Collection
 
-<!-- markdownlint-disable MD024 -->
-
 ## The Object Graph
 
 In Python, all objects are part of an **object graph**. An **object graph** is a structure that maps out the relationships between objects. Each node in this graph represents an object, and the edges between nodes represent references from one object to another.

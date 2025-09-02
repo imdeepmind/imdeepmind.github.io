@@ -4,8 +4,6 @@ sidebar_position: 8
 
 # Pythonic Code
 
-<!-- markdownlint-disable MD024 -->
-
 "**Pythonic**" refers to writing code that adheres to the conventions, idioms, and best practices that are considered natural and efficient in Python. Pythonic code is not only functional but also elegant, readable, and maintainable. Writing Pythonic code typically involves using the language’s features in a way that is most efficient and idiomatic, making it easy to understand for others who are familiar with Python.
 
 In this note, we’ll explore the key ideas behind Pythonic code, focusing on Python's **Zen of Python**, **list comprehensions**, **generator expressions**, and **unpacking**.
