@@ -31,6 +31,8 @@ Container orchestration provides automation for all these requirements, making i
 
 ## High-level architecture of orchestration
 
+<div style={{textAlign: 'center'}}>
+
 ```mermaid
 graph TD
     A[Developers define desired state with YAML/Config] --> B[Orchestrator Control Plane]
@@ -43,6 +45,8 @@ graph TD
     D --> G
     G --> H[Containers]
 ```
+
+</div>
 
 In this model, the control plane ensures the system matches the desired state defined by developers. Worker nodes run the actual containers, and the orchestrator ensures consistency between desired and actual states.
 
@@ -62,6 +66,8 @@ Developed by HashiCorp. A simple and flexible orchestrator that supports contain
 
 ## Example of scaling with orchestration
 
+<div style={{textAlign: 'center'}}>
+
 ```mermaid
 sequenceDiagram
     participant Dev as Developer
@@ -74,6 +80,8 @@ sequenceDiagram
     Orchestrator->>Node2: Deploy 1 additional container
     Orchestrator->>Dev: Status: scaled successfully to 4 replicas
 ```
+
+</div>
 
 This shows how orchestration automatically manages scaling across multiple nodes.
 

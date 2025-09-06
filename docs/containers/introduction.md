@@ -35,6 +35,8 @@ Containers solve these problems by providing:
 Virtual machines virtualize hardware. Each VM includes its own OS, libraries, and apps, making them heavy and slower to boot.
 Containers virtualize the OS, share the host kernel, and are lightweight with much faster startup times.
 
+<div style={{textAlign: 'center'}}>
+
 ```mermaid
 graph TD
     A[Physical Server / Host Machine] --> B[Hypervisor]
@@ -46,7 +48,10 @@ graph TD
     F --> G[Container 1: Libraries + App]
     F --> H[Container 2: Libraries + App]
     F --> I[Container 3: Libraries + App]
+
 ```
+
+</div>
 
 ### Comparison Table
 
