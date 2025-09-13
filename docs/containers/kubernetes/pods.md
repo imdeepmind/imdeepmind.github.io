@@ -1,3 +1,7 @@
+---
+sidebar_position: 4
+---
+
 # Pods
 
 A Pod is the smallest deployable unit in Kubernetes. It represents a single instance of a running process in a cluster. Unlike containers, which are isolated units of software packaging, a Pod abstracts one or more tightly coupled containers as a single execution environment. Containers within a Pod share resources like network and storage, making them suitable for running workloads that need to communicate closely.
