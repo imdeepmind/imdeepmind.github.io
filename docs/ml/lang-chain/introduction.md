@@ -1,4 +1,8 @@
-# Introduction to LangChain
+---
+sidebar_position: 1
+---
+
+# Introduction
 
 LangChain is an open-source framework designed to simplify the development of applications powered by large language models (LLMs). It provides tools and abstractions that allow developers to connect LLMs with external data sources, integrate reasoning steps, and orchestrate complex workflows. The goal of LangChain is to make LLMs not just text generators but useful agents capable of performing tasks, answering questions, and making decisions in real-world applications.
 
