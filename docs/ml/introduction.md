@@ -13,5 +13,9 @@ These are my notes on machine learning (ML), covering both foundational concepts
    2. [Hello World](/docs/ml/mcp/hello-world.md)
    3. [Architecture](/docs/ml/mcp/architecture.md)
    4. [LangChain](/docs/ml/mcp/langchain.md)
+2. [LangChain](/docs/ml/lang-chain/introduction.md)
+   1. [Introduction](/docs/ml/lang-chain/introduction.md)
+   2. [LangChain Fundamentals](/docs/ml/lang-chain/fundamentals.md)
+   3. [Agents](/docs/ml/lang-chain/agents.md)
 
 I will continue to expand these notes as I explore new topics and techniques in machine learning.
