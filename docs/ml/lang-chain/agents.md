@@ -1,8 +1,8 @@
 ---
-sidebar_position: 3
+sidebar_position: 6
 ---
 
-# LangChain Agents
+# Agents
 
 Agents in LangChain are entities that use large language models not just to generate text, but to **decide actions**. Instead of producing only direct responses, an agent can choose which tools to call, when to call them, and how to use the results in order to solve a task.
 
