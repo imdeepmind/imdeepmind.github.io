@@ -1,4 +1,8 @@
-# LangChain Agents
+---
+sidebar_position: 8
+---
+
+# Agents
 
 A **LangChain Agent** is an orchestrator that **decides how to use an LLM and external tools** to achieve a goal. Instead of just generating text, an agent can **take actions**, like calling APIs, performing calculations, or interacting with databases, based on a user query.
 
