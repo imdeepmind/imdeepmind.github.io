@@ -15,7 +15,11 @@ These are my notes on machine learning (ML), covering both foundational concepts
    4. [LangChain](/docs/ml/mcp/langchain.md)
 2. [LangChain](/docs/ml/lang-chain/introduction.md)
    1. [Introduction](/docs/ml/lang-chain/introduction.md)
-   2. [LangChain Fundamentals](/docs/ml/lang-chain/fundamentals.md)
-   3. [Agents](/docs/ml/lang-chain/agents.md)
+   2. [PromptTemplate](/docs/ml/lang-chain/promt-templates.md)
+   3. [ChatModels](/docs/ml/lang-chain/chat-models.md)
+   4. [Chains](/docs/ml/lang-chain/chains.md)
+   5. [LCEL](/docs/ml/lang-chain/lcel.md)
+   6. [Tools](/docs/ml/lang-chain/tools.md)
+   7. [Agents](/docs/ml/lang-chain/agents.md)
 
 I will continue to expand these notes as I explore new topics and techniques in machine learning.

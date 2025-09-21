@@ -1,129 +1,179 @@
 ---
-sidebar_position: 3
+sidebar_position: 8
 ---
 
-# LangChain Agents
+# Agents
 
-Agents in LangChain are entities that use large language models not just to generate text, but to **decide actions**. Instead of producing only direct responses, an agent can choose which tools to call, when to call them, and how to use the results in order to solve a task.
+A **LangChain Agent** is an orchestrator that **decides how to use an LLM and external tools** to achieve a goal. Instead of just generating text, an agent can **take actions**, like calling APIs, performing calculations, or interacting with databases, based on a user query.
 
-The workflow of an agent:
+## Core Concepts
 
-1. Take user input
-2. Use the LLM to decide what action to take (e.g., call a tool, query a database, or just respond)
-3. Execute the chosen action
-4. Feed the result back into the agent
-5. Repeat the cycle until a final answer is produced
+1. **Agent vs LLM**
 
-Agents are useful when the problem requires multiple steps, reasoning, or external data sources.
+   - An LLM generates text based on input.
+   - An Agent uses an LLM **to plan actions and call tools** iteratively until a solution is reached.
+
+2. **Tool Integration**
+   Agents work closely with tools. The LLM acts as a decision-maker:
+
+   - Receives user input.
+   - Determines the best tool(s) to call.
+   - Executes the tool and observes the result.
+   - Repeats if needed, producing the final answer.
+
+3. **Agent Workflow**
 
 <div style={{textAlign: 'center'}}>
 
 ```mermaid
 flowchart TD
-    A[User Input] --> B[Agent]
-    B --> C[Decide Action with LLM]
-    C --> D[Tool Call]
-    D --> E[Result from Tool]
-    E --> F[Back to Agent]
-    F --> G[Final Response]
+    UserInput["User Query"] --> LLM["LLM"]
+    LLM --> Decision{"Which Tool?"}
+    Decision --> Tool1["Tool A"]
+    Decision --> Tool2["Tool B"]
+    Tool1 --> Observation1["Observation/Result"]
+    Tool2 --> Observation2["Observation/Result"]
+    Observation1 --> LLM
+    Observation2 --> LLM
+    LLM --> Output["Final Output to User"]
 ```
 
 </div>
 
-## ReAct Agents
+This flow shows that the agent interacts in **loops**, letting the LLM guide tool usage until the query is fully answered.
 
-ReAct (Reason + Act) is a framework for building agents that combines reasoning and acting. Instead of producing only a final output, the LLM generates both **thoughts** (reasoning steps) and **actions** (tool invocations).
+## ReAct Framework
 
-For example:
+**ReAct (Reasoning + Acting)** is a specific type of agent reasoning paradigm introduced in LangChain for multi-step decision making.
 
-- Thought: "I need to find today’s weather."
-- Action: "Call Weather API with city=London."
-- Observation: "It is 22°C and sunny."
-- Thought: "Now I can answer the user."
-- Final Answer: "The weather in London today is 22°C and sunny."
+1. **Key Idea**
 
-ReAct agents are particularly effective because they let the LLM explain its reasoning process, making the workflow more transparent and reliable.
+   - LLM interleaves **reasoning** and **acting** in steps:
+
+     - **Reasoning**: The LLM thinks about what action to take next.
+     - **Acting**: The LLM executes a tool or takes an action.
+
+2. **Why ReAct**
+
+   - Enables agents to handle **complex tasks** that require multiple steps.
+   - Improves accuracy by **observing intermediate results** and adjusting the next step.
+
+3. **ReAct Loop Example**
 
 <div style={{textAlign: 'center'}}>
 
 ```mermaid
-sequenceDiagram
-    participant User
-    participant Agent
-    participant Tool
-    User->>Agent: Ask a question
-    Agent->>Agent: Reason (Thought)
-    Agent->>Tool: Take Action
-    Tool-->>Agent: Observation
-    Agent->>Agent: More Reasoning
-    Agent->>User: Final Answer
+flowchart TD
+    UserQuery["User Query"] --> LLM["LLM Reasoning Step"]
+    LLM --> Action["Select Tool & Execute Action"]
+    Action --> Observation["Tool Result / Observation"]
+    Observation --> LLM
+    LLM -->|Repeat| Action
+    Observation --> FinalOutput["Final Answer"]
 ```
 
 </div>
 
-## LangChain Tools
+- Here, the LLM **thinks, acts, observes, and repeats** until a complete answer is reached.
 
-Tools are external functions or services that agents can use to complete tasks. They extend the capabilities of the agent beyond the LLM’s knowledge.
+## Setting up a ReAct Agent in LangChain
 
-Examples of tools include:
+1. **Define Tools**
 
-- Web search APIs
-- Database queries (SQL, vector search)
-- File systems
-- Calculators
-- Custom APIs
+   ```python
+   from langchain.tools import Tool
 
-Each tool has:
+   def calculator_fn(query: str) -> str:
+       return str(eval(query))
 
-- A **name** (used by the agent to identify it)
-- A **description** (explains what it does)
-- A **function** (the actual implementation that runs when the tool is called)
+   calculator_tool = Tool(
+       name="Calculator",
+       func=calculator_fn,
+       description="Use this tool to perform math operations."
+   )
 
-Agents rely on tools to access fresh data, perform computations, or interact with external systems.
+   def get_weather(city: str) -> str:
+       return f"The weather in {city} is sunny"
 
-## Example code: ReAct Agent with tools
+   weather_tool = Tool(
+       name="Weather",
+       func=get_weather,
+       description="Use this tool to get the current weather of a city."
+   )
 
-Below is an example of building an agent using the ReAct framework with LangChain. The agent can use a **math tool** to answer numerical queries.
+   tools = [calculator_tool, weather_tool]
+   ```
+
+2. **Initialize ReAct Agent**
+
+   ```python
+   from langchain.chat_models import ChatOpenAI
+   from langchain.agents import initialize_agent, AgentType
+
+   llm = ChatOpenAI(model="gpt-4", temperature=0)
+
+   react_agent = initialize_agent(
+       tools=tools,
+       llm=llm,
+       agent=AgentType.REACT_DESCRIPTION,
+       verbose=True
+   )
+   ```
+
+3. **Run Queries**
+
+   ```python
+   query1 = "Add 23 and 19"
+   query2 = "What's the weather in Paris?"
+
+   print(react_agent.run(query1))  # Output: 42
+   print(react_agent.run(query2))  # Output: The weather in Paris is sunny
+   ```
+
+## Advantages of ReAct Agents
+
+1. **Stepwise Reasoning**: Handles multi-step problems with intermediate observations.
+2. **Tool Flexibility**: Can use multiple tools in sequence.
+3. **Dynamic**: Adjusts actions based on observations.
+4. **Explainability**: ReAct agents can log their reasoning and actions, making the process interpretable.
+
+## Practical Example: Multi-step Reasoning
+
+Suppose we want an agent to **calculate the area of a rectangle and check if it’s greater than 50**.
 
 ```python
-from langchain_openai import ChatOpenAI
-from langchain.agents import initialize_agent, Tool
-from langchain.agents import AgentType
-import math
+def area_rectangle(length: int, width: int) -> str:
+    return str(length * width)
 
-# Define a custom tool
-def calculate_square_root(x: str) -> str:
-    try:
-        number = float(x)
-        return f"The square root of {number} is {math.sqrt(number)}"
-    except ValueError:
-        return "Please provide a valid number."
-
-math_tool = Tool(
-    name="Square Root Calculator",
-    func=calculate_square_root,
-    description="Useful for calculating square roots of numbers."
+area_tool = Tool(
+    name="RectangleArea",
+    func=area_rectangle,
+    description="Calculate area of rectangle given length and width."
 )
 
-# Load a chat model
-llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
+tools.append(area_tool)
 
-# Initialize ReAct agent with the tool
-agent = initialize_agent(
-    tools=[math_tool],
+react_agent = initialize_agent(
+    tools=tools,
     llm=llm,
-    agent=AgentType.CHAT_ZERO_SHOT_REACT_DESCRIPTION,
+    agent=AgentType.REACT_DESCRIPTION,
     verbose=True
 )
 
-# Run an example query
-response = agent.run("What is the square root of 144?")
-print(response)
+query = "Calculate area of rectangle with length 8 and width 7, is it greater than 50?"
+print(react_agent.run(query))
 ```
 
-### Explanation of the code
+- The agent:
 
-1. **Custom Tool**: A function `calculate_square_root` is defined and wrapped as a LangChain `Tool`.
-2. **Model**: `ChatOpenAI` is loaded to serve as the reasoning engine.
-3. **Agent Initialization**: `initialize_agent` creates a ReAct-style agent that knows how to use the tool.
-4. **Query Execution**: The user asks for the square root of 144. The agent reasons that it needs the tool, calls it, gets the result, and then produces the final answer.
+  - Calls `RectangleArea`.
+  - Observes result (56).
+  - Compares to 50.
+  - Returns final answer.
+
+## Best Practices
+
+1. **Tool Descriptions Matter**: Provide clear instructions to guide the LLM.
+2. **Limit Tools per Agent**: Too many tools can confuse the agent.
+3. **Verbose Mode**: Useful for debugging reasoning and action steps.
+4. **Chaining ReAct**: ReAct agents can be combined with multi-tool setups for complex workflows.
