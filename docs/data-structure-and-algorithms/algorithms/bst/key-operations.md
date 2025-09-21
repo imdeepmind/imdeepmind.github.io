@@ -2,9 +2,9 @@
 sidebar_position: 2
 ---
 
-# Key Operations
+# Common BST Algorithms
 
-A **Binary Search Tree** supports a variety of operations to insert, find, delete, and construct the tree from traversal data while maintaining the BST property.
+A **Binary Search Tree** supports a variety of operations to insert, find, delete, construct the tree from traversal data, validate properties, and perform traversals while maintaining the BST property.
 
 ## Search in BST
 
@@ -155,6 +155,219 @@ def delete_node(root, key):
 root = delete_node(root, 30)
 ```
 
+## Validate BST
+
+**Concept**:
+
+- A tree is a valid BST if for every node, all nodes in its left subtree are less than the node, and all nodes in its right subtree are greater than the node.
+- Use inorder traversal to check if the sequence is sorted.
+
+**Diagram example** (valid BST):
+
+<div style={{textAlign: 'center'}}>
+```mermaid
+graph TD
+    A(50) --> B(30)
+    A --> C(70)
+    B --> D(20)
+    B --> E(40)
+    C --> F(60)
+    C --> G(80)
+```
+</div>
+
+**Python code**:
+
+```python
+def is_valid_bst(root):
+    def inorder(node, prev):
+        if not node:
+            return True
+        if not inorder(node.left, prev):
+            return False
+        if prev[0] is not None and node.key <= prev[0]:
+            return False
+        prev[0] = node.key
+        return inorder(node.right, prev)
+
+    return inorder(root, [None])
+
+print(is_valid_bst(root))  # True
+```
+
+## Find Minimum and Maximum
+
+**Concept**:
+
+- **Minimum**: Leftmost node in the tree.
+- **Maximum**: Rightmost node in the tree.
+
+**Diagram example** (minimum is 20, maximum is 80):
+
+<div style={{textAlign: 'center'}}>
+```mermaid
+graph TD
+    A(50) --> B(30)
+    A --> C(70)
+    B --> D(20):::highlight
+    B --> E(40)
+    C --> F(60)
+    C --> G(80):::highlight
+classDef highlight fill:#f9f,stroke:#333,stroke-width:2px;
+```
+</div>
+
+**Python code**:
+
+```python
+def find_min(root):
+    if root is None:
+        return None
+    while root.left:
+        root = root.left
+    return root.key
+
+def find_max(root):
+    if root is None:
+        return None
+    while root.right:
+        root = root.right
+    return root.key
+
+print("Min:", find_min(root))  # 20
+print("Max:", find_max(root))  # 80
+```
+
+## Inorder Traversal
+
+**Concept**:
+
+- Visit left subtree, root, right subtree.
+- Produces sorted order in BST.
+
+**Diagram example** (inorder: 20, 30, 40, 50, 60, 70, 80):
+
+<div style={{textAlign: 'center'}}>
+```mermaid
+graph TD
+    A(50) --> B(30)
+    A --> C(70)
+    B --> D(20)
+    B --> E(40)
+    C --> F(60)
+    C --> G(80)
+```
+</div>
+
+**Python code**:
+
+```python
+def inorder_traversal(root):
+    result = []
+    def inorder(node):
+        if node:
+            inorder(node.left)
+            result.append(node.key)
+            inorder(node.right)
+    inorder(root)
+    return result
+
+print(inorder_traversal(root))  # [20, 30, 40, 50, 60, 70, 80]
+```
+
+## Height of BST
+
+**Concept**:
+
+- Height is the number of edges on the longest path from root to leaf.
+- Recursive: 1 + max(height of left, height of right).
+
+**Diagram example** (height = 3):
+
+<div style={{textAlign: 'center'}}>
+```mermaid
+graph TD
+    A(50) --> B(30)
+    A --> C(70)
+    B --> D(20)
+    B --> E(40)
+    C --> F(60)
+    C --> G(80)
+```
+</div>
+
+**Python code**:
+
+```python
+def height(root):
+    if root is None:
+        return -1  # or 0 depending on convention
+    return 1 + max(height(root.left), height(root.right))
+
+print("Height:", height(root))  # 2 (if root height 0)
+```
+
+## Check if Balanced BST
+
+**Concept**:
+
+- A BST is balanced if the height difference between left and right subtrees is at most 1 for every node.
+
+**Python code**:
+
+```python
+def is_balanced(root):
+    def check(node):
+        if not node:
+            return 0, True
+        left_h, left_b = check(node.left)
+        right_h, right_b = check(node.right)
+        balanced = left_b and right_b and abs(left_h - right_h) <= 1
+        return 1 + max(left_h, right_h), balanced
+    _, balanced = check(root)
+    return balanced
+
+print(is_balanced(root))  # True
+```
+
+## Lowest Common Ancestor (LCA)
+
+**Concept**:
+
+- LCA of two nodes is the deepest node that is ancestor of both.
+- In BST, find split point where one key < node < other key.
+
+**Diagram example** (LCA of 20 and 40 is 30):
+
+<div style={{textAlign: 'center'}}>
+```mermaid
+graph TD
+    A(50) --> B(30):::highlight
+    A --> C(70)
+    B --> D(20):::highlight
+    B --> E(40):::highlight
+    C --> F(60)
+    C --> G(80)
+classDef highlight fill:#f9f,stroke:#333,stroke-width:2px;
+```
+</div>
+
+**Python code**:
+
+```python
+def lca(root, n1, n2):
+    if root is None:
+        return None
+    if root.key > n1 and root.key > n2:
+        return lca(root.left, n1, n2)
+    if root.key < n1 and root.key < n2:
+        return lca(root.right, n1, n2)
+    return root
+
+lca_node = lca(root, 20, 40)
+print("LCA:", lca_node.key if lca_node else None)  # 30
+```
+
 ## BST Construction from Preorder Traversal
 
 **Concept**:
@@ -247,5 +460,11 @@ Assuming **n** nodes in the BST:
 | Search                         | O(log n)                | O(n)                       | O(1) iterative / O(h) recursive |
 | Insert                         | O(log n)                | O(n)                       | O(1) iterative / O(h) recursive |
 | Delete                         | O(log n)                | O(n)                       | O(1) iterative / O(h) recursive |
+| Validate BST                   | O(n)                    | O(n)                       | O(h)                            |
+| Find Min/Max                   | O(log n)                | O(n)                       | O(1)                            |
+| Inorder Traversal              | O(n)                    | O(n)                       | O(n)                            |
+| Height                         | O(n)                    | O(n)                       | O(h)                            |
+| Check Balanced                 | O(n)                    | O(n)                       | O(h)                            |
+| Lowest Common Ancestor         | O(log n)                | O(n)                       | O(h)                            |
 | BST Construction from Preorder | O(n)                    | O(n)                       | O(n)                            |
 | BST Construction from Inorder  | O(n)                    | O(n)                       | O(log n) recursive              |
