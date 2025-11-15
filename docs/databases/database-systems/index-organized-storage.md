@@ -6,6 +6,30 @@ sidebar_position: 5
 
 Index-Organized Storage (IOS) is a storage technique in databases where data is stored directly in the index structure itself. Unlike traditional tables where data and indexes are stored separately, an index-organized table (IOT) combines both the data and index, allowing for efficient access patterns and performance benefits in specific use cases.
 
+<div style={{textAlign: 'center'}}>
+
+```mermaid
+flowchart LR
+  root((Root))
+  internal1((Internal Node))
+  internal2((Internal Node))
+  leafA("[Leaf: PK=1\nRowData]")
+  leafB("[Leaf: PK=2\nRowData]")
+  leafC("[Leaf: PK=100\nRowData]")
+  secIdx("[Secondary Index\n(Non-clustered)]")
+
+  root --> internal1
+  root --> internal2
+  internal1 --> leafA
+  internal1 --> leafB
+  internal2 --> leafC
+  secIdx --> leafB
+  secIdx --> leafC
+
+```
+
+</div>
+
 Here's a breakdown of the key aspects of index-organized storage:
 
 ## Concept and Structure
@@ -14,10 +38,21 @@ Here's a breakdown of the key aspects of index-organized storage:
 - In an index-organized table, rows are stored in a sorted order based on a primary key or index, effectively combining data storage and indexing into a single structure.
 - This setup allows the database to access rows using the primary key directly without needing an additional lookup from an index to the actual data location.
 
+### Quick Example
+
+In a clustered index (index-organized) table, the leaf nodes of the primary key's B-tree contain the full row. A non-clustered secondary index stores the secondary key and a pointer (the primary key) to the clustered index leaf where the row is stored. This lets the DBMS quickly fetch the row by first using the secondary index to find the primary key then looking up that primary key in the clustered index (which already stores the row data).
+
 ## Primary Key-Based Organization
 
 - The primary key is the primary means of organizing and accessing data in index-organized storage.
 - Rows are stored in a B-tree index structure, sorted by the primary key, enabling fast retrieval based on the primary key value.
+
+### Clustered vs Heap+Index
+
+- Clustered/Index-Organized: The data is stored in-order in the index (the primary key's B-tree leaf nodes). Good for PK lookups and range scans.
+- Heap + Secondary Index: Data is in a heap data structure (unordered) and indexes store pointers to rows (RID or physical location). Secondary index lookups require an extra fetch.
+
+Where a database supports both, like InnoDB, the clustered index gives faster PK lookups, whereas secondary indexes store the PK instead of the physical row pointer.
 
 ## Storage and Retrieval Efficiency
 
@@ -46,6 +81,25 @@ Here's a breakdown of the key aspects of index-organized storage:
 - **Slower Insert and Update Operations:** Maintaining a sorted structure for new or modified entries can impact performance in systems with heavy insert/update operations.
 - **Limited Flexibility for Non-Primary Key Access:** Index-organized storage is optimized for primary key access, so queries not involving the primary key may be slower.
 - **Complex Maintenance:** Managing fragmentation and rebalancing the index tree can be complex and may require regular maintenance or optimization.
+
+## Implementation Details
+
+- Primary Key constraint: Index-organized storage requires a primary key to physically order rows and usually requires it to be unique (or the database enforces uniqueness when clustering).
+- Row size considerations: Very large rows or wide primary keys can bloat the clustered index and increase I/O when reading index pages; overflow/external storage is often used for huge attributes (see [Tuple Oriented Storage](./tuple-oriented-storage.md) for details).
+- Secondary indexes: Secondary (non-clustered) indexes must store the primary key as a pointer to the clustered index leaf. If the secondary index contains all columns needed by a query (a covering index), the lookup can be satisfied by the secondary index alone — no additional PK fetch needed.
+- Auto-increment / insert locality: Sequential primary key inserts (like auto-increment) tend to be efficient because new rows append, minimizing page splits and fragmentation; random PK inserts cause more page splits.
+
+## Best Practices
+
+- Choose a compact primary key: Smaller primary keys reduce index size and pointer overhead in secondary indexes.
+- Avoid clustering on frequently-updated columns: Clustered index maintenance can add overhead when the clustered key changes.
+- Use covering secondary indexes where possible for read-heavy workloads: This reduces extra lookups into the clustered index.
+- Be cautious about very large variable-length attributes in clustered indexes; consider using overflow/external storage.
+
+## When not to use Index-Organized Storage
+
+- High insert/update loads with random keys: If the primary workload is heavy inserts with random keys (e.g., UUIDs), page splits and rebalancing can severely impact write throughput.
+- Wide primary keys: Very wide keys (long string-based keys) increase storage and I/O for both the clustered index and any secondary indexes that include the primary key as a pointer.
 
 ## Examples of Index-Organized Storage in Practice
 
