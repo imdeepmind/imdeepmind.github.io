@@ -2,38 +2,36 @@
 sidebar_position: 1
 ---
 
-# Introduction
+# Introduction to Databases
 
-Notes on databases are categorized into three main buckets:
+Databases are the backbone of modern applications, serving as structured repositories for storing, retrieving, and managing data efficiently. Whether you're building a simple blog or a complex enterprise system, understanding databases is crucial for any developer or engineer.
 
-1. **Database Engineering**: Focuses on how to use and configure a database.
-2. **Database Systems**: Covers the internals of databases and how to build them.
-3. **SQL**: Explores the SQL language, its syntax, grammar, and how it works.
+## 1. Database Engineering
 
-## Contents
+This section focuses on the practical aspects of working with databases in real-world scenarios. Learn how to:
 
-1. [Database](/docs/databases/introduction.md)
-   1. [SQL](/docs/databases/sql/sql.md)
-   2. [Database Engineering](/docs/databases/database-engineering/introduction.md)
-      1. [Connection Pooling](/docs/databases/database-engineering/pooling.md)
-      2. [Transactions](/docs/databases/database-engineering/transactions.md)
-      3. [ACID](/docs/databases/database-engineering/acid.md)
-      4. [Locks](/docs/databases/database-engineering/locks.md)
-      5. [Indexes](/docs/databases/database-engineering/indexes.md)
-      6. [Query Optimization](/docs/databases/database-engineering/query-optimization.md)
-      7. [Partitioning](/docs/databases/database-engineering/partitioning.md)
-      8. [Sharding](/docs/databases/database-engineering/sharding.md)
-      9. [Replication](/docs/databases/database-engineering/replication.md)
-      10. [Cursor](/docs/databases/database-engineering/cursor.md)
-   3. [Database Systems](/docs/databases/database-systems/introduction.md)
-      1. [Introduction](/docs/databases/database-systems/introduction.md)
-      2. [Database Storage](/docs/databases/database-systems/database-storage.md)
-      3. [Log Structured Tree](/docs/databases/database-systems/lsm-tree.md)
-      4. [Index Organized Storage](/docs/databases/database-systems/index-organized-storage.md)
-      5. [Hash Tables](/docs/databases/database-systems/hash-tables.md)
-      6. [B-Trees](/docs/databases/database-systems/b-tree.md)
-      7. [Bloom Filter](/docs/databases/database-systems/bloom-filter.md)
-      8. [Skip List](/docs/databases/database-systems/skip-list.md)
-      9. [Trie](/docs/databases/database-systems/trie.md)
-      10. [Inverted Index](/docs/databases/database-systems/inverted-index.md)
-      11. [Vector Index](/docs/databases/database-systems/vector-index.md)
+- Choose the right database for your project
+- Configure and optimize database performance
+- Implement security best practices
+- Handle scaling and high availability
+- Work with popular database systems like PostgreSQL, MySQL, MongoDB, and more
+
+## 2. Database Systems
+
+Delve into the theoretical foundations and internal workings of database management systems. This category covers:
+
+- Database architecture and components
+- Storage engines and indexing strategies
+- Transaction management and concurrency control
+- Query processing and optimization techniques
+- Distributed database concepts
+
+## 3. SQL
+
+Master the Structured Query Language, the universal language for interacting with relational databases. Explore:
+
+- SQL syntax and grammar fundamentals
+- Data definition and manipulation operations
+- Advanced querying techniques (joins, subqueries, window functions)
+- Database design principles and normalization
+- Performance tuning and best practices
