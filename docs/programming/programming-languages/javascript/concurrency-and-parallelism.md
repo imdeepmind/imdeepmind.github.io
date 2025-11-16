@@ -49,7 +49,7 @@ console.log("End");
 
 **Output:**
 
-```
+```text
 Start
 End
 This is asynchronous

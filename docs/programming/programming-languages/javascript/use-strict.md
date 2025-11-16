@@ -193,6 +193,7 @@ let public = 10; // SyntaxError: Unexpected strict mode reserved word
    ```
 
 4. Accidentally overwriting reserved keywords:
+
    ```javascript
    "use strict";
    let public = 42; // SyntaxError

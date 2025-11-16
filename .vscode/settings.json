@@ -1,6 +1,7 @@
 {
   "editor.formatOnSave": true,
   "cSpell.words": [
+    "Asyncio",
     "backpressure",
     "bitmask",
     "btool",
@@ -8,6 +9,7 @@
     "colddb",
     "Creational",
     "deploymentclient",
+    "Falsiness",
     "Frotnend",
     "frozenset",
     "goroutines",
@@ -40,6 +42,7 @@
     "tcpout",
     "thaweddb",
     "Tracemalloc",
+    "unshift",
     "urlpatterns",
     "Viewsets",
     "wsgi"

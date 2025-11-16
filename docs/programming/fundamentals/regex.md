@@ -239,7 +239,7 @@ func main() {
 
 - **Explanation**:
   - `^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])` → Matches the date part (YYYY-MM-DD).
-  - ` ([01][0-9]|2[0-3])` → Matches the hour in 24-hour format (00–23).
+  - `([01][0-9]|2[0-3])` → Matches the hour in 24-hour format (00–23).
   - `:[0-5][0-9]:[0-5][0-9]$` → Matches minutes and seconds (00–59).
 
 ### Time Validation (HH:MM:SS)

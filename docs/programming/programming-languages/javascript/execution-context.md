@@ -50,18 +50,18 @@ An execution context has two phases:
 - This happens before the code is executed.
 - Key operations:
 
-  1.  **Global Context (GEC):**
-      - Creates the global object (`window` or `global`).
-      - Initializes `this` to the global object.
-      - Sets up memory (heap) for variables and functions in the global scope.
-      - Hoisting happens:
-        - Variable declarations are set to `undefined`.
-        - Functions are fully defined (stored in memory).
-  2.  **Function Context (FEC):**
-      - Sets up the `arguments` object.
-      - Hoists variable declarations (initialized to `undefined`).
-      - Hoists function declarations.
-      - Sets up `this` binding.
+  1. **Global Context (GEC):**
+     - Creates the global object (`window` or `global`).
+     - Initializes `this` to the global object.
+     - Sets up memory (heap) for variables and functions in the global scope.
+     - Hoisting happens:
+       - Variable declarations are set to `undefined`.
+       - Functions are fully defined (stored in memory).
+  2. **Function Context (FEC):**
+     - Sets up the `arguments` object.
+     - Hoists variable declarations (initialized to `undefined`).
+     - Hoists function declarations.
+     - Sets up `this` binding.
 
 - **Key Concept: Hoisting**
 

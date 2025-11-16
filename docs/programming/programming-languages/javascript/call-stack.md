@@ -159,7 +159,7 @@ After all executions are complete, the Call Stack is empty except for the Global
 
 Recursive functions create a new Stack Frame for each recursive call. If recursion depth becomes too large, it can result in a **Stack Overflow**.
 
-### Example of a Recursive Function:
+### Example of a Recursive Function
 
 ```javascript
 function recursiveFunction(counter) {
@@ -184,6 +184,7 @@ recursiveFunction(3);
 
 - Occurs when the Call Stack exceeds its size limit due to excessive function calls, often caused by infinite recursion or deeply nested function calls.
 - Example:
+
   ```javascript
   function infiniteRecursion() {
     infiniteRecursion();
@@ -214,7 +215,7 @@ first();
 
 **Output:**
 
-```
+```text
 Error: Something went wrong!
     at third (<script>:8:11)
     at second (<script>:4:5)

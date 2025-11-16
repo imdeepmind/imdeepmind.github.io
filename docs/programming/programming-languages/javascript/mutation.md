@@ -8,8 +8,8 @@ In JavaScript, **mutation** refers to modifying or changing a value directly in 
 
 ## Mutable vs. Immutable Data Types in JavaScript
 
-1.  Immutable Data Types (Cannot be Mutated)
-2.  Mutable Data Types (Can be Mutated)
+1. Immutable Data Types (Cannot be Mutated)
+2. Mutable Data Types (Can be Mutated)
 
 ### Immutable Data Types
 
@@ -88,21 +88,21 @@ Since arrays are mutable, operations like `push()` mutate the original array, af
 
 ## Controlling Mutation with `const`, `Object.freeze()`, and Libraries
 
-1.  **`const`**: Prevents reassignment of a variable but does not make it immutable. For instance, a `const` object or array can still have its properties or elements modified.
+1. **`const`**: Prevents reassignment of a variable but does not make it immutable. For instance, a `const` object or array can still have its properties or elements modified.
 
-```javascript
-const obj = { name: "Alice" };
-obj.name = "Bob"; // Allowed, as it modifies the object but does not reassign it
-```
+   ```javascript
+   const obj = { name: "Alice" };
+   obj.name = "Bob"; // Allowed, as it modifies the object but does not reassign it
+   ```
 
-2.  **`Object.freeze()`**: Prevents modification of an object’s properties, making the object effectively immutable at the top level. Note, however, that it does not make nested objects immutable (this is a shallow freeze).
+2. **`Object.freeze()`**: Prevents modification of an object’s properties, making the object effectively immutable at the top level. Note, however, that it does not make nested objects immutable (this is a shallow freeze).
 
-```javascript
-const frozenObj = Object.freeze({ name: "Alice" });
-frozenObj.name = "Bob"; // Ignored in strict mode, no effect
-```
+   ```javascript
+   const frozenObj = Object.freeze({ name: "Alice" });
+   frozenObj.name = "Bob"; // Ignored in strict mode, no effect
+   ```
 
-3.  **Immutability Libraries**: Libraries like `Immutable.js` and `Immer` can create deeply immutable data structures, which is useful for state management in complex applications.
+3. **Immutability Libraries**: Libraries like `Immutable.js` and `Immer` can create deeply immutable data structures, which is useful for state management in complex applications.
 
 ### Summary
 

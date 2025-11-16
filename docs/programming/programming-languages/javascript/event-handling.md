@@ -119,6 +119,7 @@ There are three phases:
 
 - During the bubbling phase: `"Child clicked"` → `"Parent clicked"`
 - To use the capturing phase, pass `true` as the third argument to `addEventListener()`:
+
   ```javascript
   element.addEventListener("click", handler, true);
   ```

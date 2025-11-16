@@ -10,7 +10,7 @@ In JavaScript, **callbacks** and **higher-order functions** are key concepts, es
 
 A **callback** is a function that is passed as an argument to another function, which is then executed after a certain event or condition is met. Callbacks allow you to control the flow of execution in asynchronous operations and handle results when they're ready.
 
-### Characteristics of Callbacks:
+### Characteristics of Callbacks
 
 - **Asynchronous**: Callbacks are often used in asynchronous operations such as reading files, making API calls, or processing user input.
 - **Synchronous**: They can also be used for synchronous operations, though they are most commonly associated with asynchronous programming.
@@ -58,12 +58,12 @@ fetchData(function (data) {
 
 A **higher-order function** is a function that either:
 
-1.  Takes one or more functions as arguments, or
-2.  Returns a function as a result.
+1. Takes one or more functions as arguments, or
+2. Returns a function as a result.
 
 Higher-order functions are a fundamental concept in functional programming and help promote more reusable and modular code.
 
-### Characteristics of Higher-Order Functions:
+### Characteristics of Higher-Order Functions
 
 - They allow functions to be treated as first-class citizens, meaning they can be passed around as arguments, returned from other functions, and assigned to variables.
 - Higher-order functions are often used in callbacks, event handlers, and when working with functional libraries like Lodash.
