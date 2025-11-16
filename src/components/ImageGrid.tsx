@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./ImageGrid.css";
 
 interface ImageData {
+  id: string;
   images: Array<{
     original: string;
     thumbnailBig: string;
@@ -30,9 +31,9 @@ const ImageGrid: React.FC = () => {
     fetch("https://gallery.imdeepmind.com/api/images.json")
       .then((res) => res.json())
       .then((data) => {
-        const imageList = (Object.values(data) as ImageData[]).filter(
-          (item) => item.onHomepage
-        );
+        const imageList = Object.entries(data)
+          .filter(([id, item]: [string, any]) => item.onHomepage)
+          .map(([id, item]: [string, any]) => ({ id, ...item }));
         setImages(imageList);
       })
       .catch((err) => console.error("Failed to fetch images:", err));
@@ -45,15 +46,21 @@ const ImageGrid: React.FC = () => {
           key={index}
           className={`image-container ${index === 3 ? "large" : ""}`}
         >
-          <img
-            src={item.images[0].thumbnailBig}
-            alt={item.title}
-            className="grid-item"
-          />
-          <div className="overlay">
-            <h3>{item.title}</h3>
-            <p>{item.date}</p>
-          </div>
+          <a
+            href={`https://gallery.imdeepmind.com/gallery/details/?id=${item.id}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src={item.images[0].thumbnailBig}
+              alt={item.title}
+              className="grid-item"
+            />
+            <div className="overlay">
+              <h3>{item.title}</h3>
+              <p>{item.date}</p>
+            </div>
+          </a>
         </div>
       ))}
     </div>
