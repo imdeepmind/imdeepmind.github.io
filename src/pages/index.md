@@ -18,11 +18,11 @@ import TravelGrid from '../components/TravelGrid';
 
 ## Software Engineering
 
-Hey there, this is Abhishek, Abhishek Chatterjee. I'm Senior Software Engineer I at SurveyMonkey. I have over 6 years of experience working as a Software Engineer. My skill set includes programming languages like Python, GoLang and JavaScript, and a variety of frameworks/libraries for both front-end and backend.
+Hey there, this is Abhishek, Abhishek Chatterjee. I'm a Senior Software Engineer I @ SurveyMonkey. I have over 6 years of experience working as a Software Engineer. My skill set includes programming languages like Python, GoLang and JavaScript, and a variety of frameworks/libraries for both front-end and backend.
 
 I'm also skilled in cloud platforms like AWS (AWS Certified) and Azure, which I use to build and deploy scalable applications. My work often involves developing RESTful and GraphQL APIs, and I have a strong grasp of databases, both SQL and NoSQL.
 
-Beyond my professional work, I'm the founder of Rocket a platform for rapidly building backend APIs, and Delphy, a web app for analyzing open-source packages. I've also contributed to the open-source community by creating packages such as Hocrox, PCY, and NeuralPy.
+Beyond my professional work, I'm the founder of [Rocket](https://rocketapi.net) a platform for rapidly building backend APIs, and Delphy, a web app for analyzing open-source packages. I've also contributed to the open-source community by creating packages such as [Hocrox](https://github.com/imdeepmind/hocrox), PCY, and [NeuralPy](https://github.com/imdeepmind/NeuralPy).
 
 ## Traveling, Driving, Biking, and Hiking
 
