@@ -26,6 +26,7 @@ interface ImageData {
 
 const ImageGrid: React.FC = () => {
   const [images, setImages] = useState<ImageData[]>([]);
+  const [loaded, setLoaded] = useState<boolean[]>([]);
 
   useEffect(() => {
     fetch("https://gallery.imdeepmind.com/api/images.json")
@@ -35,6 +36,7 @@ const ImageGrid: React.FC = () => {
           .filter(([id, item]: [string, any]) => item.onHomepage)
           .map(([id, item]: [string, any]) => ({ id, ...item }));
         setImages(imageList);
+        setLoaded(new Array(imageList.length).fill(false));
       })
       .catch((err) => console.error("Failed to fetch images:", err));
   }, []);
@@ -51,10 +53,18 @@ const ImageGrid: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
+            {!loaded[index] && <div className="skeleton"></div>}
             <img
               src={item.images[0].thumbnailBig}
               alt={item.title}
               className="grid-item"
+              onLoad={() =>
+                setLoaded((prev) => {
+                  const newLoaded = [...prev];
+                  newLoaded[index] = true;
+                  return newLoaded;
+                })
+              }
             />
             <div className="overlay">
               <h3>{item.title}</h3>

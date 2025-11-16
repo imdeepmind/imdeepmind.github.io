@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ImageGrid.css";
 
 const TravelGrid: React.FC = () => {
@@ -35,6 +35,10 @@ const TravelGrid: React.FC = () => {
     },
   ];
 
+  const [loaded, setLoaded] = useState<boolean[]>(
+    new Array(images.length).fill(false)
+  );
+
   return (
     <div className="image-grid">
       {images.map((item, index) => (
@@ -42,7 +46,19 @@ const TravelGrid: React.FC = () => {
           key={index}
           className={`image-container ${index === 0 ? "large" : ""}`}
         >
-          <img src={item.url} alt={item.location} className="grid-item" />
+          {!loaded[index] && <div className="skeleton"></div>}
+          <img
+            src={item.url}
+            alt={item.location}
+            className="grid-item"
+            onLoad={() =>
+              setLoaded((prev) => {
+                const newLoaded = [...prev];
+                newLoaded[index] = true;
+                return newLoaded;
+              })
+            }
+          />
           <div className="overlay">
             <h3>{item.location}</h3>
             <p>{item.date}</p>
