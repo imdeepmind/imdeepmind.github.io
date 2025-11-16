@@ -3,12 +3,13 @@ title: Abhishek's Homepage
 ---
 
 import ImageGrid from '../components/ImageGrid';
+import TravelGrid from '../components/TravelGrid';
 
 <!-- markdownlint-disable MD025 -->
 
 # I'm Abhishek Chatterjee. I make Software
 
-> Founder of Rocket | Senior Software Engineer | Travel Freak | Amateur Photographer
+> Founder of Rocket | Senior Software Engineer @ SurveyMonkey | Travel Freak | Amateur Photographer
 
 <!-- markdownlint-disable MD033 -->
 <div style={{textAlign: 'center'}}>
@@ -23,9 +24,13 @@ I'm also skilled in cloud platforms like AWS (AWS Certified) and Azure, which I 
 
 Beyond my professional work, I'm the founder of Rocket a platform for rapidly building backend APIs, and Delphy, a web app for analyzing open-source packages. I've also contributed to the open-source community by creating packages such as Hocrox, PCY, and NeuralPy.
 
-## Traveling, Driving, and Biking
+## Traveling, Driving, Biking, and Hiking
 
-TODO
+I’ve always loved being active. Most of my trips are on my bike or in my car, depending on my destination and how much time I have. There’s something about long rides and open roads that clears my mind and makes the journey enjoyable.
+
+Recently, I’ve started hiking, and it’s becoming one of my favorite ways to explore new places. It’s slower and quieter, and it encourages you to soak in the surroundings instead of just passing through. It’s a different kind of travel, but I enjoy it just as much.
+
+<TravelGrid />
 
 ## Photography
 
