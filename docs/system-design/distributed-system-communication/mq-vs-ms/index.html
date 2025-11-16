@@ -2,280 +2,280 @@
 <html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-system-design/distributed-system-communication/mq-vs-ms" data-has-hydrated="false">
 <head>
 <meta charset="UTF-8">
-<meta name="generator" content="Docusaurus v3.8.1">
-<title data-rh="true">Message Queues and Message Streams | imdeepmind</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://imdeepmind.com/img/logo.png"><meta data-rh="true" name="twitter:image" content="https://imdeepmind.com/img/logo.png"><meta data-rh="true" property="og:url" content="https://imdeepmind.com/docs/system-design/distributed-system-communication/mq-vs-ms"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Message Queues and Message Streams | imdeepmind"><meta data-rh="true" name="description" content="Message queues and message streams are both mechanisms for enabling communication between distributed systems, but they serve different purposes and use distinct paradigms. Understanding their differences, features, and use cases is critical for designing scalable and reliable systems."><meta data-rh="true" property="og:description" content="Message queues and message streams are both mechanisms for enabling communication between distributed systems, but they serve different purposes and use distinct paradigms. Understanding their differences, features, and use cases is critical for designing scalable and reliable systems."><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://imdeepmind.com/docs/system-design/distributed-system-communication/mq-vs-ms"><link data-rh="true" rel="alternate" href="https://imdeepmind.com/docs/system-design/distributed-system-communication/mq-vs-ms" hreflang="en"><link data-rh="true" rel="alternate" href="https://imdeepmind.com/docs/system-design/distributed-system-communication/mq-vs-ms" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Message Queues and Message Streams","item":"https://imdeepmind.com/docs/system-design/distributed-system-communication/mq-vs-ms"}]}</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/assets/css/styles.228aa8d7.css">
-<script src="/assets/js/runtime~main.49dc6198.js" defer="defer"></script>
-<script src="/assets/js/main.4ec4aef8.js" defer="defer"></script>
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">Message Queues and Message Streams | imdeepmind</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://imdeepmind.com/img/logo.png"><meta data-rh="true" name="twitter:image" content="https://imdeepmind.com/img/logo.png"><meta data-rh="true" property="og:url" content="https://imdeepmind.com/docs/system-design/distributed-system-communication/mq-vs-ms"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Message Queues and Message Streams | imdeepmind"><meta data-rh="true" name="description" content="Message queues and message streams are both mechanisms for enabling communication between distributed systems, but they serve different purposes and use distinct paradigms. Understanding their differences, features, and use cases is critical for designing scalable and reliable systems."><meta data-rh="true" property="og:description" content="Message queues and message streams are both mechanisms for enabling communication between distributed systems, but they serve different purposes and use distinct paradigms. Understanding their differences, features, and use cases is critical for designing scalable and reliable systems."><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://imdeepmind.com/docs/system-design/distributed-system-communication/mq-vs-ms"><link data-rh="true" rel="alternate" href="https://imdeepmind.com/docs/system-design/distributed-system-communication/mq-vs-ms" hreflang="en"><link data-rh="true" rel="alternate" href="https://imdeepmind.com/docs/system-design/distributed-system-communication/mq-vs-ms" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Message Queues and Message Streams","item":"https://imdeepmind.com/docs/system-design/distributed-system-communication/mq-vs-ms"}]}</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/assets/css/styles.b5dda011.css">
+<script src="/assets/js/runtime~main.75513e17.js" defer="defer"></script>
+<script src="/assets/js/main.f845f907.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
-<svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
+<svg style="display: none;"><defs>
 <symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
 </defs></svg>
-<script>!function(){var t="light";var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",e||t),document.documentElement.setAttribute("data-theme-choice",e||t)}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo.png" alt="imdeepmind logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/logo.png" alt="imdeepmind logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">abhishek chatterjee</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/intro">Notes</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://rocketapi.net" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">Rocket<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><a href="https://blog.rocketapi.net" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">Blogs<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><a href="https://linkedin.com/in/imdeepmind" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">LinkedIn<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><a href="https://github.com/imdeepmind" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/intro">Introduction</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/programming/introduction">Programming</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/frameworks-libraries/introduction">Framework and Libraries</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/data-structure-and-algorithms/introduction">Data Structure and Algorithms</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/operating-systems/introduction">Operating Systems</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/networking/introduction">Networking</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/databases/introduction">Databases</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/containers/introduction">Containers</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/system-design/introduction">System Design</a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/system-design/introduction">Introduction</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/system-design/fundamental-concepts/high-and-low-level-design">Fundamental Concepts</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" tabindex="0" href="/docs/system-design/distributed-system-communication/mq-vs-ms">Communication in Distributed Systems</a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/system-design/distributed-system-communication/mq-vs-ms">Message Queues and Message Streams</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/system-design/distributed-system-communication/sqs">AWS SQS</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/system-design/distributed-system-communication/sns">AWS SNS</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/system-design/distributed-system-communication/rabbit-mq">RabbitMQ</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/system-design/containers/introduction">Containers</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/system-design/kubernetes/introduction">Kubernetes</a></div></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/version-control/introduction">Version Control</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/cloud/aws/aurora">Cloud</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/design-patterns/introduction">Design Patterns</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/ml/introduction">Machine Learning</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/other/regex">Other</a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">System Design</span></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Communication in Distributed Systems</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Message Queues and Message Streams</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Message Queues and Message Streams</h1></header>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo.png" alt="imdeepmind logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/logo.png" alt="imdeepmind logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">abhishek chatterjee</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/intro">Notes</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://rocketapi.net" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">Rocket<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><a href="https://blog.rocketapi.net" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">Blogs<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><a href="https://linkedin.com/in/imdeepmind" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">LinkedIn<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><a href="https://github.com/imdeepmind" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/intro"><span title="Introduction" class="linkLabel_WmDU">Introduction</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/programming/introduction"><span title="Programming" class="categoryLinkLabel_W154">Programming</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/frameworks-libraries/introduction"><span title="Framework and Libraries" class="categoryLinkLabel_W154">Framework and Libraries</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/data-structure-and-algorithms/introduction"><span title="Data Structure and Algorithms" class="categoryLinkLabel_W154">Data Structure and Algorithms</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/operating-systems/introduction"><span title="Operating Systems" class="categoryLinkLabel_W154">Operating Systems</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/networking/introduction"><span title="Networking" class="categoryLinkLabel_W154">Networking</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/databases/introduction"><span title="Databases" class="categoryLinkLabel_W154">Databases</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/containers/introduction"><span title="Containers" class="categoryLinkLabel_W154">Containers</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/system-design/introduction"><span title="System Design" class="categoryLinkLabel_W154">System Design</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/system-design/introduction"><span title="Introduction" class="linkLabel_WmDU">Introduction</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/system-design/fundamental-concepts/high-and-low-level-design"><span title="Fundamental Concepts" class="categoryLinkLabel_W154">Fundamental Concepts</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" tabindex="0" href="/docs/system-design/distributed-system-communication/mq-vs-ms"><span title="Communication in Distributed Systems" class="categoryLinkLabel_W154">Communication in Distributed Systems</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/system-design/distributed-system-communication/mq-vs-ms"><span title="Message Queues and Message Streams" class="linkLabel_WmDU">Message Queues and Message Streams</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/system-design/distributed-system-communication/sqs"><span title="AWS SQS" class="linkLabel_WmDU">AWS SQS</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/system-design/distributed-system-communication/sns"><span title="AWS SNS" class="linkLabel_WmDU">AWS SNS</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/system-design/distributed-system-communication/rabbit-mq"><span title="RabbitMQ" class="linkLabel_WmDU">RabbitMQ</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/system-design/containers/introduction"><span title="Containers" class="categoryLinkLabel_W154">Containers</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/system-design/kubernetes/introduction"><span title="Kubernetes" class="categoryLinkLabel_W154">Kubernetes</span></a></div></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/version-control/introduction"><span title="Version Control" class="categoryLinkLabel_W154">Version Control</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/cloud/aws/aurora"><span title="Cloud" class="categoryLinkLabel_W154">Cloud</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/design-patterns/introduction"><span title="Design Patterns" class="categoryLinkLabel_W154">Design Patterns</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/ml/introduction"><span title="Machine Learning" class="categoryLinkLabel_W154">Machine Learning</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/other/regex"><span title="Other" class="categoryLinkLabel_W154">Other</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">System Design</span></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Communication in Distributed Systems</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Message Queues and Message Streams</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Message Queues and Message Streams</h1></header>
 <p>Message queues and message streams are both mechanisms for enabling communication between distributed systems, but they serve different purposes and use distinct paradigms. Understanding their differences, features, and use cases is critical for designing scalable and reliable systems.</p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="message-queues">Message Queues<a href="#message-queues" class="hash-link" aria-label="Direct link to Message Queues" title="Direct link to Message Queues">​</a></h2>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="key-concepts">Key Concepts<a href="#key-concepts" class="hash-link" aria-label="Direct link to Key Concepts" title="Direct link to Key Concepts">​</a></h3>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="message-queues">Message Queues<a href="#message-queues" class="hash-link" aria-label="Direct link to Message Queues" title="Direct link to Message Queues" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="key-concepts">Key Concepts<a href="#key-concepts" class="hash-link" aria-label="Direct link to Key Concepts" title="Direct link to Key Concepts" translate="no">​</a></h3>
 <ol>
-<li>
+<li class="">
 <p><strong>Message:</strong></p>
 <ul>
-<li>A discrete unit of data sent between components.</li>
-<li>Includes a payload (the actual data) and metadata (e.g., headers, timestamps).</li>
+<li class="">A discrete unit of data sent between components.</li>
+<li class="">Includes a payload (the actual data) and metadata (e.g., headers, timestamps).</li>
 </ul>
 </li>
-<li>
+<li class="">
 <p><strong>Queue:</strong></p>
 <ul>
-<li>A data structure where messages are stored temporarily until processed.</li>
-<li>Typically operates on a First-In-First-Out (FIFO) basis.</li>
+<li class="">A data structure where messages are stored temporarily until processed.</li>
+<li class="">Typically operates on a First-In-First-Out (FIFO) basis.</li>
 </ul>
 </li>
-<li>
+<li class="">
 <p><strong>Producers and Consumers:</strong></p>
 <ul>
-<li><strong>Producers</strong> send messages to the queue.</li>
-<li><strong>Consumers</strong> retrieve and process messages from the queue.</li>
+<li class=""><strong>Producers</strong> send messages to the queue.</li>
+<li class=""><strong>Consumers</strong> retrieve and process messages from the queue.</li>
 </ul>
 </li>
-<li>
+<li class="">
 <p><strong>Broker:</strong></p>
 <ul>
-<li>Manages the queue and ensures reliable message delivery.</li>
-<li>Examples include RabbitMQ, Amazon SQS, and ActiveMQ.</li>
+<li class="">Manages the queue and ensures reliable message delivery.</li>
+<li class="">Examples include RabbitMQ, Amazon SQS, and ActiveMQ.</li>
 </ul>
 </li>
 </ol>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="features-of-message-queues">Features of Message Queues<a href="#features-of-message-queues" class="hash-link" aria-label="Direct link to Features of Message Queues" title="Direct link to Features of Message Queues">​</a></h3>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="features-of-message-queues">Features of Message Queues<a href="#features-of-message-queues" class="hash-link" aria-label="Direct link to Features of Message Queues" title="Direct link to Features of Message Queues" translate="no">​</a></h3>
 <ol>
-<li>
+<li class="">
 <p><strong>Asynchronous Communication:</strong></p>
 <ul>
-<li>Producers and consumers work independently.</li>
+<li class="">Producers and consumers work independently.</li>
 </ul>
 </li>
-<li>
+<li class="">
 <p><strong>Decoupling:</strong></p>
 <ul>
-<li>Reduces direct dependencies between services.</li>
+<li class="">Reduces direct dependencies between services.</li>
 </ul>
 </li>
-<li>
+<li class="">
 <p><strong>Persistence:</strong></p>
 <ul>
-<li>Messages are stored until acknowledged by the consumer.</li>
+<li class="">Messages are stored until acknowledged by the consumer.</li>
 </ul>
 </li>
-<li>
+<li class="">
 <p><strong>Load Balancing:</strong></p>
 <ul>
-<li>Messages can be distributed across multiple consumers.</li>
+<li class="">Messages can be distributed across multiple consumers.</li>
 </ul>
 </li>
-<li>
+<li class="">
 <p><strong>Reliability:</strong></p>
 <ul>
-<li>Guarantees at-least-once or exactly-once message delivery.</li>
+<li class="">Guarantees at-least-once or exactly-once message delivery.</li>
 </ul>
 </li>
 </ol>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="common-implementations">Common Implementations<a href="#common-implementations" class="hash-link" aria-label="Direct link to Common Implementations" title="Direct link to Common Implementations">​</a></h3>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="common-implementations">Common Implementations<a href="#common-implementations" class="hash-link" aria-label="Direct link to Common Implementations" title="Direct link to Common Implementations" translate="no">​</a></h3>
 <ol>
-<li>
+<li class="">
 <p><strong>RabbitMQ:</strong></p>
 <ul>
-<li>Ideal for point-to-point and pub-sub use cases.</li>
+<li class="">Ideal for point-to-point and pub-sub use cases.</li>
 </ul>
 </li>
-<li>
+<li class="">
 <p><strong>Amazon SQS:</strong></p>
 <ul>
-<li>Managed service with FIFO and standard queue options.</li>
+<li class="">Managed service with FIFO and standard queue options.</li>
 </ul>
 </li>
-<li>
+<li class="">
 <p><strong>ActiveMQ:</strong></p>
 <ul>
-<li>Java-based, suitable for enterprise environments.</li>
+<li class="">Java-based, suitable for enterprise environments.</li>
 </ul>
 </li>
 </ol>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="use-cases">Use Cases<a href="#use-cases" class="hash-link" aria-label="Direct link to Use Cases" title="Direct link to Use Cases">​</a></h3>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="use-cases">Use Cases<a href="#use-cases" class="hash-link" aria-label="Direct link to Use Cases" title="Direct link to Use Cases" translate="no">​</a></h3>
 <ol>
-<li>
+<li class="">
 <p><strong>Task Queues:</strong></p>
 <ul>
-<li>Distributing tasks (e.g., image processing) to workers.</li>
+<li class="">Distributing tasks (e.g., image processing) to workers.</li>
 </ul>
 </li>
-<li>
+<li class="">
 <p><strong>Error Recovery:</strong></p>
 <ul>
-<li>Use dead-letter queues to handle failed messages.</li>
+<li class="">Use dead-letter queues to handle failed messages.</li>
 </ul>
 </li>
-<li>
+<li class="">
 <p><strong>Load Leveling:</strong></p>
 <ul>
-<li>Smooth out traffic spikes by queuing requests.</li>
+<li class="">Smooth out traffic spikes by queuing requests.</li>
 </ul>
 </li>
 </ol>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="message-streams">Message Streams<a href="#message-streams" class="hash-link" aria-label="Direct link to Message Streams" title="Direct link to Message Streams">​</a></h2>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="key-concepts-1">Key Concepts<a href="#key-concepts-1" class="hash-link" aria-label="Direct link to Key Concepts" title="Direct link to Key Concepts">​</a></h3>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="message-streams">Message Streams<a href="#message-streams" class="hash-link" aria-label="Direct link to Message Streams" title="Direct link to Message Streams" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="key-concepts-1">Key Concepts<a href="#key-concepts-1" class="hash-link" aria-label="Direct link to Key Concepts" title="Direct link to Key Concepts" translate="no">​</a></h3>
 <ol>
-<li>
+<li class="">
 <p><strong>Stream:</strong></p>
 <ul>
-<li>A continuous flow of events or records.</li>
-<li>Typically organized into topics or partitions.</li>
+<li class="">A continuous flow of events or records.</li>
+<li class="">Typically organized into topics or partitions.</li>
 </ul>
 </li>
-<li>
+<li class="">
 <p><strong>Producers and Consumers:</strong></p>
 <ul>
-<li><strong>Producers</strong> append records to the stream.</li>
-<li><strong>Consumers</strong> read records, often with the ability to replay past events.</li>
+<li class=""><strong>Producers</strong> append records to the stream.</li>
+<li class=""><strong>Consumers</strong> read records, often with the ability to replay past events.</li>
 </ul>
 </li>
-<li>
+<li class="">
 <p><strong>Broker:</strong></p>
 <ul>
-<li>Manages stream partitions and ensures high availability.</li>
-<li>Examples include Apache Kafka, Amazon Kinesis, and Redpanda.</li>
+<li class="">Manages stream partitions and ensures high availability.</li>
+<li class="">Examples include Apache Kafka, Amazon Kinesis, and Redpanda.</li>
 </ul>
 </li>
 </ol>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="features-of-message-streams">Features of Message Streams<a href="#features-of-message-streams" class="hash-link" aria-label="Direct link to Features of Message Streams" title="Direct link to Features of Message Streams">​</a></h3>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="features-of-message-streams">Features of Message Streams<a href="#features-of-message-streams" class="hash-link" aria-label="Direct link to Features of Message Streams" title="Direct link to Features of Message Streams" translate="no">​</a></h3>
 <ol>
-<li>
+<li class="">
 <p><strong>Real-Time Processing:</strong></p>
 <ul>
-<li>Consumers can process events as they occur.</li>
+<li class="">Consumers can process events as they occur.</li>
 </ul>
 </li>
-<li>
+<li class="">
 <p><strong>Event Replay:</strong></p>
 <ul>
-<li>Consumers can replay events by seeking to a specific point in the stream.</li>
+<li class="">Consumers can replay events by seeking to a specific point in the stream.</li>
 </ul>
 </li>
-<li>
+<li class="">
 <p><strong>Partitioning:</strong></p>
 <ul>
-<li>Enables parallel processing and scalability.</li>
+<li class="">Enables parallel processing and scalability.</li>
 </ul>
 </li>
-<li>
+<li class="">
 <p><strong>Durability:</strong></p>
 <ul>
-<li>Events are persisted for a configurable retention period.</li>
+<li class="">Events are persisted for a configurable retention period.</li>
 </ul>
 </li>
-<li>
+<li class="">
 <p><strong>Pub-Sub Model:</strong></p>
 <ul>
-<li>Producers publish to topics, and multiple consumers can subscribe.</li>
+<li class="">Producers publish to topics, and multiple consumers can subscribe.</li>
 </ul>
 </li>
 </ol>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="common-implementations-1">Common Implementations<a href="#common-implementations-1" class="hash-link" aria-label="Direct link to Common Implementations" title="Direct link to Common Implementations">​</a></h3>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="common-implementations-1">Common Implementations<a href="#common-implementations-1" class="hash-link" aria-label="Direct link to Common Implementations" title="Direct link to Common Implementations" translate="no">​</a></h3>
 <ol>
-<li>
+<li class="">
 <p><strong>Apache Kafka:</strong></p>
 <ul>
-<li>High-throughput, distributed event streaming platform.</li>
+<li class="">High-throughput, distributed event streaming platform.</li>
 </ul>
 </li>
-<li>
+<li class="">
 <p><strong>Amazon Kinesis:</strong></p>
 <ul>
-<li>Fully managed, integrates with the AWS ecosystem.</li>
+<li class="">Fully managed, integrates with the AWS ecosystem.</li>
 </ul>
 </li>
-<li>
+<li class="">
 <p><strong>Redpanda:</strong></p>
 <ul>
-<li>Kafka-compatible, designed for simplicity and performance.</li>
+<li class="">Kafka-compatible, designed for simplicity and performance.</li>
 </ul>
 </li>
 </ol>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="use-cases-1">Use Cases<a href="#use-cases-1" class="hash-link" aria-label="Direct link to Use Cases" title="Direct link to Use Cases">​</a></h3>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="use-cases-1">Use Cases<a href="#use-cases-1" class="hash-link" aria-label="Direct link to Use Cases" title="Direct link to Use Cases" translate="no">​</a></h3>
 <ol>
-<li>
+<li class="">
 <p><strong>Event Streaming:</strong></p>
 <ul>
-<li>Capturing user activity logs or IoT sensor data.</li>
+<li class="">Capturing user activity logs or IoT sensor data.</li>
 </ul>
 </li>
-<li>
+<li class="">
 <p><strong>Data Pipelines:</strong></p>
 <ul>
-<li>Moving data between systems (e.g., ETL).</li>
+<li class="">Moving data between systems (e.g., ETL).</li>
 </ul>
 </li>
-<li>
+<li class="">
 <p><strong>Real-Time Analytics:</strong></p>
 <ul>
-<li>Powering dashboards or detecting anomalies.</li>
+<li class="">Powering dashboards or detecting anomalies.</li>
 </ul>
 </li>
 </ol>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="key-differences-between-message-queues-and-streams">Key Differences Between Message Queues and Streams<a href="#key-differences-between-message-queues-and-streams" class="hash-link" aria-label="Direct link to Key Differences Between Message Queues and Streams" title="Direct link to Key Differences Between Message Queues and Streams">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="key-differences-between-message-queues-and-streams">Key Differences Between Message Queues and Streams<a href="#key-differences-between-message-queues-and-streams" class="hash-link" aria-label="Direct link to Key Differences Between Message Queues and Streams" title="Direct link to Key Differences Between Message Queues and Streams" translate="no">​</a></h2>
 <table><thead><tr><th>Feature</th><th>Message Queues</th><th>Message Streams</th></tr></thead><tbody><tr><td><strong>Data Flow</strong></td><td>Point-to-point or pub-sub</td><td>Continuous, append-only</td></tr><tr><td><strong>Processing Model</strong></td><td>Message is removed after consumption</td><td>Messages can be replayed multiple times</td></tr><tr><td><strong>Use Cases</strong></td><td>Task distribution, load leveling</td><td>Event streaming, real-time analytics</td></tr><tr><td><strong>Durability</strong></td><td>Stored until acknowledged</td><td>Retained for a fixed duration</td></tr><tr><td><strong>Scalability</strong></td><td>Limited by queue size</td><td>Partitioning enables high scalability</td></tr></tbody></table>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="challenges-and-best-practices">Challenges and Best Practices<a href="#challenges-and-best-practices" class="hash-link" aria-label="Direct link to Challenges and Best Practices" title="Direct link to Challenges and Best Practices">​</a></h2>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="challenges">Challenges<a href="#challenges" class="hash-link" aria-label="Direct link to Challenges" title="Direct link to Challenges">​</a></h3>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="challenges-and-best-practices">Challenges and Best Practices<a href="#challenges-and-best-practices" class="hash-link" aria-label="Direct link to Challenges and Best Practices" title="Direct link to Challenges and Best Practices" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="challenges">Challenges<a href="#challenges" class="hash-link" aria-label="Direct link to Challenges" title="Direct link to Challenges" translate="no">​</a></h3>
 <ol>
-<li>
+<li class="">
 <p><strong>Message Ordering:</strong></p>
 <ul>
-<li>Ensuring proper order, especially in distributed systems.</li>
+<li class="">Ensuring proper order, especially in distributed systems.</li>
 </ul>
 </li>
-<li>
+<li class="">
 <p><strong>Fault Tolerance:</strong></p>
 <ul>
-<li>Designing for high availability and durability.</li>
+<li class="">Designing for high availability and durability.</li>
 </ul>
 </li>
-<li>
+<li class="">
 <p><strong>Monitoring and Debugging:</strong></p>
 <ul>
-<li>Identifying bottlenecks in message processing.</li>
+<li class="">Identifying bottlenecks in message processing.</li>
 </ul>
 </li>
 </ol>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="best-practices">Best Practices<a href="#best-practices" class="hash-link" aria-label="Direct link to Best Practices" title="Direct link to Best Practices">​</a></h3>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="best-practices">Best Practices<a href="#best-practices" class="hash-link" aria-label="Direct link to Best Practices" title="Direct link to Best Practices" translate="no">​</a></h3>
 <ol>
-<li>
+<li class="">
 <p><strong>Idempotent Consumers:</strong></p>
 <ul>
-<li>Handle duplicate messages gracefully.</li>
+<li class="">Handle duplicate messages gracefully.</li>
 </ul>
 </li>
-<li>
+<li class="">
 <p><strong>Use Dead-Letter Queues:</strong></p>
 <ul>
-<li>Redirect failed messages for investigation.</li>
+<li class="">Redirect failed messages for investigation.</li>
 </ul>
 </li>
-<li>
+<li class="">
 <p><strong>Partitioning for Streams:</strong></p>
 <ul>
-<li>Use appropriate partition keys for even load distribution.</li>
+<li class="">Use appropriate partition keys for even load distribution.</li>
 </ul>
 </li>
-<li>
+<li class="">
 <p><strong>Monitor Metrics:</strong></p>
 <ul>
-<li>Track latency, throughput, and queue depth.</li>
+<li class="">Track latency, throughput, and queue depth.</li>
 </ul>
 </li>
-<li>
+<li class="">
 <p><strong>Secure Communication:</strong></p>
 <ul>
-<li>Encrypt messages and authenticate producers/consumers.</li>
+<li class="">Encrypt messages and authenticate producers/consumers.</li>
 </ul>
 </li>
-</ol></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/imdeepmind/imdeepmind.github.io/blob/main/docs/system-design/distributed-system-communication/mq-vs-ms.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"><span class="theme-last-updated">Last updated<!-- --> on <b><time datetime="2024-12-18T18:18:18.000Z" itemprop="dateModified">Dec 18, 2024</time></b> by <b>Abhishek Chatterjee</b></span></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/system-design/fundamental-concepts/proxies"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Proxies</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/system-design/distributed-system-communication/sqs"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">AWS SQS</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#message-queues" class="table-of-contents__link toc-highlight">Message Queues</a><ul><li><a href="#key-concepts" class="table-of-contents__link toc-highlight">Key Concepts</a></li><li><a href="#features-of-message-queues" class="table-of-contents__link toc-highlight">Features of Message Queues</a></li><li><a href="#common-implementations" class="table-of-contents__link toc-highlight">Common Implementations</a></li><li><a href="#use-cases" class="table-of-contents__link toc-highlight">Use Cases</a></li></ul></li><li><a href="#message-streams" class="table-of-contents__link toc-highlight">Message Streams</a><ul><li><a href="#key-concepts-1" class="table-of-contents__link toc-highlight">Key Concepts</a></li><li><a href="#features-of-message-streams" class="table-of-contents__link toc-highlight">Features of Message Streams</a></li><li><a href="#common-implementations-1" class="table-of-contents__link toc-highlight">Common Implementations</a></li><li><a href="#use-cases-1" class="table-of-contents__link toc-highlight">Use Cases</a></li></ul></li><li><a href="#key-differences-between-message-queues-and-streams" class="table-of-contents__link toc-highlight">Key Differences Between Message Queues and Streams</a></li><li><a href="#challenges-and-best-practices" class="table-of-contents__link toc-highlight">Challenges and Best Practices</a><ul><li><a href="#challenges" class="table-of-contents__link toc-highlight">Challenges</a></li><li><a href="#best-practices" class="table-of-contents__link toc-highlight">Best Practices</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/intro">Notes</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://profile.fyi/imdeepmind" target="_blank" rel="noopener noreferrer" class="footer__link-item">Profile.fyi<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://github.com/imdeepmind" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://linkedin.com/in/imdeepmind" target="_blank" rel="noopener noreferrer" class="footer__link-item">LinkedIn<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://blog.rocketapi.net" target="_blank" rel="noopener noreferrer" class="footer__link-item">Blog<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Abhishek Chatterjee. Built with Docusaurus.</div></div></div></footer></div>
+</ol></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/imdeepmind/imdeepmind.github.io/blob/main/docs/system-design/distributed-system-communication/mq-vs-ms.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"><span class="theme-last-updated">Last updated<!-- --> on <b><time datetime="2024-12-18T18:18:18.000Z" itemprop="dateModified">Dec 18, 2024</time></b> by <b>Abhishek Chatterjee</b></span></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/system-design/fundamental-concepts/proxies"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Proxies</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/system-design/distributed-system-communication/sqs"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">AWS SQS</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#message-queues" class="table-of-contents__link toc-highlight">Message Queues</a><ul><li><a href="#key-concepts" class="table-of-contents__link toc-highlight">Key Concepts</a></li><li><a href="#features-of-message-queues" class="table-of-contents__link toc-highlight">Features of Message Queues</a></li><li><a href="#common-implementations" class="table-of-contents__link toc-highlight">Common Implementations</a></li><li><a href="#use-cases" class="table-of-contents__link toc-highlight">Use Cases</a></li></ul></li><li><a href="#message-streams" class="table-of-contents__link toc-highlight">Message Streams</a><ul><li><a href="#key-concepts-1" class="table-of-contents__link toc-highlight">Key Concepts</a></li><li><a href="#features-of-message-streams" class="table-of-contents__link toc-highlight">Features of Message Streams</a></li><li><a href="#common-implementations-1" class="table-of-contents__link toc-highlight">Common Implementations</a></li><li><a href="#use-cases-1" class="table-of-contents__link toc-highlight">Use Cases</a></li></ul></li><li><a href="#key-differences-between-message-queues-and-streams" class="table-of-contents__link toc-highlight">Key Differences Between Message Queues and Streams</a></li><li><a href="#challenges-and-best-practices" class="table-of-contents__link toc-highlight">Challenges and Best Practices</a><ul><li><a href="#challenges" class="table-of-contents__link toc-highlight">Challenges</a></li><li><a href="#best-practices" class="table-of-contents__link toc-highlight">Best Practices</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/intro">Notes</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://profile.fyi/imdeepmind" target="_blank" rel="noopener noreferrer" class="footer__link-item">Profile.fyi<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://github.com/imdeepmind" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://linkedin.com/in/imdeepmind" target="_blank" rel="noopener noreferrer" class="footer__link-item">LinkedIn<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://blog.rocketapi.net" target="_blank" rel="noopener noreferrer" class="footer__link-item">Blog<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Abhishek Chatterjee. Built with Docusaurus.</div></div></div></footer></div>
 </body>
 </html>
