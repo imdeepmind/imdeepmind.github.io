@@ -2,6 +2,8 @@
 title: Abhishek's Homepage
 ---
 
+import ImageGrid from '../components/ImageGrid';
+
 <!-- markdownlint-disable MD025 -->
 
 # I'm Abhishek Chatterjee. I make Software
@@ -27,7 +29,9 @@ TODO
 
 ## Photography
 
-TODO
+Whenever I try I like to take photographs. Most of the photographs are landscape and shows good locations, bla bla bla
+
+<ImageGrid />
 
 ## Contact
 
