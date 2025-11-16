@@ -1,6 +1,7 @@
 {
   "editor.formatOnSave": true,
   "cSpell.words": [
+    "Asyncio",
     "backpressure",
     "bitmask",
     "btool",
