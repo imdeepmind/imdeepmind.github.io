@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./ImageGrid.css";
 
 const TravelGrid: React.FC = () => {
@@ -38,6 +38,13 @@ const TravelGrid: React.FC = () => {
   const [loaded, setLoaded] = useState<boolean[]>(
     new Array(images.length).fill(false)
   );
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoaded(new Array(images.length).fill(true));
+    }, 2000); // Hide skeleton after 2 seconds if onLoad doesn't fire
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div className="image-grid">
