@@ -29,7 +29,7 @@ TODO
 
 ## Photography
 
-I travel a lot, and over time, taking photos became part of how I experience new places. Most of what I capture is landscapes, scenes that made me stop or views that felt worth remembering. Nothing fancy, just shots that show what I saw and how it felt to be there. If you want to check them out, all my photos are here: [gallery.imdeepmind.com](https://gallery.imdeepmind.com/)
+I travel a lot, and over time, taking photos became part of how I experience new places. Most of what I capture is landscapes, scenes that made me stop or views that felt worth remembering. Nothing fancy, just shots that show what I saw and how it felt to be there. If you want to check them out, all my photos are available at my [gallery](https://gallery.imdeepmind.com/).
 
 Here are a few of my images that I've taken:
 
