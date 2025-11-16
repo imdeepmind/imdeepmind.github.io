@@ -2,12 +2,15 @@
 title: Abhishek's Homepage
 ---
 
-# I'm Abhishek Chatterjee. I make Software.
+<!-- markdownlint-disable MD025 -->
+
+# I'm Abhishek Chatterjee. I make Software
 
 > Founder of Rocket | Senior Software Engineer | Travel Freak | Amateur Photographer
 
+<!-- markdownlint-disable MD033 -->
 <div style={{textAlign: 'center'}}>
-    <img src="/img/me.jpg" width="50%" />
+    <img src="/img/me.jpg" className="responsive-image" alt="Its me, face" />
 </div>
 
 ## Software Engineering

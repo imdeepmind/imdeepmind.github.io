@@ -35,3 +35,13 @@
   margin: 20px 0; /* Optional: Adjust spacing around the diagram */
   text-align: center;
 }
+
+.responsive-image {
+  width: 50%;
+}
+
+@media (max-width: 768px) {
+  .responsive-image {
+    width: 100%;
+  }
+}
