@@ -36,6 +36,7 @@ sidebar_position: 1
 ## Control Structures
 
 - **Conditional Statements**:
+
   ```javascript
   if (condition) {
     // code to execute if condition is true
@@ -43,6 +44,7 @@ sidebar_position: 1
     // code to execute if condition is false
   }
   ```
+
 - **Switch Statement**:
 
   ```javascript
@@ -59,26 +61,35 @@ sidebar_position: 1
   ```
 
 - **Loops**:
+
   - **for loop**:
+
     ```javascript
     for (let i = 0; i < 5; i++) {
       // code
     }
     ```
+
   - **while loop**:
+
     ```javascript
     while (condition) {
       // code
     }
     ```
+
 - **Functions**:
+
   - Declared using the `function` keyword
+
     ```javascript
     function myFunction(param1, param2) {
       // code
     }
     ```
+
   - **Arrow functions**:
+
     ```javascript
     const myFunction = (param1, param2) => {
       // code

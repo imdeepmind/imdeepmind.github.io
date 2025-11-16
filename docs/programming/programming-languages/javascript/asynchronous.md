@@ -4,6 +4,8 @@ sidebar_position: 6
 
 # Asynchronous Programming
 
+<!-- markdownlint-disable MD024 -->
+
 Asynchronous programming in JavaScript allows you to perform tasks like I/O operations, network requests, and file reading without blocking the execution of the rest of the program. JavaScript uses **callbacks**, **promises**, and **async/await** to handle asynchronous code. Let’s explore each concept in detail:
 
 ## Callbacks
@@ -126,7 +128,7 @@ fetchDataPromise
   });
 ```
 
-### Promise.all() and Promise.race():
+### Promise.all() and Promise.race()
 
 - `Promise.all()` is used when you want to wait for multiple promises to resolve before continuing.
 
@@ -187,7 +189,7 @@ fetchData();
 - Inside the `async` function, `await` is used to pause the execution of the function until the promise resolves.
 - If the promise is resolved, the data is logged. If there is an error, it is caught by the `catch` block.
 
-### Handling Multiple Asynchronous Operations with `async/await`:
+### Handling Multiple Asynchronous Operations with `async/await`
 
 You can use `async/await` for sequential and parallel asynchronous operations.
 

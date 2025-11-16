@@ -82,10 +82,10 @@ person1.sayHello(); // Outputs: Hello, my name is Alice
 
 The **`new` keyword** is used to create instances of a constructor function. When you use `new`, it does the following:
 
-1.  Creates a new empty object.
-2.  Sets the prototype of the new object to the constructor function’s `prototype` property.
-3.  Binds `this` inside the constructor function to the new object.
-4.  Returns the new object (unless the constructor explicitly returns something else).
+1. Creates a new empty object.
+2. Sets the prototype of the new object to the constructor function’s `prototype` property.
+3. Binds `this` inside the constructor function to the new object.
+4. Returns the new object (unless the constructor explicitly returns something else).
 
 ```javascript
 function Person(name, age) {

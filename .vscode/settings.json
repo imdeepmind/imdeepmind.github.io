@@ -8,6 +8,7 @@
     "colddb",
     "Creational",
     "deploymentclient",
+    "Falsiness",
     "Frotnend",
     "frozenset",
     "goroutines",
@@ -40,6 +41,7 @@
     "tcpout",
     "thaweddb",
     "Tracemalloc",
+    "unshift",
     "urlpatterns",
     "Viewsets",
     "wsgi"

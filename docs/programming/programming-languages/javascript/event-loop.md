@@ -154,7 +154,8 @@ The code involves synchronous tasks, promises, timers (`setTimeout`), `setImmedi
 
 - The synchronous code is executed first, as it is added directly to the **Call Stack**.
 - Output:
-  ```
+
+  ```text
   Start
   End
   ```
@@ -200,7 +201,7 @@ The code involves synchronous tasks, promises, timers (`setTimeout`), `setImmedi
 
 ### Final Output
 
-```
+```text
 Start
 End
 Microtask: Promise 1
