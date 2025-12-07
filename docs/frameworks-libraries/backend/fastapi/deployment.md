@@ -160,9 +160,11 @@ gcloud run deploy --image gcr.io/my-project/fastapi-app --platform managed
 
 1. Create a **Droplet** (Ubuntu 20.04)
 2. Install:
+
    ```bash
    sudo apt update && sudo apt install -y docker-compose nginx
    ```
+
 3. Deploy with `docker-compose up -d`
 4. Configure Nginx as reverse proxy:
 

@@ -65,7 +65,7 @@ const element = <Greeting timeOfDay="Morning" userName="Abhishek" />;
 
 Output:
 
-```
+```text
 Good Morning, Abhishek!
 ```
 
@@ -118,6 +118,7 @@ const element = <Welcome name="Abhishek" />;
   ```
 
 - In **class components**, props are accessed using `this.props`:
+
   ```jsx
   class Welcome extends React.Component {
     render() {
@@ -218,6 +219,7 @@ To ensure that the correct types of props are being passed to a component, React
 
    - Always define default values for props to ensure predictable behavior.
    - Example:
+
      ```jsx
      MyComponent.defaultProps = {
        title: "Default Title",
@@ -241,7 +243,9 @@ To ensure that the correct types of props are being passed to a component, React
    - Pass functions as props for handling events in child components.
 
 6. **Pass Complex Data Using Objects**:
+
    - If a component requires multiple related props, consider wrapping them in an object.
+
      ```jsx
      const user = { name: "Abhishek", age: 25 };
      <Profile user={user} />;

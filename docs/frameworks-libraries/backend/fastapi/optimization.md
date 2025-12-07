@@ -83,11 +83,12 @@ async def read_db():
 ```
 
 **Async DB Drivers**:
-| Database | Async Library |
-|----------|--------------|
-| PostgreSQL | `asyncpg` |
-| MySQL | `aiomysql` |
-| SQLite | `aiosqlite` |
+
+| Database   | Async Library |
+| ---------- | ------------- |
+| PostgreSQL | `asyncpg`     |
+| MySQL      | `aiomysql`    |
+| SQLite     | `aiosqlite`   |
 
 ## Caching Strategies (`redis`, `fastapi-cache`)
 
@@ -201,11 +202,12 @@ locust -f locustfile.py
 - Supports **complex workflows** (e.g., login → API calls).
 
 **Key Metrics to Monitor**:
-| Metric | Target |
-|--------|--------|
-| **Requests/sec** | ≥1000 (for high-traffic APIs) |
-| **95th % Latency** | < 600 ms |
-| **Error Rate** | < 1 % |
+
+| Metric             | Target                        |
+| ------------------ | ----------------------------- |
+| **Requests/sec**   | ≥1000 (for high-traffic APIs) |
+| **95th % Latency** | < 600 ms                      |
+| **Error Rate**     | < 1 %                         |
 
 ## Summary of Optimization Techniques
 

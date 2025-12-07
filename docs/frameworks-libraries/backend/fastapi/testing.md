@@ -114,7 +114,7 @@ Insert a breakpoint in code:
 import pdb; pdb.set_trace()  # Python 3.7+
 ```
 
-**OR**
+**OR**:
 
 ```python
 breakpoint()  # Python 3.7+
@@ -151,9 +151,11 @@ def debug_endpoint():
 
 - **Manual Testing**: Use Postman GUI.
 - **Automated Testing**:
+
   ```bash
   newman run collection.json --environment env.json
   ```
+
   **Workflow**:
 
 1. Create a **Postman Collection**.

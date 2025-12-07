@@ -217,10 +217,13 @@ class App extends React.Component {
 
    - While inline functions are convenient, they can lead to unnecessary re-renders if the parent component re-renders.
    - Instead of:
+
      ```jsx
      <button onClick={() => console.log("Clicked")}>Click</button>
      ```
+
      Use:
+
      ```jsx
      const handleClick = () => console.log("Clicked");
      <button onClick={handleClick}>Click</button>;
@@ -239,11 +242,15 @@ class App extends React.Component {
    - To avoid issues with `this`, use arrow functions in class components.
 
 5. **Avoid Using `bind` in JSX**:
+
    - Avoid:
+
      ```jsx
      <button onClick={this.handleClick.bind(this)}>Click</button>
      ```
+
    - Prefer:
+
      ```jsx
      <button onClick={this.handleClick}>Click</button>
      ```
