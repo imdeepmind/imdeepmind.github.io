@@ -63,6 +63,20 @@ const config: Config = {
         },
       } satisfies Preset.Options,
     ],
+    [
+      "@docusaurus/preset-classic",
+      {
+        blog: {
+          showReadingTime: true, // When set to false, the "x min read" won't be shown
+          readingTime: ({ content, locale, frontMatter, defaultReadingTime }) =>
+            defaultReadingTime({
+              content,
+              locale,
+              options: { wordsPerMinute: 300 },
+            }),
+        },
+      },
+    ],
   ],
 
   stylesheets: [
@@ -104,14 +118,15 @@ const config: Config = {
           position: "left",
           label: "Notes",
         },
+        { to: "blog", label: "Blogs", position: "left" },
         {
           href: "https://rocketapi.net",
           label: "Rocket",
           position: "right",
         },
         {
-          href: "https://blog.rocketapi.net",
-          label: "Blogs",
+          href: "https://gallery.imdepemind.com",
+          label: "Gallery",
           position: "right",
         },
         {
