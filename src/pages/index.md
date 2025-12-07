@@ -13,7 +13,7 @@ import TravelGrid from '../components/TravelGrid';
 
 <!-- markdownlint-disable MD033 -->
 <div style={{textAlign: 'center'}}>
-    <img src="/img/me.jpg" className="responsive-image" alt="Its me, face" />
+    <img src="https://ik.imagekit.io/imdeepmind/imdeepmind/me_mDIYw9qaMB.jpg?tr=w-640" className="responsive-image" alt="Its me, face" />
 </div>
 
 ## Software Engineering
