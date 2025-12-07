@@ -10,6 +10,8 @@ hide_table_of_contents: false
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam scelerisque, elit in laoreet accumsan, velit nisl venenatis tortor, in sagittis felis justo ut augue. Maecenas condimentum turpis pretium risus hendrerit varius. Phasellus eleifend luctus dui id feugiat. Cras vestibulum, elit in facilisis venenatis, nisl neque varius dui, vitae tincidunt metus urna in libero. Morbi nec libero a augue ultrices volutpat in eget elit. Pellentesque ut tincidunt sapien. Donec tincidunt mauris non velit condimentum egestas. Ut dictum semper porta. Suspendisse ligula turpis, pharetra nec pretium eu, mattis vel magna. Mauris at dictum lacus, ac volutpat lacus. Vivamus dignissim odio nec mi blandit congue. Integer sodales, urna quis ornare dapibus, nulla leo rhoncus nunc, a convallis lorem dolor eu sem. Donec eu lorem ante. Sed malesuada pellentesque ligula ac ultrices.
 
+<!-- truncate -->
+
 ## Maecenas
 
 Maecenas eget vulputate sapien. Maecenas ac efficitur leo. Pellentesque tortor purus, sodales quis efficitur sit amet, volutpat et justo. Praesent eu dui vel lorem scelerisque mollis. Phasellus in mi placerat, euismod tellus eget, elementum nibh. Etiam ac nisl iaculis, luctus lorem quis, fermentum tellus. Pellentesque convallis quam eu magna porttitor, vitae faucibus est eleifend. Vivamus lacinia mauris eu nisi fringilla, sed mattis odio aliquet. Curabitur iaculis magna ut mauris maximus, ac mattis lectus volutpat. Duis lacus dolor, dignissim quis lacinia at, tincidunt ac orci.
