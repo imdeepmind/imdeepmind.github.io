@@ -58,14 +58,6 @@ const config: Config = {
           priority: 0.8,
           filename: "sitemap.xml",
         },
-        theme: {
-          customCss: "./src/css/custom.css",
-        },
-      } satisfies Preset.Options,
-    ],
-    [
-      "@docusaurus/preset-classic",
-      {
         blog: {
           showReadingTime: true, // When set to false, the "x min read" won't be shown
           readingTime: ({ content, locale, frontMatter, defaultReadingTime }) =>
@@ -75,7 +67,10 @@ const config: Config = {
               options: { wordsPerMinute: 300 },
             }),
         },
-      },
+        theme: {
+          customCss: "./src/css/custom.css",
+        },
+      } satisfies Preset.Options,
     ],
   ],
 
