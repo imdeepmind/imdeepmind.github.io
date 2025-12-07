@@ -1,19 +1,9 @@
-jmarcey:
-  name: Joel Marcey
-  title: Co-creator of Docusaurus 1
-  url: https://github.com/JoelMarcey
-  image_url: https://github.com/JoelMarcey.png
-  email: jimarcey@gmail.com
+imdeepmind:
+  name: Abhishek Chatterjee
+  title: Founder of Rocket | Senior Software Engineer @ SurveyMonkey | Travel Freak | Amateur Photographer
+  url: https://imdeepmind.com
+  image_url: https://github.com/imdeepmind.png
   socials:
-    x: joelmarcey
-    github: JoelMarcey
-
-slorber:
-  name: Sébastien Lorber
-  title: Docusaurus maintainer
-  url: https://sebastienlorber.com
-  image_url: https://github.com/slorber.png
-  socials:
-    x: sebastienlorber
-    github: slorber
-    email: seb@example.com
+    github: imdeepmind
+    instagram: imdeepmind
+    email: abhishek@imdeepmind
