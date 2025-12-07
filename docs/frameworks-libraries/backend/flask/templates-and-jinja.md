@@ -273,7 +273,7 @@ def dashboard():
     return render_template('dashboard.html', user=user, stats=stats)
 ```
 
-#### File: `templates/dashboard.html`
+### File: `templates/dashboard.html`
 
 ```html
 <h1>Welcome, {{ user.name }}!</h1>

@@ -15,6 +15,7 @@ sidebar_position: 2
 
    - JSX looks like HTML but can embed JavaScript expressions inside `{}`.
    - Example:
+
      ```jsx
      const element = <h1>Hello, {user.name}!</h1>;
      ```
@@ -23,6 +24,7 @@ sidebar_position: 2
 
    - JSX supports embedding JavaScript expressions, loops, conditionals, and functions.
    - Example:
+
      ```jsx
      const numbers = [1, 2, 3, 4];
      const listItems = numbers.map((number) => <li key={number}>{number}</li>);
@@ -45,6 +47,7 @@ sidebar_position: 2
 
    - Attributes in JSX resemble HTML but are camelCased for consistency with JavaScript conventions. For example, `class` in HTML becomes `className` in JSX, and `onclick` becomes `onClick`.
    - Example:
+
      ```jsx
      const button = (
        <button className="btn-primary" onClick={handleClick}>
@@ -54,8 +57,10 @@ sidebar_position: 2
      ```
 
 5. **JavaScript Functions and Expressions**:
+
    - You can pass JavaScript functions, objects, and variables into JSX using `{}`.
    - Example:
+
      ```jsx
      const style = { color: "blue", fontSize: 20 };
      const text = <p style={style}>This is styled text</p>;
@@ -64,13 +69,17 @@ sidebar_position: 2
 ## How JSX is Transformed
 
 - JSX code is transformed into JavaScript using a transpiler like **Babel**. For instance:
+
   ```jsx
   const element = <h1>Hello, World!</h1>;
   ```
+
   gets converted to:
+
   ```javascript
   const element = React.createElement("h1", null, "Hello, World!");
   ```
+
 - `React.createElement` creates a virtual DOM representation of the element.
 
 ## Advantages of JSX
@@ -113,6 +122,7 @@ sidebar_position: 2
 3. **JavaScript Expressions in `{}`**:
 
    - Use `{}` to embed JavaScript expressions inside JSX.
+
      ```jsx
      const name = "Abhishek";
      const element = <h1>Hello, {name}</h1>;
@@ -121,6 +131,7 @@ sidebar_position: 2
 4. **Class vs className**:
 
    - Always use `className` instead of `class` for setting CSS classes in JSX.
+
      ```jsx
      const button = <button className="btn-primary">Click Me</button>;
      ```
@@ -128,6 +139,7 @@ sidebar_position: 2
 5. **Inline Styles**:
 
    - Inline styles in JSX are specified as objects with camelCased property names.
+
      ```jsx
      const style = { color: "red", backgroundColor: "yellow" };
      const element = <p style={style}>Styled Text</p>;
@@ -146,7 +158,9 @@ sidebar_position: 2
      ```
 
 7. **Key Attribute for Lists**:
+
    - Always provide a `key` attribute when rendering lists to help React efficiently update the UI.
+
      ```jsx
      const items = ["A", "B", "C"];
      const list = items.map((item, index) => <li key={index}>{item}</li>);

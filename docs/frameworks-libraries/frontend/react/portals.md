@@ -18,7 +18,7 @@ In simple terms, instead of rendering into its parent DOM node, a portal renders
 
 Portals are useful in situations where the DOM structure limits your ability to implement features correctly. For example:
 
-1. **Avoiding Z-Index and Overflow Issues**:
+1. **Avoiding Z-Index and Overflow Issues**
 
    - Components like modals or tooltips may be constrained by their parent’s **`z-index`** or **`overflow`** CSS rules. Portals allow such components to "escape" these constraints and render at the top level of the DOM.
 
@@ -125,7 +125,7 @@ In the example above:
 
 One of the key advantages of portals is that **event propagation** works seamlessly, even if the content is rendered outside the parent DOM tree.
 
-### Example:
+### Example
 
 ```jsx
 function ParentComponent() {

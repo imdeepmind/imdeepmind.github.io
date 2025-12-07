@@ -86,7 +86,7 @@ class MyComponent extends Component {
 export default MyComponent;
 ```
 
-### Key Features of Class Components:
+### Key Features of Class Components
 
 1. **State**: Managed using `this.state` and updated via `this.setState()`.
 2. **Lifecycle Methods**: Defined lifecycle methods that manage the component's behavior throughout its existence.
@@ -174,7 +174,7 @@ const MyComponent = (props) => {
 export default MyComponent;
 ```
 
-### Key Features of Functional Components:
+### Key Features of Functional Components
 
 1. **State and Side Effects with Hooks**: Use of `useState`, `useEffect`, etc.
 2. **Simplicity**: These components are simpler, require less boilerplate, and do not need `this`.
