@@ -105,7 +105,7 @@ def create_item(item: Item):
 - **Response Model**: By specifying `response_model=Item` in the `@app.post()` decorator, FastAPI will ensure that the response data conforms to the `Item` Pydantic model. This automatically validates and serializes the response before sending it back to the client.
 - The response will be a JSON object with the same structure as the `Item` model.
 
-### Example Response:
+### Example Response
 
 ```json
 {

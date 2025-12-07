@@ -87,7 +87,7 @@ def get_user_item(user_id: str, item_id: int):
 
 - **Multiple Path Parameters**: This route captures two parameters from the URL: `user_id` (a string) and `item_id` (an integer).
 
-### Example Request:
+### Example Request
 
 - `GET /items/10` would return `{"item_id": 10}`.
 - `GET /users/john/items/20` would return `{"user_id": "john", "item_id": 20}`.
@@ -109,7 +109,7 @@ def search_items(q: str = None, limit: int = 10):
 - **`q`**: This query parameter is used for searching. It's optional and defaults to `None`.
 - **`limit`**: This query parameter limits the number of results returned. It has a default value of `10`.
 
-### Example Request:
+### Example Request
 
 - `GET /search?q=laptop&limit=5` would return `{"query": "laptop", "limit": 5}`.
 - `GET /search` (no parameters) would return `{"query": null, "limit": 10}`.
@@ -126,7 +126,7 @@ def get_items(limit: int = 10, skip: int = 0):
 
 - **Type Validation**: FastAPI automatically validates the types of query parameters. In this case, `limit` must be an integer, and `skip` must be an integer.
 
-### Example Request:
+### Example Request
 
 - `GET /items?limit=20&skip=5` would return `{"limit": 20, "skip": 5}`.
 
@@ -155,7 +155,7 @@ def create_item(item: Item):
 - **Pydantic Model** (`Item`): The `Item` class defines the structure of the request body. The attributes `name`, `description`, `price`, and `tax` are defined, where `name` and `price` are required.
 - **Request Body**: The `create_item` function accepts an instance of `Item` as the request body. FastAPI automatically parses the incoming JSON data into this model.
 
-### Example Request:
+### Example Request
 
 ```json
 {
@@ -194,7 +194,7 @@ def create_user(user: User):
 
 - **Optional Fields**: In this case, the `age` field is optional. If it is not provided in the request body, it will default to `None`.
 
-### Example Request:
+### Example Request
 
 ```json
 {

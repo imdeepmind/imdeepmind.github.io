@@ -22,9 +22,11 @@ FastAPI provides **built-in security utilities** for implementing **authenticati
 
 - A **compact, URL-safe** way to represent claims between parties.
 - Structure:
-  ```
+
+  ```text
   Header.Payload.Signature
   ```
+
   - **Header**: Algorithm & token type (`{"alg": "HS256", "typ": "JWT"}`)
   - **Payload**: Claims (`{"sub": "user123", "exp": 1735689600}`)
   - **Signature**: Ensures token integrity (HMAC, RSA, etc.)
@@ -230,8 +232,9 @@ app.add_middleware(
 ```
 
 **Key Parameters**:
-| Parameter | Purpose |
-|-----------|---------|
-| `allow_origins` | Domains allowed to make requests. |
+
+| Parameter       | Purpose                             |
+| --------------- | ----------------------------------- |
+| `allow_origins` | Domains allowed to make requests.   |
 | `allow_methods` | HTTP methods (`GET`, `POST`, etc.). |
-| `allow_headers` | Headers allowed in requests. |
+| `allow_headers` | Headers allowed in requests.        |

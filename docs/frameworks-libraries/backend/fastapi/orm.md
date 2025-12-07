@@ -110,7 +110,7 @@ async def read_async_user(user_id: int, db: AsyncSession = Depends(get_db)):
     return user
 ```
 
-## NoSQL with MongoDB (Motor), Redis, etc.
+## NoSQL with MongoDB (Motor), Redis, etc
 
 ### (A) MongoDB (Motor - Async)
 
@@ -156,18 +156,25 @@ Alembic handles **schema migrations** (SQLAlchemy only).
 ### (A) Setup Alembic
 
 1. Install:
+
    ```bash
    pip install alembic
    ```
+
 2. Initialize:
+
    ```bash
    alembic init alembic
    ```
+
 3. Configure `alembic.ini`:
+
    ```ini
    sqlalchemy.url = postgresql://user:password@localhost/db
    ```
+
 4. Modify `env.py` (to detect models):
+
    ```python
    from models import Base
    target_metadata = Base.metadata

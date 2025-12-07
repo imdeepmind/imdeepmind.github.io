@@ -158,7 +158,7 @@ def test_read_me():
 app.dependency_overrides.clear()
 ```
 
-## Using Dependencies for Authentication, DB Sessions, etc.
+## Using Dependencies for Authentication, DB Sessions, etc
 
 Dependencies are commonly used for:
 
