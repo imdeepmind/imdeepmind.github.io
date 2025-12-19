@@ -42,6 +42,10 @@ const config: Config = {
     [
       "classic",
       {
+        gtag: {
+          trackingID: "G-K8QYYPXTLR",
+          anonymizeIP: true,
+        },
         docs: {
           showLastUpdateTime: true,
           showLastUpdateAuthor: true,
