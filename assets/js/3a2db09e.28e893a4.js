@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkimdeepmind=self.webpackChunkimdeepmind||[]).push([[8121],{68070:e=>{e.exports=JSON.parse('{"tags":[{"label":"hello","permalink":"/blog/tags/hello","count":1},{"label":"docusaurus-v2","permalink":"/blog/tags/docusaurus-v-2","count":1}]}')}}]);

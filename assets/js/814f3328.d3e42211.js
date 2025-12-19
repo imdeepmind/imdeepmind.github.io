@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkimdeepmind=self.webpackChunkimdeepmind||[]).push([[7472],{55513:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Introduction to imdeepmind.com","permalink":"/blog/welcome-docusaurus-v2","unlisted":false,"date":"2025-12-07T00:00:00.000Z"}]}')}}]);
