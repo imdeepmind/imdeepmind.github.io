@@ -49,7 +49,7 @@ const ImageGrid: React.FC = () => {
           className={`image-container ${index === 3 ? "large" : ""}`}
         >
           <a
-            href={`https://gallery.imdeepmind.com/gallery/details/?id=${item.id}`}
+            href={`https://gallery.imdeepmind.com/gallery/details/${item.id}`}
             target="_blank"
             rel="noopener noreferrer"
           >
