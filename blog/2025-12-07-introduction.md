@@ -7,7 +7,7 @@ tags: [introduction, software-engineering, notes, personal-site]
 hide_table_of_contents: false
 ---
 
-Hey there, this is Abhishek. If you're here, that means you want to learn what this website is about. Well, basically this website, [imdeepmind.com](imdeepmind.com), is a small corner on the internet for me. Here, I document my learnings, my interests, my explorations as I grow as a Software Engineer.
+Hey there, this is Abhishek. If you're here, that means you want to learn what this website is about. Well, basically this website, [imdeepmind.com](https://imdeepmind.com), is a small corner on the internet for me. Here, I document my learnings, my interests, my explorations as I grow as a Software Engineer.
 
 For the past couple of years, I’ve made it a habit to take notes on everything I study and publish them here. Instead of using tools like Notion, I chose to build this site so my notes are always accessible from anywhere, including my work computer, without requiring a login. This is the reason why I setup this website in this way. Also, by putting them online, anyone on the internet can access these notes and might find them useful.
 
