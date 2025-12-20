@@ -1,27 +1,42 @@
 ---
-title: Introduction to imdeepmind.com
-description: This is my first post on Docusaurus.
-slug: welcome-docusaurus-v2
+title: Why imdeepmind Exists
+description: Personal notes and essays on backend engineering, systems, and deep technical learning.
+slug: imdeepmind-introduction
 authors: imdeepmind
-tags: [hello, docusaurus-v2]
-image: https://i.imgur.com/mErPwqL.png
+tags: [introduction, software-engineering, notes, personal-site]
 hide_table_of_contents: false
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam scelerisque, elit in laoreet accumsan, velit nisl venenatis tortor, in sagittis felis justo ut augue. Maecenas condimentum turpis pretium risus hendrerit varius. Phasellus eleifend luctus dui id feugiat. Cras vestibulum, elit in facilisis venenatis, nisl neque varius dui, vitae tincidunt metus urna in libero. Morbi nec libero a augue ultrices volutpat in eget elit. Pellentesque ut tincidunt sapien. Donec tincidunt mauris non velit condimentum egestas. Ut dictum semper porta. Suspendisse ligula turpis, pharetra nec pretium eu, mattis vel magna. Mauris at dictum lacus, ac volutpat lacus. Vivamus dignissim odio nec mi blandit congue. Integer sodales, urna quis ornare dapibus, nulla leo rhoncus nunc, a convallis lorem dolor eu sem. Donec eu lorem ante. Sed malesuada pellentesque ligula ac ultrices.
+Hey there, this is Abhishek. If you're here, that means you want to learn what this website is about. Well, basically this website, [imdeepmind.com](imdeepmind.com), is a small corner on the internet for me. Here, I document my learnings, my interests, my explorations as I grow as a Software Engineer.
+
+For the past couple of years, I’ve made it a habit to take notes on everything I study and publish them here. Instead of using tools like Notion, I chose to build this site so my notes are always accessible from anywhere, including my work computer, without requiring a login. This is the reason why I setup this website in this way. Also, by putting them online, anyone on the internet can access these notes and might find them useful.
 
 <!-- truncate -->
 
-## Maecenas
+My core idea with this website is very simple: to create a living knowledge base that grows with me. Every time I dive deep into something interesting, some new technology, a new framework, or a complex idea, I write it down here, in a simple, concise, to-the-point manner. Doing this not only works as a reference so I can return whenever needed, but it also helps me to completely understand the topic.
 
-Maecenas eget vulputate sapien. Maecenas ac efficitur leo. Pellentesque tortor purus, sodales quis efficitur sit amet, volutpat et justo. Praesent eu dui vel lorem scelerisque mollis. Phasellus in mi placerat, euismod tellus eget, elementum nibh. Etiam ac nisl iaculis, luctus lorem quis, fermentum tellus. Pellentesque convallis quam eu magna porttitor, vitae faucibus est eleifend. Vivamus lacinia mauris eu nisi fringilla, sed mattis odio aliquet. Curabitur iaculis magna ut mauris maximus, ac mattis lectus volutpat. Duis lacus dolor, dignissim quis lacinia at, tincidunt ac orci.
+Beyond notes, I also write blogs. My aim here is to write at least one blog each month. These blogs will be mostly technical and related to computer science, programming, and software engineering.
 
-## Nunc congue
+## What you’ll find here
 
-Nunc congue, orci et egestas fermentum, leo eros laoreet mauris, quis lacinia diam sem facilisis lacus. Suspendisse aliquam placerat ante, quis laoreet lorem aliquam ac. Cras interdum nisi quis justo rutrum ullamcorper. Integer laoreet odio nunc, non scelerisque velit volutpat ac. Quisque fringilla vestibulum volutpat. Fusce pretium tortor quis nisl egestas, vitae viverra libero scelerisque. Mauris interdum pretium dui, in lobortis felis efficitur eget. Proin semper quam in diam laoreet, sagittis vulputate purus suscipit. Sed enim libero, tempor non neque in, vestibulum egestas nunc. Integer porttitor risus eget felis porta facilisis. Sed eget convallis erat, nec eleifend tortor. Sed elementum ipsum vel elit tincidunt, consequat auctor tellus varius.
+I'm a Senior Software Engineer at SurveyMonkey with over 6 years of experience and I mostly work on backend systems, databases, and system designs. As a result most of the notes here are focused on backend topics such as
 
-## Aliquam mollis consequat
+- Backend engineering and distributed systems
+- Databases and storage internals
+- Programming languages and frameworks
+- System design and architecture
+- Cloud platforms, especially AWS
 
-Aliquam mollis consequat leo sit amet porta. Proin gravida at lorem ultrices accumsan. Maecenas tempor diam leo, nec cursus dolor facilisis id. Nullam lacinia egestas pretium. Donec quam arcu, luctus eget mi quis, maximus tristique quam. In congue sem non massa tristique, eu imperdiet felis tristique. Nam vel ex iaculis, semper sapien vitae, rhoncus ex. Cras placerat mauris non rhoncus imperdiet. Nullam ornare sodales rutrum. Vivamus viverra magna id diam dignissim, vel lacinia augue luctus.
+If you want to find a detailed catalogue of notes currently available, check the [notes](https://imdeepmind.com/docs/intro) page. Also, there is a search function on the top-right corner of the screen. Please use it to search for different topics.
 
-Vivamus felis elit, tempus et faucibus ac, dignissim at mauris. Fusce semper ante in viverra efficitur. Ut commodo orci quis sem sagittis fermentum. Integer sed ex ac odio tincidunt rutrum at ut sapien. Curabitur sed eleifend diam. Pellentesque condimentum et felis a porta. Quisque et purus sed nisl lobortis rhoncus eget in lectus. Suspendisse bibendum imperdiet facilisis. Vivamus mauris diam, condimentum ornare ultrices eget, gravida eget lorem. Curabitur sed enim mi. In non vestibulum leo.
+## Use of AI
+
+I actively use AI tools such as [ChatGPT](https://chatgpt.com), [Gemini](https://gemini.google.com/), and [Perplexity](https://www.perplexity.ai/) while learning along with traditional resources like blogs, whitepapers, videos, courses, and books to understand complex ideas more effectively. Many of the notes on this site are created with the assistance of these tools, combined with my own understanding, verification, and edits.
+
+The blog posts, on the other hand, are completely written by me, with my own voice and personality. I might use AI platforms for research, fact-checking, and also language checking, etc.
+
+The intention here is to keep the blogs personal, authentic, and opinionated, while the notes are more like condensed documentation for various technologies.
+
+## Reporting errors
+
+This site is maintained by me alongside full-time work and other personal projects, so mistakes can happen. If you notice any errors or issues in the notes or blogs, please report them on [GitHub](https://github.com/imdeepmind/imdeepmind.github.io/issues). Feedback is always appreciated.
