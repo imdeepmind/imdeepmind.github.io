@@ -16,17 +16,19 @@ import TravelGrid from '../components/TravelGrid';
     <img src="https://ik.imagekit.io/imdeepmind/imdeepmind/me_mDIYw9qaMB.jpg?tr=w-640" className="responsive-image" alt="Its me, face" />
 </div>
 
-## Software Engineering
+## Hey there
 
-Hey there, this is Abhishek, Abhishek Chatterjee. I'm a Senior Software Engineer I @ SurveyMonkey. I have over 6 years of experience working as a Software Engineer. My skill set includes programming languages like Python, GoLang and JavaScript, and a variety of frameworks/libraries for both front-end and backend.
+I'm Abhishek Chatterjee a **Senior Software Engineer I at SurveyMonkey** with **more than 6 years** of experience working as a Software Engineer. My skill set includes programming languages like **Python**, **Go** and **JavaScript**, and a variety of frameworks/libraries for both front-end and backend.
 
-I'm also skilled in cloud platforms like AWS (AWS Certified) and Azure, which I use to build and deploy scalable applications. My work often involves developing RESTful and GraphQL APIs, and I have a strong grasp of databases, both SQL and NoSQL.
+I'm also skilled in cloud platforms like **AWS** ([AWS Certified](https://www.credly.com/badges/e870c199-cd61-4a2d-8003-fa2c9fe5e47f/linked_in_profile)) and Azure, which I use to build and deploy scalable applications. My work often involves building backend systems, and I have a strong grasp on databases, both SQL and NoSQL.
 
-Beyond my professional work, I'm the founder of [Rocket](https://rocketapi.net) a platform for rapidly building backend APIs, and Delphy, a web app for analyzing open-source packages. I've also contributed to the open-source community by creating packages such as [Hocrox](https://github.com/imdeepmind/hocrox), PCY, and [NeuralPy](https://github.com/imdeepmind/NeuralPy).
+Beyond my professional work, I'm the founder of [Rocket](https://rocketapi.net) a platform for rapidly building backend APIs, and Delphy, a web app for analyzing open-source packages. I've also contributed to the open-source community by creating packages such as [Hocrox](https://github.com/imdeepmind/hocrox), [PCY](https://github.com/imdeepmind/python-completes-you), and [NeuralPy](https://github.com/imdeepmind/NeuralPy).
 
-## Traveling, Driving, Biking, and Hiking
+On this site, I publish my study notes and write blogs, primarily focused on software engineering and programming. You can read the [Introduction](https://imdeepmind.com/blog/imdeepmind-introduction) post to get a clearer idea of what this website is about.
 
-I’ve always loved being active. Most of my trips are on my bike or in my car, depending on my destination and how much time I have. There’s something about long rides and open roads that clears my mind and makes the journey enjoyable.
+## Traveling, driving, biking, and hiking
+
+I’ve always loved traveling. Most of my trips are on my bike or in my car, depending on my destination and how much time I have. There’s something about long rides and open roads that clears my mind and makes the journey enjoyable.
 
 Recently, I’ve started hiking, and it’s becoming one of my favorite ways to explore new places. It’s slower and quieter, and it encourages you to soak in the surroundings instead of just passing through. It’s a different kind of travel, but I enjoy it just as much.
 
@@ -42,4 +44,4 @@ Here are a few of my images that I've taken:
 
 ## Contact
 
-To contact with me, email me at [abhishek@imdeepmind.com](mailto:abhishek@imdeepmind.com) or send a [linkedin](https://linkedin.com/in/imdeepmind) message to me.
+To contact me, email me at [abhishek@imdeepmind.com](mailto:abhishek@imdeepmind.com) or send a [LinkedIn](https://linkedin.com/in/imdeepmind) message to me.
