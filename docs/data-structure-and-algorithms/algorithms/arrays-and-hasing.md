@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # Arrays and Hashing
@@ -24,19 +24,19 @@ _\*\* Amortized O(1) for dynamic arrays_
 
 ### Common Algorithms with Arrays
 
-1.  **Two Pointer Technique**:
+1. **Two Pointer Technique**:
     - **Use Case**: Solving problems like finding pairs, reversing arrays, or merging sorted arrays.
     - **Time Complexity**: O(n).
-2.  **Sliding Window**:
+2. **Sliding Window**:
     - **Use Case**: Problems requiring subarray calculations (e.g., maximum sum subarray).
     - **Time Complexity**: O(n).
-3.  **Sorting**:
+3. **Sorting**:
     - **Use Case**: Preprocessing array for binary search, removing duplicates, or meeting specific order requirements.
     - **Time Complexity**: O(n log n).
-4.  **Prefix Sum**:
+4. **Prefix Sum**:
     - **Use Case**: Efficiently computing sums or finding subarray sums.
     - **Time Complexity**: O(n).
-5.  **Kadane's Algorithm**:
+5. **Kadane's Algorithm**:
     - **Use Case**: Maximum subarray sum.
     - **Time Complexity**: O(n).
 
@@ -94,22 +94,22 @@ _\* Worst-case arises due to hash collisions, which can degrade performance._
 
 ### Common Use Cases
 
-1.  **Counting Frequencies**:
+1. **Counting Frequencies**:
     - Example: Counting the occurrences of elements in a list.
-2.  **Finding Duplicates**:
+2. **Finding Duplicates**:
     - Example: Checking if an array contains duplicate elements.
-3.  **Mapping Relationships**:
+3. **Mapping Relationships**:
     - Example: Implementing graphs, adjacency lists.
-4.  **Efficient Lookups**:
+4. **Efficient Lookups**:
     - Example: Checking membership in O(1).
 
 ### Common Problems and Algorithms
 
-1.  **Two Sum Problem**:
+1. **Two Sum Problem**:
     - Use hash maps for efficient index lookups in O(n).
-2.  **Longest Substring Without Repeating Characters**:
+2. **Longest Substring Without Repeating Characters**:
     - Use hash maps to track character positions for O(n) sliding window implementation.
-3.  **Group Anagrams**:
+3. **Group Anagrams**:
     - Use hash maps with keys based on sorted characters or frequency counts.
 
 ### Code Examples
