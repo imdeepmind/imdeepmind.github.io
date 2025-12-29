@@ -260,7 +260,7 @@ Output:
 
 ### Default Arguments
 
-Python allows We to define default values for function parameters. If no argument is provided, the default value is used.
+Python allows us to define default values for function parameters. If no argument is provided, the default value is used.
 
 ```python
 def greet(name="Guest"):
@@ -299,7 +299,7 @@ Python supports functions that accept a variable number of arguments using `*arg
   3
   ```
 
-- **`**kwargs`\*\*: Collects additional keyword arguments into a dictionary.
+- **`**kwargs`**: Collects additional keyword arguments into a dictionary.
 
   ```python
   def print_kwargs(**kwargs):
@@ -336,7 +336,7 @@ Output:
 - **Global Scope**: Variables defined outside any function are accessible everywhere in the code.
 - **Local Scope**: Variables defined inside a function are accessible only within that function.
 
-Python allows We to use the `global` keyword to modify a global variable inside a function.
+Python allows us to use the `global` keyword to modify a global variable inside a function.
 
 ```python
 x = 10  # Global variable

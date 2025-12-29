@@ -46,7 +46,7 @@ if __name__ == '__main__':
 
 **Explanation:**
 
-1. We define a `task()` function that each process will run
+1. We define a `task()` function that each process will run (or we can use an existing function)
 2. `Process()` creates a new process (but doesn't start it yet)
 3. `start()` launches the process
 4. `join()` makes the main program wait for child processes
@@ -128,7 +128,7 @@ with Pool(2) as pool:
 
 - Batch processing similar operations
 - CPU-bound tasks with independent data
-- When you need ordered results
+- When we need ordered results
 - For better resource management than manual processes
 
 ## Sharing Data Between Processes
@@ -213,7 +213,7 @@ if __name__ == '__main__':
     print(f"Modified array: {list(arr)}")
 ```
 
-**Note:** For shared variables, you should use locks to prevent race conditions.
+**Note:** For shared variables, we should use locks to prevent race conditions.
 
 ## Synchronization Between Processes
 

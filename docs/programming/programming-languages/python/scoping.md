@@ -10,7 +10,7 @@ This note is complete, reviewed, and considered stable.
 
 :::
 
-Variable scoping in Python determines the accessibility of variables within different parts of the code. It defines where a variable can be read or modified. Python follows specific scoping rules, which are influenced by the **LEGB rule** (Local, Enclosing, Global, Built-in). Understanding scoping is crucial to avoid conflicts and unexpected behavior in Our programs.
+Variable scoping in Python determines the accessibility of variables within different parts of the code. It defines where a variable can be read or modified. Python follows specific scoping rules, which are influenced by the **LEGB rule** (Local, Enclosing, Global, Built-in). Understanding scoping is crucial to avoid conflicts and unexpected behavior in your programs.
 
 ## Scope of Variables
 

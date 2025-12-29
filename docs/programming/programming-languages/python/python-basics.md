@@ -71,7 +71,7 @@ When operators of the same precedence appear together, associativity determines 
 
 ### Parentheses
 
-To explicitly define the evaluation order, you can use parentheses:
+To explicitly define the evaluation order, we can use parentheses:
 
 ```python
 result = (10 + 5) * 2  # Parentheses override default precedence
@@ -111,7 +111,7 @@ squares = [x**2 for x in range(10)]
 **Input**: `input()` function to take user input.
 
 ```python
-name = input("Enter Our name: ")
+name = input("Enter our name: ")
 ```
 
 **Output**: `print()` function to display output.
@@ -149,7 +149,7 @@ Here is a table summarizing common Python data structures and whether they are *
 
 ## Unpacking Symbol in Python
 
-In Python, unpacking is a mechanism that allows you to assign values from an iterable (like a list, tuple, or dictionary) to multiple variables in a single step. The unpacking operation is done using the `*` and `**` symbols. Below is a detailed explanation of their usage:
+In Python, unpacking is a mechanism that allows us to assign values from an iterable (like a list, tuple, or dictionary) to multiple variables in a single step. The unpacking operation is done using the `*` and `**` symbols. Below is a detailed explanation of their usage:
 
 ### Unpacking with `*` (Single Asterisk)
 
@@ -192,7 +192,7 @@ print(result)  # 6
 
 #### Unpacking in List or Set Literals
 
-You can use `*` to unpack elements into a new list or set.
+We can use `*` to unpack elements into a new list or set.
 
 ##### Example
 
@@ -222,7 +222,7 @@ print(transposed)  # [(1, 3, 5), (2, 4, 6)]
 
 #### Collecting Excess Positional Arguments
 
-In function definitions, the `*` symbol allows you to collect extra positional arguments into a tuple.
+In function definitions, the `*` symbol allows us to collect extra positional arguments into a tuple.
 
 ##### Example
 
@@ -240,13 +240,13 @@ The `**` symbol is used for unpacking **dictionaries** into key-value pairs.
 
 #### Function Keyword Argument Unpacking
 
-You can use `**` to unpack a dictionary and pass its key-value pairs as keyword arguments to a function.
+We can use `**` to unpack a dictionary and pass its key-value pairs as keyword arguments to a function.
 
 ##### Example
 
 ```python
 def greet(name, age):
-    print(f"Hello {name}, you are {age} years old.")
+    print(f"Hello {name}, we are {age} years old.")
 
 data = {"name": "Alice", "age": 25}
 greet(**data)  # Equivalent to: greet(name="Alice", age=25)
@@ -254,7 +254,7 @@ greet(**data)  # Equivalent to: greet(name="Alice", age=25)
 
 #### Merging Dictionaries
 
-You can use `**` to unpack multiple dictionaries into a new dictionary.
+We can use `**` to unpack multiple dictionaries into a new dictionary.
 
 ##### Example
 
@@ -267,7 +267,7 @@ print(merged)  # {'a': 1, 'b': 2, 'c': 3, 'd': 4}
 
 #### Collecting Keyword Arguments
 
-In function definitions, `**` allows you to collect excess keyword arguments into a dictionary.
+In function definitions, `**` allows us to collect excess keyword arguments into a dictionary.
 
 ##### Example
 
@@ -281,7 +281,7 @@ func(1, b=2, c=3)  # Output: 1 and {'b': 2, 'c': 3}
 
 ### Combining `*` and `**` in Functions
 
-You can use both `*` and `**` together in function definitions to handle both extra positional and keyword arguments.
+We can use both `*` and `**` together in function definitions to handle both extra positional and keyword arguments.
 
 #### Example
 
@@ -300,7 +300,7 @@ func(1, 2, 3, b=4, c=5)
 
 ### Unpacking in For Loops
 
-You can unpack iterables while iterating through them in a loop.
+We can unpack iterables while iterating through them in a loop.
 
 #### Example
 

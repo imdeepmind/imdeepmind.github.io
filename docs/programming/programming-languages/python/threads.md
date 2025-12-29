@@ -367,7 +367,7 @@ print("All done")
 
 ## Thread-Local Data
 
-Thread-local data is data that is unique to each thread. While threads share the same memory space, sometimes you need data that should not be shared between threads. The `threading.local()` class creates an object that maintains separate values for each thread that accesses it.
+Thread-local data is data that is unique to each thread. While threads share the same memory space, sometimes we need data that should not be shared between threads. The `threading.local()` class creates an object that maintains separate values for each thread that accesses it.
 
 Use cases:
 

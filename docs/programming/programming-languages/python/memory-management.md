@@ -143,7 +143,7 @@ print(x is y)  # False (different memory locations for larger integers)
 
 ### Manual Memory Management
 
-- Python allows you to interact with the garbage collector using the `gc` module.
+- Python allows us to interact with the garbage collector using the `gc` module.
 
 **Example**:
 

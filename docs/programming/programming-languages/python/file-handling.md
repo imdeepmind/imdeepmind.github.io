@@ -10,7 +10,7 @@ This note is complete, reviewed, and considered stable.
 
 :::
 
-File handling is an essential part of Python programming. It allows us to perform various operations such as reading, writing, and manipulating files stored on Our system. Python provides built-in functions and modules to work with files in a simple and efficient manner.
+File handling is an essential part of Python programming. It allows us to perform various operations such as reading, writing, and manipulating files stored on our system. Python provides built-in functions and modules to work with files in a simple and efficient manner.
 
 ## Key Concepts in File Handling
 

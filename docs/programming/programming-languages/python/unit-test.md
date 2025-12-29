@@ -123,7 +123,7 @@ class TestDatabaseOperations(unittest.TestCase):
 
 ## Running Unit Tests
 
-To run the unit tests, you can simply call `unittest.main()` in your script, which will automatically discover and run all the test cases in the file. However, it's also possible to run tests from the command line using the `python -m unittest` command.
+To run the unit tests, we can simply call `unittest.main()` in our script, which will automatically discover and run all the test cases in the file. However, it's also possible to run tests from the command line using the `python -m unittest` command.
 
 ### Running tests from the command line
 
@@ -135,7 +135,7 @@ This will discover all the test cases in the `test_module.py` file and execute t
 
 ## Test Discovery
 
-The `unittest` module supports automatic test discovery, which allows you to find and run tests without explicitly specifying each test. By using `unittest.TestLoader().discover()`, Python can automatically find and execute tests in a specified directory.
+The `unittest` module supports automatic test discovery, which allows us to find and run tests without explicitly specifying each test. By using `unittest.TestLoader().discover()`, Python can automatically find and execute tests in a specified directory.
 
 Example of test discovery:
 
@@ -174,7 +174,7 @@ In this example, the `get_data` method of `APIClient` is replaced with a mock th
 
 ## Test Coverage
 
-Test coverage measures how much of your code is covered by tests. In Python, you can use tools like `coverage.py` to measure and report on test coverage.
+Test coverage measures how much of our code is covered by tests. In Python, we can use tools like `coverage.py` to measure and report on test coverage.
 
 To use `coverage.py`, install it via `pip`:
 
@@ -188,7 +188,7 @@ Then, run the tests with coverage tracking:
 coverage run -m unittest test_module.py
 ```
 
-You can generate a coverage report after running the tests:
+We can generate a coverage report after running the tests:
 
 ```bash
 coverage report

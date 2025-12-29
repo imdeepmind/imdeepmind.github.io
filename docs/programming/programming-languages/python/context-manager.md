@@ -52,7 +52,7 @@ In this example:
 
 ## Custom Context Managers
 
-We can create Our own context managers by implementing a class with `__enter__()` and `__exit__()` methods. Here’s an example:
+We can create our own context managers by implementing a class with `__enter__()` and `__exit__()` methods. Here's an example:
 
 ```python
 class MyContextManager:
@@ -126,5 +126,5 @@ In this example:
 ## Why Use Context Managers?
 
 - **Resource Management:** They make resource management easier and less error-prone, especially when dealing with things like file handles, network connections, and database transactions.
-- **Exception Safety:** By ensuring that cleanup happens even when an exception occurs, context managers make Our code safer.
+- **Exception Safety:** By ensuring that cleanup happens even when an exception occurs, context managers make our code safer.
 - **Cleaner Code:** They simplify code by removing the need for explicit `try`, `finally` blocks and reducing boilerplate.

@@ -37,7 +37,7 @@ print(next(iterator))  # Output: 4
 
 ### Custom Iterator
 
-We can create Our own iterator by defining a class with `__iter__()` and `__next__()` methods.
+We can create our own iterator by defining a class with `__iter__()` and `__next__()` methods.
 
 ```python
 class Countdown:

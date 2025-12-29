@@ -101,7 +101,7 @@ uv python install 3.12 && uv venv --python 3.12
 #### Cons
 
 - Newer ecosystem; some teams may still standardize on pip/Poetry/Conda.
-- Feature superset can feel “heavy” if you only need a minimal pip+venv flow.
+- Feature superset can feel “heavy” if we only need a minimal pip+venv flow.
 
 ### pip (and **venv**/**virtualenv**)
 
@@ -154,7 +154,7 @@ The default **installer** that talks to PyPI; pair with `venv` for env isolation
 
 #### Cons
 
-- No lockfile by default (you add pip-tools or switch to uv/Poetry).
+- No lockfile by default (we add pip-tools or switch to uv/Poetry).
 - Env management is separate (venv/virtualenv).
 
 ### pip-tools (`pip-compile`, `pip-sync`)
@@ -377,7 +377,7 @@ Installs and runs Python **applications** in isolated envs (think: “brew for P
 
 ### Conda / Mamba
 
-Cross-language package & environment manager—excellent when you need system libraries (BLAS, CUDA, GDAL). **Mamba** is a faster, drop-in alternative solver/CLI.
+Cross-language package & environment manager—excellent when we need system libraries (BLAS, CUDA, GDAL). **Mamba** is a faster, drop-in alternative solver/CLI.
 
 #### How to use (Conda)
 
@@ -439,7 +439,7 @@ mamba install numpy pandas
 ## When to choose what
 
 - **General Python apps/services (most teams):** **uv** for speed + single-tool simplicity; it reads `requirements.txt` or does full project/lock flows.
-- **Legacy/simple scripts:** `pip + venv` (optionally add `pip-tools` for locks) if you want minimal change.
+- **Legacy/simple scripts:** `pip + venv` (optionally add `pip-tools` for locks) if we want minimal change.
 - **Publishable libraries:** **uv** or **Poetry/Hatch/PDM** for `pyproject.toml` + lockfile + build/publish.
-- **Data science / needs native libs:** **Conda/Mamba** for environments and binaries; you can still use pip/uv inside the env for PyPI-only deps.
+- **Data science / needs native libs:** **Conda/Mamba** for environments and binaries; we can still use pip/uv inside the env for PyPI-only deps.
 - **CLI tooling on your dev machine:** **pipx** or **uvx**.

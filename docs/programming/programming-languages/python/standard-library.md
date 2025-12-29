@@ -109,16 +109,13 @@ Returns all possible combinations of length `r` from the iterable.
 
 ```python
 import itertools
-for comb in itertools.combinations([1, 2, 3]):
+for comb in itertools.combinations([1, 2, 3], 2):
     print(comb)
 ```
 
 Output:
 
 ```text
-(1,)
-(2,)
-(3,)
 (1, 2)
 (1, 3)
 (2, 3)

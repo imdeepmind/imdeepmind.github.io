@@ -234,7 +234,7 @@ print(rectangle.area())  # Output: 50
 
 ## Dunder (Magic) Methods
 
-Dunder (double underscore) or magic methods allow We to define behaviors for built-in operators and functions for Our objects.
+Dunder (double underscore) or magic methods allow us to define behaviors for built-in operators and functions for our objects.
 
 ### Common Dunder Methods
 
@@ -334,7 +334,7 @@ The `super()` function in Python is used to call methods from a parent class in 
 super().method_name(arguments)
 ```
 
-Here, `super()` refers to the parent class, and `method_name` is the method that We want to call.
+Here, `super()` refers to the parent class, and `method_name` is the method that we want to call.
 
 ### Examples
 
@@ -396,7 +396,7 @@ In this case, the `super()` call in class `C` ensures that the `method` from cla
 
 #### Using `super()` to Avoid Redundant Code
 
-When overriding methods, `super()` helps avoid redundant code by allowing We to call the parent class's implementation without re-implementing it.
+When overriding methods, `super()` helps avoid redundant code by allowing us to call the parent class's implementation without re-implementing it.
 
 ```python
 class Base:

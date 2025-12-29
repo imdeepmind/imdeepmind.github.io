@@ -10,7 +10,7 @@ This note is complete, reviewed, and considered stable.
 
 :::
 
-In Python, `*args` and `**kwargs` are used to handle variable numbers of arguments passed to a function. These allow We to write more flexible functions that can accept a range of input values without needing to explicitly define every parameter.
+In Python, `*args` and `**kwargs` are used to handle variable numbers of arguments passed to a function. These allow us to write more flexible functions that can accept a range of input values without needing to explicitly define every parameter.
 
 ## `*args` (Non-keyword Arguments)
 
@@ -53,7 +53,7 @@ print_kwargs(name="Alice", age=25)
 ```
 
 - **Important Notes**:
-  - `kwargs` is a convention, but We can name it anything We like, just like `*args`.
+  - `kwargs` is a convention, but we can name it anything we like, just like `*args`.
   - It must also be placed after regular parameters and `*args` (if both are used).
 
 ## Combining `*args` and `**kwargs`
