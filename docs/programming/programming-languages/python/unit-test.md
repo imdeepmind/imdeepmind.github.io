@@ -4,6 +4,12 @@ sidebar_position: 18
 
 # Unit Testing
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 Unit testing is a fundamental concept in software development where individual units (typically functions or methods) of a program are tested in isolation to ensure that each part of the code functions as expected. In Python, unit testing is typically done using the `unittest` module, which is a built-in testing framework inspired by Java's JUnit. Unit tests help identify bugs early in the development cycle and provide a safety net when making changes or refactoring code.
 
 Python also provides other testing tools like `pytest` and `nose`, but the built-in `unittest` framework is often sufficient for most testing purposes.

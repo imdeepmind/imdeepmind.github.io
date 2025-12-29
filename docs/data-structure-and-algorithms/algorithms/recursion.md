@@ -4,6 +4,12 @@ sidebar_position: 2
 
 # Recursion
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 Recursion is a programming technique where a function calls itself to solve a problem by reducing it to **smaller instances of the same problem**.
 
 A recursive solution is valid only if:

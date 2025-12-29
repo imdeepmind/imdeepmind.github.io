@@ -4,7 +4,11 @@ sidebar_position: 5
 
 # Loops, Control Structures, and Functions
 
-<!-- markdownlint-disable MD024 -->
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
 
 ## Python Loops
 

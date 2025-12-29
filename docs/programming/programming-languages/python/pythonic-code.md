@@ -4,7 +4,11 @@ sidebar_position: 8
 
 # Pythonic Code
 
-<!-- markdownlint-disable MD024 -->
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
 
 "**Pythonic**" refers to writing code that adheres to the conventions, idioms, and best practices that are considered natural and efficient in Python. Pythonic code is not only functional but also elegant, readable, and maintainable. Writing Pythonic code typically involves using the language’s features in a way that is most efficient and idiomatic, making it easy to understand for others who are familiar with Python.
 

@@ -4,7 +4,11 @@ sidebar_position: 13
 
 # Threading
 
-<!-- markdownlint-disable MD024 -->
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
 
 Threading is a technique that allows a program to perform multiple operations concurrently within the same process. In Python, the `threading` module provides a way to create and manage threads, enabling developers to write programs that can execute multiple tasks seemingly simultaneously.
 

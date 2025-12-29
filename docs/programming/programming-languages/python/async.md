@@ -4,7 +4,11 @@ sidebar_position: 15
 
 # Asynchronous Programming
 
-<!-- markdownlint-disable MD024 -->
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
 
 Python's `asyncio` is a library introduced in Python 3.4 to enable asynchronous programming, allowing developers to write concurrent code that can handle I/O-bound operations efficiently. It’s particularly useful for tasks like network programming, web scraping, or any scenario where operations spend significant time waiting (e.g., for network responses or file I/O). Below is a detailed exploration of `asyncio` and its core components: **Event Loop**, **Coroutines**, **Tasks**, **Futures**, and **Synchronization**.
 
@@ -178,8 +182,6 @@ Results: {'data': 42}, Processed
 
 - Coroutines are not executed until awaited or scheduled (e.g., as tasks).
 - Use `asyncio.gather(*coroutines)` to run multiple coroutines concurrently.
-
-Below is a revised, detailed note focusing exclusively on **Tasks** in Python’s `asyncio`, incorporating `asyncio.gather` and `asyncio.TaskGroup` as requested, while covering what tasks are, their use cases, pros, cons, and examples. The introduction to `asyncio` has been removed, and the focus is narrowed to tasks only.
 
 ## Tasks
 

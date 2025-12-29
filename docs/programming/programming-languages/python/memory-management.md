@@ -4,6 +4,12 @@ sidebar_position: 21
 
 # Memory Management
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 Memory management in Python is a critical part of its runtime, ensuring efficient use of system resources and proper handling of objects. Python provides automatic memory management using techniques like **reference counting** and **garbage collection** to allocate and deallocate memory efficiently.
 
 ## Overview of Memory Management in Python
@@ -228,6 +234,7 @@ graph TD
 
 ### Garbage Collection Process
 
+<div style={{textAlign: 'center'}}>
 ```mermaid
 graph TD
     A[Generation 0] -->|Promote if survives| B[Generation 1]
@@ -236,3 +243,4 @@ graph TD
     B -->|Collect less frequently| Garbage
     C -->|Collect rarely| Garbage
 ```
+</div>

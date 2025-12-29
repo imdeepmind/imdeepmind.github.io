@@ -4,9 +4,11 @@ sidebar_position: 24
 
 # Package Managers
 
-<!-- markdownlint-disable MD024 -->
+:::tip[Status]
 
-## What “package manager” means (and the roles involved)
+This note is complete, reviewed, and considered stable.
+
+:::
 
 In Python, “package management” usually spans several jobs:
 

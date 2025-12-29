@@ -4,6 +4,12 @@ sidebar_position: 20
 
 # Execution Flow
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 ## How CPython Works
 
 CPython processes Python code through the following steps:
@@ -77,6 +83,7 @@ STORE_NAME x
 
 PyPy differs significantly from CPython by introducing a **Just-In-Time (JIT) compiler**. Instead of interpreting bytecode line-by-line, PyPy uses JIT to optimize code execution by dynamically compiling frequently executed code into machine code.
 
+<div style={{textAlign: 'center'}}>
 ```mermaid
 graph TD
     A["Python Source Code (.py)"] -->|Tokenization| B[Tokens]
@@ -86,6 +93,7 @@ graph TD
     E -->|Identify Hot Loops| F[Machine Code Generation]
     F -->|Execute Machine Code| G[Final Output]
 ```
+</div>
 
 ### Source Code Handling
 

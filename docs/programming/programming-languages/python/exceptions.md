@@ -4,6 +4,12 @@ sidebar_position: 10
 
 # Exception Handling
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 Exception handling in Python is a powerful feature that allows a program to deal with errors (exceptions) in a controlled manner. It prevents abrupt termination of the program and allows the developer to handle errors in a way that is appropriate to the context.
 
 ## Key Concepts

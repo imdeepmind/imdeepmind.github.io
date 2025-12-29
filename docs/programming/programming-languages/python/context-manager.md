@@ -4,9 +4,13 @@ sidebar_position: 11
 
 # Context Managers
 
-## What is a Context Manager?
+:::tip[Status]
 
-A **Context Manager** in Python is a programming construct that allows We to allocate and release resources precisely when We need them. It is often used for managing resources such as file handling, network connections, or database sessions. Context managers allow We to define a block of code that will execute at the start and end of the block, ensuring that necessary setup and cleanup operations are performed automatically.
+This note is complete, reviewed, and considered stable.
+
+:::
+
+A **Context Manager** in Python is a programming construct that allows us to allocate and release resources precisely when we need them. It is often used for managing resources such as file handling, network connections, or database sessions. Context managers allow us to define a block of code that will execute at the start and end of the block, ensuring that necessary setup and cleanup operations are performed automatically.
 
 The most common way to use a context manager in Python is with the `with` statement, which simplifies exception handling and ensures that resources are properly cleaned up, even if an error occurs during execution.
 
@@ -54,7 +58,7 @@ We can create Our own context managers by implementing a class with `__enter__()
 class MyContextManager:
     def __enter__(self):
         print("Entering the context")
-        return self  # We can return any value We want to use inside the 'with' block
+        return self  # We can return any value we want to use inside the 'with' block
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         print("Exiting the context")
@@ -90,7 +94,7 @@ If `__exit__()` returns `True`, the exception is suppressed (not re-raised). If 
 
 ## Using the `contextlib` Module
 
-Python’s `contextlib` module provides utilities for creating context managers without having to define a class with `__enter__()` and `__exit__()`. One of the most commonly used functions from this module is `contextlib.contextmanager`, which allows We to create context managers using a generator function.
+Python’s `contextlib` module provides utilities for creating context managers without having to define a class with `__enter__()` and `__exit__()`. One of the most commonly used functions from this module is `contextlib.contextmanager`, which allows us to create context managers using a generator function.
 
 ### Example with `contextlib.contextmanager`
 

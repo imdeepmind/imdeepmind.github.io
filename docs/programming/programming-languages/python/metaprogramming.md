@@ -4,6 +4,12 @@ sidebar_position: 16
 
 # Metaprogramming
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 Metaprogramming refers to the ability of a program to treat other programs as data. It involves writing code that manipulates or generates other code at runtime, often modifying its behavior dynamically. Python is an excellent language for metaprogramming because of its dynamic nature, where classes and functions can be modified or generated on the fly. This gives developers a high degree of flexibility and power.
 
 Metaprogramming in Python is commonly achieved through the following techniques:
@@ -32,10 +38,6 @@ print(type(obj))  # <class '__main__.MyClass'>
 print(dir(obj))   # Lists all methods and attributes, including 'my_method'
 print(getattr(obj, 'my_method')())  # Calls 'my_method' dynamically
 ```
-
-## Decorators
-
-Check note on [Decorators](/docs/programming/programming-languages/python/decorator.md).
 
 ## Metaclasses
 

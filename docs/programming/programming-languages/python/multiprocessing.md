@@ -4,6 +4,12 @@ sidebar_position: 14
 
 # Multiprocessing
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 Multiprocessing is Python's solution to achieving true parallelism by running multiple processes simultaneously. Unlike threading (which shares memory but is limited by the GIL), multiprocessing creates separate Python processes, each with its own memory space and Python interpreter.
 
 ## Key Advantages

@@ -4,6 +4,12 @@ sidebar_position: 6
 
 # `*args` and `**kwargs`
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 In Python, `*args` and `**kwargs` are used to handle variable numbers of arguments passed to a function. These allow We to write more flexible functions that can accept a range of input values without needing to explicitly define every parameter.
 
 ## `*args` (Non-keyword Arguments)
