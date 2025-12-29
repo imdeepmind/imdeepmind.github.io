@@ -4,7 +4,11 @@ sidebar_position: 19
 
 # Pytest
 
-<!-- markdownlint-disable MD024 -->
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
 
 **Pytest** is one of the most widely used testing frameworks in Python. It is known for its simplicity, scalability, and rich feature set. Pytest allows developers to write simple unit tests as well as complex functional tests, and it can easily integrate with other tools to provide a powerful testing experience. It also supports various testing styles, including functional, object-oriented, and parameterized testing.
 
@@ -19,7 +23,7 @@ sidebar_position: 19
 
 ## Installing Pytest
 
-To install Pytest, you can use `pip`:
+To install Pytest, we can use `pip`:
 
 ```bash
 pip install pytest
@@ -43,11 +47,11 @@ def test_add():
     assert add(-1, -1) == -2
 ```
 
-In this example, `test_add()` is a function that checks the correctness of the `add()` function using assertions. The tests are executed by Pytest when you run the test file.
+In this example, `test_add()` is a function that checks the correctness of the `add()` function using assertions. The tests are executed by Pytest when we run the test file.
 
 ## Running Pytest
 
-Once you have written the tests, you can run them using the `pytest` command:
+Once we have written the tests, we can run them using the `pytest` command:
 
 ```bash
 pytest
@@ -55,19 +59,19 @@ pytest
 
 By default, Pytest will search for files that match the pattern `test_*.py` and will execute any function inside those files that starts with `test_`.
 
-You can also run tests in a specific file:
+We can also run tests in a specific file:
 
 ```bash
 pytest test_example.py
 ```
 
-If you want to see more detailed output, you can use the `-v` (verbose) flag:
+If we want to see more detailed output, we can use the `-v` (verbose) flag:
 
 ```bash
 pytest -v
 ```
 
-If you only want to run specific tests, you can specify the test name:
+If we only want to run specific tests, we can specify the test name:
 
 ```bash
 pytest test_example.py::test_add
@@ -141,7 +145,7 @@ In this case, the resource (`myfile.txt`) is opened in the setup phase and close
 
 ## Parametrized Tests
 
-Pytest allows you to run a single test function multiple times with different sets of input data using the `@pytest.mark.parametrize` decorator. This is useful for testing the same function with a variety of inputs and expected results.
+Pytest allows us to run a single test function multiple times with different sets of input data using the `@pytest.mark.parametrize` decorator. This is useful for testing the same function with a variety of inputs and expected results.
 
 ### Example of Parametrized Tests
 
@@ -164,7 +168,7 @@ In this example, the `test_add` function is run four times with different parame
 
 Pytest automatically discovers tests by searching for files with names matching `test_*.py` and looking for functions within those files whose names start with `test_`. It will then execute those functions as tests.
 
-You can specify a directory for test discovery:
+We can specify a directory for test discovery:
 
 ```bash
 pytest tests/
@@ -196,7 +200,7 @@ def test_expected_failure():
 
 ### Running Tests by Mark
 
-You can also run tests based on their marks. For example, to run only tests that are marked as `xfail`:
+We can also run tests based on their marks. For example, to run only tests that are marked as `xfail`:
 
 ```bash
 pytest -m xfail
@@ -237,7 +241,7 @@ This splits the test suite into four processes and runs them simultaneously, whi
 
 ## Test Coverage with `pytest-cov`
 
-Test coverage measures how much of your code is tested by your unit tests. The `pytest-cov` plugin integrates with Pytest to provide coverage reports.
+Test coverage measures how much of our code is tested by our unit tests. The `pytest-cov` plugin integrates with Pytest to provide coverage reports.
 
 ### Example
 

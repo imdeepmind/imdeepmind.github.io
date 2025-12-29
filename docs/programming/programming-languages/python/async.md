@@ -4,7 +4,11 @@ sidebar_position: 15
 
 # Asynchronous Programming
 
-<!-- markdownlint-disable MD024 -->
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
 
 Python's `asyncio` is a library introduced in Python 3.4 to enable asynchronous programming, allowing developers to write concurrent code that can handle I/O-bound operations efficiently. It’s particularly useful for tasks like network programming, web scraping, or any scenario where operations spend significant time waiting (e.g., for network responses or file I/O). Below is a detailed exploration of `asyncio` and its core components: **Event Loop**, **Coroutines**, **Tasks**, **Futures**, and **Synchronization**.
 
@@ -70,7 +74,7 @@ The **event loop** is the core of `asyncio`, responsible for scheduling and runn
 ### When to Use
 
 - **Always required**: Any `asyncio` program needs an event loop to execute coroutines.
-- **Custom scheduling**: Use when you need fine-grained control over task execution or need to integrate with external event loops (e.g., `uvloop` for performance).
+- **Custom scheduling**: Use when we need fine-grained control over task execution or need to integrate with external event loops (e.g., `uvloop` for performance).
 - **I/O multiplexing**: Essential for handling multiple network connections concurrently.
 
 ### Pros
@@ -129,7 +133,7 @@ A **coroutine** is a special function defined with `async def` that can pause it
 
 - **Async operations**: Use for any function involving I/O operations (e.g., HTTP requests, reading files asynchronously).
 - **Composing tasks**: Combine multiple coroutines to build complex workflows.
-- **Non-blocking code**: When you want to avoid blocking the event loop during long-running operations.
+- **Non-blocking code**: When we want to avoid blocking the event loop during long-running operations.
 
 ### Pros
 
@@ -178,8 +182,6 @@ Results: {'data': 42}, Processed
 
 - Coroutines are not executed until awaited or scheduled (e.g., as tasks).
 - Use `asyncio.gather(*coroutines)` to run multiple coroutines concurrently.
-
-Below is a revised, detailed note focusing exclusively on **Tasks** in Python’s `asyncio`, incorporating `asyncio.gather` and `asyncio.TaskGroup` as requested, while covering what tasks are, their use cases, pros, cons, and examples. The introduction to `asyncio` has been removed, and the focus is narrowed to tasks only.
 
 ## Tasks
 
@@ -515,7 +517,7 @@ A **future** is a low-level object representing the eventual result of an asynch
 
 ### When to Use
 
-- **Low-level control**: When you need to interface with callback-based libraries or custom event loops.
+- **Low-level control**: When we need to interface with callback-based libraries or custom event loops.
 - **External integration**: For bridging `asyncio` with other async frameworks or systems.
 - **Rare in typical use**: Most `asyncio` programs use tasks or coroutines instead, as they’re more convenient.
 
@@ -578,7 +580,7 @@ An `asyncio.Lock` ensures that only one coroutine can access a critical section 
 
 #### When to Use
 
-- When you need mutual exclusion to avoid data corruption or inconsistent states.
+- When we need mutual exclusion to avoid data corruption or inconsistent states.
 - For short critical sections to minimize contention.
 
 #### Pros
@@ -803,7 +805,7 @@ An `asyncio.Semaphore` limits the number of coroutines that can access a resourc
 
 #### When to Use
 
-- When you want to allow multiple coroutines to access a resource simultaneously, but with a cap.
+- When we want to allow multiple coroutines to access a resource simultaneously, but with a cap.
 - For scenarios where full mutual exclusion (like `Lock`) is too restrictive.
 
 #### Pros
@@ -866,12 +868,12 @@ An `asyncio.BoundedSemaphore` is a variant of `Semaphore` that enforces stricter
 #### Use Cases
 
 - **Same as Semaphore**: Rate limiting, resource pooling, or throttling I/O operations.
-- **Safety-critical systems**: When you need to ensure the semaphore’s counter remains accurate (e.g., managing a fixed number of licenses or connections).
+- **Safety-critical systems**: When we need to ensure the semaphore’s counter remains accurate (e.g., managing a fixed number of licenses or connections).
 - **Debugging**: Helps catch programming errors during development.
 
 #### When to Use
 
-- When you want the same functionality as `Semaphore` but with added protection against over-releasing.
+- When we want the same functionality as `Semaphore` but with added protection against over-releasing.
 - In production code where reliability is critical.
 
 #### Pros
@@ -928,7 +930,7 @@ Error: BoundedSemaphore released too many times
 
 #### Notes
 
-- Use `BoundedSemaphore` over `Semaphore` in most cases unless you specifically need to allow unbalanced releases (rare).
+- Use `BoundedSemaphore` over `Semaphore` in most cases unless we specifically need to allow unbalanced releases (rare).
 - The error on over-release helps catch bugs early during testing.
 
 ### General Notes on Synchronization

@@ -4,7 +4,11 @@ sidebar_position: 7
 
 # Standard Library
 
-<!-- markdownlint-disable MD024 -->
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
 
 Python's **Standard Library** is a collection of modules that are included with Python. These modules provide a wide variety of functionalities that help solve common programming tasks like working with files, handling data, and performing operations on collections, strings, etc. The great thing about the Python Standard Library is that it’s built-in and doesn’t require any external installation.
 
@@ -105,16 +109,13 @@ Returns all possible combinations of length `r` from the iterable.
 
 ```python
 import itertools
-for comb in itertools.combinations([1, 2, 3]):
+for comb in itertools.combinations([1, 2, 3], 2):
     print(comb)
 ```
 
 Output:
 
 ```text
-(1,)
-(2,)
-(3,)
 (1, 2)
 (1, 3)
 (2, 3)

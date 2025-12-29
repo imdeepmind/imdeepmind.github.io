@@ -4,6 +4,12 @@ sidebar_position: 18
 
 # Unit Testing
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 Unit testing is a fundamental concept in software development where individual units (typically functions or methods) of a program are tested in isolation to ensure that each part of the code functions as expected. In Python, unit testing is typically done using the `unittest` module, which is a built-in testing framework inspired by Java's JUnit. Unit tests help identify bugs early in the development cycle and provide a safety net when making changes or refactoring code.
 
 Python also provides other testing tools like `pytest` and `nose`, but the built-in `unittest` framework is often sufficient for most testing purposes.
@@ -117,7 +123,7 @@ class TestDatabaseOperations(unittest.TestCase):
 
 ## Running Unit Tests
 
-To run the unit tests, you can simply call `unittest.main()` in your script, which will automatically discover and run all the test cases in the file. However, it's also possible to run tests from the command line using the `python -m unittest` command.
+To run the unit tests, we can simply call `unittest.main()` in our script, which will automatically discover and run all the test cases in the file. However, it's also possible to run tests from the command line using the `python -m unittest` command.
 
 ### Running tests from the command line
 
@@ -129,7 +135,7 @@ This will discover all the test cases in the `test_module.py` file and execute t
 
 ## Test Discovery
 
-The `unittest` module supports automatic test discovery, which allows you to find and run tests without explicitly specifying each test. By using `unittest.TestLoader().discover()`, Python can automatically find and execute tests in a specified directory.
+The `unittest` module supports automatic test discovery, which allows us to find and run tests without explicitly specifying each test. By using `unittest.TestLoader().discover()`, Python can automatically find and execute tests in a specified directory.
 
 Example of test discovery:
 
@@ -168,7 +174,7 @@ In this example, the `get_data` method of `APIClient` is replaced with a mock th
 
 ## Test Coverage
 
-Test coverage measures how much of your code is covered by tests. In Python, you can use tools like `coverage.py` to measure and report on test coverage.
+Test coverage measures how much of our code is covered by tests. In Python, we can use tools like `coverage.py` to measure and report on test coverage.
 
 To use `coverage.py`, install it via `pip`:
 
@@ -182,7 +188,7 @@ Then, run the tests with coverage tracking:
 coverage run -m unittest test_module.py
 ```
 
-You can generate a coverage report after running the tests:
+We can generate a coverage report after running the tests:
 
 ```bash
 coverage report

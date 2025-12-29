@@ -4,13 +4,19 @@ sidebar_position: 12
 
 # File Handling
 
-File handling is an essential part of Python programming. It allows We to perform various operations such as reading, writing, and manipulating files stored on Our system. Python provides built-in functions and modules to work with files in a simple and efficient manner.
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
+File handling is an essential part of Python programming. It allows us to perform various operations such as reading, writing, and manipulating files stored on our system. Python provides built-in functions and modules to work with files in a simple and efficient manner.
 
 ## Key Concepts in File Handling
 
 1. **Files**: A file is a named location on a storage device used to store data. File handling refers to the process of opening, reading, writing, and closing files.
 
-2. **File Modes**: When working with files, Python allows We to specify the mode in which a file is opened:
+2. **File Modes**: When working with files, Python allows us to specify the mode in which a file is opened:
 
    - **`'r'` (Read)**: Opens the file for reading (default mode). The file must exist.
    - **`'w'` (Write)**: Opens the file for writing. If the file exists, its contents are erased; if it doesn’t exist, a new file is created.

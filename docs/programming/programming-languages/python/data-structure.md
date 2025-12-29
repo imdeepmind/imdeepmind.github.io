@@ -4,7 +4,11 @@ sidebar_position: 4
 
 # Common Data Structures in Python
 
-<!-- markdownlint-disable MD024 -->
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
 
 Python provides several **built-in data structures** that are highly optimized and allow developers to efficiently manage and manipulate data. The key ones are `list`, `dict`, `set`, `tuple`, and `str` (string). Let’s explore these data structures, their implementations, and the common methods associated with each.
 
@@ -14,7 +18,7 @@ A Python `list` is a **dynamic array** that can hold heterogeneous elements and 
 
 ### Characteristic
 
-- **Mutable**: You can modify its content.
+- **Mutable**: We can modify its content.
 - **Ordered**: Maintains the order of elements.
 - **Heterogeneous**: Can store elements of different data types.
 
@@ -66,7 +70,7 @@ A `dict` is Python’s implementation of a **hash table**, mapping keys to value
 
 ### Characteristics
 
-- **Mutable**: You can modify its content.
+- **Mutable**: We can modify its content.
 - **Key-value pairs**: Keys must be unique and hashable, while values can be of any type.
 - **Ordered**: Maintains insertion order (starting from Python 3.7).
 
@@ -96,7 +100,7 @@ In Python, dictionary keys must be hashable objects. That means they must implem
 - lists
 - dictionaries
 - sets
-- User-defined mutable objects, unless you override **hash** and **eq** properly
+- User-defined mutable objects, unless we override **hash** and **eq** properly
 
 ### Time Complexity
 
@@ -137,7 +141,7 @@ A `set` is an **unordered collection** of unique elements, implemented as a hash
 
 ### Characteristics
 
-- **Mutable**: You can add or remove elements.
+- **Mutable**: We can add or remove elements.
 - **Unique elements**: Duplicates are not allowed.
 - **Unordered**: Does not maintain insertion order.
 
@@ -214,7 +218,7 @@ A `str` is an **immutable sequence** of characters used to represent text.
 
 ### Characteristics
 
-- **Immutable**: You cannot change its content.
+- **Immutable**: We cannot change its content.
 - **Ordered**: Maintains the order of characters.
 - **Unicode support**: Fully supports Unicode, allowing multilingual text handling.
 

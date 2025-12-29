@@ -4,7 +4,11 @@ sidebar_position: 23
 
 # Generational Garbage Collection
 
-<!-- markdownlint-disable MD024 -->
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
 
 ## The Object Graph
 
@@ -135,6 +139,7 @@ graph TD
 
 ### Circular Reference Detection in the Object Graph
 
+<div style={{textAlign: 'center'}}>
 ```mermaid
 graph TD
     A[Object A] --> B[Object B]
@@ -143,3 +148,4 @@ graph TD
     A -->|Unreachable from root| D[Garbage Collector]
     D -->|Reclaims memory| E[Deallocated]
 ```
+</div>

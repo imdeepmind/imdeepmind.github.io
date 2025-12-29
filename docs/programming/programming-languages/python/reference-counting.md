@@ -4,6 +4,12 @@ sidebar_position: 22
 
 # Reference Counting
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 Reference counting is the **primary memory management technique** in Python. It keeps track of how many references (or pointers) are pointing to an object in memory. When an object's reference count drops to **zero**, it means the object is no longer accessible and can be safely deallocated by Python's memory manager.
 
 ## How Reference Counting Works
@@ -199,11 +205,13 @@ graph TD
 
 ### Circular Reference Problem
 
+<div style={{textAlign: 'center'}}>
 ```mermaid
 graph TD
     A[Object A] --> B[Object B]
     B --> A
 ```
+</div>
 
 In this case, `Object A` and `Object B` reference each other, so their reference counts will never reach 0, causing a memory leak unless the garbage collector intervenes.
 

@@ -4,6 +4,12 @@ sidebar_position: 12
 
 # Iterators and Generators
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 ## Iterators
 
 ### What is an Iterator?
@@ -13,7 +19,7 @@ An **iterator** is an object that implements two key methods:
 1. `__iter__()`: Returns the iterator object itself. This method is required for an object to be considered iterable.
 2. `__next__()`: Returns the next item in the sequence. If there are no more items, it raises a `StopIteration` exception.
 
-In Python, most collections such as lists, tuples, and dictionaries are iterables. This means We can loop over them using a `for` loop. However, these collections are not iterators themselves. They are iterable objects because they implement the `__iter__()` method. When We pass an iterable object to the `iter()` function, it returns an iterator.
+In Python, most collections such as lists, tuples, and dictionaries are iterables. This means we can loop over them using a `for` loop. However, these collections are not iterators themselves. They are iterable objects because they implement the `__iter__()` method. When we pass an iterable object to the `iter()` function, it returns an iterator.
 
 ### Example of Using an Iterator
 
@@ -31,7 +37,7 @@ print(next(iterator))  # Output: 4
 
 ### Custom Iterator
 
-We can create Our own iterator by defining a class with `__iter__()` and `__next__()` methods.
+We can create our own iterator by defining a class with `__iter__()` and `__next__()` methods.
 
 ```python
 class Countdown:
@@ -94,14 +100,14 @@ for square in squares:
 ### Advantages of Generators
 
 - **Memory Efficient:** Like iterators, generators do not store all values in memory at once. Instead, they generate values on the fly, which is especially useful for working with large datasets.
-- **Concise:** Generators allow We to write cleaner and more concise code for producing sequences of data.
+- **Concise:** Generators allow us to write cleaner and more concise code for producing sequences of data.
 - **Lazy Evaluation:** Generators evaluate values lazily, which means values are only generated when requested.
 
 ### When to Use Generators
 
 - When working with large datasets, like reading lines from a file, or streaming data from an external source.
-- When We want to avoid storing large amounts of data in memory at once.
-- When We need an efficient way to handle sequences of data that may not fit in memory.
+- When we want to avoid storing large amounts of data in memory at once.
+- When we need an efficient way to handle sequences of data that may not fit in memory.
 
 ## Comparison Between Iterators and Generators
 
