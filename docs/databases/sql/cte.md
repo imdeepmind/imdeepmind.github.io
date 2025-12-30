@@ -4,8 +4,14 @@ sidebar_position: 8
 
 # Common Table Expressions (CTEs)
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 A **Common Table Expression (CTE)** is a **temporary named result set** that exists only during the execution of a single SQL statement.
-CTEs improve query readability, allow for recursive queries, and can simplify complex queries that would otherwise require nested subqueries or derived tables.
+CTEs improve query readability, allow for recursive queries, and can simplify complex queries that would otherwise require nested subqueries or derived tables. They're one of our favorite tools for making SQL more readable!
 
 ## Basic Syntax
 
@@ -24,7 +30,7 @@ WHERE another_condition;
 
 - `WITH` introduces the CTE.
 - `cte_name` is the temporary name for the result set.
-- The CTE can then be referenced in the main `SELECT` query as if it were a table.
+- The CTE can then be referenced in the main `SELECT` query as if it were a table - pretty neat!
 
 ### Example 1: Simple CTE
 
@@ -70,11 +76,11 @@ B --> C[Final SELECT filters salary > avg_salary]
 **Explanation:**
 
 - The CTE `avg_salary` calculates a single value.
-- The main query references it for filtering, making the query clearer than a nested subquery.
+- The main query references it for filtering, making the query way clearer than a nested subquery would be.
 
 ### Example 2: Multiple CTEs
 
-You can define **multiple CTEs** in a single query.
+We can define **multiple CTEs** in a single query.
 
 ```sql
 WITH dept_avg AS (
@@ -116,11 +122,11 @@ C --> D[Final SELECT]
 - First CTE calculates department average salary.
 - Second CTE filters employees above department average.
 - Main query selects from the second CTE.
-- **Readability and modularity** are greatly improved.
+- **Readability and modularity** are greatly improved - we can build complex queries step by step!
 
 ### Example 3: Recursive CTE
 
-**Definition:** Recursive CTEs reference themselves. Useful for hierarchical data, e.g., organizational charts.
+Recursive CTEs reference themselves. Useful for hierarchical data, e.g., organizational charts.
 
 **Table: `employees` (manager hierarchy)**
 
@@ -173,7 +179,7 @@ B --> D[David]
 **Explanation:**
 
 - Recursive CTE starts with the anchor member (Alice).
-- Recursively joins to find subordinates at all levels.
+- Recursively joins to find subordinates at all levels - this is super powerful for hierarchical data!
 
 ## Advantages of CTEs
 

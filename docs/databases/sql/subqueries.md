@@ -4,10 +4,16 @@ sidebar_position: 7
 
 # Subqueries and Nested Queries
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 A **subquery** (or inner query) is a SQL query embedded within another query.
 A **nested query** is a broader term describing queries that are nested inside other queries, which can include multiple levels of subqueries.
 
-**Purpose:**
+**Why we use them:**
 
 - Break down complex queries into manageable parts.
 - Filter or compute intermediate results for use in the outer query.
@@ -23,7 +29,7 @@ A **nested query** is a broader term describing queries that are nested inside o
 
 ### Scalar Subquery
 
-**Definition:** Returns a single value; can be used in `SELECT`, `WHERE`, or `HAVING`.
+Returns a single value; can be used in `SELECT`, `WHERE`, or `HAVING`.
 
 <div style={{textAlign: 'center'}}>
 
@@ -51,11 +57,11 @@ FROM employees;
 | Charlie | 120000     |
 
 **Explanation:**
-The scalar subquery `(SELECT MAX(salary)...)` runs once and returns a single value, which is applied to all outer query rows.
+The scalar subquery `(SELECT MAX(salary)...)` runs once and returns a single value, which is applied to all outer query rows - efficient!
 
 ### Column Subquery
 
-**Definition:** Returns a single column with multiple rows; often used with `IN`.
+Returns a single column with multiple rows; often used with `IN`.
 
 <div style={{textAlign: 'center'}}>
 
@@ -84,11 +90,11 @@ WHERE department_id IN (
 | Charlie |
 
 **Explanation:**
-Subquery returns all department IDs in NY. Outer query filters employees in those departments.
+Subquery returns all department IDs in NY. Outer query filters employees in those departments - a common pattern!
 
 ### Row Subquery
 
-**Definition:** Returns multiple columns but **only one row**. Often used with comparison operators `(=, <, >)`.
+Returns multiple columns but **only one row**. Often used with comparison operators `(=, <, >)`.
 
 <div style={{textAlign: 'center'}}>
 
@@ -119,11 +125,11 @@ WHERE (department_id, salary) = (
 | Alice |
 
 **Explanation:**
-Outer query selects employees who match the department ID and maximum salary returned by the row subquery.
+Outer query selects employees who match the department ID and maximum salary returned by the row subquery - this finds the top earner in a specific department.
 
 ### Correlated Subquery
 
-**Definition:** Subquery that **depends on a column from the outer query**; evaluated **once per row** of outer query.
+Subquery that **depends on a column from the outer query**; evaluated **once per row** of outer query.
 
 <div style={{textAlign: 'center'}}>
 
@@ -155,11 +161,11 @@ WHERE salary > (
 | Alice |
 
 **Explanation:**
-The subquery calculates average salary **per department** for each row of the outer query. Only employees above their department average are returned.
+The subquery calculates average salary **per department** for each row of the outer query. Only employees above their department average are returned - this is a correlated subquery, so it runs once per outer row.
 
 ### Nested Subqueries
 
-**Definition:** A subquery inside another subquery. Useful for multi-level filtering or complex computations.
+A subquery inside another subquery. Useful for multi-level filtering or complex computations.
 
 <div style={{textAlign: 'center'}}>
 
@@ -198,11 +204,11 @@ WHERE department_id IN (
 
 - Innermost query selects all locations in the East region.
 - Middle query selects department IDs in those locations.
-- Outer query selects employees in those departments.
+- Outer query selects employees in those departments - nested subqueries let us drill down through multiple levels!
 
 ## EXISTS and NOT EXISTS
 
-**Definition:** Checks for existence of rows in subqueries.
+Checks for existence of rows in subqueries.
 
 <div style={{textAlign: 'center'}}>
 
@@ -233,4 +239,4 @@ WHERE EXISTS (
 | Bob   |
 
 **Explanation:**
-Only employees who are project leads exist in the subquery; returned by outer query.
+Only employees who are project leads exist in the subquery; they're returned by the outer query. `EXISTS` is efficient because it stops as soon as it finds a match!

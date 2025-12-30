@@ -4,10 +4,15 @@ sidebar_position: 9
 
 # Window Functions
 
-**Definition:**
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 Window functions perform calculations across a **set of rows related to the current row** without collapsing the result set into a single row. Unlike aggregate functions that return **one row per group**, window functions return a **value for each row** while still allowing access to individual row details.
 
-Window functions are also called **analytic functions**.
+Window functions are also called **analytic functions** - they're super powerful for advanced SQL analysis!
 
 ## Syntax
 
@@ -47,7 +52,7 @@ FROM employees;
 | 2           | 102           | 80000  | 1       |
 
 **Explanation:**
-Rows are numbered per department ordered by salary descending.
+Rows are numbered per department ordered by salary descending - each department gets its own numbering sequence starting from 1.
 
 ### RANK()
 
@@ -124,8 +129,8 @@ FROM employees;
 
 **Explanation:**
 
-- `prev_salary` is the previous row in the department order.
-- `next_salary` is the next row.
+- `prev_salary` is the previous row in the department order (NULL for the first row).
+- `next_salary` is the next row (NULL for the last row).
 
 ### SUM(), AVG(), MIN(), MAX() as Window Functions
 
@@ -170,17 +175,17 @@ FROM employees;
 
 **Explanation:**
 
-- Calculates cumulative sum ordered by salary.
+- Calculates cumulative sum ordered by salary - each row shows the running total up to that point.
 
 ## Database Support
 
 | Function                     | PostgreSQL | MySQL     | SQL Server | Oracle |
 | ---------------------------- | ---------- | --------- | ---------- | ------ |
-| ROW_NUMBER, RANK, DENSE_RANK | ✅         | ✅        | ✅         | ✅     |
-| NTILE                        | ✅         | ✅        | ✅         | ✅     |
-| LEAD / LAG                   | ✅         | ✅ (8.0+) | ✅         | ✅     |
-| SUM/AVG as window            | ✅         | ✅ (8.0+) | ✅         | ✅     |
-| Frames (ROWS/RANGE)          | ✅         | ✅        | ✅         | ✅     |
+| ROW_NUMBER, RANK, DENSE_RANK | ✓          | ✓         | ✓          | ✓      |
+| NTILE                        | ✓          | ✓         | ✓          | ✓      |
+| LEAD / LAG                   | ✓          | ✓ (8.0+)  | ✓          | ✓      |
+| SUM/AVG as window            | ✓          | ✓ (8.0+)  | ✓          | ✓      |
+| Frames (ROWS/RANGE)          | ✓          | ✓         | ✓          | ✓      |
 
 ## Use Cases
 
