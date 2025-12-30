@@ -4,7 +4,13 @@ sidebar_position: 1
 
 # Introduction
 
-**SQL (Structured Query Language)** is the standard language used to communicate with and manage data in **relational databases**. It allows us to **store, retrieve, manipulate, and manage** data effectively through structured commands. SQL is declarative — we specify _what_ we want, not _how_ to get it.
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
+**SQL (Structured Query Language)** is the standard language used to communicate with and manage data in **relational databases**. It allows us to **store, retrieve, manipulate, and manage** data effectively through structured commands. SQL is declarative, that means we need specify _what_ we want, not _how_ to get it.
 
 ## Brief History of SQL
 

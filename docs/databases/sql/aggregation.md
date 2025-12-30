@@ -2,11 +2,17 @@
 sidebar_position: 3
 ---
 
-# Aggregations Queries
+# Aggregation Queries
 
-**Aggregation** in SQL refers to the process of performing **calculations on multiple rows** of a table and returning a **single summarized value**. It is a key part of analytical queries — used for reporting, summarizing trends, and data insights.
+:::tip[Status]
 
-For example:
+This note is complete, reviewed, and considered stable.
+
+:::
+
+**Aggregation** in SQL means performing **calculations on multiple rows** of a table and returning a **single summarized value**.
+
+Common examples:
 
 - Finding total sales per month
 - Counting employees per department
@@ -37,11 +43,11 @@ FROM employees;
 **Explanation:**
 
 - This computes total count, average, maximum, and minimum salary across all employees.
-- Without a `GROUP BY` clause, aggregate functions compute results **for the entire table**.
+- Without a `GROUP BY` clause, aggregate functions compute results **for the entire table** as one big group.
 
 ## COUNT() Function
 
-The `COUNT()` function is special because it has variants:
+The `COUNT()` function is special because it has several variants - each behaves slightly differently:
 
 ```sql
 SELECT COUNT(*) FROM employees;          -- Counts all rows (including NULLs)
@@ -51,17 +57,17 @@ SELECT COUNT(DISTINCT department) FROM employees;  -- Counts unique departments
 
 **Differences across databases:**
 
-| Database   | `COUNT(DISTINCT col1, col2)` (multiple columns)               |     |         |
-| ---------- | ------------------------------------------------------------- | --- | ------- |
-| MySQL      | Supported since 5.7                                           |     |         |
-| PostgreSQL | Supported                                                     |     |         |
-| SQLite     | Not supported directly (workaround using `COUNT(DISTINCT col1 |     | col2)`) |
-| SQL Server | Not supported directly                                        |     |         |
-| Oracle     | Not supported directly                                        |     |         |
+| Database   | `COUNT(DISTINCT col1, col2)` (multiple columns)                                    |
+| ---------- | ----------------------------------------------------------------------------------- |
+| MySQL      | Supported since 5.7                                                                 |
+| PostgreSQL | Supported                                                                           |
+| SQLite     | Not supported directly (workaround using `COUNT(DISTINCT col1 \|\| col2)`)          |
+| SQL Server | Not supported directly                                                               |
+| Oracle     | Not supported directly                                                               |
 
 ## SUM(), AVG(), MIN(), MAX() Functions
 
-All these operate only on numeric or comparable columns.
+All these functions operate only on numeric or comparable columns (like dates for MIN/MAX).
 
 Example:
 
@@ -73,10 +79,10 @@ SELECT SUM(salary) AS total_salary,
 FROM employees;
 ```
 
-**Notes:**
+**Important notes:**
 
-- `SUM()` and `AVG()` ignore `NULL` values.
-- `MIN()` and `MAX()` can operate on numeric, text, and date columns.
+- `SUM()` and `AVG()` ignore `NULL` values automatically.
+- `MIN()` and `MAX()` can operate on numeric, text, and date columns - pretty versatile!
 
 Example with dates:
 
@@ -87,7 +93,7 @@ FROM employees;
 
 ## DISTINCT with Aggregate Functions
 
-We can apply `DISTINCT` inside aggregate functions to ensure uniqueness before aggregation.
+We can apply `DISTINCT` inside aggregate functions to ensure uniqueness before aggregation - this is useful when we want to count or sum unique values only.
 
 Example:
 
@@ -108,7 +114,7 @@ SELECT SUM(DISTINCT salary) AS unique_salary_sum FROM employees;
 
 ## Using WHERE with Aggregates
 
-The `WHERE` clause filters rows **before aggregation**:
+The `WHERE` clause filters rows **before aggregation** - this is important to remember:
 
 ```sql
 SELECT AVG(salary) AS avg_it_salary
@@ -116,11 +122,11 @@ FROM employees
 WHERE department = 'IT';
 ```
 
-This computes the average salary only for IT employees.
+This computes the average salary only for IT employees - the WHERE clause filters first, then aggregates.
 
 ## Handling NULLs in Aggregations
 
-Aggregate functions **ignore NULLs**, except `COUNT(*)`, which counts all rows regardless of NULL values.
+Most aggregate functions **ignore NULLs**, except `COUNT(*)`, which counts all rows regardless of NULL values. This is important to keep in mind!
 
 Example:
 
@@ -137,7 +143,7 @@ Example:
 | `SUM(salary)`   | 3000   |
 | `AVG(salary)`   | 1500   |
 
-To handle NULLs explicitly, we can use `COALESCE()`:
+To handle NULLs explicitly when we need to, we can use `COALESCE()`:
 
 ```sql
 SELECT SUM(COALESCE(bonus, 0)) FROM employees;
@@ -145,7 +151,7 @@ SELECT SUM(COALESCE(bonus, 0)) FROM employees;
 
 ## Filtering Aggregates with HAVING
 
-The `HAVING` clause filters results **after aggregation**.
+The `HAVING` clause filters results **after aggregation** - this is the key difference from WHERE.
 
 Example:
 
@@ -156,11 +162,11 @@ GROUP BY department
 HAVING AVG(salary) > 70000;
 ```
 
-`WHERE` filters rows **before** aggregation, while `HAVING` filters groups **after** aggregation.
+Remember: `WHERE` filters rows **before** aggregation, while `HAVING` filters groups **after** aggregation. This distinction is crucial!
 
 ## Combining Aggregates with ORDER BY
 
-We can order results based on computed aggregates:
+We can order results based on computed aggregates - super useful for ranking:
 
 ```sql
 SELECT department, COUNT(*) AS emp_count
@@ -173,9 +179,9 @@ ORDER BY emp_count DESC;
 
 | Feature                              | MySQL                     | PostgreSQL                      | SQLite                     | SQL Server        | Oracle          |
 | ------------------------------------ | ------------------------- | ------------------------------- | -------------------------- | ----------------- | --------------- |
-| `COUNT(DISTINCT col1, col2)`         | ✅ (from 5.7)             | ✅                              | ❌ (use concat workaround) | ❌                | ❌              |
-| `GROUP_CONCAT()` (aggregate strings) | ✅ `GROUP_CONCAT()`       | ✅ as `STRING_AGG()`            | ✅ `GROUP_CONCAT()`        | ✅ `STRING_AGG()` | ✅ `LISTAGG()`  |
-| `FILTER (WHERE ...)` syntax          | ❌ (use `SUM(CASE...)`)   | ✅                              | ✅ (from 3.30.0)           | ❌                | ❌ (use `CASE`) |
+| `COUNT(DISTINCT col1, col2)`         |  (from 5.7)               |                                 |  (use concat workaround)   |                   |                 |
+| `GROUP_CONCAT()` (aggregate strings) |  `GROUP_CONCAT()`         |  as `STRING_AGG()`              |  `GROUP_CONCAT()`          |  `STRING_AGG()`   |  `LISTAGG()`    |
+| `FILTER (WHERE ...)` syntax          |  (use `SUM(CASE...)`)     |                                 |  (from 3.30.0)             |                   |  (use `CASE`)   |
 | Handling of NULL in `COUNT()`        | Ignores `NULL` (standard) | Ignores `NULL`                  | Ignores `NULL`             | Ignores `NULL`    | Ignores `NULL`  |
 | Boolean aggregates                   | `SUM(condition)` works    | `BOOL_OR`, `BOOL_AND` available | `SUM(condition)`           | `SUM(CAST(...))`  | `SUM(CASE...)`  |
 

@@ -4,8 +4,14 @@ sidebar_position: 6
 
 # Join Queries
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 In relational databases, data is often spread across multiple tables to maintain normalization and reduce redundancy.
-To retrieve data that spans multiple tables, SQL provides the **JOIN** operation, which combines rows from two or more tables based on a **related column** between them.
+When we need to retrieve data that spans multiple tables, SQL provides the **JOIN** operation, which combines rows from two or more tables based on a **related column** between them.
 
 The most common types of joins are:
 
@@ -18,7 +24,7 @@ The most common types of joins are:
 
 ## Example Setup
 
-We’ll use the following two tables throughout the examples:
+Let's use the following two tables throughout our examples:
 
 **Table: `students`**
 
@@ -38,7 +44,6 @@ We’ll use the following two tables throughout the examples:
 
 ## INNER JOIN
 
-**Definition:**
 Returns only the rows that have matching values in both tables.
 
 <div style={{textAlign: 'center'}}>
@@ -68,11 +73,10 @@ INNER JOIN courses c ON s.course_id = c.course_id;
 
 **Explanation:**
 Only Alice and Bob have matching course IDs in both tables.
-Charlie is excluded because his `course_id` is `NULL`.
+Charlie gets excluded because his `course_id` is `NULL`.
 
 ## LEFT JOIN (LEFT OUTER JOIN)
 
-**Definition:**
 Returns all rows from the **left table** and the matched rows from the **right table**.
 If there’s no match, the right side will contain `NULL`.
 
@@ -103,11 +107,10 @@ LEFT JOIN courses c ON s.course_id = c.course_id;
 | Charlie | NULL        |
 
 **Explanation:**
-All students are returned. For Charlie, there’s no course match, so `course_name` is `NULL`.
+All students are returned. For Charlie, there's no course match, so `course_name` shows up as `NULL`.
 
 ## RIGHT JOIN (RIGHT OUTER JOIN)
 
-**Definition:**
 Returns all rows from the **right table** and the matched rows from the **left table**.
 If there’s no match, the left side will contain `NULL`.
 
@@ -138,11 +141,10 @@ RIGHT JOIN courses c ON s.course_id = c.course_id;
 | NULL  | History     |
 
 **Explanation:**
-All courses are returned. The “History” course has no enrolled student, so `name` is `NULL`.
+All courses are returned. The "History" course has no enrolled student, so `name` shows up as `NULL`.
 
 ## FULL OUTER JOIN
 
-**Definition:**
 Returns all rows from both tables.
 If there’s no match, unmatched columns will contain `NULL`.
 
@@ -174,11 +176,11 @@ FULL OUTER JOIN courses c ON s.course_id = c.course_id;
 | NULL    | History     |
 
 **Explanation:**
-Combines results of both LEFT and RIGHT joins.
+This combines the results of both LEFT and RIGHT joins - we get everything from both sides.
 
 **Note:**
-MySQL doesn’t support `FULL OUTER JOIN` natively.
-To emulate it, you can use `UNION`:
+MySQL doesn't support `FULL OUTER JOIN` natively.
+To emulate it, we can use `UNION`:
 
 ```sql
 SELECT s.name, c.course_name
@@ -192,7 +194,6 @@ RIGHT JOIN courses c ON s.course_id = c.course_id;
 
 ## CROSS JOIN
 
-**Definition:**
 Produces a **Cartesian product** of both tables — every row from the first table is combined with every row from the second table.
 
 <div style={{textAlign: 'center'}}>
@@ -228,13 +229,12 @@ CROSS JOIN courses c;
 | Charlie | History     |
 
 **Explanation:**
-Every student-course combination is returned.
+Every possible student-course combination is returned - this can get huge fast!
 
 ## LATERAL JOIN (PostgreSQL & SQL Server)
 
-**Definition:**
 A **LATERAL JOIN** allows a subquery in the `FROM` clause to reference columns from preceding tables in the same `FROM` clause.
-It’s useful when you want to run a subquery for each row of another table.
+It's useful when we want to run a subquery for each row of another table.
 
 <div style={{textAlign: 'center'}}>
 
@@ -246,7 +246,7 @@ A[Students] -->|Row-by-row subquery| L[Lateral Result]
 </div>
 
 **Example Scenario:**
-Suppose we have a table `marks` that stores multiple marks per student.
+Let's say we have a table `marks` that stores multiple marks per student.
 
 **Table: `marks`**
 
@@ -256,7 +256,7 @@ Suppose we have a table `marks` that stores multiple marks per student.
 | 1          | 90   |
 | 2          | 78   |
 
-We want to select each student and their **highest mark**.
+We want to select each student along with their **highest mark**.
 
 **Query (PostgreSQL):**
 
@@ -279,7 +279,7 @@ LATERAL (
 | Charlie | NULL         |
 
 **Explanation:**
-For each student, the lateral subquery runs individually and finds their maximum mark.
+For each student, the lateral subquery runs individually and finds their maximum mark. This is different from a regular join - it's evaluated row by row.
 
 **Note:**
 
@@ -290,12 +290,12 @@ For each student, the lateral subquery runs individually and finds their maximum
 
 | Join Type       | MySQL          | PostgreSQL   | SQL Server    | Oracle              |
 | --------------- | -------------- | ------------ | ------------- | ------------------- |
-| INNER JOIN      | ✅ Supported   | ✅ Supported | ✅ Supported  | ✅ Supported        |
-| LEFT JOIN       | ✅             | ✅           | ✅            | ✅                  |
-| RIGHT JOIN      | ✅             | ✅           | ✅            | ✅                  |
-| FULL OUTER JOIN | ❌ (use UNION) | ✅           | ✅            | ✅                  |
-| CROSS JOIN      | ✅             | ✅           | ✅            | ✅                  |
-| LATERAL JOIN    | ✅ (8.0+)      | ✅           | ✅ (as APPLY) | ✅ (as CROSS APPLY) |
+| INNER JOIN      | ✓ Supported    | ✓ Supported  | ✓ Supported   | ✓ Supported         |
+| LEFT JOIN       | ✓              | ✓            | ✓             | ✓                   |
+| RIGHT JOIN      | ✓              | ✓            | ✓             | ✓                   |
+| FULL OUTER JOIN | ✗ (use UNION)  | ✓            | ✓             | ✓                   |
+| CROSS JOIN      | ✓              | ✓            | ✓             | ✓                   |
+| LATERAL JOIN    | ✓ (8.0+)       | ✓            | ✓ (as APPLY)  | ✓ (as CROSS APPLY)  |
 
 ## Key Takeaways
 

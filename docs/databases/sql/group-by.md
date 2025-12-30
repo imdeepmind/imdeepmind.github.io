@@ -4,9 +4,15 @@ sidebar_position: 4
 
 # GROUP BY Queries
 
-The `GROUP BY` clause in SQL is used to group rows that have the same values in one or more columns. It’s mainly used along with **aggregate functions** (like `SUM()`, `AVG()`, `COUNT()`, `MIN()`, `MAX()`) to compute summary statistics for each group.
+:::tip[Status]
 
-It helps us transform **row-level data** into **aggregated insights**, such as “total sales per region” or “average salary per department”.
+This note is complete, reviewed, and considered stable.
+
+:::
+
+The `GROUP BY` clause in SQL groups rows that have the same values in one or more columns. We mainly use it along with **aggregate functions** (like `SUM()`, `AVG()`, `COUNT()`, `MIN()`, `MAX()`) to compute summary statistics for each group.
+
+It helps us transform **row-level data** into **aggregated insights**, like "total sales per region" or "average salary per department".
 
 Without `GROUP BY`, aggregate functions treat the entire dataset as one group. With it, we can compute aggregates for each unique value or combination of values.
 
@@ -25,7 +31,7 @@ GROUP BY column1;
 
 ## Basic Example
 
-Suppose we have a table `sales`:
+Let's say we have a table `sales`:
 
 | region | product | amount |
 | ------ | ------- | ------ |
@@ -49,11 +55,11 @@ GROUP BY region;
 | East   | 250         |
 | West   | 250         |
 
-The `GROUP BY region` clause combines rows with the same region and applies `SUM()` on the `amount` column for each group.
+The `GROUP BY region` clause combines rows with the same region and applies `SUM()` on the `amount` column for each group. Pretty straightforward!
 
 ## GROUP BY with Multiple Columns
 
-We can group by multiple columns to create **nested** or **hierarchical groupings**.
+We can group by multiple columns to create **nested** or **hierarchical groupings** - this is super useful for more complex analysis.
 
 ```sql
 SELECT region, product, SUM(amount) AS total_sales
@@ -69,7 +75,7 @@ GROUP BY region, product;
 | West   | Banana  | 50          |
 | West   | Orange  | 200         |
 
-Here, grouping happens for each `(region, product)` pair.
+Here, grouping happens for each `(region, product)` pair - so we get totals for each unique combination.
 
 ## GROUP BY with WHERE and HAVING
 
@@ -92,13 +98,13 @@ HAVING SUM(amount) > 200;
 
 **Explanation:**
 
-- `WHERE` filters out rows where `amount <= 50`.
+- `WHERE` filters out rows where `amount <= 50` (happens before grouping).
 - Then rows are grouped by `region`.
-- Finally, `HAVING` filters out groups whose `SUM(amount)` is not greater than 200.
+- Finally, `HAVING` filters out groups whose `SUM(amount)` is not greater than 200 (happens after grouping).
 
 ## GROUP BY with ORDER BY
 
-You can sort aggregated results using `ORDER BY`.
+We can sort aggregated results using `ORDER BY`.
 
 ```sql
 SELECT region, SUM(amount) AS total_sales
@@ -107,11 +113,11 @@ GROUP BY region
 ORDER BY total_sales DESC;
 ```
 
-This sorts groups by total sales in descending order.
+This sorts the groups by total sales in descending order - useful for finding top performers.
 
 ## GROUP BY with Aliases and Expressions
 
-We can group by computed or derived values.
+We can also group by computed or derived values - not just raw columns.
 
 ```sql
 SELECT UPPER(region) AS region_upper, SUM(amount)
@@ -119,11 +125,11 @@ FROM sales
 GROUP BY UPPER(region);
 ```
 
-Here, grouping is done based on the uppercase form of region names.
+Here, grouping is done based on the uppercase form of region names - this normalizes the data before grouping.
 
 ## GROUP BY with Column Position
 
-Some databases allow grouping by the **position** of the column in the `SELECT` list.
+Some databases let us group by the **position** of the column in the `SELECT` list - though this isn't always recommended for readability.
 
 ```sql
 SELECT region, product, SUM(amount)
@@ -136,12 +142,12 @@ This groups by the first and second selected columns (`region` and `product`).
 **Note:**
 
 - MySQL, PostgreSQL, and Oracle support this.
-- SQL Server discourages it and recommends explicit column names.
+- SQL Server discourages it and recommends explicit column names (which is generally better practice anyway).
 
 ## GROUPING SETS, ROLLUP, and CUBE
 
 When we need multiple groupings in a single query, instead of using multiple `UNION` queries, we can use **GROUPING SETS**, **ROLLUP**, or **CUBE**.
-These are part of the SQL:1999 standard.
+These are part of the SQL:1999 standard and make our lives much easier!
 
 ### GROUPING SETS
 
@@ -180,7 +186,7 @@ UNION ALL
 SELECT NULL, NULL, SUM(amount) FROM sales;
 ```
 
-but in a single, efficient query.
+but in a single, efficient query - way cleaner!
 
 ### ROLLUP
 
@@ -244,7 +250,7 @@ GROUP BY CUBE(region, product);
   - `(product)` — subtotal per product
   - `()` — grand total
 
-`CUBE` is ideal for multidimensional analytics (like pivot tables).
+`CUBE` is ideal for multidimensional analytics (like pivot tables) - it gives us all possible combinations.
 
 ### GROUPING() and GROUPING_ID()
 
@@ -268,7 +274,7 @@ GROUP BY CUBE(region, product);
 | NULL   | Apple   | 250         | 1        | 0         |
 | NULL   | NULL    | 550         | 1        | 1         |
 
-If `GROUPING(column)` = 1, that column’s value is the result of aggregation (not a real data value).
+If `GROUPING(column)` = 1, that column's value is the result of aggregation (not a real data value) - this helps us distinguish between actual NULLs and aggregated subtotals.
 
 `GROUPING_ID()` (supported in SQL Server, Oracle, and PostgreSQL) combines multiple grouping flags into a single integer bitmask for complex analysis.
 

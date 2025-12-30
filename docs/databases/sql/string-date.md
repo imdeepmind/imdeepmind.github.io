@@ -4,6 +4,12 @@ sidebar_position: 5
 
 # String, Date, and Time Operations
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 In SQL, **string**, **date**, and **time** functions are essential for transforming, comparing, and formatting data. While the SQL standard defines common operations, each database introduces its own **variations and extensions**.
 
 These functions can generally be grouped into:
@@ -13,31 +19,31 @@ These functions can generally be grouped into:
 
 ## String Operations
 
-String operations allow us to manipulate and query textual data stored in columns like `CHAR`, `VARCHAR`, `TEXT`, etc.
+String operations let us manipulate and query textual data stored in columns like `CHAR`, `VARCHAR`, `TEXT`, etc. - super useful for data cleaning and formatting!
 
 ### Common String Functions
 
-| Operation     | Example                                               | Description                          |          |                       |     |                             |
-| ------------- | ----------------------------------------------------- | ------------------------------------ | -------- | --------------------- | --- | --------------------------- |
-| Concatenation | `'Hello'                                              |                                      | 'World'` | Joins two strings. (` |     | ` is standard SQL operator) |
-| Length        | `CHAR_LENGTH('Hello')`                                | Returns length of string             |          |                       |     |                             |
-| Uppercase     | `UPPER('sql')` → `'SQL'`                              | Converts to uppercase                |          |                       |     |                             |
-| Lowercase     | `LOWER('SQL')` → `'sql'`                              | Converts to lowercase                |          |                       |     |                             |
-| Substring     | `SUBSTRING('Database' FROM 5)` → `'base'`             | Extracts substring                   |          |                       |     |                             |
-| Position      | `POSITION('b' IN 'Database')` → `5`                   | Finds index of substring             |          |                       |     |                             |
-| Trim          | `TRIM(BOTH 'x' FROM 'xxxabcxxx')` → `'abc'`           | Removes characters from sides        |          |                       |     |                             |
-| Replace       | `REPLACE('cat', 'c', 'b')` → `'bat'`                  | Replaces substring                   |          |                       |     |                             |
-| Overlay       | `OVERLAY('abcdef' PLACING 'xyz' FROM 3)` → `'abxyzf'` | Replaces part of string (PostgreSQL) |          |                       |     |                             |
+| Operation     | Example                                               | Description                                    |
+| ------------- | ----------------------------------------------------- | ---------------------------------------------- |
+| Concatenation | `'Hello' \|\| 'World'`                                | Joins two strings. (`\|\|` is standard SQL operator) |
+| Length        | `CHAR_LENGTH('Hello')`                                | Returns length of string                       |
+| Uppercase     | `UPPER('sql')` → `'SQL'`                              | Converts to uppercase                          |
+| Lowercase     | `LOWER('SQL')` → `'sql'`                              | Converts to lowercase                          |
+| Substring     | `SUBSTRING('Database' FROM 5)` → `'base'`             | Extracts substring                             |
+| Position      | `POSITION('b' IN 'Database')` → `5`                   | Finds index of substring                       |
+| Trim          | `TRIM(BOTH 'x' FROM 'xxxabcxxx')` → `'abc'`           | Removes characters from sides                  |
+| Replace       | `REPLACE('cat', 'c', 'b')` → `'bat'`                  | Replaces substring                             |
+| Overlay       | `OVERLAY('abcdef' PLACING 'xyz' FROM 3)` → `'abxyzf'` | Replaces part of string (PostgreSQL)          |
 
 ### Case Sensitivity of Strings
 
 | Database       | Case Sensitivity                                            | Explanation                                                                                                                                                                                |
 | -------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **MySQL**      | **Case-insensitive by default** for most string comparisons | MySQL uses a **case-insensitive collation** (e.g., `utf8_general_ci`, where `ci` means “case-insensitive”). You can make it case-sensitive by using a binary collation (e.g., `utf8_bin`). |
+| **MySQL**      | **Case-insensitive by default** for most string comparisons | MySQL uses a **case-insensitive collation** (e.g., `utf8_general_ci`, where `ci` means "case-insensitive"). We can make it case-sensitive by using a binary collation (e.g., `utf8_bin`). |
 | **PostgreSQL** | **Case-sensitive** by default                               | `'abc' = 'ABC'` returns `false`. To perform case-insensitive comparisons, use functions like `ILIKE` or convert both strings using `LOWER()` or `UPPER()`.                                 |
 | **SQLite**     | **Case-insensitive by default for ASCII characters**        | `'abc' = 'ABC'` is `true`. However, case-insensitivity for non-ASCII characters depends on the collation.                                                                                  |
-| **Oracle**     | **Case-sensitive**                                          | `'abc' = 'ABC'` is `false` unless you use functions like `UPPER()` or case-insensitive collations.                                                                                         |
-| **SQL Server** | **Depends on the collation setting**                        | The default collation (`SQL_Latin1_General_CP1_CI_AS`) is case-insensitive. You can change it using a case-sensitive collation.                                                            |
+| **Oracle**     | **Case-sensitive**                                          | `'abc' = 'ABC'` is `false` unless we use functions like `UPPER()` or case-insensitive collations.                                                                                         |
+| **SQL Server** | **Depends on the collation setting**                        | The default collation (`SQL_Latin1_General_CP1_CI_AS`) is case-insensitive. We can change it using a case-sensitive collation.                                                            |
 
 ### Quoting Strings
 
@@ -68,11 +74,11 @@ SELECT LOWER('Hello') = LOWER('hello');  -- true
 
 | Database         | Operator   | Function | Example                   |
 | ---------------- | ---------- | -------- | ------------------------- |
-| **Standard SQL** | `          |          | `                         |
-| **MySQL**        | `CONCAT()` | Yes      | `CONCAT('A', 'B') → 'AB'` |
-| **PostgreSQL**   | `          |          | `and`CONCAT()`            |
-| **SQL Server**   | `+`        | Yes      | `'A' + 'B' → 'AB'`        |
-| **Oracle**       | `          |          | `                         |
+| **Standard SQL** | `\|\|`     | No       | `'A' \|\| 'B' → 'AB'`     |
+| **MySQL**        | `\|\|`     | `CONCAT()` | `CONCAT('A', 'B') → 'AB'` or `'A' \|\| 'B'` |
+| **PostgreSQL**   | `\|\|`     | `CONCAT()` | `'A' \|\| 'B'` or `CONCAT('A', 'B')` |
+| **SQL Server**   | `+`        | `CONCAT()` | `'A' + 'B' → 'AB'` or `CONCAT('A', 'B')` |
+| **Oracle**       | `\|\|`     | `CONCAT()` | `'A' \|\| 'B'` or `CONCAT('A', 'B')` |
 
 > **Note:**
 > SQL Server treats `||` as bitwise OR, not concatenation.
@@ -120,7 +126,7 @@ SELECT RPAD('5', 3, '0'); -- '500'
 | `LPAD` / `RPAD` | ✓     | ✓          | ✗ (use `RIGHT('000'+col, n)`) | ✓      |
 | `INITCAP`       | ✗     | ✓          | ✗                             | ✓      |
 
-## Date and Time operations
+## Date and Time Operations
 
 SQL provides rich functionality for working with **date** and **time** values. These operations are essential for reporting, analytics, and data transformation.
 
@@ -251,7 +257,7 @@ EXTRACT(DAY FROM order_date);
 ## Key Takeaways
 
 1. **String functions** are largely standardized but have differences in syntax (`||` vs `+` vs `CONCAT()`).
-2. **Date arithmetic** differs widely — SQL Server and MySQL use special functions (`DATEADD`, `DATEDIFF`), while PostgreSQL and Oracle support arithmetic directly.
+2. **Date arithmetic** differs widely. SQL Server and MySQL use special functions (`DATEADD`, `DATEDIFF`), while PostgreSQL and Oracle support arithmetic directly.
 3. **Formatting** (`TO_CHAR`, `DATE_FORMAT`, `FORMAT`) is highly database-specific.
 4. **Timezone-aware types** (`TIMESTAMPTZ`, `DATETIMEOFFSET`) are handled differently:
 
