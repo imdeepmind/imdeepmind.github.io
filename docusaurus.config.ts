@@ -88,13 +88,6 @@ const config: Config = {
     },
   ],
 
-  scripts: [
-    {
-      src: "https://www.googletagmanager.com/gtag/js?id=G-K8QYYPXTLR",
-      async: true,
-    },
-  ],
-
   themes: [
     [
       require.resolve("@easyops-cn/docusaurus-search-local"),
