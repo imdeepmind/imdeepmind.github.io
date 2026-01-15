@@ -124,7 +124,7 @@ const config: Config = {
           position: "right",
         },
         {
-          href: "https://gallery.imdepemind.com",
+          href: "https://gallery.imdeepmind.com",
           label: "Gallery",
           position: "right",
         },

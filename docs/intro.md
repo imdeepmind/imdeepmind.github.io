@@ -156,7 +156,7 @@ If you come across any issues or errors in the notes, feel free to open an issue
    1. [Algorithms](/docs/data-structure-and-algorithms/algorithms/introduction.md)
       1. [Introduction](/docs/data-structure-and-algorithms/algorithms/introduction.md)
       2. [Recursion](/docs/data-structure-and-algorithms/algorithms/recursion.md)
-      3. [Arrays and Hashing](/docs/data-structure-and-algorithms/algorithms/arrays-and-hasing.md)
+      3. [Arrays](/docs/data-structure-and-algorithms/algorithms/arrays.md)
    2. [Time and Space Complexity](/docs/data-structure-and-algorithms/introduction.md)
 
 ### Operating Systems
