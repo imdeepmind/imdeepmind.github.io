@@ -4,130 +4,440 @@ sidebar_position: 3
 
 # Transactions
 
-A **transaction** in a database is a sequence of operations that are executed as a single unit of work. Transactions ensure that the database maintains consistency, reliability, and integrity even in situations where errors, crashes, or concurrent updates occur. Transactions allow multiple database operations to be grouped together, so either all the operations succeed or none of them are applied, preserving the consistency of the database.
+:::tip[Status]
 
-## Transaction Lifecycle
+This note is complete, reviewed, and considered stable.
 
-A transaction follows a specific lifecycle, consisting of four main stages:
+:::
 
-### Begin Transaction
+A **transaction** is a sequence of database operations that the database treats as **one logical unit**.
 
-A transaction starts when a command such as `BEGIN` or `START TRANSACTION` is issued. This marks the beginning of a new transaction.
+A transaction guarantees:
 
-**Example:**
+* Either **all operations succeed**
+* Or **none of them take effect**
+
+There is **no visible partial state**.
+
+## Why transactions exist
+
+Databases operate in an environment where **failures and concurrency are normal**:
+
+* Multiple users updating data at the same time
+* Application crashes
+* Database crashes
+* Partial execution of multi-step logic
+
+Without transactions, databases would constantly end up in **corrupted or inconsistent states**.
+
+Example problem:
+
+```text
+1. Deduct ₹1000 from Account A  - executed successfully
+2. Add ₹1000 to Account B       - db crahsed
+```
+
+Money disappears.
+
+Transactions exist to guarantee:
+
+> **Multiple operations behave as one correct, indivisible unit of work.**
+
+## Transaction lifecycle (high level)
+
+<div style={{textAlign: 'center'}}>
+
+```mermaid
+stateDiagram-v2
+    [*] --> Active
+    Active --> Committed
+    Active --> RolledBack
+    Committed --> [*]
+    RolledBack --> [*]
+```
+
+</div>
+
+* `BEGIN` → transaction becomes **Active**
+* `COMMIT` → changes become permanent
+* `ROLLBACK` → changes are undone
+
+## ACID properties (what transactions guarantee)
+
+Transactions are defined by **ACID**. These are **engineering guarantees**, not theory.
+
+## Atomicity – all or nothing
+
+Atomicity means:
+
+> A transaction is indivisible. Partial results are never visible.
+
+Example:
 
 ```sql
 BEGIN;
-```
-
-### Perform Operations
-
-During the transaction, several SQL operations (e.g., `INSERT`, `UPDATE`, `DELETE`) are executed. These operations are treated as part of a single unit of work.
-
-**Example:**
-
-```sql
 UPDATE accounts SET balance = balance - 100 WHERE id = 1;
 UPDATE accounts SET balance = balance + 100 WHERE id = 2;
-```
-
-### Commit Transaction
-
-Once all the operations within the transaction are successfully executed, the transaction is committed using the `COMMIT` command. This makes all changes permanent in the database.
-
-**Example:**
-
-```sql
 COMMIT;
 ```
 
-### Rollback Transaction
+If the second update fails, the first update is **undone**.
 
-If an error occurs during the transaction, or if the changes are no longer needed, the transaction can be rolled back. The `ROLLBACK` command undoes all the operations performed in the transaction, restoring the database to its state before the transaction started.
+### Atomicity internally
 
-**Example:**
+Databases achieve atomicity using:
 
-```sql
-ROLLBACK;
+* **Undo information**
+* **Transaction logs**
+
+<div style={{textAlign: 'center'}}>
+
+```mermaid
+flowchart LR
+    Tx[Transaction]
+    Change[Data Change]
+    Undo[Undo / Old Value]
+
+    Tx --> Change
+    Change --> Undo
 ```
 
-## Advantages of Transactions
+</div>
 
-Transactions offer several important benefits that help maintain the integrity and performance of the database:
+If the transaction aborts, the database reverts changes using undo data.
 
-1. **Consistency:** Transactions ensure that the database remains in a consistent state. If a transaction involves multiple operations, the database is either updated with all the changes, or none of them are applied. This guarantees the integrity of the data.
+## Consistency – rules are enforced
 
-2. **Reliability:** Transactions make sure that database operations are applied reliably, even in the event of system crashes. Once a transaction is committed, the changes are permanent, ensuring that the database reflects the intended operations.
+Consistency means:
 
-3. **Atomicity:** The atomic nature of a transaction means that all operations within the transaction are treated as a single unit. If one operation fails, the entire transaction is rolled back, ensuring that partial updates do not corrupt the database.
+> A transaction moves the database from one **valid state** to another **valid state**.
 
-4. **Concurrency:** In multi-user environments, transactions help manage concurrent access to the database. They ensure that each transaction works as if it Oure the only transaction in the system, preventing conflicts and maintaining consistency.
+Examples of consistency rules:
 
-5. **Error Handling:** If an error occurs during a transaction, the changes can be rolled back, and the database can return to its previous consistent state. This helps to avoid partial updates or data corruption.
+* Foreign keys must exist
+* Unique constraints must hold
+* Balance must not be negative
 
-6. **Simplified Development:** Using transactions simplifies the development of complex operations by allowing developers to group multiple SQL statements into a single unit of work. This eliminates the need for manually managing intermediate states.
+If a transaction violates constraints:
 
-## Concurrency Control and Locking
+* The database **rejects it**
+* The transaction is rolled back
 
-In multi-user environments, where multiple transactions can occur simultaneously, it's important to manage how transactions interact with each other to avoid conflicts. Databases use **locks** to ensure that one transaction does not interfere with another, maintaining data integrity.
+Important:
 
-There are several types of locks:
+> Transactions do not define rules, **constraints do**.
+> Transactions ensure rules are never bypassed.
 
-- **Row-level locks:** Prevent other transactions from modifying or reading a row that is being modified by another transaction.
-- **Table-level locks:** Prevent any other transaction from accessing the entire table while a transaction is modifying it.
+## Isolation – transactions don’t interfere
 
-In PostgreSQL, We can use commands like `FOR UPDATE` or `FOR SHARE` to lock rows explicitly within a transaction.
+Isolation means:
 
-**Example:**
+> Concurrent transactions must not see each other’s **partial work**.
+
+Without isolation, anomalies occur.
+
+### Dirty read example (bad)
+
+```text
+T1: UPDATE balance = balance - 500 (not committed)
+T2: SELECT balance → sees reduced balance
+T1: ROLLBACK
+```
+
+T2 observed data that **never existed**.
+
+Isolation prevents this.
+
+## Durability – committed means permanent
+
+Durability means:
+
+> Once a transaction commits, its changes will survive crashes.
+
+Databases achieve durability using:
+
+* Write-Ahead Logging (WAL)
+* fsync to stable storage
+* Crash recovery
+
+## Transactions and connections (critical relationship)
+
+A transaction is **always bound to one database connection**.
+
+<div style={{textAlign: 'center'}}>
+
+```mermaid
+flowchart LR
+    Conn[DB Connection]
+    Tx[Transaction Context]
+    DB[(Database)]
+
+    Conn --> Tx --> DB
+```
+
+</div>
+
+Implications:
+
+* A transaction cannot span multiple connections
+* The connection is held until `COMMIT` or `ROLLBACK`
+* This is why long transactions exhaust connection pools
+
+## How transactions work internally (real mechanism)
+
+Internally, transactions rely on **four core systems**:
+
+1. Transaction IDs (TXID)
+2. Write-Ahead Logging (WAL)
+3. MVCC (row versioning)
+4. Locks (minimal and scoped)
+
+## Transaction start (BEGIN internally)
+
+When you run:
 
 ```sql
 BEGIN;
-SELECT * FROM accounts WHERE id = 1 FOR UPDATE;  -- Lock row for update
-UPDATE accounts SET balance = balance - 100 WHERE id = 1;
-COMMIT;
 ```
 
-## Transaction Isolation Levels
+The database:
 
-The **isolation level** of a transaction controls how the operations of one transaction are visible to others. The goal of isolation is to prevent issues like **dirty reads**, **non-repeatable reads**, and **phantom reads**.
+1. Assigns a **Transaction ID (TXID)**
+2. Creates a **transaction context**
+3. Records snapshot information
 
-PostgreSQL supports several isolation levels:
+<div style={{textAlign: 'center'}}>
 
-### Read Committed (Default)
+```mermaid
+flowchart LR
+    Client --> Conn[Connection]
+    Conn --> Tx[Transaction\nTXID=42]
+```
 
-The default level where a transaction can only see data committed before it started. It prevents dirty reads but allows non-repeatable reads.
+</div>
 
-### Repeatable Read
+No data is copied. No locks are taken yet.
 
-Ensures that if a transaction reads a value, it will always read the same value throughout the transaction. This prevents dirty reads and non-repeatable reads, but phantom reads can still occur.
+## Write-Ahead Logging (WAL)
 
-### Serializable
+### Core rule
 
-The highest level of isolation, where transactions are executed as if they Oure processed serially (one after another), completely eliminating dirty reads, non-repeatable reads, and phantom reads.
+> **Changes must be written to the log before data pages are modified.**
 
-## Transaction Deadlocks
+Why?
 
-A **deadlock** occurs when two or more transactions are waiting for each other to release locks, causing the transactions to get stuck in a cycle of dependencies. Deadlocks can cause transactions to be stuck indefinitely, and the database system must detect and resolve these deadlocks by rolling back one of the transactions involved.
+* Logs are sequential → fast
+* Logs are replayable → crash-safe
 
-For example:
-
-- Transaction A locks resource 1 and waits for resource 2.
-- Transaction B locks resource 2 and waits for resource 1.
-
-The database detects this circular waiting and will typically roll back one of the transactions to break the deadlock.
-
-## Savepoints
-
-A **savepoint** allows We to set a point within a transaction to which We can later roll back, without affecting the entire transaction. This is useful for partial rollbacks, particularly in complex transactions where only a part of the transaction needs to be undone.
-
-**Example:**
+### UPDATE internally
 
 ```sql
-BEGIN;
-UPDATE accounts SET balance = balance - 100 WHERE id = 1;
-SAVEPOINT sp1;  -- Create a savepoint
-UPDATE accounts SET balance = balance + 100 WHERE id = 2;
--- If the second update fails, roll back to the savepoint without affecting the first update
-ROLLBACK TO SAVEPOINT sp1;
-COMMIT;
+UPDATE users SET balance = 900 WHERE id = 1;
 ```
+
+Steps:
+
+1. Create WAL record (old value, new value, TXID)
+2. Append WAL record to disk
+3. Modify data page in memory
+4. Mark page as dirty
+
+<div style={{textAlign: 'center'}}>
+
+```mermaid
+sequenceDiagram
+    participant Tx as Transaction
+    participant WAL as WAL Log
+    participant Mem as Memory Page
+    participant Disk as Disk
+
+    Tx->>WAL: Write change record
+    WAL->>Disk: fsync
+    Tx->>Mem: Apply change
+    Mem-->>Tx: Page marked dirty
+```
+
+</div>
+
+## COMMIT internally
+
+When `COMMIT` is issued:
+
+1. Write COMMIT record to WAL
+2. Flush WAL to disk
+3. Mark transaction as committed
+4. Release locks
+5. Make versions visible
+
+<div style={{textAlign: 'center'}}>
+
+```mermaid
+flowchart TB
+    Tx --> WAL
+    WAL --> Disk
+    Disk --> Tx
+```
+
+</div>
+
+At this point:
+
+* Transaction is **durable**
+* Crashes cannot undo it
+
+## ROLLBACK internally
+
+When `ROLLBACK` happens:
+
+1. Use undo / old versions
+2. Revert in-memory changes
+3. Discard transaction context
+
+<div style={{textAlign: 'center'}}>
+
+```mermaid
+flowchart LR
+    Tx --> Undo[Undo Data] --> Data[Restore Old State]
+```
+
+</div>
+
+No durability guarantee is needed for rollback.
+
+## MVCC – how isolation really works
+
+Modern databases use **MVCC (Multi-Version Concurrency Control)**.
+
+Instead of overwriting rows:
+
+* Updates create **new versions**
+* Old versions remain for other transactions
+
+<div style={{textAlign: 'center'}}>
+
+```mermaid
+flowchart LR
+    V1[Row v1\nTXID=10]
+    V2[Row v2\nTXID=20]
+    V3[Row v3\nTXID=30]
+
+    V1 --> V2 --> V3
+```
+
+</div>
+
+## Snapshots and visibility
+
+Each transaction gets a **snapshot**:
+
+* Which transactions were committed
+* Which were active
+
+When reading a row:
+
+```text
+Is this version visible to my snapshot?
+→ Yes → return
+→ No → skip
+```
+
+Reads do **not block writes**.
+
+## Locks (still necessary, but limited)
+
+Despite MVCC, locks exist:
+
+| Lock           | Purpose                   |
+| -------------- | ------------------------- |
+| Row locks      | Prevent concurrent writes |
+| Table locks    | DDL                       |
+| Advisory locks | App-level coordination    |
+
+<div style={{textAlign: 'center'}}>
+
+```mermaid
+flowchart LR
+    Tx1 -->|Row Lock| Row
+    Tx2 -->|Wait| Row
+```
+
+</div>
+
+Locks are:
+
+* Fine-grained
+* Short-lived
+* Scoped to transactions
+
+## Crash recovery
+
+After a crash:
+
+1. Database scans WAL
+2. Replays committed transactions
+3. Ignores uncommitted ones
+
+<div style={{textAlign: 'center'}}>
+
+```mermaid
+flowchart LR
+    Crash --> WAL
+    WAL --> Redo[Redo Committed]
+    WAL --> Skip[Ignore Uncommitted]
+```
+
+</div>
+
+This guarantees **Atomicity + Durability**.
+
+## Garbage collection of old versions
+
+Old row versions cannot live forever.
+
+Background process:
+
+* Removes versions no snapshot needs
+* Reclaims space
+
+(PostgreSQL: `VACUUM`)
+
+<div style={{textAlign: 'center'}}>
+
+```mermaid
+flowchart LR
+    Old[Old Versions] --> GC[Garbage Collector] --> Free[Free Space]
+```
+
+</div>
+
+Long transactions delay cleanup.
+
+## Why long transactions are dangerous
+
+Long transactions:
+
+* Hold snapshots open
+* Prevent garbage collection
+* Hold connections
+* Increase WAL size
+
+This leads to:
+
+* Pool exhaustion
+* Disk bloat
+* Latency spikes
+
+Rule:
+
+> **Start transactions late, commit early.**
+
+## Mental model
+
+Think of a transaction as:
+
+* A **private snapshot**
+* A **stream of logged changes**
+* A set of **new row versions**
+* A **temporary ownership of a connection**
+
+Other transactions never see half-finished work.
