@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 3
 ---
 
 # Sliding Window
@@ -10,12 +10,12 @@ This approach reduces the time complexity of problems that would otherwise requi
 
 ## Types of Sliding Windows
 
-1.  **Fixed-Sized Window**:
+1. **Fixed-Sized Window**:
 
     - The window size remains constant while sliding.
     - Example: Maximum sum of subarray of size `k`.
 
-2.  **Dynamic-Sized Window**:
+2. **Dynamic-Sized Window**:
 
     - The window size changes based on conditions (e.g., constraints on the sum, distinct elements).
     - Example: Smallest subarray with a sum greater than `x`.
@@ -161,9 +161,9 @@ def count_distinct_in_window(arr, k):
 
 ## When to Use Sliding Window
 
-1.  **Subarray or Substring Problems**:
+1. **Subarray or Substring Problems**:
     - Finding ranges or subsequences with specific constraints.
-2.  **Optimizations**:
+2. **Optimizations**:
     - Maximizing or minimizing a property within a range.
-3.  **Frequency Tracking**:
+3. **Frequency Tracking**:
     - Counting occurrences or distinct elements within a window.
