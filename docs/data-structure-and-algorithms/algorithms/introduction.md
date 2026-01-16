@@ -10,6 +10,6 @@ This note is complete, reviewed, and considered stable.
 
 :::
 
-Data Structures and Algorithms (DSA) deal with how data is organized in memory and how it is processed efficiently. They form the foundation of writing programs that scale beyond small inputs, where performance, memory usage, and predictability matter. DSA is fundamentally about trade-offs, time versus space, simplicity versus efficiency and choosing the right approach based on how data is accessed and modified. Rather than memorizing solutions, DSA builds the ability to reason about efficiency, understand how code behaves as input grows, and design systems that remain reliable under load.
+Algorithms deal with how data is processed efficiently and how problems are solved systematically. They form the foundation of writing programs that scale beyond small inputs, where performance, memory usage, and predictability matter. Algorithms are fundamentally about trade-offs, time versus space, simplicity versus efficiency and choosing the right approach based on the problem at hand. Rather than memorizing solutions, learning algorithms builds the ability to reason about efficiency, understand how code behaves as input grows, and design systems that remain reliable under load.
 
-Here in the notes, We'll including notes on various data strcutures and algorithms. We will discuss how each data structure and algorithm works, their trade-offs, their performance, etc.
+Here in the notes, we'll include notes on various algorithms. We will discuss how each algorithm works, their trade-offs, their performance characteristics, and when to use them.
