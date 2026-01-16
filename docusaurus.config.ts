@@ -179,7 +179,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Abhishek Chatterjee. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Abhishek Chatterjee. Last built on ${new Date().toLocaleDateString()}. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 5
 ---
 
 # Stack
@@ -21,9 +21,9 @@ Stacks can be visualized as a collection of elements piled one on top of another
 
 Stacks can be implemented using:
 
-1.  **Arrays or Lists**: Most commonly used in high-level programming languages like Python.
-2.  **Linked Lists**: Useful for dynamic memory allocation.
-3.  **Built-in Libraries**: Many languages have built-in stack implementations (e.g., Python's `deque`).
+1. **Arrays or Lists**: Most commonly used in high-level programming languages like Python.
+2. **Linked Lists**: Useful for dynamic memory allocation.
+3. **Built-in Libraries**: Many languages have built-in stack implementations (e.g., Python's `deque`).
 
 ## Use Cases
 
@@ -144,9 +144,9 @@ def next_greater_elements(nums):
 
 ## Advantages of Using Stacks
 
-1.  **Simple to Use**: Offers a straightforward way to manage LIFO behavior.
-2.  **Efficient**: Push and pop operations are O(1).
-3.  **Versatile**: Useful in diverse algorithms like DFS, backtracking, and expression evaluation.
+1. **Simple to Use**: Offers a straightforward way to manage LIFO behavior.
+2. **Efficient**: Push and pop operations are O(1).
+3. **Versatile**: Useful in diverse algorithms like DFS, backtracking, and expression evaluation.
 
 ## Limitations of Stacks
 
@@ -156,7 +156,7 @@ def next_greater_elements(nums):
 
 ## When to Use Stacks
 
-1.  **Reversible Processes**: Undo/redo operations, tracking states.
-2.  **Nested Structures**: Parentheses matching, XML/HTML tag validation.
-3.  **Recursion**: Mimicking recursion with an explicit stack (e.g., DFS).
-4.  **Order Preservation**: Storing elements temporarily for reversal.
+1. **Reversible Processes**: Undo/redo operations, tracking states.
+2. **Nested Structures**: Parentheses matching, XML/HTML tag validation.
+3. **Recursion**: Mimicking recursion with an explicit stack (e.g., DFS).
+4. **Order Preservation**: Storing elements temporarily for reversal.
