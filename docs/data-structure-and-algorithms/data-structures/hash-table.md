@@ -2,94 +2,433 @@
 sidebar_position: 4
 ---
 
-# Hashing
 
-Hashing is a technique used to map data of arbitrary size to fixed-size values (hashes). In programming, hash tables (or dictionaries in Python) store key-value pairs for fast lookups.
+# Hash Tables
 
-## Hash Table Operations and Time Complexities
+:::tip[Status]
 
-| Operation | Average Case | Worst Case |
-| --------- | ------------ | ---------- |
-| Search    | O(1)         | O(n)       |
-| Insert    | O(1)         | O(n)       |
-| Delete    | O(1)         | O(n)       |
+This note is complete, reviewed, and considered stable.
 
-_\* Worst-case arises due to hash collisions, which can degrade performance._
+:::
 
-## Common Use Cases
+A **hash table** is a data structure that implements an **associative array** abstraction:
 
-1. **Counting Frequencies**:
-    - Example: Counting the occurrences of elements in a list.
-2. **Finding Duplicates**:
-    - Example: Checking if an array contains duplicate elements.
-3. **Mapping Relationships**:
-    - Example: Implementing graphs, adjacency lists.
-4. **Efficient Lookups**:
-    - Example: Checking membership in O(1).
+> Given a key, efficiently store and retrieve a corresponding value.
 
-## Common Problems and Algorithms
+Formally, it supports:
 
-1. **Two Sum Problem**:
-    - Use hash maps for efficient index lookups in O(n).
-2. **Longest Substring Without Repeating Characters**:
-    - Use hash maps to track character positions for O(n) sliding window implementation.
-3. **Group Anagrams**:
-    - Use hash maps with keys based on sorted characters or frequency counts.
+* `put(key, value)`
+* `get(key)`
+* `delete(key)`
 
-## Code Examples
+The defining promise of a hash table is:
 
-### Two Sum with Hashing
+> **Constant-time performance on average**, independent of the number of stored elements.
 
-```python
-def two_sum_hashing(arr, target):
-    hash_map = {}  # Stores {value: index}
+This is achieved by **directly computing where a key should live**, instead of searching for it.
 
-    for i, num in enumerate(arr):
-        complement = target - num
-        if complement in hash_map:
-            return (hash_map[complement], i)
-        hash_map[num] = i
-    return None
+## Why Hash Tables Are Fundamentally Different
 
+Most data structures answer this question:
+
+> “Where should I search for this value?”
+
+Hash tables answer a different question:
+
+> “Where *must* this value be stored?”
+
+That shift is what enables O(1) access.
+
+### Comparison
+
+| Structure   | How lookup works   |
+| ----------- | ------------------ |
+| Array       | Index-based        |
+| Linked List | Sequential scan    |
+| Tree        | Guided traversal   |
+| Hash Table  | Direct computation |
+
+Hash tables **eliminate traversal**.
+
+## Core Components of a Hash Table
+
+A hash table is composed of four essential parts:
+
+1. **Key**
+2. **Hash Function**
+3. **Bucket Array**
+4. **Collision Resolution Mechanism**
+
+<div style={{textAlign: 'center'}}>
+
+```mermaid
+graph LR
+    K[Key] --> H[Hash Function]
+    H --> I[Index]
+    I --> B[Bucket Array]
 ```
 
-### Longest Substring Without Repeating Characters
+</div>
 
-```python
-def longest_unique_substring(s):
-    char_map = {}
-    left = 0
-    max_length = 0
+Without any one of these, the data structure breaks down.
 
-    for right, char in enumerate(s):
-        if char in char_map and char_map[char] >= left:
-            left = char_map[char] + 1
-        char_map[char] = right
-        max_length = max(max_length, right - left + 1)
+## Hash Function
 
-    return max_length
+A hash function maps a key to an integer:
+
+```text
+hash(key) → integer
 ```
 
-### Group Anagrams
+That integer is then mapped to a bucket:
 
-```python
-from collections import defaultdict
-
-def group_anagrams(strs):
-    anagrams = defaultdict(list)
-
-    for s in strs:
-        key = tuple(sorted(s))  # Or use frequency count as key
-        anagrams[key].append(s)
-
-    return list(anagrams.values())
+```text
+index = hash(key) % capacity
 ```
 
-## Comparison of Arrays and Hashing
+### What the Hash Function Actually Controls
 
-| Feature                | Array                       | Hash Table              |
-| ---------------------- | --------------------------- | ----------------------- |
-| Data Organization      | Sequential, index-based     | Key-value pairs         |
-| Lookup Time Complexity | O(n) or O(log n) (sorted)   | O(1) (average case)     |
-| Use Cases              | Ordered data, numerical ops | Quick lookups, counting |
-| Space Complexity       | O(n)                        | O(n)                    |
+The hash function determines:
+
+* Distribution of keys
+* Collision frequency
+* Performance stability
+* Resistance to adversarial input
+
+A poor hash function turns a hash table into a linked list.
+
+### Required Properties
+
+A valid hash function **must**:
+
+1. Be deterministic
+   Same key → same hash
+2. Be consistent across the lifetime of the key
+   Hashing must not depend on mutable data
+3. Be fast
+   Hashing must be cheaper than searching
+
+### Desired Properties (Performance-Critical)
+
+A good hash function should:
+
+* Spread keys uniformly
+* Minimize clustering
+* Avoid predictable patterns
+
+Uniform distribution is the **entire reason hash tables work**.
+
+## Bucket Array
+
+At its core, a hash table uses a **contiguous array**.
+
+Each index is called a **bucket**.
+
+<div style={{textAlign: 'center'}}>
+
+```mermaid
+graph TD
+    A0[0] --> E0
+    A1[1] --> E1
+    A2[2] --> null
+    A3[3] --> E2
+```
+
+</div>
+
+What a bucket stores depends on the collision strategy:
+
+* Linked list
+* Dynamic array
+* Single entry with probing
+
+## Insertion
+
+Let’s insert `(key, value)`.
+
+<div style={{textAlign: 'center'}}>
+
+```mermaid
+sequenceDiagram
+    participant K as Key
+    participant H as Hash Function
+    participant A as Bucket Array
+
+    K->>H: compute hash(key)
+    H->>A: index = hash % size
+    A->>A: resolve collision (if any)
+    A->>A: store entry
+```
+
+</div>
+
+Key observation:
+
+> **Insertion never scans unrelated elements.**
+
+## Lookup
+
+Lookup is insertion without mutation.
+
+1. Hash the key
+2. Compute index
+3. Search only inside that bucket
+
+This is why lookup is fast.
+
+## Collisions
+
+A **collision** occurs when:
+
+```text
+hash(k1) % size == hash(k2) % size
+```
+
+Collisions are mathematically unavoidable:
+
+* Infinite key space
+* Finite bucket space
+
+The goal is not to eliminate collisions, but to **handle them efficiently**.
+
+## Collision Resolution Strategies
+
+### Separate Chaining
+
+Each bucket stores a collection of entries.
+
+<div style={{textAlign: 'center'}}>
+
+```mermaid
+graph TD
+    B0[Bucket 0] --> N1[(k1,v1)]
+    N1 --> N2[(k2,v2)]
+    B1[Bucket 1] --> null
+```
+
+</div>
+
+#### Characteristics
+
+* Simple to implement
+* Performance degrades linearly with bucket size
+* Memory overhead from pointers
+
+#### Time Complexity
+
+| Case    | Time |
+| ------- | ---- |
+| Average | O(1) |
+| Worst   | O(n) |
+
+Worst case happens when all keys hash to one bucket.
+
+### Open Addressing
+
+All entries live directly inside the array.
+
+If a collision occurs, search for another slot.
+
+#### Linear Probing
+
+```text
+index, index+1, index+2, ...
+```
+
+<div style={{textAlign: 'center'}}>
+
+```mermaid
+graph LR
+    I5[5] --> I6[6] --> I7[7]
+```
+
+</div>
+
+#### Problems
+
+* Primary clustering
+* Cache-friendly but fragile
+* Deletions are complex
+
+### Quadratic Probing
+
+```text
+index + 1², index + 2², index + 3²
+```
+
+Reduces clustering, but still sensitive to load factor.
+
+## Load Factor
+
+```text
+load_factor = entries / buckets
+```
+
+As load factor increases:
+
+* Collision probability increases
+* Performance degrades
+
+Typical thresholds:
+
+* 0.7
+* 0.75
+
+## Resizing and Rehashing
+
+### Why Resizing Is Mandatory
+
+Without resizing:
+
+* Buckets grow unbounded
+* Hash table degenerates
+
+### What Rehashing Actually Means
+
+Rehashing is **not copying memory**.
+
+Steps:
+
+1. Allocate new bucket array
+2. Recompute index for every key
+3. Insert again
+
+<div style={{textAlign: 'center'}}>
+
+```mermaid
+graph LR
+    OldBuckets --> Rehash --> NewBuckets
+```
+
+</div>
+
+### Complexity
+
+* Single resize: O(n)
+* Amortized per operation: O(1)
+
+This is identical to dynamic array growth behavior.
+
+## Python `dict`
+
+Python dictionaries are **highly optimized hash tables**.
+
+### Properties
+
+* Open addressing
+* Perturbation-based probing
+* Insertion-ordered (since 3.7)
+* Randomized hash seed
+
+### Example
+
+```python
+d = {}
+d["x"] = 10
+d["y"] = 20
+
+print(d["x"])
+```
+
+Internally, Python stores:
+
+* Hash
+* Key
+* Value
+
+This avoids recomputing hashes during probing.
+
+## Time & Space Complexity
+
+| Operation | Average | Worst |
+| --------- | ------- | ----- |
+| Insert    | O(1)    | O(n)  |
+| Lookup    | O(1)    | O(n)  |
+| Delete    | O(1)    | O(n)  |
+
+Worst case is rare but theoretically possible.
+
+## Algorithms Using Hash Tables
+
+### Frequency Counting
+
+```python
+freq = {}
+for x in nums:
+    freq[x] = freq.get(x, 0) + 1
+```
+
+Used in:
+
+* Histograms
+* Voting algorithms
+* Anagrams
+
+### Two Sum
+
+```python
+seen = {}
+
+for i, num in enumerate(nums):
+    need = target - num
+    if need in seen:
+        return [seen[need], i]
+    seen[num] = i
+```
+
+Transforms O(n²) → O(n).
+
+### Deduplication
+
+```python
+unique = set(nums)
+```
+
+### Grouping by Key
+
+```python
+groups = {}
+
+for item in items:
+    key = compute_key(item)
+    groups.setdefault(key, []).append(item)
+```
+
+## Hash Set vs Hash Map
+
+| Hash Set        | Hash Map         |
+| --------------- | ---------------- |
+| Stores keys     | Stores key-value |
+| Membership test | Value retrieval  |
+| No duplicates   | Unique keys      |
+
+Both are hash tables.
+
+## Hash Tables vs Balanced Trees
+
+| Hash Table | Tree        |
+| ---------- | ----------- |
+| O(1) avg   | O(log n)    |
+| Unordered  | Ordered     |
+| Faster     | Predictable |
+
+Trees are chosen when **order or range queries matter**.
+
+## Security: Hash Flooding Attacks
+
+Attackers can exploit predictable hashes.
+
+Defenses:
+
+* Randomized hashing
+* Dynamic resizing
+* Strong hash functions
+
+Python includes built-in protections.
+
+## When Hash Tables Are a Bad Choice
+
+* When ordering matters
+* When memory is constrained
+* When worst-case guarantees are required
+* When keys are mutable
