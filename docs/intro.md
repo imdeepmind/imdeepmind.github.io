@@ -160,7 +160,8 @@ If you come across any issues or errors in the notes, feel free to open an issue
    1. [Algorithms](/docs/data-structure-and-algorithms/algorithms/introduction.md)
       1. [Introduction](/docs/data-structure-and-algorithms/algorithms/introduction.md)
       2. [Recursion](/docs/data-structure-and-algorithms/algorithms/recursion.md)
-   2. [Time and Space Complexity](/docs/data-structure-and-algorithms/introduction.md)
+      3. [Sorting](/docs/data-structure-and-algorithms/algorithms/sorting.md)
+   1. [Time and Space Complexity](/docs/data-structure-and-algorithms/introduction.md)
 
 ### Operating Systems
 
