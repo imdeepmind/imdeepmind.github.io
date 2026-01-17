@@ -2,7 +2,13 @@
 sidebar_position: 5
 ---
 
-# Sorting Algorithms
+# Sorting
+
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
 
 At its core, **sorting is about order**.
 
@@ -18,7 +24,7 @@ We want to rearrange them so that:
 [2, 3, 5, 7]
 ```
 
-## Why do we need sorting?
+## Why Do We Need Sorting?
 
 - Searching becomes fast (binary search is impossible without sorting)
 - Databases rely heavily on sorted data (indexes, range queries)
@@ -53,7 +59,7 @@ Different algorithms make _different trade-offs_ between:
 - Simplicity
 - Stability
 
-## Key properties
+## Key Properties
 
 ### In-place vs Out-of-place
 
@@ -201,7 +207,7 @@ Bubble Sort teaches **how swapping gradually creates order**.
 
 Instead of swapping many times:
 
-> “Let me find the smallest element first, then place it correctly.”
+> “Find the smallest element first, then place it correctly.”
 
 Think of arranging cards:
 
@@ -276,7 +282,7 @@ Then it:
 - Takes the next element
 - Inserts it into the correct position in the sorted part
 
-Exactly how you sort playing cards in your hand.
+Exactly how we sort playing cards in our hands.
 
 ### Step-by-Step Example
 
