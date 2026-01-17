@@ -4,251 +4,465 @@ sidebar_position: 5
 
 # Database Locking
 
-Database locking is a mechanism that ensures **data consistency** and **integrity** when multiple transactions access the database concurrently. Locks prevent conflicting operations from being executed simultaneously, ensuring that operations comply with ACID (Atomicity, Consistency, Isolation, Durability) principles.
+In multi-user database systems, multiple transactions execute concurrently to maximize throughput and resource utilization. Locks exist to **coordinate concurrent access to shared data** so that correctness is preserved. Without locks, concurrent reads and writes could corrupt data or expose inconsistent intermediate states.
 
-## What Do Shared and Exclusive Locks Mean?
+Locks primarily protect against the following anomalies:
 
-### Shared Lock (S-Lock)
+- **Lost updates** – one transaction overwrites another’s changes
+- **Dirty reads** – reading uncommitted data
+- **Non-repeatable reads** – re-reading yields different results
+- **Phantom reads** – new rows appear between reads
 
-- A shared lock allows **multiple transactions to read** the same data concurrently but prevents any transaction from **modifying** the data until all shared locks are released.
-- Shared locks ensure **read consistency** but block write operations.
+Conceptually, a lock is a **contract** between a transaction and the database engine that grants controlled access to a data item.
 
-**Example:**
+## Concurrency Control Overview
 
-```sql
-BEGIN;
-SELECT * FROM employees WHERE id = 1 FOR SHARE;
--- This transaction can read the row, but no other transaction can modify it.
-COMMIT;
+Concurrency control ensures that the outcome of concurrent execution is equivalent to some serial execution (serializability).
+
+Two dominant approaches:
+
+1. **Lock-based concurrency control**
+
+   - Transactions acquire locks before accessing data
+   - Conflicts are resolved by blocking or aborting transactions
+
+2. **Optimistic / MVCC-based concurrency control**
+
+   - Readers do not block writers
+   - Conflicts are detected at commit time
+
+Locks are still essential even in MVCC systems for:
+
+- Writes
+- Schema changes
+- Certain isolation guarantees
+
+## ACID Properties Relation
+
+Locks are primarily tied to **Isolation** and **Consistency**, but they indirectly support all ACID properties.
+
+| ACID Property | Role of Locks                                |
+| ------------- | -------------------------------------------- |
+| Atomicity     | Prevents partial visibility of changes       |
+| Consistency   | Enforces integrity during concurrent updates |
+| Isolation     | Core purpose of locks                        |
+| Durability    | Locks ensure committed state is well-defined |
+
+Isolation levels (Read Committed, Repeatable Read, Serializable) determine **how aggressively locks are used**.
+
+## Transactions and Lock Scope
+
+Locks are scoped to:
+
+- A **transaction** (released on commit/rollback)
+- A **statement** (statement-level locks)
+
+Scope dimensions:
+
+- Object scope: row, page, table, database
+- Time scope: short-lived vs long-lived
+
+Long-running transactions dramatically increase lock contention and risk of blocking.
+
+## Lock Granularity
+
+Lock granularity defines **how much data a lock protects**.
+
+### Database Level
+
+- Locks the entire database
+- Rare, usually for maintenance operations
+- Highest contention, lowest overhead
+
+Use cases:
+
+- Backup
+- Restore
+- Global configuration changes
+
+### Table Level
+
+- Locks the entire table
+- Common for DDL and bulk operations
+
+Pros:
+
+- Simple
+- Low lock manager overhead
+
+Cons:
+
+- Poor concurrency
+
+### Page Level
+
+- Locks a fixed-size block (page) of data
+- Balance between concurrency and overhead
+
+Often used internally by storage engines where row-level locks are too expensive.
+
+### Row Level
+
+- Locks individual rows
+- Highest concurrency
+- Highest lock bookkeeping cost
+
+Used heavily in OLTP systems.
+
+#### Granularity Hierarchy
+
+<div style={{textAlign: 'center'}}>
+
+```mermaid
+graph TD
+    DB[Database Lock]
+    T[Table Lock]
+    P[Page Lock]
+    R[Row Lock]
+
+    DB --> T
+    T --> P
+    P --> R
 ```
 
-### Exclusive Lock (X-Lock)
+</div>
 
-- An exclusive lock allows **only one transaction to modify** the data.
-- It blocks all other transactions, including both **read** and **write**, until the lock is released.
-- Exclusive locks are critical for maintaining data integrity during update operations.
+## Lock Types and Modes
 
-**Example:**
+### Shared Locks (S)
 
-```sql
-BEGIN;
-UPDATE employees SET salary = salary + 500 WHERE id = 1;
--- This transaction locks the row, preventing any other transaction from reading or writing to it.
-COMMIT;
+- Allows multiple readers
+- Prevents writers
+
+Used for SELECT queries under stronger isolation levels.
+
+### Exclusive Locks (X)
+
+- Allows a single writer
+- Blocks all other access
+
+Required for UPDATE, DELETE, INSERT.
+
+### Intent Locks
+
+Intent locks signal **future locking intentions** at a finer granularity.
+
+Examples:
+
+- IS (Intent Shared)
+- IX (Intent Exclusive)
+
+They enable efficient multi-granularity locking.
+
+<div style={{textAlign: 'center'}}>
+
+```mermaid
+graph LR
+    T[Table]
+    R1[Row 1]
+    R2[Row 2]
+
+    T -->|IX| R1
+    T -->|IX| R2
 ```
 
-## Lock Types in PostgreSQL
+</div>
 
-PostgreSQL provides various locks to handle concurrent access effectively. Key lock types include:
+### Update Locks (U)
 
-### Row-Level Locks
+Used to avoid deadlocks during read-modify-write cycles.
 
-- Lock individual rows to reduce contention and maximize concurrency.
-- Used in operations like `SELECT ... FOR SHARE` or `SELECT ... FOR UPDATE`.
-- `FOR SHARE` is a shared lock, so reads are alloWed.
-- `FOR UPDATE` is exclusive lock, so reads and write are **NOT** alloWed.
+Behavior:
 
-**Example:**
+- Initially behaves like Shared
+- Converts to Exclusive when update happens
 
-```sql
-BEGIN;
-SELECT * FROM employees WHERE id = 1 FOR UPDATE;
--- Locks only the row with id = 1, allowing other rows to be accessed concurrently.
-COMMIT;
+Common in SQL Server–style engines.
+
+### Schema Locks
+
+Protect database metadata.
+
+Types:
+
+- Schema Stability (allows queries)
+- Schema Modification (blocks everything)
+
+DDL statements rely heavily on schema locks.
+
+## Lock Compatibility
+
+### Compatibility Matrix
+
+| Requested \ Held | S   | X   | IS  | IX  |
+| ---------------- | --- | --- | --- | --- |
+| S                | ✓   | ✗   | ✓   | ✗   |
+| X                | ✗   | ✗   | ✗   | ✗   |
+| IS               | ✓   | ✗   | ✓   | ✓   |
+| IX               | ✗   | ✗   | ✓   | ✓   |
+
+### Lock Acquisition Rules
+
+- Stronger locks cannot be granted if weaker incompatible locks exist
+- Upgrades must re-check compatibility
+
+Lock upgrade is a frequent source of deadlocks.
+
+### Multi-Granularity Locking
+
+Transactions lock higher-level objects with intent locks before locking finer objects.
+
+<div style={{textAlign: 'center'}}>
+
+```mermaid
+sequenceDiagram
+    participant Tx as Transaction
+    participant T as Table
+    participant R as Row
+
+    Tx->>T: Acquire IX
+    Tx->>R: Acquire X
 ```
 
-### Table-Level Locks
+</div>
 
-- Lock the entire table for operations affecting all rows or for schema modifications.
-- Example: Acquired during `TRUNCATE` or `ALTER TABLE`.
+## Acquisition Strategies
 
-**Example:**
+### Two-Phase Locking (2PL)
+
+Phases:
+
+1. Growing – acquire locks
+2. Shrinking – release locks
+
+Guarantees serializability.
+
+Strict 2PL releases locks only at commit.
+
+### Three-Phase Locking (3PL)
+
+Adds an intermediate phase to avoid blocking anomalies.
+
+Rarely used in real systems due to complexity.
+
+### Lock Escalation
+
+Automatic promotion of many fine-grained locks into a coarser lock.
+
+Trade-off:
+
+- Reduced overhead
+- Reduced concurrency
+
+### Deadlock Prevention
+
+Common strategies:
+
+- Timeout-based abort
+- Wait-die
+- Wound-wait
+
+Each balances fairness and throughput differently.
+
+## Lock Management
+
+### Acquisition and Release
+
+Locks are:
+
+- Acquired on demand
+- Released at commit/rollback or earlier
+
+Incorrect release timing breaks isolation.
+
+### Lock Timeouts
+
+Transactions waiting beyond a threshold are aborted.
+
+Prevents infinite waits but may abort valid transactions.
+
+### Lock Waiting Queues
+
+Blocked transactions wait in queues per lock object.
+
+<div style={{textAlign: 'center'}}>
+
+```mermaid
+graph TD
+    L[Lock]
+    T1[Tx1 Holding]
+    T2[Tx2 Waiting]
+    T3[Tx3 Waiting]
+
+    T1 --> L
+    T2 --> L
+    T3 --> L
+```
+
+</div>
+
+### Lock Monitoring Queries
+
+Databases expose system views to inspect:
+
+- Current locks
+- Waiting transactions
+- Blocking chains
+
+Essential for debugging production issues.
+
+## Problems and Solutions
+
+### Blocking Transactions
+
+Occurs when incompatible locks collide.
+
+Mitigation:
+
+- Short transactions
+- Proper indexing
+
+### Deadlocks (Detection/Resolution)
+
+Circular wait condition.
+
+<div style={{textAlign: 'center'}}>
+
+```mermaid
+graph LR
+    T1 -->|waits| T2
+    T2 -->|waits| T1
+```
+
+</div>
+
+Resolved by aborting one participant.
+
+### Livelocks
+
+Transactions repeatedly abort and retry without progress.
+
+Solved via backoff or priority adjustments.
+
+### Starvation
+
+Low-priority transactions never acquire locks.
+
+Solved via fairness policies.
+
+## PostgreSQL Implementation
+
+### MVCC Integration
+
+PostgreSQL uses MVCC, so:
+
+- Reads do not block writes
+- Writes still require locks
+
+Locks coordinate visibility and structural safety.
+
+### Lock Modes (AccessShare to AccessExclusive)
+
+Ordered from weakest to strongest:
+
+- AccessShare (SELECT)
+- RowShare
+- RowExclusive
+- ShareUpdateExclusive
+- Share
+- ShareRowExclusive
+- Exclusive
+- AccessExclusive (DDL)
+
+### pg_locks System View
+
+Provides visibility into:
+
+- Lock type
+- Lock mode
+- Granted vs waiting
+
+Critical for diagnosing contention.
+
+### Explicit Locking Commands
 
 ```sql
-BEGIN;
-LOCK TABLE employees IN ACCESS EXCLUSIVE MODE;
--- Blocks all access to the table until the transaction is complete.
-COMMIT;
+LOCK TABLE users IN ACCESS EXCLUSIVE MODE;
 ```
+
+Used sparingly for critical sections.
+
+## PostgreSQL Internals
+
+### LockManager Architecture
+
+Centralized lock manager per instance.
+
+### Hash Table Storage
+
+Locks stored in shared memory hash tables keyed by object ID.
+
+### Lightweight Locks
+
+Protect internal data structures.
+
+- Very fast
+- Not user-visible
 
 ### Advisory Locks
 
-- Custom, application-controlled locks that allow developers to implement business-specific locking logic.
-- Advisory locks are not enforced by the database engine.
+Application-defined locks.
 
-**Example: Complete Usage of Advisory Locks:**
+- Not tied to table rows
+- Used for coordination
 
-Imagine a scenario where multiple workers process tasks from a shared `tasks` table. Each worker should only process a task that is not being handled by another worker.
+### Wait Graph Analysis
 
-```sql
--- Worker 1
-BEGIN;
+Deadlock detector builds wait-for graphs periodically.
 
--- Try to acquire an advisory lock on the task ID (e.g., ID = 101)
-SELECT pg_try_advisory_lock(101) AS lock_acquired;
+### Backend Lock Handling
 
--- Check if the lock was acquired
--- If lock_acquired is true, process the task
-UPDATE tasks
-SET status = 'in_progress'
-WHERE id = 101 AND status = 'pending';
+Each backend process:
 
--- Task processing logic here...
+- Requests locks
+- Sleeps when blocked
+- Wakes on release
 
--- Release the advisory lock after processing
-SELECT pg_advisory_unlock(101);
+## Advanced Topics
 
-COMMIT;
-```
+### Predicate vs Key-Range Locks
 
-**Explanation:**
+Predicate locks protect logical conditions.
+Key-range locks protect physical index ranges.
 
-- `pg_try_advisory_lock` tries to acquire a lock without blocking. If the lock is already held, it does not wait.
-- Once the lock is acquired, the worker updates the task's status and begins processing.
-- After completing the task, the worker releases the advisory lock with `pg_advisory_unlock`.
+Serializable isolation relies on these.
 
-This ensures that no two workers process the same task simultaneously.
+### Lock-Free Alternatives
 
-## Deadlocks
+Optimistic concurrency control.
 
-A **deadlock** occurs when two or more transactions block each other by holding locks and waiting for resources locked by the other transactions. PostgreSQL automatically detects deadlocks and resolves them by aborting one of the transactions.
+Used when conflicts are rare.
 
-**Example:**
+### Distributed Locks
 
-```sql
--- Transaction 1
-BEGIN;
-UPDATE employees SET salary = salary + 500 WHERE id = 1;
+Required in distributed systems.
 
--- Transaction 2
-BEGIN;
-UPDATE employees SET salary = salary + 500 WHERE id = 2;
+Challenges:
 
--- Transaction 1 tries to lock row 2
-UPDATE employees SET salary = salary + 500 WHERE id = 2;
+- Clock skew
+- Network partitions
 
--- Transaction 2 tries to lock row 1, causing a deadlock
-UPDATE employees SET salary = salary + 500 WHERE id = 1;
-```
+Examples:
 
-In this case, PostgreSQL will abort one of the transactions to resolve the deadlock.
+- ZooKeeper
+- etcd
+- Redis Redlock
 
-## How Databases Handle Locked Rows
+### Performance Tuning
 
-When a transaction attempts to access a row that is already locked by another transaction, databases use different strategies to handle the conflict:
+Best practices:
 
-### Blocking Until the Lock Is Released
-
-- By default, PostgreSQL waits for the lock to be released.
-- The waiting transaction is blocked but remains in the queue to acquire the lock.
-- We can also have a timeout to fail the transaction after a certain period.
-- For timeout, We can use the `lock_timeout` to set timeout.
-
-**Example:**
-
-```sql
-BEGIN;
-SET lock_timeout = '5s';  -- Set the lock acquisition timeout to 5 seconds.
-
-SELECT * FROM employees WHERE id = 1 FOR UPDATE;
--- Another transaction attempting the same lock will wait until this transaction is committed or rolled back.
-COMMIT;
-```
-
-### NOWAIT
-
-- If the row is locked, the transaction **fails immediately** with an error instead of waiting for the lock to be released.
-- Useful for applications where blocking is unacceptable.
-
-**Example:**
-
-```sql
-BEGIN;
-SELECT * FROM employees WHERE id = 1 FOR UPDATE NOWAIT;
--- If the row is already locked, this query fails with an error.
-COMMIT;
-```
-
-### SKIP LOCKED
-
-- If a row is locked, the query **skips the locked rows** and processes only the unlocked rows.
-- Useful for task queues where workers can skip locked tasks and process available ones.
-
-**Example:**
-
-```sql
-BEGIN;
-SELECT * FROM tasks WHERE status = 'pending' FOR UPDATE SKIP LOCKED;
--- Processes only unlocked rows, ignoring locked rows.
-COMMIT;
-```
-
-## Transaction Isolation Levels and Locking
-
-PostgreSQL supports four standard isolation levels that define how transactions interact with locks:
-
-### Read Uncommitted
-
-- No locking; allows dirty reads.
-- Rarely used in PostgreSQL.
-
-### Read Committed
-
-- Ensures no dirty reads by acquiring shared or exclusive locks as needed.
-- Default isolation level in PostgreSQL.
-
-**Example:**
-
-```sql
-BEGIN;
-UPDATE employees SET salary = salary + 500 WHERE id = 1;
--- Other transactions cannot read or modify the locked row until committed.
-COMMIT;
-```
-
-### Repeatable Read
-
-- Prevents non-repeatable reads by locking all rows read during a transaction.
-- Ensures consistent results for all queries within the transaction.
-
-**Example:**
-
-```sql
-BEGIN ISOLATION LEVEL REPEATABLE READ;
-SELECT * FROM employees WHERE department = 'Sales';
--- Ensures no other transaction can modify these rows until committed.
-COMMIT;
-```
-
-### Serializable
-
-- The strictest isolation level, ensuring transactions appear to execute serially.
-- May block or fail transactions to maintain serializability.
-
-## Best Practices
-
-### Keep Transactions Short
-
-- Minimize transaction duration to reduce lock contention.
-
-### Use Appropriate Isolation Levels
-
-- Choose the least restrictive isolation level that satisfies Our requirements.
-
-### Indexing
-
-- Proper indexing reduces the number of rows locked during queries, improving concurrency.
-
-### Handle Deadlocks Gracefully
-
-- Design transactions to access resources in a consistent order to avoid deadlocks.
-
-### Monitor Locks
-
-- Use PostgreSQL system views like `pg_locks` to monitor and troubleshoot locks.
-
-**Example:**
-
-```sql
-SELECT * FROM pg_locks;
-```
+- Keep transactions short
+- Index properly
+- Avoid unnecessary explicit locks
+- Monitor lock contention continuously
