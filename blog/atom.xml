@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://imdeepmind.com/blog</id>
+    <id>https://imdeepmind.com/blog/</id>
     <title>imdeepmind Blog</title>
     <updated>2025-12-07T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://imdeepmind.com/blog"/>
+    <link rel="alternate" href="https://imdeepmind.com/blog/"/>
     <subtitle>imdeepmind Blog</subtitle>
     <icon>https://imdeepmind.com/img/favicon.ico</icon>
     <entry>
         <title type="html"><![CDATA[Why imdeepmind Exists]]></title>
-        <id>https://imdeepmind.com/blog/imdeepmind-introduction</id>
-        <link href="https://imdeepmind.com/blog/imdeepmind-introduction"/>
+        <id>https://imdeepmind.com/blog/imdeepmind-introduction/</id>
+        <link href="https://imdeepmind.com/blog/imdeepmind-introduction/"/>
         <updated>2025-12-07T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Personal notes and essays on backend engineering, systems, and deep technical learning.]]></summary>
         <content type="html"><![CDATA[<p>Hey there, this is Abhishek. If you're here, that means you want to learn what this website is about. Well, basically this website, <a href="https://imdeepmind.com/" target="_blank" rel="noopener noreferrer" class="">imdeepmind.com</a>, is a small corner on the internet for me. Here, I document my learnings, my interests, my explorations as I grow as a Software Engineer.</p>
 <p>For the past couple of years, I’ve made it a habit to take notes on everything I study and publish them here. Instead of using tools like Notion, I chose to build this site so my notes are always accessible from anywhere, including my work computer, without requiring a login. This is the reason why I setup this website in this way. Also, by putting them online, anyone on the internet can access these notes and might find them useful.</p>
 <p>My core idea with this website is very simple: to create a living knowledge base that grows with me. Every time I dive deep into something interesting, some new technology, a new framework, or a complex idea, I write it down here, in a simple, concise, to-the-point manner. Doing this not only works as a reference so I can return whenever needed, but it also helps me to completely understand the topic.</p>
 <p>Beyond notes, I also write blogs. My aim here is to write at least one blog each month. These blogs will be mostly technical and related to computer science, programming, and software engineering.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-youll-find-here">What you’ll find here<a href="https://imdeepmind.com/blog/imdeepmind-introduction#what-youll-find-here" class="hash-link" aria-label="Direct link to What you’ll find here" title="Direct link to What you’ll find here" translate="no">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-youll-find-here">What you’ll find here<a href="https://imdeepmind.com/blog/imdeepmind-introduction/#what-youll-find-here" class="hash-link" aria-label="Direct link to What you’ll find here" title="Direct link to What you’ll find here" translate="no">​</a></h2>
 <p>I'm a Senior Software Engineer at SurveyMonkey with over 6 years of experience and I mostly work on backend systems, databases, and system designs. As a result most of the notes here are focused on backend topics such as</p>
 <ul>
 <li class="">Backend engineering and distributed systems</li>
@@ -27,11 +27,11 @@
 <li class="">Cloud platforms, especially AWS</li>
 </ul>
 <p>If you want to find a detailed catalogue of notes currently available, check the <a href="https://imdeepmind.com/docs/intro" target="_blank" rel="noopener noreferrer" class="">notes</a> page. Also, there is a search function on the top-right corner of the screen. Please use it to search for different topics.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="use-of-ai">Use of AI<a href="https://imdeepmind.com/blog/imdeepmind-introduction#use-of-ai" class="hash-link" aria-label="Direct link to Use of AI" title="Direct link to Use of AI" translate="no">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="use-of-ai">Use of AI<a href="https://imdeepmind.com/blog/imdeepmind-introduction/#use-of-ai" class="hash-link" aria-label="Direct link to Use of AI" title="Direct link to Use of AI" translate="no">​</a></h2>
 <p>I actively use AI tools such as <a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer" class="">ChatGPT</a>, <a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer" class="">Gemini</a>, and <a href="https://www.perplexity.ai/" target="_blank" rel="noopener noreferrer" class="">Perplexity</a> while learning along with traditional resources like blogs, whitepapers, videos, courses, and books to understand complex ideas more effectively. Many of the notes on this site are created with the assistance of these tools, combined with my own understanding, verification, and edits.</p>
 <p>The blog posts, on the other hand, are completely written by me, with my own voice and personality. I might use AI platforms for research, fact-checking, and also language checking, etc.</p>
 <p>The intention here is to keep the blogs personal, authentic, and opinionated, while the notes are more like condensed documentation for various technologies.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="reporting-errors">Reporting errors<a href="https://imdeepmind.com/blog/imdeepmind-introduction#reporting-errors" class="hash-link" aria-label="Direct link to Reporting errors" title="Direct link to Reporting errors" translate="no">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="reporting-errors">Reporting errors<a href="https://imdeepmind.com/blog/imdeepmind-introduction/#reporting-errors" class="hash-link" aria-label="Direct link to Reporting errors" title="Direct link to Reporting errors" translate="no">​</a></h2>
 <p>This site is maintained by me alongside full-time work and other personal projects, so mistakes can happen. If you notice any errors or issues in the notes or blogs, please report them on <a href="https://github.com/imdeepmind/imdeepmind.github.io/issues" target="_blank" rel="noopener noreferrer" class="">GitHub</a>. Feedback is always appreciated.</p>]]></content>
         <author>
             <name>Abhishek Chatterjee</name>
