@@ -452,7 +452,7 @@ Rather than blocking operations to guarantee consistency, BASE systems accept te
 - **Application-Level Resolution**: Let the application decide how to merge conflicting versions
 - **CRDTs (Conflict-free Replicated Data Types)**: Data structures that guarantee convergence without coordination
 
-**Example: Adding an item to a set in a distributed system**
+#### Example: Adding an item to a set in a distributed system
 
 - Node A adds item X
 - Node B adds item Y

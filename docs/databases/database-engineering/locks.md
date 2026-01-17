@@ -4,6 +4,12 @@ sidebar_position: 5
 
 # Database Locking
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 In multi-user database systems, multiple transactions execute concurrently to maximize throughput and resource utilization. Locks exist to **coordinate concurrent access to shared data** so that correctness is preserved. Without locks, concurrent reads and writes could corrupt data or expose inconsistent intermediate states.
 
 Locks primarily protect against the following anomalies:
@@ -136,6 +142,19 @@ graph TD
 
 Used for SELECT queries under stronger isolation levels.
 
+**Example:**
+
+```sql
+-- Transaction 1
+BEGIN TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+SELECT * FROM users WHERE id = 1;  -- Acquires S lock on row
+
+-- Transaction 2
+BEGIN TRANSACTION;
+SELECT * FROM users WHERE id = 1;  -- Can acquire S lock (compatible)
+UPDATE users SET name = 'Jane' WHERE id = 1;  -- Blocked (X lock incompatible with S)
+```
+
 ### Exclusive Locks (X)
 
 - Allows a single writer
@@ -143,16 +162,38 @@ Used for SELECT queries under stronger isolation levels.
 
 Required for UPDATE, DELETE, INSERT.
 
+**Example:**
+
+```sql
+-- Transaction 1
+BEGIN TRANSACTION;
+UPDATE users SET name = 'John' WHERE id = 1;  -- Acquires X lock on row
+
+-- Transaction 2 (blocked)
+BEGIN TRANSACTION;
+SELECT * FROM users WHERE id = 1;  -- Blocked waiting for X lock release
+UPDATE users SET age = 30 WHERE id = 1;  -- Blocked (X locks are mutually exclusive)
+```
+
 ### Intent Locks
 
 Intent locks signal **future locking intentions** at a finer granularity.
 
 Examples:
 
-- IS (Intent Shared)
-- IX (Intent Exclusive)
+- IS (Intent Shared) – indicates that shared locks will be acquired on child objects
+- IX (Intent Exclusive) – indicates that exclusive locks will be acquired on child objects
 
-They enable efficient multi-granularity locking.
+They enable efficient multi-granularity locking without requiring the database to check every child object.
+
+**Example:**
+
+```sql
+-- Transaction holding multiple row locks
+BEGIN TRANSACTION;
+LOCK TABLE users IN INTENT EXCLUSIVE MODE;  -- Table gets IX lock
+UPDATE users SET status = 'active' WHERE id IN (1, 2, 3);  -- Row-level X locks acquired
+```
 
 <div style={{textAlign: 'center'}}>
 
@@ -174,10 +215,21 @@ Used to avoid deadlocks during read-modify-write cycles.
 
 Behavior:
 
-- Initially behaves like Shared
-- Converts to Exclusive when update happens
+- Initially behaves like Shared (allows multiple readers)
+- Converts to Exclusive when the update happens
 
-Common in SQL Server–style engines.
+Common in SQL Server-style engines.
+
+**Example:**
+
+```sql
+-- SQL Server: read-modify-write with U lock
+BEGIN TRANSACTION;
+SELECT * FROM accounts WHERE id = 1 WITH (UPDLOCK);  -- Acquires U lock
+-- Other transactions can read but cannot acquire U or X locks
+UPDATE accounts SET balance = balance - 100 WHERE id = 1;  -- Upgrades U to X
+COMMIT;
+```
 
 ### Schema Locks
 
@@ -192,21 +244,23 @@ DDL statements rely heavily on schema locks.
 
 ## Lock Compatibility
 
+Two locks are compatible if they can be held simultaneously on the same data object by different transactions.
+
 ### Compatibility Matrix
 
-| Requested \ Held | S   | X   | IS  | IX  |
-| ---------------- | --- | --- | --- | --- |
-| S                | ✓   | ✗   | ✓   | ✗   |
-| X                | ✗   | ✗   | ✗   | ✗   |
-| IS               | ✓   | ✗   | ✓   | ✓   |
-| IX               | ✗   | ✗   | ✓   | ✓   |
+| Requested \ Held      | S (Shared) | X (Exclusive) | IS (Intent Shared) | IX (Intent Exclusive) |
+| --------------------- | ---------- | ------------- | ------------------ | --------------------- |
+| S (Shared)            | ✓          | ✗             | ✓                  | ✗                     |
+| X (Exclusive)         | ✗          | ✗             | ✗                  | ✗                     |
+| IS (Intent Shared)    | ✓          | ✗             | ✓                  | ✓                     |
+| IX (Intent Exclusive) | ✗          | ✗             | ✓                  | ✓                     |
 
 ### Lock Acquisition Rules
 
 - Stronger locks cannot be granted if weaker incompatible locks exist
-- Upgrades must re-check compatibility
+- Upgrades must re-check compatibility against all existing locks
 
-Lock upgrade is a frequent source of deadlocks.
+Lock upgrades are a frequent source of deadlocks because they can create wait-for cycles.
 
 ### Multi-Granularity Locking
 
@@ -232,12 +286,12 @@ sequenceDiagram
 
 Phases:
 
-1. Growing – acquire locks
-2. Shrinking – release locks
+1. **Growing phase** – acquire locks, no releases allowed
+2. **Shrinking phase** – release locks, no acquisitions allowed
 
-Guarantees serializability.
+Guarantees serializability when strictly enforced.
 
-Strict 2PL releases locks only at commit.
+**Strict 2PL** releases locks only at transaction commit or rollback, ensuring no uncommitted changes are visible.
 
 ### Three-Phase Locking (3PL)
 
@@ -258,11 +312,11 @@ Trade-off:
 
 Common strategies:
 
-- Timeout-based abort
-- Wait-die
-- Wound-wait
+- **Timeout-based abort** – abort if wait exceeds threshold
+- **Wait-die** – older transactions wait for newer ones; younger transactions die and retry
+- **Wound-wait** – older transactions preempt younger ones; younger transactions wait
 
-Each balances fairness and throughput differently.
+Each strategy balances fairness, throughput, and restart overhead differently.
 
 ## Lock Management
 
@@ -277,9 +331,9 @@ Incorrect release timing breaks isolation.
 
 ### Lock Timeouts
 
-Transactions waiting beyond a threshold are aborted.
+Transactions waiting beyond a configured threshold are automatically aborted.
 
-Prevents infinite waits but may abort valid transactions.
+Prevents infinite waits but may abort valid long-running transactions under contention.
 
 ### Lock Waiting Queues
 
@@ -303,24 +357,25 @@ graph TD
 
 ### Lock Monitoring Queries
 
-Databases expose system views to inspect:
+Databases expose system views for us to inspect:
 
-- Current locks
+- Current locks held
 - Waiting transactions
 - Blocking chains
 
-Essential for debugging production issues.
+Essential for diagnosing and debugging production contention issues.
 
 ## Problems and Solutions
 
 ### Blocking Transactions
 
-Occurs when incompatible locks collide.
+Occurs when incompatible locks collide and one transaction must wait.
 
-Mitigation:
+Mitigation strategies:
 
-- Short transactions
-- Proper indexing
+- Keep transactions short to minimize lock hold times
+- Use proper indexing to reduce the number of rows accessed
+- Optimize query execution plans
 
 ### Deadlocks (Detection/Resolution)
 
@@ -340,9 +395,9 @@ Resolved by aborting one participant.
 
 ### Livelocks
 
-Transactions repeatedly abort and retry without progress.
+Transactions repeatedly abort and retry without progress, wasting resources.
 
-Solved via backoff or priority adjustments.
+Solved via exponential backoff or priority-based scheduling adjustments.
 
 ### Starvation
 
@@ -432,16 +487,16 @@ Each backend process:
 
 ### Predicate vs Key-Range Locks
 
-Predicate locks protect logical conditions.
-Key-range locks protect physical index ranges.
+Predicate locks protect logical conditions (e.g., "salary > 100000").
+Key-range locks protect physical index ranges and prevent phantom reads.
 
-Serializable isolation relies on these.
+Serializable isolation levels rely on these mechanisms.
 
 ### Lock-Free Alternatives
 
-Optimistic concurrency control.
+Optimistic concurrency control avoids locks by detecting conflicts at commit time.
 
-Used when conflicts are rare.
+Most effective when conflicts are rare and transaction throughput is a priority.
 
 ### Distributed Locks
 
