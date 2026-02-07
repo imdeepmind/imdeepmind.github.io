@@ -4,9 +4,16 @@ sidebar_position: 3
 
 # OSI Model
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 The **OSI (Open Systems Interconnection) model** is a conceptual framework used to understand and implement standard protocols in network communications. It divides the communication process into **seven distinct layers**, each with specific functions and responsibilities.
 
 <div class="mermaid-container">
+
 ```mermaid
 graph TD
     Application["Application Layer (Layer 7)"]
@@ -24,19 +31,7 @@ graph TD
     Network --> DataLink
     DataLink --> Physical
 
-````
-
-```mermaid
-graph TD
-    ApplicationLayer["Application Layer"]
-    TransportLayer["Transport Layer"]
-    InternetLayer["Internet Layer"]
-    NetworkAccessLayer["Network Access Layer"]
-
-    ApplicationLayer --> TransportLayer
-    TransportLayer --> InternetLayer
-    InternetLayer --> NetworkAccessLayer
-````
+```
 
 </div>
 
