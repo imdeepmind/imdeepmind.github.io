@@ -4,26 +4,33 @@ sidebar_position: 2
 
 # Client-Server Architecture
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 Client-Server Architecture is a foundational model in network computing that structures applications into two main components: **clients** and **servers**. This architecture facilitates resource sharing, scalability, and efficient management of networked systems. Below are detailed notes covering various aspects of Client-Server Architecture.
 
 <div class="mermaid-container">
-    ```mermaid
-        graph TD
-            Client["Client"]
-            Browser["Web Browser"]
-            Application["Web Application"]
-            Server["Server"]
-            Database["Database"]
 
-            Client -->|Sends Request| Browser
-            Browser -->|Processes Request| Server
-            Server -->|Handles Request| Application
-            Application -->|Queries Data| Database
-            Database -->|Returns Data| Application
-            Application -->|Responds to Client| Server
-            Server -->|Sends Response| Browser
-            Browser -->|Displays Response| Client
-    ```
+```mermaid
+    graph TD
+        Client["Client"]
+        Browser["Web Browser"]
+        Application["Web Application"]
+        Server["Server"]
+        Database["Database"]
+
+        Client -->|Sends Request| Browser
+        Browser -->|Processes Request| Server
+        Server -->|Handles Request| Application
+        Application -->|Queries Data| Database
+        Database -->|Returns Data| Application
+        Application -->|Responds to Client| Server
+        Server -->|Sends Response| Browser
+        Browser -->|Displays Response| Client
+```
 
 </div>
 

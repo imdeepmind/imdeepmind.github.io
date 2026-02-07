@@ -170,9 +170,11 @@ If you come across any issues or errors in the notes, feel free to open an issue
 ### System Design and Databases
 
 1. [Networking](/docs/networking/introduction.md)
-
-   1. [Protocols](/docs/networking/protocols/client-server-architecture.md)
-   2. [Communication Design Patterns](/docs/networking/communication-design-patterns/request-response.md)
+   1. [Introduction](/docs/networking/introduction.md)
+   2. [Protocols](/docs/networking/protocols/client-server-architecture.md)
+      1. [Client Server Architecture](/docs/networking/protocols/client-server-architecture.md)
+      2. [OSI Model](/docs/networking/protocols/osi-model.md)
+   3. [Communication Design Patterns](/docs/networking/communication-design-patterns/request-response.md)
 
 2. [Database](/docs/databases/introduction.md)
    1. [SQL](/docs/databases/sql/introduction.md)
