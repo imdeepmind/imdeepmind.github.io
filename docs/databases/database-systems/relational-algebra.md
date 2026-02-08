@@ -4,7 +4,11 @@ sidebar_position: 2
 
 # Relational Algebra
 
-<!-- markdownlint-disable MD024 -->
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
 
 **Relational Algebra** is a formal system of query operations used on relational databases. It provides a mathematical foundation for understanding how database queries work and serves as the theoretical basis for SQL. Relational algebra operations allow us to manipulate relations (tables) and extract meaningful information from data.
 
