@@ -4,6 +4,12 @@ sidebar_position: 3
 
 # Database Storage
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 **Database storage** is the physical representation of data within a database system. It's typically organized into **files** and **pages**.
 
 ## Storage Hierarchy
@@ -114,7 +120,7 @@ Understanding the storage hierarchy is crucial for designing efficient and cost-
 - **Example:** Jumping directly to a specific page in a book using the table of contents.
 
 > Random access on **non-volatile** storage is almost always **much slower** than sequential access.  
-> DBMS will want to maximize sequential access.
+> DBMS will want to maximize sequential access.s
 
 ## Database Storage Layers
 
@@ -124,9 +130,9 @@ A database storage system can be thought of as three stacked layers, each respon
 
 ```mermaid
 flowchart TB
-  Logical["Logical Layer\n(schema, tables, queries, indexes)"]
-  StorageEngine["Storage Engine\n(buffer manager, page manager, access methods, recovery)"]
-  Physical["Physical Layer\n(file system, block device, disk/SSD, cloud storage)"]
+  Logical["Logical Layer (schema, tables, queries, indexes)"]
+  StorageEngine["Storage Engine (buffer manager, page manager, access methods, recovery)"]
+  Physical["Physical Layer (file system, block device, disk/SSD, cloud storage)"]
   Logical -->|requests| StorageEngine
   StorageEngine -->|I/O| Physical
 ```

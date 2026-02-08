@@ -4,6 +4,12 @@ sidebar_position: 5
 
 # Index Organized Storage
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 Index-Organized Storage (IOS) is a storage technique in databases where data is stored directly in the index structure itself. Unlike traditional tables where data and indexes are stored separately, an index-organized table (IOT) combines both the data and index, allowing for efficient access patterns and performance benefits in specific use cases.
 
 <div style={{textAlign: 'center'}}>
@@ -13,10 +19,10 @@ flowchart LR
   root((Root))
   internal1((Internal Node))
   internal2((Internal Node))
-  leafA("[Leaf: PK=1\nRowData]")
-  leafB("[Leaf: PK=2\nRowData]")
-  leafC("[Leaf: PK=100\nRowData]")
-  secIdx("[Secondary Index\n(Non-clustered)]")
+  leafA("[Leaf: PK=1 RowData]")
+  leafB("[Leaf: PK=2 RowData]")
+  leafC("[Leaf: PK=100 RowData]")
+  secIdx("[Secondary Index (Non-clustered)]")
 
   root --> internal1
   root --> internal2
@@ -25,7 +31,6 @@ flowchart LR
   internal2 --> leafC
   secIdx --> leafB
   secIdx --> leafC
-
 ```
 
 </div>

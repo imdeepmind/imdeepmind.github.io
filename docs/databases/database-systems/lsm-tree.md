@@ -4,7 +4,11 @@ sidebar_position: 6
 
 # Log-Structured Merge Tree
 
-<!-- markdownlint-disable MD024 -->
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
 
 Log-Structured Merge (LSM) trees are a fundamental data structure used in database storage, particularly for handling high-write workloads efficiently. Here’s a breakdown of key concepts and considerations when working with LSM storage:
 
@@ -261,7 +265,7 @@ An SSTable, a file stored on disk, is an immutable and sorted structure optimize
 - _Type_: Distributed SQL database.
 - _Usage_: TiDB uses an LSM-based storage layer (with RocksDB or TiKV) for high-performance and distributed data management, balancing SQL compatibility with NoSQL performance.
 
-## **3. Time-Series Databases**
+## Time-Series Databases
 
 ### InfluxDB
 
@@ -273,7 +277,7 @@ An SSTable, a file stored on disk, is an immutable and sorted structure optimize
 - _Type_: Time-series database built on PostgreSQL.
 - _Usage_: While PostgreSQL uses a B-tree structure by default, TimescaleDB includes LSM options and optimizations for handling high-frequency data insertions in time-series data.
 
-### **4. Search and Logging Databases**
+### Search and Logging Databases
 
 ### Elasticsearch
 
@@ -292,9 +296,9 @@ An SSTable, a file stored on disk, is an immutable and sorted structure optimize
 
 ## FAQ: LSM Tree Sizing and Tuning
 
-### How do I select the number of levels?
+### How do we select the number of levels?
 
-- The number of levels is determined primarily by your total on-disk dataset size (S), the size of your base level or memtable flush size (M), and the growth factor between levels (T). As a rule-of-thumb for leveling compaction:
+- The number of levels is determined primarily by our total on-disk dataset size (S), the size of our base level or memtable flush size (M), and the growth factor between levels (T). As a rule-of-thumb for leveling compaction:
 
   L ≈ ceil(log_T(S / M))
 
@@ -304,7 +308,7 @@ An SSTable, a file stored on disk, is an immutable and sorted structure optimize
   - Choose the memtable / base SSTable size small enough to avoid large L0 write stalls.
   - Use a T value (commonly 8–10 for leveling) to make level sizes grow geometrically and keep levels manageable.
 
-### How do I choose level sizes and the growth factor (T)?
+### How do we choose level sizes and the growth factor (T)?
 
 - Strategy:
 
@@ -312,7 +316,7 @@ An SSTable, a file stored on disk, is an immutable and sorted structure optimize
   - Select a growth factor T where each level is roughly T times the previous level.
   - Larger T reduces the number of levels (and total compaction passes) but increases individual level sizes and can increase read costs for certain patterns.
 
-- Example: If your base level (L1) target is 1GB and T=10, then L2 target is 10GB, L3 is 100GB and so on.
+- Example: If our base level (L1) target is 1GB and T=10, then L2 target is 10GB, L3 is 100GB and so on.
 
 - Tuning trade-offs:
   - Larger T -> fewer levels -> potentially lower write amplification -> larger compaction work per event -> potentially higher per-compaction latency impact.

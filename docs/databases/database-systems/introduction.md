@@ -4,6 +4,12 @@ sidebar_position: 1
 
 # Introduction
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 **Database Systems** are sophisticated software systems designed to store, manage, retrieve, and protect data efficiently. Understanding the internals and architecture of database systems is crucial for building scalable and reliable applications.
 
 ## Core Concepts

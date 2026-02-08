@@ -4,6 +4,12 @@ sidebar_position: 4
 
 # Tuple Oriented Storage
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 ## Storage Manager
 
 The Storage Manager is a critical component of a Database Management System (DBMS) responsible for managing the physical storage and retrieval of data. It acts as an interface between the DBMS and the underlying storage devices, such as hard disk drives (HDDs) or solid-state drives (SSDs).
@@ -49,7 +55,7 @@ flowchart LR
 
 ### Database Page Components
 
-Each database page can be thought of as four main components: the Header, the Slot Directory, the Data Area, and the Free Space. Together these components let the DBMS store variable-length tuples efficiently and handle inserts, updates, and deletes without layout changes to the schema.
+Each database page can be thought of as four main components: the Header, the Slot Directory, the Data Area, and the Free Space. Together, these components let the DBMS store variable-length tuples efficiently and handle inserts, updates, and deletes without layout changes to the schema.
 
 #### Header
 
@@ -104,7 +110,7 @@ This layout — the slot directory growing forward and the Data Area growing bac
 
 ### Considerations
 
-- **Page Size:** The choice of page size can impact performance and storage efficiency. Larger pages may reduce the number of I/O operations but can also lead to wasted space if pages are not fully utilized. Also write operations can be slow if the page size is too large.
+- **Page Size:** The choice of page size can impact performance and storage efficiency. Larger pages may reduce the number of I/O operations but can also lead to wasted space if pages are not fully utilized. Write operations can also be slow if the page size is too large.
 - **Page Organization:** The way data is organized within a page can affect retrieval efficiency. Techniques like B-trees, hash tables, and heap files are commonly used.
 - **Page Compression:** Compressing data within pages can reduce storage requirements and improve I/O performance.
 
@@ -379,20 +385,26 @@ A tuple is essentially a sequence of bytes (these bytes do not have to be contig
   - Bit Map for NULL values.
   - Note that the DBMS does not need to store meta-data about the schema of the database here.
 - **Tuple Data:** Actual data for attributes.
-  - Attributes are typically stored in the order that you specify them when you create the table.
+  - Attributes are typically stored in the order that we specify them when we create the table.
   - Most DBMSs do not allow a tuple to exceed the size of a page.
-- **Unique Identifier:**
-  - Each tuple in the database is assigned a unique identifier.
-  - Most common: page id + (offset or slot).
-  - An application cannot rely on these ids to mean anything.
+-   **Tuple Header:** Contains meta-data about the tuple.
+    -   Visibility information for the DBMS’s concurrency control protocol (i.e., information about which transaction created/modified that tuple).
+    -   Bit Map for NULL values.
+    -   Note that the DBMS does not need to store meta-data about the schema of the database here.
+-   **Tuple Data:** Actual data for attributes.
+    -   Attributes are typically stored in the order that we specify them when we create the table.
+    -   Most DBMSs do not allow a tuple to exceed the size of a page.
+-   **Unique Identifier:**
+    -   Each tuple in the database is assigned a unique identifier.
+    -   Most common: page id + (offset or slot).
+    -   An application cannot rely on these IDs to mean anything.
 
-**Denormalized Tuple Data**: If two tables are related, the DBMS can “pre-join” them, so the tables end up on the same page. This makes reads faster since the DBMS only has to load in one page rather than two separate pages. However, it makes updates more expensive since the DBMS needs more space for each tuple.
+**Denormalized Tuple Data**: If two tables are related, the DBMS can “pre-join” them, so the tables end up on the same page. This makes reads faster since the DBMS only has to load one page rather than two separate pages. However, it makes updates more expensive since the DBMS needs more space for each tuple.
 
 ## Large Attribute Storage (Overflow & External Storage)
 
 When an attribute value (for example, a large TEXT or BLOB column) cannot fit comfortably into the remaining free space on a page, DBMSs use a few common techniques to store it without violating page-size constraints:
 
-- Inline first, overflow later: The DBMS tries to store a small prefix of the attribute inline and stores the remaining portion in overflow pages. The main tuple contains a pointer or descriptor to the overflow chain so the DBMS can reconstruct the full attribute when needed.
 - External storage (TOAST / LOB table): Some systems (e.g., PostgreSQL) store large attributes in a separate storage object (TOAST table or LOB store). The tuple stores a compact reference (pointer) to the external storage.
 - Overflow pages / chained pages: The DBMS stores the large attribute across multiple overflow pages and links them so the attribute can be streamed or reassembled by following pointers.
 - Compression & partial inline: The DBMS may compress the attribute or save a compressed chunk inline and use external storage for the rest.
@@ -433,6 +445,6 @@ In MVCC systems, multiple versions of a tuple can exist concurrently. A tuple is
 
 ### Notes & trade-offs
 
-- VACUUM is necessary to reclaim space and update statistics—the more frequently you vacuum, the less bloat and the better the optimizer statistics.
+- VACUUM is necessary to reclaim space and update statistics—the more frequently we vacuum, the less bloat and the better the optimizer statistics.
 - Reclaiming/deleting tuples requires careful management of concurrency and durability (WAL) to ensure other transactions cannot read partially-deleted states.
 - Some reclamation processes only mark slots available for reuse (so physical layout doesn't change), while table-rewrite operations will physically compact data and change tuple offsets.
