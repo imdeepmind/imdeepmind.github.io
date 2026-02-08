@@ -24,7 +24,7 @@ We maintain two pointers that define the boundaries of our window. As we slide t
 
 ## Types of Sliding Windows
 
-### 1. Fixed-Size Window
+### Fixed-Size Window
 
 In this scenario, our window maintains a constant length `k` as it moves from start to end.
 
@@ -48,7 +48,7 @@ graph LR
 
 - **Example**: Finding the maximum sum of any subarray of size `k`.
 
-### 2. Dynamic-Sized Window
+### Dynamic-Sized Window
 
 The size of our window grows or shrinks dynamically based on the problem's constraints.
 
