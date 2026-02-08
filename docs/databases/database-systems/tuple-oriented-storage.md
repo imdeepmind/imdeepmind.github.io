@@ -387,17 +387,17 @@ A tuple is essentially a sequence of bytes (these bytes do not have to be contig
 - **Tuple Data:** Actual data for attributes.
   - Attributes are typically stored in the order that we specify them when we create the table.
   - Most DBMSs do not allow a tuple to exceed the size of a page.
--   **Tuple Header:** Contains meta-data about the tuple.
-    -   Visibility information for the DBMS’s concurrency control protocol (i.e., information about which transaction created/modified that tuple).
-    -   Bit Map for NULL values.
-    -   Note that the DBMS does not need to store meta-data about the schema of the database here.
--   **Tuple Data:** Actual data for attributes.
-    -   Attributes are typically stored in the order that we specify them when we create the table.
-    -   Most DBMSs do not allow a tuple to exceed the size of a page.
--   **Unique Identifier:**
-    -   Each tuple in the database is assigned a unique identifier.
-    -   Most common: page id + (offset or slot).
-    -   An application cannot rely on these IDs to mean anything.
+- **Tuple Header:** Contains meta-data about the tuple.
+  - Visibility information for the DBMS’s concurrency control protocol (i.e., information about which transaction created/modified that tuple).
+  - Bit Map for NULL values.
+  - Note that the DBMS does not need to store meta-data about the schema of the database here.
+- **Tuple Data:** Actual data for attributes.
+  - Attributes are typically stored in the order that we specify them when we create the table.
+  - Most DBMSs do not allow a tuple to exceed the size of a page.
+- **Unique Identifier:**
+  - Each tuple in the database is assigned a unique identifier.
+  - Most common: page id + (offset or slot).
+  - An application cannot rely on these IDs to mean anything.
 
 **Denormalized Tuple Data**: If two tables are related, the DBMS can “pre-join” them, so the tables end up on the same page. This makes reads faster since the DBMS only has to load one page rather than two separate pages. However, it makes updates more expensive since the DBMS needs more space for each tuple.
 
