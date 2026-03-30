@@ -12,7 +12,7 @@ This note is complete, reviewed, and considered stable.
 
 The **OSI (Open Systems Interconnection) model** is a conceptual framework used to understand and implement standard protocols in network communications. It divides the communication process into **seven distinct layers**, each with specific functions and responsibilities.
 
-<div class="mermaid-container">
+<div style={{textAlign: 'center'}}>
 
 ```mermaid
 graph TD
@@ -50,10 +50,10 @@ The OSI model was introduced in 1984 by the International Organization for Stand
 
 The OSI model is divided into two categories:
 
-1.  **Host Layers** (Application, Presentation, Session)
-2.  **Media Layers** (Transport, Network, Data Link, Physical)
+1. **Host Layers** (Application, Presentation, Session)
+2. **Media Layers** (Transport, Network, Data Link, Physical)
 
-### Overview of Layers:
+### Overview of Layers
 
 | **Layer**    | **Layer Number** | **Data Unit** | **Primary Function**                                  |
 | ------------ | ---------------- | ------------- | ----------------------------------------------------- |
@@ -143,18 +143,18 @@ Transmission of raw binary data over a medium.
 
 ## Advantages of the OSI Model
 
-1.  **Standardized Framework**: Enables interoperability between different hardware and software systems.
-2.  **Modularity**: Encourages a structured approach to network design and troubleshooting.
-3.  **Scalability**: Supports upgrades and changes to individual layers without impacting others.
-4.  **Error Isolation**: Simplifies fault isolation and debugging.
-5.  **Flexibility**: Supports multiple communication protocols.
+1. **Standardized Framework**: Enables interoperability between different hardware and software systems.
+2. **Modularity**: Encourages a structured approach to network design and troubleshooting.
+3. **Scalability**: Supports upgrades and changes to individual layers without impacting others.
+4. **Error Isolation**: Simplifies fault isolation and debugging.
+5. **Flexibility**: Supports multiple communication protocols.
 
 ## Disadvantages of the OSI Model
 
-1.  **Complexity**: The model's layered approach can sometimes introduce unnecessary overhead.
-2.  **Implementation Gap**: Real-world implementations like TCP/IP do not strictly adhere to the OSI model.
-3.  **Performance Overhead**: Additional layers may reduce system performance due to processing overhead.
-4.  **Theoretical Nature**: The OSI model is more conceptual and not always practical for all systems.
+1. **Complexity**: The model's layered approach can sometimes introduce unnecessary overhead.
+2. **Implementation Gap**: Real-world implementations like TCP/IP do not strictly adhere to the OSI model.
+3. **Performance Overhead**: Additional layers may reduce system performance due to processing overhead.
+4. **Theoretical Nature**: The OSI model is more conceptual and not always practical for all systems.
 
 ## Comparison with the TCP/IP Model
 

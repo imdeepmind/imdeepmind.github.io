@@ -12,7 +12,7 @@ This note is complete, reviewed, and considered stable.
 
 Client-Server Architecture is a foundational model in network computing that structures applications into two main components: **clients** and **servers**. This architecture facilitates resource sharing, scalability, and efficient management of networked systems. Below are detailed notes covering various aspects of Client-Server Architecture.
 
-<div class="mermaid-container">
+<div style={{textAlign: 'center'}}>
 
 ```mermaid
     graph TD
@@ -128,44 +128,44 @@ Protocols define the rules for data exchange between clients and servers. Common
 ### Request-Response Model
 
 - **Process**:
-  1.  **Client Request**: Client sends a request to the server.
-  2.  **Server Processing**: Server processes the request.
-  3.  **Server Response**: Server sends back the response to the client.
+  1. **Client Request**: Client sends a request to the server.
+  2. **Server Processing**: Server processes the request.
+  3. **Server Response**: Server sends back the response to the client.
 - **Synchronous vs. Asynchronous**:
   - **Synchronous**: Client waits for the server response.
   - **Asynchronous**: Client can continue processing without waiting.
 
 ## Advantages
 
-1.  **Centralized Resources**: Easier management and maintenance.
-2.  **Scalability**: Servers can be scaled up or out to handle more clients.
-3.  **Security**: Centralized control over data and resources enhances security.
-4.  **Maintainability**: Updates and patches can be applied on the server side without affecting clients.
-5.  **Resource Sharing**: Efficient sharing of resources like databases, files, and applications.
-6.  **Performance Optimization**: Servers can be optimized for specific tasks, improving overall performance.
+1. **Centralized Resources**: Easier management and maintenance.
+2. **Scalability**: Servers can be scaled up or out to handle more clients.
+3. **Security**: Centralized control over data and resources enhances security.
+4. **Maintainability**: Updates and patches can be applied on the server side without affecting clients.
+5. **Resource Sharing**: Efficient sharing of resources like databases, files, and applications.
+6. **Performance Optimization**: Servers can be optimized for specific tasks, improving overall performance.
 
 ## Disadvantages
 
-1.  **Single Point of Failure**: Server outages can disrupt all client operations.
-2.  **Cost**: High-performance servers and robust infrastructure can be expensive.
-3.  **Complexity**: Designing and managing a client-server system can be complex.
-4.  **Network Dependency**: Requires reliable network connectivity; performance can be affected by network issues.
-5.  **Scalability Limits**: Although scalable, there are physical and practical limits to scaling server resources.
+1. **Single Point of Failure**: Server outages can disrupt all client operations.
+2. **Cost**: High-performance servers and robust infrastructure can be expensive.
+3. **Complexity**: Designing and managing a client-server system can be complex.
+4. **Network Dependency**: Requires reliable network connectivity; performance can be affected by network issues.
+5. **Scalability Limits**: Although scalable, there are physical and practical limits to scaling server resources.
 
 ## Use Cases and Examples
 
-1.  **Web Applications**:
+1. **Web Applications**:
     - Clients: Web browsers.
     - Servers: Web servers (e.g., Apache, Nginx).
-2.  **Email Services**:
+2. **Email Services**:
     - Clients: Email clients (e.g., Outlook, Thunderbird).
     - Servers: Mail servers (e.g., Microsoft Exchange, Postfix).
-3.  **Database Systems**:
+3. **Database Systems**:
     - Clients: Applications accessing data.
     - Servers: Database servers (e.g., MySQL, Oracle).
-4.  **File Sharing**:
+4. **File Sharing**:
     - Clients: File explorer applications.
     - Servers: File servers (e.g., FTP servers, NAS devices).
-5.  **Enterprise Applications**:
+5. **Enterprise Applications**:
     - Clients: Desktop or mobile applications.
     - Servers: Application servers handling business logic.

@@ -4,6 +4,12 @@ sidebar_position: 1
 
 # HTTP
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 HTTP (Hypertext Transfer Protocol) is the foundation of data communication on the World Wide Web. It is an application layer protocol used to request and transfer hypertext data between a client (usually a web browser) and a server (hosting the website or service). HTTP is stateless, meaning each request and response are independent, with no stored state between requests. It follows a client-server architecture, where the client sends requests, and the server responds with the appropriate resource or status message.
 
 Over time, several versions of HTTP have been released, each improving upon its predecessor. These versions—HTTP/0.9, HTTP/1.0, HTTP/1.1, HTTP/2, and HTTP/3—represent the evolution of the protocol from a simple, single-request mechanism to a highly complex, optimized framework for modern web communication.
@@ -20,11 +26,14 @@ HTTP/0.9 was the first version of the protocol, characterized by simplicity. It 
 **How it works**:
 
 - **Request**: The client sends a simple text-based request with no headers:
-  ```
+
+  ```text
   GET /index.html
   ```
+
 - **Response**: The server responds with the raw body (HTML text):
-  ```
+
+  ```text
   <HTML>...</HTML>
   ```
 
@@ -56,7 +65,7 @@ HTTP/1.0 introduced more features like headers and status codes, allowing more f
 1. **Request**:
    The client sends a request to the server that includes both a method (e.g., `GET`), a target resource (e.g., `/index.html`), and headers:
 
-   ```
+   ```text
    GET /index.html HTTP/1.0
    Host: www.example.com
    User-Agent: Mozilla/5.0...
@@ -68,7 +77,7 @@ HTTP/1.0 introduced more features like headers and status codes, allowing more f
 2. **Response**:
    The server responds with a status line, headers, and the requested body:
 
-   ```
+   ```text
    HTTP/1.0 200 OK
    Content-Type: text/html
    Content-Length: 134
@@ -79,14 +88,16 @@ HTTP/1.0 introduced more features like headers and status codes, allowing more f
    - **Headers**: Provide metadata such as the type of content (`Content-Type: text/html`) and the length of the content.
    - **Body**: The actual HTML content.
 
-<div class="mermaid-container">
-    ```mermaid
-    sequenceDiagram
-        participant Client as Client
-        participant Server as Server
-        Client->>Server: GET /index.html HTTP/1.0\nHost: www.example.com\nUser-Agent: Mozilla/5.0...
-        Server->>Client: HTTP/1.0 200 OK\nContent-Type: text/html\nContent-Length: 134\n<HTML>...</HTML>
-    ```
+<div style={{textAlign: 'center'}}>
+
+```mermaid
+sequenceDiagram
+    participant Client as Client
+    participant Server as Server
+    Client->>Server: GET /index.html HTTP/1.0 Host: www.example.com User-Agent: Mozilla/5.0...
+    Server->>Client: HTTP/1.0 200 OK Content-Type: text/html Content-Length: 134 <HTML>...</HTML>
+```
+
 </div>
 
 **Pros**:
@@ -113,15 +124,18 @@ HTTP/1.1 improved upon HTTP/1.0 by introducing several new features, such as per
 - **Persistent Connections**: HTTP/1.1 allows for multiple requests and responses to be sent over a single TCP connection, significantly reducing connection overhead.
 - **Chunked Transfer Encoding**: The server can send data in chunks, allowing the client to start processing data before the entire response is available.
 - **Request**:
-  ```
+
+  ```text
   GET /index.html HTTP/1.1
   Host: www.example.com
   Connection: keep-alive
   User-Agent: Mozilla/5.0...
   ```
+
   The connection is kept open for subsequent requests.
 - **Response**:
-  ```
+
+  ```text
   HTTP/1.1 200 OK
   Content-Type: text/html
   Content-Length: 134
@@ -129,15 +143,17 @@ HTTP/1.1 improved upon HTTP/1.0 by introducing several new features, such as per
   <HTML>...</HTML>
   ```
 
-<div class="mermaid-container">
-    ```mermaid
-    sequenceDiagram
-        participant Client as Client
-        participant Server as Server
-        Client->>Server: GET /index.html HTTP/1.1\nHost: www.example.com\nConnection: keep-alive\nUser-Agent: Mozilla/5.0...
-        Server->>Client: HTTP/1.1 200 OK\nContent-Type: text/html\nContent-Length: 134\nTransfer-Encoding: chunked\n<HTML>...</HTML>
-        Server->>Client: HTTP/1.1 200 OK\nContent-Type: text/css\nContent-Length: 450\nTransfer-Encoding: chunked\n<style>...</style>
-    ```
+<div style={{textAlign: 'center'}}>
+
+```mermaid
+sequenceDiagram
+    participant Client as Client
+    participant Server as Server
+    Client->>Server: GET /index.html HTTP/1.1 Host: www.example.com Connection: keep-alive User-Agent: Mozilla/5.0...
+    Server->>Client: HTTP/1.1 200 OK Content-Type: text/html Content-Length: 134 Transfer-Encoding: chunked <HTML>...</HTML>
+    Server->>Client: HTTP/1.1 200 OK Content-Type: text/css Content-Length: 450 Transfer-Encoding: chunked <style>...</style>
+```
+
 </div>
 
 **Pros**:
@@ -170,7 +186,7 @@ HTTP/2 introduced significant improvements in performance, including multiplexin
 
 1. **Request**:
 
-   ```
+   ```text
    :method: GET
    :path: /index.html
    :scheme: https
@@ -179,21 +195,24 @@ HTTP/2 introduced significant improvements in performance, including multiplexin
    ```
 
 2. **Response**:
-   ```
+
+   ```text
    :status: 200
    content-type: text/html
    content-length: 134
    <HTML>...</HTML>
    ```
 
-<div class="mermaid-container">
-    ```mermaid
-    sequenceDiagram
-        participant Client as Client
-        participant Server as Server
-        Client->>Server: :method: GET\n:path: /index.html\n:host: www.example.com
-        Server->>Client: :status: 200\ncontent-type: text/html\ncontent-length: 134\n<HTML>...</HTML>
-    ```
+<div style={{textAlign: 'center'}}>
+
+```mermaid
+sequenceDiagram
+    participant Client as Client
+    participant Server as Server
+    Client->>Server: :method: GET\n:path: /index.html\n:host: www.example.com
+    Server->>Client: :status: 200\ncontent-type: text/html\ncontent-length: 134\n<HTML>...</HTML>
+```
+
 </div>
 
 **Pros**:
@@ -227,7 +246,7 @@ HTTP/3 builds on HTTP/2 but uses the QUIC transport protocol, which is based on 
 
 1. **Request**:
 
-   ```
+   ```text
    :method: GET
    :path: /index.html
    :scheme: https
@@ -236,21 +255,24 @@ HTTP/3 builds on HTTP/2 but uses the QUIC transport protocol, which is based on 
    ```
 
 2. **Response**:
-   ```
+
+   ```text
    :status: 200
    content-type: text/html
    content-length: 134
    <HTML>...</HTML>
    ```
 
-<div class="mermaid-container">
-    ```mermaid
-    sequenceDiagram
-        participant Client as Client
-        participant Server as Server
-        Client->>Server: :method: GET\n:path: /index.html\n:host: www.example.com
-        Server->>Client: :status: 200\ncontent-type: text/html\ncontent-length: 134\n<HTML>...</HTML>
-    ```
+<div style={{textAlign: 'center'}}>
+
+```mermaid
+sequenceDiagram
+    participant Client as Client
+    participant Server as Server
+    Client->>Server: :method: GET :path: /index.html :host: www.example.com
+    Server->>Client: :status: 200 content-type: text/html content-length: 134 <HTML>...</HTML>
+```
+
 </div>
 
 **Pros**:
@@ -286,7 +308,7 @@ When you visit a website, the web browser (client) sends an HTTP request to the 
 
 The structure of an HTTP request looks like this:
 
-```
+```text
 GET /index.html HTTP/1.1
 Host: www.example.com
 User-Agent: Mozilla/5.0
@@ -297,14 +319,15 @@ Accept: text/html
 - **Headers**: Metadata such as `Host`, `User-Agent`, and `Accept`.
 - **Body**: Optional part, used in POST or PUT requests to send data to the server.
 
-<div class="mermaid-container">
-    ```mermaid
-    sequenceDiagram
-        participant Client as Client (Browser)
-        participant Server as Server (Web Server)
+<div style={{textAlign: 'center'}}>
 
-        Client->>Server: GET /index.html HTTP/1.1\nHost: www.example.com\nUser-Agent: Mozilla/5.0\nAccept: text/html
-    ```
+```mermaid
+sequenceDiagram
+    participant Client as Client (Browser)
+    participant Server as Server (Web Server)
+
+    Client->>Server: GET /index.html HTTP/1.1 Host: www.example.com User-Agent: Mozilla/5.0 Accept: text/html
+```
 
 </div>
 
@@ -331,7 +354,7 @@ Once the server has processed the request, it sends an HTTP response back to the
 
 Example of an HTTP Response:
 
-```
+```text
 HTTP/1.1 200 OK
 Content-Type: text/html
 Content-Length: 134
@@ -339,14 +362,15 @@ Content-Length: 134
 <HTML>...</HTML>
 ```
 
-<div class="mermaid-container">
-    ```mermaid
-    sequenceDiagram
-        participant Client as Client (Browser)
-        participant Server as Server (Web Server)
+<div style={{textAlign: 'center'}}>
 
-        Server->>Client: HTTP/1.1 200 OK\nContent-Type: text/html\nContent-Length: 134\n<HTML>...</HTML>
-    ```
+```mermaid
+sequenceDiagram
+    participant Client as Client (Browser)
+    participant Server as Server (Web Server)
+
+    Server->>Client: HTTP/1.1 200 OK Content-Type: text/html Content-Length: 134 <HTML>...</HTML>
+```
 
 </div>
 
@@ -366,19 +390,20 @@ For example:
 
 ### Complete HTTP Request-Response Cycle Diagram
 
-<div class="mermaid-container">
-    ```mermaid
-    sequenceDiagram
-        participant Client as Client (Browser)
-        participant Server as Server (Web Server)
+<div style={{textAlign: 'center'}}>
 
-        Client->>Server: GET /index.html HTTP/1.1\nHost: www.example.com\nUser-Agent: Mozilla/5.0\nAccept: text/html
-        Server->>Client: HTTP/1.1 200 OK\nContent-Type: text/html\nContent-Length: 134\n<HTML>...</HTML>
-        Client->>Server: GET /style.css HTTP/1.1\nHost: www.example.com\nUser-Agent: Mozilla/5.0\nAccept: text/css
-        Server->>Client: HTTP/1.1 200 OK\nContent-Type: text/css\nContent-Length: 245\nbody { ... }
-        Client->>Server: GET /script.js HTTP/1.1\nHost: www.example.com\nUser-Agent: Mozilla/5.0\nAccept: application/javascript
-        Server->>Client: HTTP/1.1 200 OK\nContent-Type: application/javascript\nContent-Length: 500\nconsole.log('...')
-    ```
+```mermaid
+sequenceDiagram
+    participant Client as Client (Browser)
+    participant Server as Server (Web Server)
+
+    Client->>Server: GET /index.html HTTP/1.1 Host: www.example.com User-Agent: Mozilla/5.0 Accept: text/html
+    Server->>Client: HTTP/1.1 200 OK Content-Type: text/html Content-Length: 134 <HTML>...</HTML>
+    Client->>Server: GET /style.css HTTP/1.1 Host: www.example.com User-Agent: Mozilla/5.0 Accept: text/css
+    Server->>Client: HTTP/1.1 200 OK Content-Type: text/css Content-Length: 245 body { ... }
+    Client->>Server: GET /script.js HTTP/1.1 Host: www.example.com User-Agent: Mozilla/5.0 Accept: application/javascript
+    Server->>Client: HTTP/1.1 200 OK Content-Type: application/javascript Content-Length: 500 console.log('...')
+```
 
 </div>
 
@@ -394,16 +419,17 @@ Once the browser has received all the resources and rendered the webpage, the co
 
 ### Final HTTP/1.1 Request-Response with Persistent Connection
 
-<div class="mermaid-container">
-    ```mermaid
-    sequenceDiagram
-        participant Client as Client (Browser)
-        participant Server as Server (Web Server)
+<div style={{textAlign: 'center'}}>
 
-        Client->>Server: GET /index.html HTTP/1.1\nHost: www.example.com\nConnection: keep-alive
-        Server->>Client: HTTP/1.1 200 OK\nContent-Type: text/html\nContent-Length: 134\n<HTML>...</HTML>
-        Client->>Server: GET /style.css HTTP/1.1\nHost: www.example.com\nConnection: keep-alive
-        Server->>Client: HTTP/1.1 200 OK\nContent-Type: text/css\nContent-Length: 245\nbody { ... }
-    ```
+```mermaid
+sequenceDiagram
+    participant Client as Client (Browser)
+    participant Server as Server (Web Server)
+
+    Client->>Server: GET /index.html HTTP/1.1 Host: www.example.com Connection: keep-alive
+    Server->>Client: HTTP/1.1 200 OK Content-Type: text/html Content-Length: 134 <HTML>...</HTML>
+    Client->>Server: GET /style.css HTTP/1.1 Host: www.example.com Connection: keep-alive
+    Server->>Client: HTTP/1.1 200 OK Content-Type: text/css Content-Length: 245 body { ... }
+```
 
 </div>
