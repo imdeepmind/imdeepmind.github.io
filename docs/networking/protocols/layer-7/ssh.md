@@ -4,6 +4,12 @@ sidebar_position: 4
 
 # SSH
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 SSH (Secure Shell) is a cryptographic network protocol used to securely access remote systems over an unsecured network. It ensures **confidentiality**, **integrity**, and **authentication** for data communication between a client and a server. SSH is widely used for remote login, file transfers, and secure command execution.
 
 ## Key Features of SSH
