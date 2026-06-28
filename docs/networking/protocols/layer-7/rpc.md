@@ -4,6 +4,12 @@ sidebar_position: 5
 
 # RPC and gRPC
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 **RPC (Remote Procedure Call)** is a protocol that allows a program to execute functions on a remote server as if they were local. It abstracts the complexity of network communication, enabling developers to build distributed systems with ease. Traditional RPC frameworks may run over TCP, UDP, or other transport protocols, depending on the implementation.
 
 ## How RPC Works
@@ -120,6 +126,35 @@ sidebar_position: 5
 
 </div>
 
+## Mutual TLS (mTLS)
+
+Mutual TLS (mTLS) is an extension of TLS where both the client and server authenticate each other using X.509 certificates. In standard TLS, only the server presents a certificate and proves its identity to the client. With mTLS, the client also presents a certificate, allowing the server to verify the client's identity.
+
+### How mTLS Works
+
+1. Client initiates a connection to the server.
+2. Server presents its certificate.
+3. Client validates the server certificate against a trusted Certificate Authority (CA).
+4. Client presents its own certificate.
+5. Server validates the client certificate against a trusted Certificate Authority (CA).
+6. A secure encrypted channel is established.
+7. gRPC requests and responses are exchanged over the authenticated connection.
+
+### Benefits of mTLS
+
+* Encrypts all communication between client and server.
+* Authenticates both parties before any application data is exchanged.
+* Eliminates the need to transmit credentials such as API keys between trusted services.
+* Commonly used for service-to-service communication in microservice architectures.
+* Provides strong identity verification in zero-trust environments.
+
+### Common Use Cases
+
+* Communication between microservices.
+* Internal APIs within Kubernetes clusters.
+* Service mesh implementations such as Istio and Linkerd.
+* Highly regulated environments requiring strong authentication and encryption.
+
 ## Key Comparisons Between RPC and gRPC
 
 | Feature              | Traditional RPC         | gRPC                                   |
@@ -135,5 +170,3 @@ sidebar_position: 5
 
 - **RPC**: Suitable for small-scale, simpler applications requiring basic remote execution capabilities.
 - **gRPC**: Ideal for microservices architectures, streaming, and scenarios demanding high performance and strong security.
-
-Let me know if you'd like examples or deeper dives into any specific topic!
