@@ -31,7 +31,7 @@ SSH (Secure Shell) is a cryptographic network protocol used to securely access r
   - **Public Key**: Shared with the server for authentication.
   - **Private Key**: Kept secret by the client for decryption.
 
-<div class="mermaid-container">
+<div style={{textAlign: 'center'}}>
     ```mermaid
     sequenceDiagram
         participant Client as SSH Client
@@ -52,7 +52,6 @@ SSH (Secure Shell) is a cryptographic network protocol used to securely access r
         Client->>Server: Encrypted Session Established
         Server-->>Client: Encrypted Session Established
     ```
-
 </div>
 
 ### Steps in SSH Communication
@@ -75,7 +74,7 @@ The **Diffie-Hellman Key Exchange (or similar algorithm)** is used to securely a
 2. Both sides compute a shared secret key using their private parameters.
 3. The resulting shared secret key is used for symmetric encryption.
 
-<div class="mermaid-container">
+<div style={{textAlign: 'center'}}>
     ```mermaid
     sequenceDiagram
         participant Client as Client
@@ -87,7 +86,6 @@ The **Diffie-Hellman Key Exchange (or similar algorithm)** is used to securely a
         Client->>Client: Computes Shared Key = (B^a mod p)
         Server->>Server: Computes Shared Key = (A^b mod p)
     ```
-
 </div>
 
 Here:

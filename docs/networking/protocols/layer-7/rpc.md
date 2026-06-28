@@ -142,18 +142,18 @@ Mutual TLS (mTLS) is an extension of TLS where both the client and server authen
 
 ### Benefits of mTLS
 
-* Encrypts all communication between client and server.
-* Authenticates both parties before any application data is exchanged.
-* Eliminates the need to transmit credentials such as API keys between trusted services.
-* Commonly used for service-to-service communication in microservice architectures.
-* Provides strong identity verification in zero-trust environments.
+- Encrypts all communication between client and server.
+- Authenticates both parties before any application data is exchanged.
+- Eliminates the need to transmit credentials such as API keys between trusted services.
+- Commonly used for service-to-service communication in microservice architectures.
+- Provides strong identity verification in zero-trust environments.
 
 ### Common Use Cases
 
-* Communication between microservices.
-* Internal APIs within Kubernetes clusters.
-* Service mesh implementations such as Istio and Linkerd.
-* Highly regulated environments requiring strong authentication and encryption.
+- Communication between microservices.
+- Internal APIs within Kubernetes clusters.
+- Service mesh implementations such as Istio and Linkerd.
+- Highly regulated environments requiring strong authentication and encryption.
 
 ## Key Comparisons Between RPC and gRPC
 
