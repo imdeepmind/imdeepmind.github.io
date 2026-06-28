@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkimdeepmind=globalThis.webpackChunkimdeepmind||[]).push([[7472],{55513(e){e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Why imdeepmind Exists","permalink":"/blog/imdeepmind-introduction","unlisted":false,"date":"2025-12-07T00:00:00.000Z"}]}')}}]);
