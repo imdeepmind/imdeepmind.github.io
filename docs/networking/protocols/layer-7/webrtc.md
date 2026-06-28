@@ -1,8 +1,14 @@
 ---
-sidebar_position: 9
+sidebar_position: 8
 ---
 
 # WebRTC
+
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
 
 WebRTC (Web Real-Time Communication) is an open-source project that provides web browsers and mobile applications with real-time communication (RTC) capabilities via simple APIs. It supports peer-to-peer audio, video, and data sharing without requiring any additional plugins.
 
