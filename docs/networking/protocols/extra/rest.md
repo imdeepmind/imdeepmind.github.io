@@ -1,8 +1,14 @@
 ---
-sidebar_position: 8
+sidebar_position: 4
 ---
 
 # RESTful
+
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
 
 **REST (Representational State Transfer)** is an architectural style for designing networked applications. It is based on a set of constraints and principles that make it suitable for creating scalable, reliable, and stateless web services. RESTful APIs (Application Programming Interfaces) are those that conform to the REST principles.
 
@@ -97,3 +103,77 @@ Here’s a simple example of a RESTful API for managing users:
 - **GET /users/123**: Retrieves a specific user with ID 123.
 - **PUT /users/123**: Updates the information of the user with ID 123.
 - **DELETE /users/123**: Deletes the user with ID 123.
+
+## Stateless vs Cookies
+
+REST requires that each request contains all the information needed for the server to process it. The server should not maintain conversational state between requests.
+
+Using cookies does **not** automatically violate REST principles. A cookie is simply another HTTP header used to transmit data.
+
+### Stateful Session (Not RESTful)
+
+If a cookie contains a session ID, the server must look up session data stored in memory or a database.
+
+```text
+Client
+  |
+  | Cookie: session_id=abc123
+  |
+Server
+  |
+  | Lookup session
+  | Restore user state
+```
+
+Since the server relies on stored session state, this does not satisfy REST's stateless constraint.
+
+### Stateless Authentication (RESTful)
+
+Cookies can also be used to carry self-contained credentials, such as a signed JWT or refresh token. The server validates the token from the request without restoring any conversational session.
+
+```text
+Client
+  |
+  | Cookie: refresh_token=...
+  |
+Server
+  |
+  | Validate token
+  | Issue new access token
+```
+
+In this case, the cookie is merely a transport mechanism, and the request remains self-contained.
+
+> A cookie itself does not make an API stateful. What matters is whether the server must maintain per-client session state between requests.
+
+## Sessions and REST
+
+Traditional web applications often use server-side sessions for authentication and user state management. The client receives a session ID (typically stored in a cookie) and sends it with every request. The server then uses the session ID to retrieve user context from a session store such as memory, Redis, or a database.
+
+```text
+Client
+  |
+  | Cookie: session_id=abc123
+  |
+Server
+  |
+  | Lookup session
+  | Restore user context
+```
+
+This approach violates REST's stateless constraint because the server must maintain and restore per-client session state between requests.
+
+In contrast, a stateless REST API includes all information required to process a request within the request itself, often using self-contained tokens such as JWTs.
+
+```text
+Client
+  |
+  | Authorization: Bearer <JWT>
+  |
+Server
+  |
+  | Validate token
+  | Process request
+```
+
+> Storing application data in a database is compatible with REST. What REST discourages is maintaining per-client conversational state on the server between requests.

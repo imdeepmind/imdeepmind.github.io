@@ -4,6 +4,10 @@ sidebar_position: 1
 
 # Introduction
 
+<!-- markdownlint-disable MD033 -->
+
+import StableStatus from "./../src/components/StableStatus";
+
 This repository contains my personal collection of notes, primarily focused on Computer Science, Software Engineering, and Backend Development. As I explore various topics in these areas, I document my learnings and publish them on this website.
 
 If you come across any issues or errors in the notes, feel free to open an issue in the GitHub repository.
@@ -170,11 +174,45 @@ If you come across any issues or errors in the notes, feel free to open an issue
 ### System Design and Databases
 
 1. [Networking](/docs/networking/introduction.md)
-   1. [Introduction](/docs/networking/introduction.md)
-   2. [Protocols](/docs/networking/protocols/client-server-architecture.md)
-      1. [Client Server Architecture](/docs/networking/protocols/client-server-architecture.md)
-      2. [OSI Model](/docs/networking/protocols/osi-model.md)
-   3. [Communication Design Patterns](/docs/networking/communication-design-patterns/request-response.md)
+   1. [Protocols](/docs/networking/protocols/client-server-architecture.md)
+      1. [Client-Server Architecture](/docs/networking/protocols/client-server-architecture.md) <StableStatus />
+      2. [OSI Model](/docs/networking/protocols/osi-model.md) <StableStatus />
+      3. [Layer 7: Application](/docs/networking/protocols/layer-7/http.md) <StableStatus />
+         1. [HTTP](/docs//networking/protocols/layer-7/http.md) <StableStatus />
+         2. [DNS](/docs//networking/protocols/layer-7/dns.md) <StableStatus />
+         3. [SMTP](/docs//networking/protocols/layer-7/smtp.md) <StableStatus />
+         4. [SSH](/docs//networking/protocols/layer-7/ssh.md) <StableStatus />
+         5. [RPC & gRPC](/docs//networking/protocols/layer-7/rpc.md) <StableStatus />
+         6. [FTP](/docs//networking/protocols/layer-7/ftp.md) <StableStatus />
+         7. [MQTT](/docs//networking/protocols/layer-7/mqtt-amqp.md) <StableStatus />
+         8. [WebRTC](/docs//networking/protocols/layer-7/webrtc.md) <StableStatus />
+         9. [WebSocket](/docs//networking/protocols/layer-7/websocket.md) <StableStatus />
+      4. [Layer 6: Presentation](/docs//networking/protocols/layer-6/tls.md)
+         1. [TLS](/docs//networking/protocols/layer-6/tls.md)
+      5. Layer 5: Session
+      6. [Layer 4: Transport](/docs//networking/protocols/layer-4/tcp.md)
+         1. [TCP](/docs//networking/protocols/layer-4/tcp.md)
+         2. [UDP](/docs//networking/protocols/layer-4/udp.md)
+         3. [QUIC](/docs//networking/protocols/layer-4/quic.md)
+      7. [Layer 3: Network](/docs//networking/protocols/layer-3/internet-protocol.md)
+         1. [Internet Protocol](/docs//networking/protocols/layer-3/internet-protocol.md)
+         2. [ICMP](/docs//networking/protocols/layer-3/icmp.md)
+         3. [BGP](/docs//networking/protocols/layer-3/bgp.md)
+         4. [NAT](/docs//networking/protocols/layer-3/nat.md)
+      8. [Layer 2: Data Link](/docs//networking/protocols/layer-2/arp.md)
+         1. [ARP](/docs//networking/protocols/layer-2/arp.md)
+      9. [Extra](/docs/networking/protocols/extra/cdn.md)
+         1. [CDN](/docs/networking/protocols/extra/cdn.md)
+         2. [DHCP](/docs/networking/protocols/extra/dhcp.md)
+         3. [NTP](/docs/networking/protocols/extra/ntp.md)
+         4. [REST](/docs/networking/protocols/extra/rest.md) <StableStatus />
+   2. [Communication Design Patterns](/docs/networking/communication-design-patterns/request-response.md)
+      1. [Request Response](/docs/networking/communication-design-patterns/request-response.md)
+      2. [Pub Sub](/docs/networking/communication-design-patterns/pub-sub.md)
+      3. [Event Streaming](/docs/networking/communication-design-patterns/event-streaming.md)
+      4. [Short Pooling](/docs/networking/communication-design-patterns/short-pooling.md)
+      5. [Long Pooling](/docs/networking/communication-design-patterns/long-pooling.md)
+      6. [SSE](/docs/networking/communication-design-patterns/sse.md)
 
 2. [Database](/docs/databases/introduction.md)
    1. [SQL](/docs/databases/sql/introduction.md)

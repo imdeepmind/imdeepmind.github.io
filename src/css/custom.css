@@ -32,7 +32,8 @@
 }
 
 .mermaid-container {
-  margin: 20px 0; /* Optional: Adjust spacing around the diagram */
+  margin: 20px 0;
+  /* Optional: Adjust spacing around the diagram */
   text-align: center;
 }
 
@@ -44,4 +45,21 @@
   .responsive-image {
     width: 100%;
   }
+}
+
+.status-badge {
+  display: inline-block;
+  margin-left: 0.4rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  line-height: 1.2;
+  vertical-align: middle;
+}
+
+.status-badge--stable {
+  color: #2e8555;
+  border: 1px solid #2e8555;
+  background: transparent;
 }

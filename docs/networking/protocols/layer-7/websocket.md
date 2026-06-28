@@ -1,8 +1,14 @@
 ---
-sidebar_position: 10
+sidebar_position: 9
 ---
 
 # WebSocket
+
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
 
 WebSocket is a communication protocol that provides full-duplex (two-way) communication channels over a single, long-lived TCP connection. Unlike traditional HTTP requests, which are stateless and require a new connection for each exchange, WebSocket enables continuous communication between a client (such as a browser) and a server. WebSocket is particularly useful in scenarios requiring real-time communication, such as chat applications, live notifications, and online gaming.
 
