@@ -4,6 +4,12 @@ sidebar_position: 7
 
 # MQTT and AMQP
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 MQTT (Message Queuing Telemetry Transport) and AMQP (Advanced Message Queuing Protocol) are two widely used messaging protocols in distributed systems. Both facilitate communication between devices, applications, and systems, but they are designed with different use cases and requirements in mind.
 
 ## MQTT (Message Queuing Telemetry Transport)
