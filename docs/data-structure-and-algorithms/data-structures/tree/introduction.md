@@ -4,6 +4,12 @@ sidebar_position: 1
 
 # Introduction
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 A **tree** is a widely used abstract data structure that simulates a hierarchical tree structure, with a root value and subtrees of children, represented as a set of linked nodes. Trees are fundamental in computer science and are used in various applications such as databases, file systems, compilers, and more.
 
 ## Tree Terminology

@@ -4,7 +4,11 @@ sidebar_position: 7
 
 # Strict vs Complete Binary Tree
 
-<!-- markdownlint-disable MD024 -->
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
 
 ## Strict Binary Tree
 

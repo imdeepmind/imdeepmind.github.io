@@ -4,6 +4,12 @@ sidebar_position: 8
 
 # Binary Tree Traversals
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 Traversal refers to visiting each node of a binary tree exactly once in a systematic way.
 
 There are two main categories:

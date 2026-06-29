@@ -4,6 +4,12 @@ sidebar_position: 2
 
 # Binary Tree
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 A **Binary Tree** is a hierarchical data structure where each node has at most **two children**, referred to as the **left child** and **right child**.
 
 ## Key Properties
