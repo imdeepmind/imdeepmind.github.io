@@ -4,6 +4,12 @@ sidebar_position: 5
 
 # Stack
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 A **stack** is a linear data structure that follows the **Last In, First Out (LIFO)** principle. This means that the element added most recently to the stack is the first to be removed.
 
 Stacks can be visualized as a collection of elements piled one on top of another, much like a stack of plates.
