@@ -4,6 +4,12 @@ sidebar_position: 6
 
 # Queue
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 A **queue** is a linear data structure that follows the **First In First Out (FIFO)** principle. Elements are added at one end (called the **rear**) and removed from the other end (called the **front**).
 
 ## Main Data Structure Implementation in Python

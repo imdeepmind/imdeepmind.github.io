@@ -158,13 +158,17 @@ If you come across any issues or errors in the notes, feel free to open an issue
 
 1. [Data Structure and Algorithms](/docs/data-structure-and-algorithms/introduction.md)
    1. [Data Structures](/docs/data-structure-and-algorithms/data-structures/introduction.md)
-      1. [Introduction](/docs/data-structure-and-algorithms/data-structures/introduction.md)
-      2. [Arrays](/docs/data-structure-and-algorithms/data-structures/arrays.md)
-      3. [Hash Table](/docs/data-structure-and-algorithms/data-structures/hash-table.md)
+      1. [Introduction](/docs/data-structure-and-algorithms/data-structures/introduction.md) <StableStatus />
+      2. [Arrays](/docs/data-structure-and-algorithms/data-structures/arrays.md) <StableStatus />
+      3. [Hash Table](/docs/data-structure-and-algorithms/data-structures/hash-table.md) <StableStatus />
+      4. [Stack](/docs/data-structure-and-algorithms/data-structures/stack.md) <StableStatus />
+      5. [Queue](/docs/data-structure-and-algorithms/data-structures/queue.md) <StableStatus />
    1. [Algorithms](/docs/data-structure-and-algorithms/algorithms/introduction.md)
-      1. [Introduction](/docs/data-structure-and-algorithms/algorithms/introduction.md)
-      2. [Recursion](/docs/data-structure-and-algorithms/algorithms/recursion.md)
-      3. [Sorting](/docs/data-structure-and-algorithms/algorithms/sorting.md)
+      1. [Introduction](/docs/data-structure-and-algorithms/algorithms/introduction.md) <StableStatus />
+      2. [Recursion](/docs/data-structure-and-algorithms/algorithms/recursion.md) <StableStatus />
+      3. [Sliding Window](/docs/data-structure-and-algorithms/algorithms/sliding-window.md) <StableStatus />
+      4. [Two Pointers](/docs/data-structure-and-algorithms/algorithms/two-pointers.md) <StableStatus />
+      3. [Sorting](/docs/data-structure-and-algorithms/algorithms/sorting.md) <StableStatus />
    1. [Time and Space Complexity](/docs/data-structure-and-algorithms/introduction.md)
 
 ### Operating Systems
