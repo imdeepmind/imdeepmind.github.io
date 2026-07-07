@@ -166,7 +166,6 @@ Broker 3
 
 Kafka uses broker IDs to identify nodes in the cluster.
 
-
 ### Broker Storage
 
 Each broker stores partition data locally.
@@ -252,7 +251,6 @@ This is incorrect.
 A topic is a logical abstraction.
 
 Actual data is stored inside partitions.
-
 
 <div style={{textAlign: 'center'}}>
 
@@ -504,7 +502,6 @@ version=v1
 Every record inside a partition receives a unique sequential number.
 
 This number is called an Offset.
-
 
 ### Example
 

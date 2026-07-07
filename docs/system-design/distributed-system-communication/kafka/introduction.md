@@ -38,10 +38,10 @@ graph LR
 
 In the above example:
 
-* Multiple applications produce data into Kafka.
-* Kafka stores the data reliably.
-* Multiple consumers can independently read the same data.
-* Producers and consumers remain loosely coupled.
+- Multiple applications produce data into Kafka.
+- Kafka stores the data reliably.
+- Multiple consumers can independently read the same data.
+- Producers and consumers remain loosely coupled.
 
 ## Why Kafka Was Created
 
@@ -66,9 +66,9 @@ As the number of services increased, managing these connections became increasin
 
 Traditional systems struggled to handle:
 
-* Millions of messages per second
-* Thousands of concurrent consumers
-* Continuous streams of real-time data
+- Millions of messages per second
+- Thousands of concurrent consumers
+- Continuous streams of real-time data
 
 ### Data Replay Difficulties
 
@@ -76,9 +76,9 @@ In many messaging systems, once a message was consumed, it disappeared permanent
 
 If:
 
-* A consumer crashed
-* A bug corrupted data
-* A new service needed historical data
+- A consumer crashed
+- A bug corrupted data
+- A new service needed historical data
 
 Recovering the original messages became difficult or impossible.
 
@@ -86,9 +86,9 @@ Recovering the original messages became difficult or impossible.
 
 Organizations needed guarantees that:
 
-* Messages would not be lost
-* Systems could survive failures
-* Data remained available during outages
+- Messages would not be lost
+- Systems could survive failures
+- Data remained available during outages
 
 Kafka was designed specifically to address these challenges.
 
@@ -100,10 +100,10 @@ Kafka was built around several key objectives.
 
 Kafka is capable of handling millions of messages per second by:
 
-* Sequential disk writes
-* Efficient batching
-* Network optimization
-* Distributed architecture
+- Sequential disk writes
+- Efficient batching
+- Network optimization
+- Distributed architecture
 
 ### Fault Tolerance
 
@@ -111,9 +111,9 @@ Failures are expected in distributed systems.
 
 Kafka protects against failures by:
 
-* Replicating data across multiple servers
-* Automatically electing new leaders during failures
-* Preserving data durability
+- Replicating data across multiple servers
+- Automatically electing new leaders during failures
+- Preserving data durability
 
 ### Scalability
 
@@ -156,9 +156,9 @@ Kafka separates producers from consumers.
 
 Producers do not need to know:
 
-* Who consumes the data
-* How many consumers exist
-* Whether consumers are currently online
+- Who consumes the data
+- How many consumers exist
+- Whether consumers are currently online
 
 Consumers can independently read data whenever needed.
 
@@ -180,10 +180,10 @@ New records are simply appended.
 
 This design provides several benefits:
 
-* Fast writes
-* Predictable performance
-* Ordered storage
-* Efficient replication
+- Fast writes
+- Predictable performance
+- Ordered storage
+- Efficient replication
 
 Kafka extends this concept across multiple machines, making it a distributed commit log.
 
@@ -216,11 +216,11 @@ A message broker primarily focuses on delivering messages between applications.
 
 Kafka goes further by providing:
 
-* Persistent storage
-* Stream processing capabilities
-* Replayability
-* Large-scale event distribution
-* Long-term event retention
+- Persistent storage
+- Stream processing capabilities
+- Replayability
+- Large-scale event distribution
+- Long-term event retention
 
 <div style={{textAlign: 'center'}}>
 
@@ -273,10 +273,10 @@ Business metrics can be calculated as events occur.
 
 Examples:
 
-* User activity
-* Purchases
-* Clickstreams
-* Application metrics
+- User activity
+- Purchases
+- Clickstreams
+- Application metrics
 
 ### Event Sourcing
 
@@ -286,21 +286,21 @@ Kafka can serve as the central event store for applications that store state cha
 
 Kafka acts as a data backbone connecting:
 
-* Databases
-* Applications
-* Data warehouses
-* Analytics systems
+- Databases
+- Applications
+- Data warehouses
+- Analytics systems
 
 ## Why Kafka Became Popular
 
 Kafka became one of the most widely adopted data platforms because it combines several capabilities into a single system:
 
-* Message distribution
-* Persistent storage
-* Horizontal scalability
-* Fault tolerance
-* Event replay
-* Stream processing support
+- Message distribution
+- Persistent storage
+- Horizontal scalability
+- Fault tolerance
+- Event replay
+- Stream processing support
 
 Instead of building separate systems for messaging, storage, replication, and event distribution, organizations can use Kafka as a unified event streaming platform.
 
