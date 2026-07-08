@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Kafka Architecture
+# Architecture
 
 Before learning Producers, Consumers, Replication, or Fault Tolerance, it is important to understand the core building blocks that make up a Kafka cluster.
 
