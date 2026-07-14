@@ -26,9 +26,9 @@ share the prefix `"ca"` and therefore share part of the same path in the tree.
 
 Prefix Search Trees are commonly used in:
 
-* Autocomplete systems
-* Spell checkers
-* Dictionaries
-* Prefix-based searches
+- Autocomplete systems
+- Spell checkers
+- Dictionaries
+- Prefix-based searches
 
 The most common Prefix Search Tree is the **Trie**.

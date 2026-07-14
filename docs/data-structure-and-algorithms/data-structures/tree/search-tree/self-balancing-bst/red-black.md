@@ -163,9 +163,9 @@ Invalid:
 graph TD
     A(("20 (Black)"))
     A --> B(("10 (Red)"))
-    A --> D(("NIL"))
+    A --> D(("_"))
     B --> C(("5 (Red)"))
-    B --> E(("NIL"))
+    B --> E(("_"))
 ```
 
 </div>
@@ -214,11 +214,11 @@ Example:
 graph TD
     A(("20 (Black)"))
     A --> B(("10 (Red)"))
-    A --> E(("NIL"))
+    A --> E(("_"))
     B --> C(("5 (Black)"))
-    B --> F(("NIL"))
+    B --> F(("_"))
     C --> D(("NIL (Black)"))
-    C --> G(("NIL"))
+    C --> G(("_"))
 ```
 
 </div>
@@ -369,7 +369,7 @@ After right rotation:
 ```mermaid
 graph TD
     P(("20 (Black)"))
-    
+
     P --> N(("10 (Red)"))
     P --> G(("30 (Red)"))
 ```
@@ -424,7 +424,7 @@ graph TD
 
     P --> B(("_"))
     P --> N(("20 (Red)"))
-    
+
 ```
 
 </div>
@@ -489,7 +489,6 @@ graph TD
     P --> B(("_"))
     P --> N(("30 (Red)"))
 ```
-
 
 </div>
 

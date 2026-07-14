@@ -30,7 +30,7 @@ Self-balancing BSTs solve this problem by automatically reorganizing the tree wh
 
 ## Benefits
 
-* Guarantees a height of **O(log n)**
-* Provides efficient search, insertion, and deletion operations
-* Prevents performance degradation caused by skewed trees
-* Suitable for large and frequently updated datasets
+- Guarantees a height of **O(log n)**
+- Provides efficient search, insertion, and deletion operations
+- Prevents performance degradation caused by skewed trees
+- Suitable for large and frequently updated datasets

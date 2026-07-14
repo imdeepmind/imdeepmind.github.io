@@ -16,12 +16,12 @@ Unlike Binary Search Trees, which organize data using value comparisons, a Trie 
 
 Tries are commonly used for:
 
-* Autocomplete systems
-* Spell checkers
-* Dictionaries
-* Search suggestions
-* IP routing
-* Word games
+- Autocomplete systems
+- Spell checkers
+- Dictionaries
+- Search suggestions
+- IP routing
+- Word games
 
 ## Why Do We Need a Trie?
 
@@ -385,17 +385,17 @@ m = length of key
 
 ## Advantages
 
-* Fast prefix search
-* Efficient autocomplete
-* Shared prefixes reduce duplication
-* Predictable performance
-* Naturally supports lexicographical traversal
+- Fast prefix search
+- Efficient autocomplete
+- Shared prefixes reduce duplication
+- Predictable performance
+- Naturally supports lexicographical traversal
 
 ## Disadvantages
 
-* High memory usage
-* Large alphabet increases storage requirements
-* More complex than hash tables
+- High memory usage
+- Large alphabet increases storage requirements
+- More complex than hash tables
 
 ## Variants of Trie
 
@@ -419,8 +419,8 @@ Reducing memory usage.
 
 Combines ideas from:
 
-* Trie
-* Binary Search Tree
+- Trie
+- Binary Search Tree
 
 ### Suffix Trie
 
