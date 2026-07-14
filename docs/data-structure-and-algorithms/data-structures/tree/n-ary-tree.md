@@ -4,6 +4,12 @@ sidebar_position: 4
 
 # N-ary Tree
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 An **n-ary tree** is a rooted tree in which each node can have at most `n` children. This generalizes the binary tree concept to any number of children.
 
 - If `n = 2`, it’s a binary tree.

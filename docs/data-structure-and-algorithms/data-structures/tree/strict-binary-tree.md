@@ -4,6 +4,12 @@ sidebar_position: 3
 
 # Strict Binary Tree
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 A **Strict Binary Tree** (also called a full binary tree) is a binary tree in which every internal node has exactly two children. This means:
 
 - No node has only one child.
