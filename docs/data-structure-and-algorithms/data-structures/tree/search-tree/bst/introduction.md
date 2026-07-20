@@ -4,6 +4,12 @@ sidebar_position: 1
 
 # Introduction
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 A **Binary Search Tree (BST)** is a type of binary tree where each node satisfies the **BST property**:
 
 - **Left Subtree**: All values in the left subtree are **less than** the node’s value.

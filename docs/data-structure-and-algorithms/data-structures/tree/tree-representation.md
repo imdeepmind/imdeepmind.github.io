@@ -4,7 +4,11 @@ sidebar_position: 5
 
 # Tree Representation in Memory
 
-<!-- markdownlint-disable MD024 -->
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
 
 A tree can be stored in memory mainly in two ways:
 

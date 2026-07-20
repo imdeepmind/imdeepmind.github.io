@@ -156,19 +156,41 @@ If you come across any issues or errors in the notes, feel free to open an issue
 
 ### Data Structure and Algorithms
 
-1. [Data Structure and Algorithms](/docs/data-structure-and-algorithms/introduction.md)
-   1. [Data Structures](/docs/data-structure-and-algorithms/data-structures/introduction.md)
+1. [Data Structure and Algorithms](/docs/data-structure-and-algorithms/introduction.md) <StableStatus />
+   1. [Data Structures](/docs/data-structure-and-algorithms/data-structures/introduction.md) <StableStatus />
       1. [Introduction](/docs/data-structure-and-algorithms/data-structures/introduction.md) <StableStatus />
       2. [Arrays](/docs/data-structure-and-algorithms/data-structures/arrays.md) <StableStatus />
       3. [Hash Table](/docs/data-structure-and-algorithms/data-structures/hash-table.md) <StableStatus />
       4. [Stack](/docs/data-structure-and-algorithms/data-structures/stack.md) <StableStatus />
       5. [Queue](/docs/data-structure-and-algorithms/data-structures/queue.md) <StableStatus />
-   1. [Algorithms](/docs/data-structure-and-algorithms/algorithms/introduction.md)
+      6. [Tree](/docs/data-structure-and-algorithms/data-structures/tree/introduction.md) <StableStatus />
+         1. [Introduction](/docs/data-structure-and-algorithms/data-structures/tree/introduction.md) <StableStatus />
+         2. [Binary Tree](/docs/data-structure-and-algorithms/data-structures/tree/binary-tree.md) <StableStatus />
+         3. [Strict Binary Tree](/docs/data-structure-and-algorithms/data-structures/tree/strict-binary-tree.md) <StableStatus />
+         4. [N-ary Tree](/docs/data-structure-and-algorithms/data-structures/tree/n-ary-tree.md) <StableStatus />
+         5. [Tree Representation](/docs/data-structure-and-algorithms/data-structures/tree/tree-representation.md) <StableStatus />
+         6. [Full vs Complete Binary Tree](/docs/data-structure-and-algorithms/data-structures/tree/full-vs-complete-binary-tree.md) <StableStatus />
+         7. [Strict vs Complete Binary Tree](/docs/data-structure-and-algorithms/data-structures/tree/strict-vs-complete-binary-tree.md) <StableStatus />
+         8. [Binary Tree Travarsals](/docs/data-structure-and-algorithms/data-structures/tree/tree-traversal.md) <StableStatus />
+         9. [Common Tree Algorithms](/docs/data-structure-and-algorithms/data-structures/tree/common-algorithms.md) <StableStatus />
+         10. [Search Tree](/docs/data-structure-and-algorithms/data-structures/tree/search-tree/introduction.md) <StableStatus />
+             1. [Introduction](/docs/data-structure-and-algorithms/data-structures/tree/search-tree/introduction.md) <StableStatus />
+             2. [Binary Search Tree](/docs/data-structure-and-algorithms/data-structures/tree/search-tree/bst/introduction.md) <StableStatus />
+                1. [Introduction](/docs/data-structure-and-algorithms/data-structures/tree/search-tree/bst/introduction.md) <StableStatus />
+                2. [Common BST Algorithms](/docs/data-structure-and-algorithms/data-structures/tree/search-tree/bst/key-operations.md) <StableStatus />
+             3. [Self-Balancing Tree](/docs/data-structure-and-algorithms/data-structures/tree/search-tree/self-balancing-bst/introduction.md) <StableStatus />
+                1. [Introduction](/docs/data-structure-and-algorithms/data-structures/tree/search-tree/self-balancing-bst/introduction.md) <StableStatus />
+                2. [AVL Tree](/docs/data-structure-and-algorithms/data-structures/tree/search-tree/self-balancing-bst/avl.md) <StableStatus />
+                3. [Red-Black Tree](/docs/data-structure-and-algorithms/data-structures/tree/search-tree/self-balancing-bst/red-black.md) <StableStatus />
+             4. [Prefix Search Tree](/docs/data-structure-and-algorithms/data-structures/tree/search-tree/prefix-search-tree/introduction.md) <StableStatus />
+                1. [Introduction](/docs/data-structure-and-algorithms/data-structures/tree/search-tree/prefix-search-tree/introduction.md) <StableStatus />
+                2. [Trie](/docs/data-structure-and-algorithms/data-structures/tree/search-tree/prefix-search-tree/trie.md) <StableStatus />
+   1. [Algorithms](/docs/data-structure-and-algorithms/algorithms/introduction.md) <StableStatus />
       1. [Introduction](/docs/data-structure-and-algorithms/algorithms/introduction.md) <StableStatus />
       2. [Recursion](/docs/data-structure-and-algorithms/algorithms/recursion.md) <StableStatus />
       3. [Sliding Window](/docs/data-structure-and-algorithms/algorithms/sliding-window.md) <StableStatus />
       4. [Two Pointers](/docs/data-structure-and-algorithms/algorithms/two-pointers.md) <StableStatus />
-      3. [Sorting](/docs/data-structure-and-algorithms/algorithms/sorting.md) <StableStatus />
+      5. [Sorting](/docs/data-structure-and-algorithms/algorithms/sorting.md) <StableStatus />
    1. [Time and Space Complexity](/docs/data-structure-and-algorithms/introduction.md)
 
 ### Operating Systems

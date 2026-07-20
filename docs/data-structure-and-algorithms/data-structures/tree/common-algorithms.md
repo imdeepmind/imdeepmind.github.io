@@ -4,7 +4,11 @@ sidebar_position: 9
 
 # Common Tree Algorithms
 
-<!-- markdownlint-disable MD024 -->
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
 
 ## Generating Binary Tree from In-order and Post-order Traversals
 

@@ -4,6 +4,12 @@ sidebar_position: 2
 
 # Common BST Algorithms
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 A **Binary Search Tree** supports a variety of operations to insert, find, delete, construct the tree from traversal data, validate properties, and perform traversals while maintaining the BST property.
 
 ## Search in BST
