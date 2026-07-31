@@ -17,32 +17,32 @@ If you come across any issues or errors in the notes, feel free to open an issue
 ### Programming Fundamentals
 
 1. [Programming Languages](/docs/programming/introduction.md)
-   1. [Python](/docs/programming/programming-languages/python/introduction.md)
-      1. [Introduction](/docs/programming/programming-languages/python/introduction.md)
-      2. [Python Basics](/docs/programming/programming-languages/python/python-basics.md)
-      3. [Variable Scoping](/docs/programming/programming-languages/python/scoping.md)
-      4. [Common Data Structures in Python](/docs/programming/programming-languages/python/data-structure.md)
-      5. [Loops, Control Structures, and Functions](/docs/programming/programming-languages/python/loop-control-functions.md)
-      6. [`*args` and `**kwargs`](/docs/programming/programming-languages/python/args-kwargs.md)
-      7. [Standard Library](/docs/programming/programming-languages/python/standard-library.md)
-      8. [Pythonic Code](/docs/programming/programming-languages/python/pythonic-code.md)
-      9. [Object Oriented Programming (OOP)](/docs/programming/programming-languages/python/oop.md)
-      10. [Exception Handling](/docs/programming/programming-languages/python/exceptions.md)
-      11. [Context Manager](/docs/programming/programming-languages/python/context-manager.md)
-      12. [File Handling](/docs/programming/programming-languages/python/file-handling.md)
-      13. [Iterator and Generator](/docs/programming/programming-languages/python/iterators-generators.md)
-      14. [Multithreading](/docs/programming/programming-languages/python/threads.md)
-      15. [Multiprocessing, and Asyncio](/docs/programming/programming-languages/python/multiprocessing.md)
-      16. [Asyncio](/docs/programming/programming-languages/python/async.md)
-      17. [Metaprogramming](/docs/programming/programming-languages/python/metaprogramming.md)
-      18. [Decorator](/docs/programming/programming-languages/python/decorator.md)
-      19. [Unit Test](/docs/programming/programming-languages/python/unit-test.md)
-      20. [Pytest](/docs/programming/programming-languages/python/pytest.md)
-      21. [Execution Flow](/docs/programming/programming-languages/python/execution-flow.md)
-      22. [Memory Management](/docs/programming/programming-languages/python/memory-management.md)
-      23. [Reference Counting](/docs/programming/programming-languages/python/reference-counting.md)
-      24. [Generational Garbage Collection](/docs/programming/programming-languages/python/generational-garbage-collector.md)
-      25. [Package Managers](/docs/programming/programming-languages/python/package-managers.md)
+   1. [Python](/docs/programming/programming-languages/python/introduction.md) <StableStatus />
+      1. [Introduction](/docs/programming/programming-languages/python/introduction.md) <StableStatus />
+      2. [Python Basics](/docs/programming/programming-languages/python/python-basics.md) <StableStatus />
+      3. [Variable Scoping](/docs/programming/programming-languages/python/scoping.md) <StableStatus />
+      4. [Common Data Structures in Python](/docs/programming/programming-languages/python/data-structure.md) <StableStatus />
+      5. [Loops, Control Structures, and Functions](/docs/programming/programming-languages/python/loop-control-functions.md) <StableStatus />
+      6. [`*args` and `**kwargs`](/docs/programming/programming-languages/python/args-kwargs.md) <StableStatus />
+      7. [Standard Library](/docs/programming/programming-languages/python/standard-library.md) <StableStatus />
+      8. [Pythonic Code](/docs/programming/programming-languages/python/pythonic-code.md) <StableStatus />
+      9. [Object Oriented Programming (OOP)](/docs/programming/programming-languages/python/oop.md) <StableStatus />
+      10. [Exception Handling](/docs/programming/programming-languages/python/exceptions.md) <StableStatus />
+      11. [Context Manager](/docs/programming/programming-languages/python/context-manager.md) <StableStatus />
+      12. [File Handling](/docs/programming/programming-languages/python/file-handling.md) <StableStatus />
+      13. [Iterator and Generator](/docs/programming/programming-languages/python/iterators-generators.md) <StableStatus />
+      14. [Multithreading](/docs/programming/programming-languages/python/threads.md) <StableStatus />
+      15. [Multiprocessing, and Asyncio](/docs/programming/programming-languages/python/multiprocessing.md) <StableStatus />
+      16. [Asyncio](/docs/programming/programming-languages/python/async.md) <StableStatus />
+      17. [Metaprogramming](/docs/programming/programming-languages/python/metaprogramming.md) <StableStatus />
+      18. [Decorator](/docs/programming/programming-languages/python/decorator.md) <StableStatus />
+      19. [Unit Test](/docs/programming/programming-languages/python/unit-test.md) <StableStatus />
+      20. [Pytest](/docs/programming/programming-languages/python/pytest.md) <StableStatus />
+      21. [Execution Flow](/docs/programming/programming-languages/python/execution-flow.md) <StableStatus />
+      22. [Memory Management](/docs/programming/programming-languages/python/memory-management.md) <StableStatus />
+      23. [Reference Counting](/docs/programming/programming-languages/python/reference-counting.md) <StableStatus />
+      24. [Generational Garbage Collection](/docs/programming/programming-languages/python/generational-garbage-collector.md) <StableStatus />
+      25. [Package Managers](/docs/programming/programming-languages/python/package-managers.md) <StableStatus />
    2. [JavaScript](/docs/programming/programming-languages/javascript/introduction.md)
       1. [Introduction](/docs/programming/programming-languages/javascript/introduction.md)
       2. [Variables](/docs/programming/programming-languages/javascript/variables.md)
