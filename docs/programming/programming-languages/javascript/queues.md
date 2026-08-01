@@ -4,13 +4,15 @@ sidebar_position: 10
 
 # Microtask Queue, Macrotask Queue, and Rendering Queue
 
-<!-- markdownlint-disable MD024 -->
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
 
 JavaScript uses **queues** to manage the execution of asynchronous tasks and UI updates, ensuring that tasks are executed in the right order and at the right time. The **Microtask Queue**, **Macrotask Queue**, and **Rendering Queue** are critical components that work together to maintain performance and responsiveness in JavaScript applications. Understanding these concepts is essential for optimizing task scheduling and avoiding common pitfalls like UI jank or delayed task execution.
 
 ## Microtask Queue
-
-### What is the Microtask Queue?
 
 The **Microtask Queue** is a queue that holds **microtasks**, which are tasks that need to be executed immediately after the current task finishes but before any macrotasks or rendering tasks are processed. Microtasks have the highest priority in JavaScript's task scheduling system.
 
@@ -75,8 +77,6 @@ Macrotask: Timeout
 
 ## Macrotask Queue
 
-### What is the Macrotask Queue?
-
 The **Macrotask Queue** (or Event Queue) is a queue that holds **macrotasks**, which are tasks that are executed after all microtasks from the Microtask Queue are completed. Macrotasks include operations that are scheduled to run at a later time.
 
 ### Characteristics of Macrotask Queue
@@ -133,8 +133,6 @@ Macrotask 2: Timeout
 ```
 
 ## Rendering Queue
-
-### What is the Rendering Queue?
 
 The **Rendering Queue** is responsible for managing tasks that involve **rendering** updates to the user interface (UI). This includes tasks like recalculating layouts, painting elements, and compositing layers in the browser.
 

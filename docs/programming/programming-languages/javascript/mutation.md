@@ -4,6 +4,12 @@ sidebar_position: 4
 
 # Mutation and Immutability
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 In JavaScript, **mutation** refers to modifying or changing a value directly in memory, while **immutability** involves creating new values without altering the original data. Understanding which data types are mutable or immutable is essential for managing data flow and avoiding unintended side effects.
 
 ## Mutable vs. Immutable Data Types in JavaScript

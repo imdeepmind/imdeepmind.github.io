@@ -43,29 +43,29 @@ If you come across any issues or errors in the notes, feel free to open an issue
       23. [Reference Counting](/docs/programming/programming-languages/python/reference-counting.md) <StableStatus />
       24. [Generational Garbage Collection](/docs/programming/programming-languages/python/generational-garbage-collector.md) <StableStatus />
       25. [Package Managers](/docs/programming/programming-languages/python/package-managers.md) <StableStatus />
-   2. [JavaScript](/docs/programming/programming-languages/javascript/introduction.md)
-      1. [Introduction](/docs/programming/programming-languages/javascript/introduction.md)
-      2. [Variables](/docs/programming/programming-languages/javascript/variables.md)
-      3. [Data Types](/docs/programming/programming-languages/javascript/data-types.md)
-      4. [Mutation](/docs/programming/programming-languages/javascript/mutation.md)
-      5. [Functions](/docs/programming/programming-languages/javascript/functions.md)
-      6. [Conditions and Loops](/docs/programming/programming-languages/javascript/conditions-loops.md)
-      7. [Asynchronous Programming](/docs/programming/programming-languages/javascript/asynchronous.md)
-      8. [Execution Context](/docs/programming/programming-languages/javascript/execution-context.md)
-      9. [Call Stack](/docs/programming/programming-languages/javascript/call-stack.md)
-      10. [Queues](/docs/programming/programming-languages/javascript/queues.md)
-      11. [Event Loop](/docs/programming/programming-languages/javascript/event-loop.md)
-      12. [Closures and Lexical Scoping](/docs/programming/programming-languages/javascript/closures.md)
-      13. [Callbacks and Higher-Order Functions](/docs/programming/programming-languages/javascript/callback-hof.md)
-      14. [Currying and IIFE](/docs/programming/programming-languages/javascript/currying-iife.md)
-      15. [Prototypes and Inheritance](/docs/programming/programming-languages/javascript/prototype-inheritance.md)
-      16. [Object Oriented Programming](/docs/programming/programming-languages/javascript/oop.md)
-      17. [The `this` Keyword](/docs/programming/programming-languages/javascript/this.md)
-      18. [Type Coercion and Type Conversion](/docs/programming/programming-languages/javascript/coercion-conversion.md)
-      19. [`use string`](/docs/programming/programming-languages/javascript/use-strict.md)
-      20. [Event Handling](/docs/programming/programming-languages/javascript/event-handling.md)
-      21. [ES6 and Beyond](/docs/programming/programming-languages/javascript/es6.md)
-      22. [Concurrency and Parallelism](/docs/programming/programming-languages/javascript/concurrency-and-parallelism.md)
+   2. [JavaScript](/docs/programming/programming-languages/javascript/introduction.md) <StableStatus />
+      1. [Introduction](/docs/programming/programming-languages/javascript/introduction.md) <StableStatus />
+      2. [Variables](/docs/programming/programming-languages/javascript/variables.md) <StableStatus />
+      3. [Data Types](/docs/programming/programming-languages/javascript/data-types.md) <StableStatus />
+      4. [Mutation](/docs/programming/programming-languages/javascript/mutation.md) <StableStatus />
+      5. [Functions](/docs/programming/programming-languages/javascript/functions.md) <StableStatus />
+      6. [Conditions and Loops](/docs/programming/programming-languages/javascript/conditions-loops.md) <StableStatus />
+      7. [Asynchronous Programming](/docs/programming/programming-languages/javascript/asynchronous.md) <StableStatus />
+      8. [Execution Context](/docs/programming/programming-languages/javascript/execution-context.md) <StableStatus />
+      9. [Call Stack](/docs/programming/programming-languages/javascript/call-stack.md) <StableStatus />
+      10. [Queues](/docs/programming/programming-languages/javascript/queues.md) <StableStatus />
+      11. [Event Loop](/docs/programming/programming-languages/javascript/event-loop.md) <StableStatus />
+      12. [Closures and Lexical Scoping](/docs/programming/programming-languages/javascript/closures.md) <StableStatus />
+      13. [Callbacks and Higher-Order Functions](/docs/programming/programming-languages/javascript/callback-hof.md) <StableStatus />
+      14. [Currying and IIFE](/docs/programming/programming-languages/javascript/currying-iife.md) <StableStatus />
+      15. [Prototypes and Inheritance](/docs/programming/programming-languages/javascript/prototype-inheritance.md) <StableStatus />
+      16. [Object Oriented Programming](/docs/programming/programming-languages/javascript/oop.md) <StableStatus />
+      17. [The `this` Keyword](/docs/programming/programming-languages/javascript/this.md) <StableStatus />
+      18. [Type Coercion and Type Conversion](/docs/programming/programming-languages/javascript/coercion-conversion.md) <StableStatus />
+      19. [`use string`](/docs/programming/programming-languages/javascript/use-strict.md) <StableStatus />
+      20. [Event Handling](/docs/programming/programming-languages/javascript/event-handling.md) <StableStatus />
+      21. [ES6 and Beyond](/docs/programming/programming-languages/javascript/es6.md) <StableStatus />
+      22. [Concurrency and Parallelism](/docs/programming/programming-languages/javascript/concurrency-and-parallelism.md) <StableStatus />
    3. [Go](/docs/programming/programming-languages/go/introduction.md)
       1. [Introduction](/docs/programming/programming-languages/go/introduction.md)
       2. [Packages and Modules](/docs/programming/programming-languages/go/packages-modules.md)

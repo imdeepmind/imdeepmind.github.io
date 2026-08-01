@@ -4,6 +4,12 @@ sidebar_position: 22
 
 # Concurrency and Parallelism
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 In modern JavaScript, handling multiple tasks simultaneously is crucial for building fast, responsive applications. However, understanding the difference between **concurrency** and **parallelism** is important for developers to design systems that can efficiently manage multiple tasks. JavaScript is single-threaded but can still handle multiple operations concurrently without blocking the main thread.
 
 ## Concurrency vs Parallelism

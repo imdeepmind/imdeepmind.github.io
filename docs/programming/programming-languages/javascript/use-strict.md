@@ -4,6 +4,12 @@ sidebar_position: 19
 
 # `"use strict"`
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 `"use strict"` is a directive introduced in ECMAScript 5 (ES5) that enables **strict mode** in JavaScript. Strict mode is a restricted variant of JavaScript that helps catch common coding mistakes, prevents the use of unsafe features, and enforces stricter parsing and error handling.
 
 Strict mode can be applied to an **entire script** or to **individual functions**, and its purpose is to make JavaScript code more secure, robust, and predictable.

@@ -4,6 +4,12 @@ sidebar_position: 15
 
 # Prototypes and Inheritance
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 ## Prototypes
 
 In JavaScript, **prototypes** are a fundamental mechanism for object inheritance. Every object has a prototype, which is another object that it inherits properties and methods from. When you try to access a property or method on an object, JavaScript first checks if the property exists on the object itself. If not, it looks up the prototype chain (more on this below).

@@ -4,9 +4,15 @@ sidebar_position: 7
 
 # Conditions and Loops
 
-## Conditionals
+:::tip[Status]
 
-Conditionals allow you to control the flow of your program based on certain conditions. JavaScript provides several ways to handle conditional logic.
+This note is complete, reviewed, and considered stable.
+
+:::
+
+## Conditions
+
+Conditions allow you to control the flow of your program based on certain conditions. JavaScript provides several ways to handle conditional logic.
 
 ### `if` Statement
 

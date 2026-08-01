@@ -4,6 +4,12 @@ sidebar_position: 17
 
 # Type Coercion vs Type Conversion
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 In JavaScript, handling data types and performing operations that involve different data types is a common occurrence. JavaScript has two important concepts related to types: **Type Coercion** and **Type Conversion**. Although these terms are often used interchangeably, they have distinct meanings in the context of JavaScript programming.
 
 ## Type Coercion

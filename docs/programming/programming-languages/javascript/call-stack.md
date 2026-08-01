@@ -4,6 +4,12 @@ sidebar_position: 9
 
 # Call Stack
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 The **Call Stack** is a data structure that keeps track of the active execution contexts in a program. It follows the **LIFO (Last In, First Out)** principle, meaning the last function added to the stack is the first one to be executed and removed after completion.
 
 - When a function is called, a **Stack Frame** (representing its execution context) is created and pushed onto the stack.
@@ -112,6 +118,8 @@ first();
 10. **Global Execution Context Remains:**
     - Once all functions finish execution, the stack is empty except for the Global Execution Context, which is removed when the program ends.
 
+<div style={{textAlign: 'center'}}>
+
 ```mermaid
 sequenceDiagram
     participant GlobalContext
@@ -150,6 +158,8 @@ sequenceDiagram
     deactivate first
 
 ```
+
+</div>
 
 ### Final State
 
