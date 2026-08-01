@@ -4,7 +4,11 @@ sidebar_position: 6
 
 # Asynchronous Programming
 
-<!-- markdownlint-disable MD024 -->
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
 
 Asynchronous programming in JavaScript allows you to perform tasks like I/O operations, network requests, and file reading without blocking the execution of the rest of the program. JavaScript uses **callbacks**, **promises**, and **async/await** to handle asynchronous code. Let’s explore each concept in detail:
 

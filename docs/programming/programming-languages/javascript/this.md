@@ -4,6 +4,12 @@ sidebar_position: 17
 
 # The `this` Keyword
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 In JavaScript, the `this` keyword is a powerful and often misunderstood concept. It refers to the execution context (the object to which the function belongs) at runtime. The value of `this` depends on **how** and **where** a function is invoked, rather than where it is declared.
 
 ## The Basics of `this`

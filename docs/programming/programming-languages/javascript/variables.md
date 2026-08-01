@@ -4,6 +4,12 @@ sidebar_position: 2
 
 # Variables
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 Variables in JavaScript are used to store data values, which can be of various types like numbers, strings, objects, and arrays.
 
 ## Variable Declaration Keywords

@@ -4,6 +4,12 @@ sidebar_position: 8
 
 # Error Handling
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 Error handling in Go (Golang) is a fundamental part of writing robust and reliable programs. Unlike many other languages that use exceptions, Go uses a simple, explicit, and lightweight approach based on returning error values.
 
 ## The `error` Type

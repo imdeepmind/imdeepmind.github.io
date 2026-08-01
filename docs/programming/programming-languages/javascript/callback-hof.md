@@ -4,6 +4,12 @@ sidebar_position: 13
 
 # Callbacks and Higher-Order Functions
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 In JavaScript, **callbacks** and **higher-order functions** are key concepts, especially when dealing with asynchronous programming, functional programming paradigms, and code modularity.
 
 ## Callbacks
@@ -128,12 +134,3 @@ console.log(doubledNumbers); // Output: [2, 4, 6, 8, 10]
 | **Example**          | `setTimeout()` accepting a function as the callback.                                      | `map()` or `filter()` array methods that take a function as an argument.               |
 | **Return Value**     | Typically, callbacks do not return a value; they are executed later.                      | Can return a new function or modify a data structure.                                  |
 | **Typical Use Case** | Asynchronous handling, event handling, error handling.                                    | Functional programming, creating abstractions, functional composition.                 |
-
-## Conclusion
-
-Both **callbacks** and **higher-order functions** are foundational concepts in JavaScript:
-
-- **Callbacks** enable asynchronous operations and deferred execution.
-- **Higher-order functions** make JavaScript more powerful by allowing functions to be used as arguments or returned as values.
-
-Understanding and utilizing these concepts allows developers to write more concise, flexible, and modular code, especially when dealing with asynchronous processes, event handling, and functional programming techniques.

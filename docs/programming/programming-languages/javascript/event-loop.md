@@ -4,6 +4,12 @@ sidebar_position: 11
 
 # Event Loop
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 The **Event Loop** is one of the most critical components of JavaScript's concurrency model, enabling the language to handle asynchronous tasks while maintaining its single-threaded nature. It is a mechanism that orchestrates the execution of tasks, ensuring that code runs in a non-blocking and seamless manner.
 
 ## What is the Event Loop?

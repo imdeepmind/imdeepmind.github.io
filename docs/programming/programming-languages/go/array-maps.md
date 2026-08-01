@@ -4,6 +4,12 @@ sidebar_position: 13
 
 # Arrays, Slices and, Maps
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 In Go, **arrays**, **slices**, and **maps** are built-in types used for storing and working with collections of data. Each of these data structures serves a different purpose and has its own unique characteristics and use cases. Understanding how they work helps me write more efficient and effective Go code.
 
 ## Arrays in Go

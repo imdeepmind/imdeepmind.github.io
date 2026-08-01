@@ -4,6 +4,12 @@ sidebar_position: 6
 
 # Tips & Tricks
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 Goroutines are lightweight, but that doesn’t mean we can spin them up carelessly. In real-world systems, poor goroutine management can lead to resource leaks, excessive memory usage, or subtle concurrency bugs. Here are some important tips and tricks we should keep in mind:
 
 ## Goroutine Management Tips
