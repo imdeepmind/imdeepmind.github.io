@@ -4,7 +4,11 @@ sidebar_position: 6
 
 # Conditions and Loops
 
-<!-- markdownlint-disable MD024 -->
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
 
 Go provides concise and flexible syntax for implementing conditional statements and loops. These constructs are essential for controlling the flow of execution and iterating over data structures.
 

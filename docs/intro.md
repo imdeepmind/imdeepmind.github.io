@@ -66,26 +66,26 @@ If you come across any issues or errors in the notes, feel free to open an issue
       20. [Event Handling](/docs/programming/programming-languages/javascript/event-handling.md) <StableStatus />
       21. [ES6 and Beyond](/docs/programming/programming-languages/javascript/es6.md) <StableStatus />
       22. [Concurrency and Parallelism](/docs/programming/programming-languages/javascript/concurrency-and-parallelism.md) <StableStatus />
-   3. [Go](/docs/programming/programming-languages/go/introduction.md)
-      1. [Introduction](/docs/programming/programming-languages/go/introduction.md)
-      2. [Packages and Modules](/docs/programming/programming-languages/go/packages-modules.md)
-      3. [Variable and Scope](/docs/programming/programming-languages/go/variable.md)
-      4. [Mutation](/docs/programming/programming-languages/go/mutation.md)
-      5. [`fmt` Package](/docs/programming/programming-languages/go/fmt-package.md)
-      6. [Condition and Loops](/docs/programming/programming-languages/go/condition.md)
-      7. [Functions](/docs/programming/programming-languages/go/functions.md)
-      8. [Error Handling](/docs/programming/programming-languages/go/error-handling.md)
-      9. [File Handling](/docs/programming/programming-languages/go/files.md)
-      10. [Pointers](/docs/programming/programming-languages/go/pointers.md)
-      11. [Structs and Custom Types](/docs/programming/programming-languages/go/structs.md)
-      12. [Interfaces](/docs/programming/programming-languages/go/interfaces.md)
-      13. [Array, Slices, and Maps](/docs/programming/programming-languages/go/array-maps.md)
-      14. [Goroutines](/docs/programming/programming-languages/go/goroutines/introduction.md)
-          1. [Introduction](/docs/programming/programming-languages/go/goroutines/introduction.md)
-          2. [Wait Groups](/docs/programming/programming-languages/go/goroutines/wait-group.md)
-          3. [Mutex](/docs/programming/programming-languages/go/goroutines/mutex.md)
-          4. [Channels](/docs/programming/programming-languages/go/goroutines/channels.md)
-          5. [Tips & Tricks](/docs/programming/programming-languages/go/goroutines/tips-tricks.md)
+   3. [Go](/docs/programming/programming-languages/go/introduction.md) <StableStatus />
+      1. [Introduction](/docs/programming/programming-languages/go/introduction.md) <StableStatus />
+      2. [Packages and Modules](/docs/programming/programming-languages/go/packages-modules.md) <StableStatus />
+      3. [Variable and Scope](/docs/programming/programming-languages/go/variable.md) <StableStatus />
+      4. [Mutation](/docs/programming/programming-languages/go/mutation.md) <StableStatus />
+      5. [`fmt` Package](/docs/programming/programming-languages/go/fmt-package.md) <StableStatus />
+      6. [Condition and Loops](/docs/programming/programming-languages/go/condition.md) <StableStatus />
+      7. [Functions](/docs/programming/programming-languages/go/functions.md) <StableStatus />
+      8. [Error Handling](/docs/programming/programming-languages/go/error-handling.md) <StableStatus />
+      9. [File Handling](/docs/programming/programming-languages/go/files.md) <StableStatus />
+      10. [Pointers](/docs/programming/programming-languages/go/pointers.md) <StableStatus />
+      11. [Structs and Custom Types](/docs/programming/programming-languages/go/structs.md) <StableStatus />
+      12. [Interfaces](/docs/programming/programming-languages/go/interfaces.md) <StableStatus />
+      13. [Array, Slices, and Maps](/docs/programming/programming-languages/go/array-maps.md) <StableStatus />
+      14. [Goroutines](/docs/programming/programming-languages/go/goroutines/introduction.md) <StableStatus />
+          1. [Introduction](/docs/programming/programming-languages/go/goroutines/introduction.md) <StableStatus />
+          2. [Wait Groups](/docs/programming/programming-languages/go/goroutines/wait-group.md) <StableStatus />
+          3. [Mutex](/docs/programming/programming-languages/go/goroutines/mutex.md) <StableStatus />
+          4. [Channels](/docs/programming/programming-languages/go/goroutines/channels.md) <StableStatus />
+          5. [Tips & Tricks](/docs/programming/programming-languages/go/goroutines/tips-tricks.md) <StableStatus />
 
 ### Framework and Libraries
 

@@ -4,6 +4,12 @@ sidebar_position: 3
 
 # Variables and Scope
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 ## Variables
 
 A variable in Go is a storage location with a name, associated with a type, that holds a value. Variables can be declared using the `var` keyword or short declaration syntax.

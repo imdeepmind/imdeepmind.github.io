@@ -4,6 +4,12 @@ sidebar_position: 2
 
 # Wait Groups
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 A wait group is an object that tracks the number of goroutines to wait for. We increment its counter when starting a goroutine and decrement it when a goroutine finishes. The main goroutine can then block until the counter drops to zero.
 
 - Provided by the `sync` package: `sync.WaitGroup`
