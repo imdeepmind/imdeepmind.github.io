@@ -4,9 +4,15 @@ sidebar_position: 3
 
 # QUIC
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 QUIC (Quick UDP Internet Connections) is a modern transport layer protocol developed by Google to address the limitations of older protocols like TCP (Transmission Control Protocol) and improve web performance, especially in high-latency and unreliable network conditions. QUIC runs on top of UDP (User Datagram Protocol), which is a connectionless protocol, and provides features typically associated with TCP, such as reliability, flow control, and congestion control, but with lower latency and better performance.
 
-### Key Features of QUIC
+## Key Features of QUIC
 
 ### Connection Establishment Speed
 
@@ -40,7 +46,8 @@ QUIC packets consist of several components that work together to manage connecti
 
 Here's a basic representation of the QUIC packet structure:
 
-<div class="mermaid-container">
+<div style={{textAlign: 'center'}}>
+
     ```mermaid
     graph TB
         A[QUIC Packet] --> B[Header]
@@ -51,6 +58,7 @@ Here's a basic representation of the QUIC packet structure:
         E --> G[Acknowledgment Frame]
         E --> H[Padding]
     ```
+
 </div>
 
 - **Connection ID**: A unique identifier used to identify the connection.
@@ -61,7 +69,8 @@ Here's a basic representation of the QUIC packet structure:
 
 In traditional protocols like TCP, the handshake involves three steps: SYN, SYN-ACK, and ACK. QUIC combines transport and cryptographic handshakes, making it faster. Here’s a simplified version of the QUIC handshake:
 
-<div class="mermaid-container">
+<div style={{textAlign: 'center'}}>
+
     ```mermaid
     sequenceDiagram
         participant Client
@@ -90,7 +99,8 @@ This reduces the connection setup time compared to traditional TCP handshakes, e
 
 QUIC allows multiple independent streams to be established between the client and server over a single connection. Streams are identified by stream numbers and can be independently sent, acknowledged, and reset. This prevents head-of-line blocking since the loss of one stream doesn’t impact others.
 
-<div class="mermaid-container">
+<div style={{textAlign: 'center'}}>
+
     ```mermaid
     graph TB
         A[QUIC Connection]
@@ -101,6 +111,7 @@ QUIC allows multiple independent streams to be established between the client an
         C --> F[Stream Frame 2]
         D --> G[Stream Frame 3]
     ```
+
 </div>
 
 - **Streams**: Independent channels through which data is transmitted.
@@ -140,7 +151,8 @@ To understand how QUIC functions internally, we need to look at how the protocol
 
 QUIC has several advantages over TCP in terms of performance and efficiency, especially for modern web applications:
 
-<div class="mermaid-container">
+<div style={{textAlign: 'center'}}>
+
     ```mermaid
     sequenceDiagram
         participant Client
