@@ -193,11 +193,11 @@ Consider the following example, assuming the same approximate training FLOPs for
 
 | Model Parameters | Training Tokens | Approximate Training Compute |
 | ---------------- | --------------: | ---------------------------: |
-| 1B               |             10B |              `6 × 10^19 FLOPs` |
-| 2B               |             10B |            `1.2 × 10^20 FLOPs` |
-| 1B               |             20B |            `1.2 × 10^20 FLOPs` |
-| 2B               |             20B |            `2.4 × 10^20 FLOPs` |
-| 4B               |             40B |            `9.6 × 10^20 FLOPs` |
+| 1B               |             10B |            `6 × 10^19 FLOPs` |
+| 2B               |             10B |          `1.2 × 10^20 FLOPs` |
+| 1B               |             20B |          `1.2 × 10^20 FLOPs` |
+| 2B               |             20B |          `2.4 × 10^20 FLOPs` |
+| 4B               |             40B |          `9.6 × 10^20 FLOPs` |
 
 Notice that doubling either the model size or the training tokens approximately doubles the computational requirement, assuming the other variable remains unchanged.
 
@@ -429,10 +429,10 @@ For example, suppose we have a fixed compute budget and test the following confi
 
 | Experiment | Model Size | Training Tokens | Approximate Compute |
 | ---------- | ---------: | --------------: | ------------------: |
-| A          |        10B |            100B |     `6 × 10^21 FLOPs` |
-| B          |        20B |             50B |     `6 × 10^21 FLOPs` |
-| C          |         5B |            200B |     `6 × 10^21 FLOPs` |
-| D          |        25B |             40B |     `6 × 10^21 FLOPs` |
+| A          |        10B |            100B |   `6 × 10^21 FLOPs` |
+| B          |        20B |             50B |   `6 × 10^21 FLOPs` |
+| C          |         5B |            200B |   `6 × 10^21 FLOPs` |
+| D          |        25B |             40B |   `6 × 10^21 FLOPs` |
 
 The computational requirement is approximately the same for each experiment.
 
