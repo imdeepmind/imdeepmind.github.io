@@ -309,6 +309,11 @@ If you come across any issues or errors in the notes, feel free to open an issue
          1. [Introduction](/docs/ml/language-models/transformer/introduction.md)
          2. [Transformer-Based Language Models](/docs/ml/language-models/transformer/transformer-models.md)
          3. [Modern LLM Architectures](/docs/ml/language-models/transformer/transformer-models-modern.md)
+      3. [Prompting and In-Context Learning](/docs/ml/language-models/prompting.md)
+      4. [Inference Configuration](/docs/ml/language-models/inference-configuration.md)
+      5. [Model Pre-training and Scaling](/docs/ml/language-models/model-pre-training.md)
+      6. [Distributed Training](/docs/ml/language-models/distributed-training.md)
+      7. [Scaling Laws](/docs/ml/language-models/scaling-laws.md)
 
 ## Sources
 
