@@ -297,6 +297,19 @@ If you come across any issues or errors in the notes, feel free to open an issue
 2. [Design Patterns](/docs/design-patterns/introduction.md)
 3. [Other](/docs/other/regex.md) -->
 
+### Machine Learning
+
+1. [Machine Learning](/docs/ml/introduction.md)
+   1. [Language Models](/docs/ml/language-models/attention/introduction.md)
+      1. [Attention](/docs/ml/language-models/attention/introduction.md)
+         1. [Introduction](/docs/ml/language-models/attention/introduction.md)
+         2. [Self-Attention](/docs/ml/language-models/attention/self-attention.md)
+         3. [Multi-Head Attention](/docs/ml/language-models/attention/multi-headed.md)
+      2. [Transformer](/docs/ml/language-models/transformer/introduction.md)
+         1. [Introduction](/docs/ml/language-models/transformer/introduction.md)
+         2. [Transformer-Based Language Models](/docs/ml/language-models/transformer/transformer-models.md)
+         3. [Modern LLM Architectures](/docs/ml/language-models/transformer/transformer-models-modern.md)
+
 ## Sources
 
 The notes are primarily created by me or with the assistance of ChatGPT. Occasionally, they include content adapted from other sources, though I typically rework the material rather than copying it verbatim.

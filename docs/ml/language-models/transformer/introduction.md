@@ -1,8 +1,8 @@
 ---
-sidebar_position: 4
+sidebar_position: 1
 ---
 
-# Transformer
+# Introduction
 
 The Transformer is a neural network architecture designed to process sequential data, particularly natural language, by using attention mechanisms to understand relationships between different elements in a sequence. Introduced in the 2017 research paper _Attention Is All You Need_, it changed how neural networks process language by replacing recurrent processing with an architecture that can establish relationships between tokens directly and process multiple token positions in parallel during training.
 
