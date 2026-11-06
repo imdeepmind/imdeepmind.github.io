@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-ml/language-models/model-pre-training" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.10.2">
+<title data-rh="true">Model Pre-training and Scaling | imdeepmind</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://imdeepmind.com/img/logo.png"><meta data-rh="true" name="twitter:image" content="https://imdeepmind.com/img/logo.png"><meta data-rh="true" property="og:url" content="https://imdeepmind.com/docs/ml/language-models/model-pre-training/"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Model Pre-training and Scaling | imdeepmind"><meta data-rh="true" name="description" content="A Large Language Model does not begin with the ability to understand instructions, answer questions, summarize documents, or generate meaningful text. These capabilities emerge through a training process in which the model is exposed to large amounts of data and learns patterns, relationships, and statistical structures within that data."><meta data-rh="true" property="og:description" content="A Large Language Model does not begin with the ability to understand instructions, answer questions, summarize documents, or generate meaningful text. These capabilities emerge through a training process in which the model is exposed to large amounts of data and learns patterns, relationships, and statistical structures within that data."><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://imdeepmind.com/docs/ml/language-models/model-pre-training/"><link data-rh="true" rel="alternate" href="https://imdeepmind.com/docs/ml/language-models/model-pre-training/" hreflang="en"><link data-rh="true" rel="alternate" href="https://imdeepmind.com/docs/ml/language-models/model-pre-training/" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Model Pre-training and Scaling","item":"https://imdeepmind.com/docs/ml/language-models/model-pre-training"}]}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="imdeepmind RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="imdeepmind Atom Feed">
+
+<link rel="preconnect" href="https://www.google-analytics.com">
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K8QYYPXTLR"></script>
+<script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-K8QYYPXTLR",{anonymize_ip:!0})</script>
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/assets/css/styles.b23a5360.css">
+<script src="/assets/js/runtime~main.6a61fcf1.js" defer="defer"></script>
+<script src="/assets/js/main.99a8508a.js" defer="defer"></script>
+</head>
+<body>
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo.png" alt="imdeepmind logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/logo.png" alt="imdeepmind logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">abhishek chatterjee</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/intro/">Notes</a><a class="navbar__item navbar__link" href="/blog/">Blogs</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://rocketapi.net" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">Rocket<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><a href="https://gallery.imdeepmind.com" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">Gallery<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><a href="https://linkedin.com/in/imdeepmind" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">LinkedIn<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><a href="https://github.com/imdeepmind" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/intro/"><span class="linkLabel_WmDU">Introduction</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/programming/introduction/"><span class="categoryLinkLabel_W154">Programming</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/frameworks-libraries/introduction/"><span class="categoryLinkLabel_W154">Framework and Libraries</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/data-structure-and-algorithms/introduction/"><span class="categoryLinkLabel_W154">Data Structure and Algorithms</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/operating-systems/introduction/"><span class="categoryLinkLabel_W154">Operating Systems</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/networking/introduction/"><span class="categoryLinkLabel_W154">Networking</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/databases/introduction/"><span class="categoryLinkLabel_W154">Databases</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/containers/introduction/"><span class="categoryLinkLabel_W154">Containers</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/system-design/introduction/"><span class="categoryLinkLabel_W154">System Design</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/version-control/introduction/"><span class="categoryLinkLabel_W154">Version Control</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/cloud/aws/aurora/"><span class="categoryLinkLabel_W154">Cloud</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/design-patterns/introduction/"><span class="categoryLinkLabel_W154">Design Patterns</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/ml/introduction/"><span class="categoryLinkLabel_W154">Machine Learning</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/ml/introduction/"><span class="linkLabel_WmDU">Introduction</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/ml/mcp/introduction/"><span class="categoryLinkLabel_W154">MCP</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/ml/lang-chain/introduction/"><span class="categoryLinkLabel_W154">LangChain</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" tabindex="0" href="/docs/ml/language-models/attention/introduction/"><span class="categoryLinkLabel_W154">Language Models</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/ml/language-models/attention/introduction/"><span class="categoryLinkLabel_W154">Attention</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/ml/language-models/transformer/introduction/"><span class="categoryLinkLabel_W154">Transformer</span></a></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/ml/language-models/prompting/"><span class="linkLabel_WmDU">Prompting and In-Context Learning</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/ml/language-models/inference-configuration/"><span class="linkLabel_WmDU">Inference Configuration</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/ml/language-models/model-pre-training/"><span class="linkLabel_WmDU">Model Pre-training and Scaling</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/ml/language-models/distributed-training/"><span class="linkLabel_WmDU">Distributed Training</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/ml/language-models/scaling-laws/"><span class="linkLabel_WmDU">Scaling Laws</span></a></li></ul></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/other/regex/"><span class="categoryLinkLabel_W154">Other</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Machine Learning</span></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Language Models</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Model Pre-training and Scaling</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Model Pre-training and Scaling</h1></header>
+<p>A Large Language Model does not begin with the ability to understand instructions, answer questions, summarize documents, or generate meaningful text. These capabilities emerge through a training process in which the model is exposed to large amounts of data and learns patterns, relationships, and statistical structures within that data.</p>
+<p>The first major stage in developing an LLM is called <strong>Pre-training</strong>. During this stage, a model is trained on a large and diverse collection of text so that it can learn general language representations and develop the ability to predict or reconstruct parts of the input.</p>
+<p>Unlike traditional machine learning systems that are often trained for a specific task, pre-trained language models are designed to acquire general-purpose capabilities that can subsequently be adapted to different applications.</p>
+<p>However, training an LLM is considerably more complicated than simply providing a large dataset to a model. It involves collecting and processing training data, converting text into numerical representations, selecting an appropriate training objective, determining the model&#x27;s size, and managing the computational resources required to train it.</p>
+<p>As model sizes increase, these requirements become increasingly challenging. Training larger models requires more GPU memory, greater computational capacity, and careful management of numerical precision. Techniques such as FP16, BFLOAT16, and INT8 help address some of these challenges by reducing the amount of memory and computational resources required for numerical operations.</p>
+<p>In this section, we will understand how LLM pre-training works, how training datasets are prepared, how different training objectives are used, and how model size, GPU memory, and numerical precision influence the overall training process.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="llm-pre-training-overview">LLM Pre-training Overview<a href="#llm-pre-training-overview" class="hash-link" aria-label="Direct link to LLM Pre-training Overview" title="Direct link to LLM Pre-training Overview" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-is-pre-training">What Is Pre-training?<a href="#what-is-pre-training" class="hash-link" aria-label="Direct link to What Is Pre-training?" title="Direct link to What Is Pre-training?" translate="no">​</a></h3>
+<p>Pre-training is the initial training stage in which a language model learns general patterns and representations from a large collection of data before being adapted to specific tasks or applications.</p>
+<p>During pre-training, the model is exposed to enormous amounts of text collected from different sources, such as books, articles, websites, documentation, and other publicly or privately available datasets.</p>
+<p>The objective is to develop a model that can recognize relationships between tokens, understand language patterns, and learn how different pieces of information relate to one another.</p>
+<p>For example, consider the following sentence:</p>
+<p>&quot;The application stores user information in a database.&quot;</p>
+<p>After processing millions or billions of similar examples, the model gradually learns relationships between concepts such as applications, users, information, and databases.</p>
+<p>It learns that certain words and concepts frequently appear together, that sentences follow grammatical structures, and that the meaning of a word can depend on its surrounding context.</p>
+<p>These learned patterns form the foundation for the model&#x27;s subsequent capabilities.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-does-pre-training-work">How Does Pre-training Work?<a href="#how-does-pre-training-work" class="hash-link" aria-label="Direct link to How Does Pre-training Work?" title="Direct link to How Does Pre-training Work?" translate="no">​</a></h3>
+<p>The pre-training process can be understood through a sequence of steps.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="step-1-collect-training-data">Step 1: Collect Training Data<a href="#step-1-collect-training-data" class="hash-link" aria-label="Direct link to Step 1: Collect Training Data" title="Direct link to Step 1: Collect Training Data" translate="no">​</a></h4>
+<p>The first step is to gather a sufficiently large and diverse collection of text from different sources.</p>
+<p>For example, a training dataset might contain:</p>
+<ul>
+<li class="">Books and educational material.</li>
+<li class="">Websites and online articles.</li>
+<li class="">Technical documentation.</li>
+<li class="">Research papers.</li>
+<li class="">Programming code.</li>
+<li class="">Publicly available datasets.</li>
+</ul>
+<p>The purpose is to expose the model to a broad range of language patterns, topics, and information.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="step-2-process-and-clean-the-data">Step 2: Process and Clean the Data<a href="#step-2-process-and-clean-the-data" class="hash-link" aria-label="Direct link to Step 2: Process and Clean the Data" title="Direct link to Step 2: Process and Clean the Data" translate="no">​</a></h4>
+<p>Raw text collected from different sources often contains duplicate content, formatting issues, irrelevant material, and low-quality information.</p>
+<p>The dataset must therefore be cleaned and filtered before it is used for training.</p>
+<p>This process improves the quality of the training material and reduces unnecessary or harmful information.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="step-3-tokenize-the-data">Step 3: Tokenize the Data<a href="#step-3-tokenize-the-data" class="hash-link" aria-label="Direct link to Step 3: Tokenize the Data" title="Direct link to Step 3: Tokenize the Data" translate="no">​</a></h4>
+<p>The cleaned text is converted into tokens using a tokenizer.</p>
+<p>These tokens are then mapped to numerical token IDs that the model can process.</p>
+<p>For example:</p>
+<p>&quot;The application is ready.&quot;</p>
+<p>Might be represented as:</p>
+<p>[The, application, is, ready, .]</p>
+<p>The actual tokenization depends on the tokenizer and its vocabulary; a word may also be split into multiple subword tokens.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="step-4-feed-the-data-into-the-model">Step 4: Feed the Data into the Model<a href="#step-4-feed-the-data-into-the-model" class="hash-link" aria-label="Direct link to Step 4: Feed the Data into the Model" title="Direct link to Step 4: Feed the Data into the Model" translate="no">​</a></h4>
+<p>The token IDs are provided to the model as training input.</p>
+<p>The model processes these tokens and produces predictions according to its training objective.</p>
+<p>For example, a model trained using Causal Language Modeling attempts to predict the next token in a sequence, whereas a model trained using Masked Language Modeling attempts to predict deliberately hidden tokens.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="step-5-calculate-the-training-loss">Step 5: Calculate the Training Loss<a href="#step-5-calculate-the-training-loss" class="hash-link" aria-label="Direct link to Step 5: Calculate the Training Loss" title="Direct link to Step 5: Calculate the Training Loss" translate="no">​</a></h4>
+<p>The model&#x27;s predictions are compared with the expected target tokens.</p>
+<p>The difference between the predictions and the actual targets is measured using a loss function.</p>
+<p>A lower loss generally indicates that the model is becoming better at performing its training objective.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="step-6-update-model-parameters">Step 6: Update Model Parameters<a href="#step-6-update-model-parameters" class="hash-link" aria-label="Direct link to Step 6: Update Model Parameters" title="Direct link to Step 6: Update Model Parameters" translate="no">​</a></h4>
+<p>The training process uses backpropagation to calculate gradients and an optimization algorithm to update the model&#x27;s parameters.</p>
+<p>The objective is to gradually reduce the training loss by adjusting the numerical values of the model&#x27;s parameters.</p>
+<p>These steps are repeated across large amounts of training data, allowing the model to progressively improve its ability to perform the selected prediction task.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="understanding-the-complete-pre-training-pipeline">Understanding the Complete Pre-training Pipeline<a href="#understanding-the-complete-pre-training-pipeline" class="hash-link" aria-label="Direct link to Understanding the Complete Pre-training Pipeline" title="Direct link to Understanding the Complete Pre-training Pipeline" translate="no">​</a></h3>
+<p>The following diagram illustrates the major stages involved in pre-training a language model.</p>
+<div style="text-align:center"></div>
+<p>The important point is that pre-training is an iterative process. The model repeatedly processes training examples, evaluates its predictions, and updates its parameters until the training process reaches its configured stopping criteria.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-does-a-model-learn-during-pre-training">What Does a Model Learn During Pre-training?<a href="#what-does-a-model-learn-during-pre-training" class="hash-link" aria-label="Direct link to What Does a Model Learn During Pre-training?" title="Direct link to What Does a Model Learn During Pre-training?" translate="no">​</a></h3>
+<p>Pre-training does not explicitly teach the model every possible task it might eventually perform. Instead, it exposes the model to a large amount of data and allows it to learn general patterns that can be useful across different tasks.</p>
+<p>Some important capabilities that can emerge include:</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="language-understanding">Language Understanding<a href="#language-understanding" class="hash-link" aria-label="Direct link to Language Understanding" title="Direct link to Language Understanding" translate="no">​</a></h4>
+<p>The model learns grammatical structures, word relationships, sentence patterns, and contextual associations.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="semantic-relationships">Semantic Relationships<a href="#semantic-relationships" class="hash-link" aria-label="Direct link to Semantic Relationships" title="Direct link to Semantic Relationships" translate="no">​</a></h4>
+<p>It learns that different words and phrases can represent related concepts, even when they are not identical.</p>
+<p>For example, the words &quot;car&quot;, &quot;vehicle&quot;, and &quot;automobile&quot; have closely related meanings.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="general-knowledge">General Knowledge<a href="#general-knowledge" class="hash-link" aria-label="Direct link to General Knowledge" title="Direct link to General Knowledge" translate="no">​</a></h4>
+<p>By processing information from diverse sources, the model learns statistical associations about people, places, technologies, history, science, and many other subjects.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="contextual-relationships">Contextual Relationships<a href="#contextual-relationships" class="hash-link" aria-label="Direct link to Contextual Relationships" title="Direct link to Contextual Relationships" translate="no">​</a></h4>
+<p>The model learns that the interpretation of a word can change depending on the surrounding text.</p>
+<p>For example, the word &quot;bank&quot; can refer to a financial institution or the side of a river, depending on the sentence.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="language-generation-patterns">Language Generation Patterns<a href="#language-generation-patterns" class="hash-link" aria-label="Direct link to Language Generation Patterns" title="Direct link to Language Generation Patterns" translate="no">​</a></h4>
+<p>The model learns how sequences of tokens are commonly structured, allowing it to generate coherent text when given an appropriate prompt.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="pre-training-vs-fine-tuning">Pre-training vs Fine-tuning<a href="#pre-training-vs-fine-tuning" class="hash-link" aria-label="Direct link to Pre-training vs Fine-tuning" title="Direct link to Pre-training vs Fine-tuning" translate="no">​</a></h3>
+<p>Pre-training and Fine-tuning are two different stages in the development of an LLM.</p>
+<p>Pre-training provides the model with broad, general-purpose capabilities, whereas Fine-tuning adapts an already trained model to a more specific task, domain, or desired behaviour.</p>
+<p>Consider an LLM being developed for customer support.</p>
+<p>During pre-training, the model learns general language patterns from a large collection of text.</p>
+<p>During fine-tuning, the model can be trained further using customer support conversations, categorized support requests, and examples of appropriate responses.</p>
+<table><thead><tr><th>Aspect</th><th>Pre-training</th><th>Fine-tuning</th></tr></thead><tbody><tr><td>Starting point</td><td>Initial model parameters</td><td>Pre-trained model</td></tr><tr><td>Training data</td><td>Large and diverse dataset</td><td>Task-specific or domain-specific dataset</td></tr><tr><td>Objective</td><td>Learn general capabilities</td><td>Adapt existing capabilities</td></tr><tr><td>Training scope</td><td>Broad</td><td>More specialized</td></tr><tr><td>Model parameters</td><td>Updated</td><td>Updated further</td></tr></tbody></table>
+<p>Pre-training establishes the foundation, while fine-tuning specializes the model for a particular purpose.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="training-data-collection-and-data-quality-filtering">Training Data Collection and Data Quality Filtering<a href="#training-data-collection-and-data-quality-filtering" class="hash-link" aria-label="Direct link to Training Data Collection and Data Quality Filtering" title="Direct link to Training Data Collection and Data Quality Filtering" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="why-is-training-data-important">Why Is Training Data Important?<a href="#why-is-training-data-important" class="hash-link" aria-label="Direct link to Why Is Training Data Important?" title="Direct link to Why Is Training Data Important?" translate="no">​</a></h3>
+<p>The quality of a language model depends significantly on the data used during training.</p>
+<p>A model learns patterns from the information it processes. If its training dataset contains inaccurate information, excessive duplication, poorly formatted text, or irrelevant material, these issues can influence the quality of the resulting model.</p>
+<p>For example, consider training a language model using a dataset containing millions of duplicated articles, broken sentences, advertisements, and incorrectly extracted text.</p>
+<p>Although the dataset might contain a very large number of tokens, a considerable portion of those tokens may provide little useful information.</p>
+<p>This is why collecting large amounts of data is not sufficient. The data must also be relevant, diverse, and of sufficient quality.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="sources-of-training-data">Sources of Training Data<a href="#sources-of-training-data" class="hash-link" aria-label="Direct link to Sources of Training Data" title="Direct link to Sources of Training Data" translate="no">​</a></h3>
+<p>LLM training datasets are generally assembled from multiple sources to provide a diverse representation of language and knowledge.</p>
+<p>Some common sources include:</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="websites-and-online-content">Websites and Online Content<a href="#websites-and-online-content" class="hash-link" aria-label="Direct link to Websites and Online Content" title="Direct link to Websites and Online Content" translate="no">​</a></h4>
+<p>Web pages provide large amounts of publicly accessible information covering different topics, industries, and writing styles.</p>
+<p>Examples include educational websites, technical blogs, documentation, and informational articles.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="books-and-publications">Books and Publications<a href="#books-and-publications" class="hash-link" aria-label="Direct link to Books and Publications" title="Direct link to Books and Publications" translate="no">​</a></h4>
+<p>Books provide long-form content with more developed explanations, structured narratives, and detailed subject matter.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="research-papers">Research Papers<a href="#research-papers" class="hash-link" aria-label="Direct link to Research Papers" title="Direct link to Research Papers" translate="no">​</a></h4>
+<p>Scientific publications and research papers provide specialized knowledge, technical terminology, and detailed explanations of complex subjects.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="programming-code">Programming Code<a href="#programming-code" class="hash-link" aria-label="Direct link to Programming Code" title="Direct link to Programming Code" translate="no">​</a></h4>
+<p>Code repositories and technical documentation can help models learn programming syntax, common programming patterns, and relationships between code and natural-language explanations.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="encyclopedias-and-reference-material">Encyclopedias and Reference Material<a href="#encyclopedias-and-reference-material" class="hash-link" aria-label="Direct link to Encyclopedias and Reference Material" title="Direct link to Encyclopedias and Reference Material" translate="no">​</a></h4>
+<p>Structured reference sources provide organized information about different subjects and can contribute to the model&#x27;s general knowledge.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="licensed-and-proprietary-datasets">Licensed and Proprietary Datasets<a href="#licensed-and-proprietary-datasets" class="hash-link" aria-label="Direct link to Licensed and Proprietary Datasets" title="Direct link to Licensed and Proprietary Datasets" translate="no">​</a></h4>
+<p>Some organizations use licensed content or internally collected datasets as part of their training pipelines, subject to applicable permissions and restrictions.</p>
+<p>A diverse dataset is important because relying too heavily on a narrow set of sources can limit the range of information and language patterns the model encounters.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="why-does-raw-data-need-filtering">Why Does Raw Data Need Filtering?<a href="#why-does-raw-data-need-filtering" class="hash-link" aria-label="Direct link to Why Does Raw Data Need Filtering?" title="Direct link to Why Does Raw Data Need Filtering?" translate="no">​</a></h3>
+<p>Raw datasets collected from the internet and other sources are rarely suitable for direct use in large-scale training.</p>
+<p>They can contain several problems:</p>
+<ul>
+<li class="">Duplicate articles and repeated paragraphs.</li>
+<li class="">Broken HTML and formatting artifacts.</li>
+<li class="">Spam and automatically generated content.</li>
+<li class="">Irrelevant advertisements and navigation elements.</li>
+<li class="">Incomplete or corrupted documents.</li>
+<li class="">Low-quality machine-generated text.</li>
+<li class="">Incorrect information.</li>
+<li class="">Personally identifiable information.</li>
+<li class="">Toxic or harmful material.</li>
+</ul>
+<p>If these issues are not handled appropriately, they can waste computational resources and negatively influence the model&#x27;s learned patterns.</p>
+<p>Data quality filtering is therefore an important part of the pre-training pipeline.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="data-quality-filtering-techniques">Data Quality Filtering Techniques<a href="#data-quality-filtering-techniques" class="hash-link" aria-label="Direct link to Data Quality Filtering Techniques" title="Direct link to Data Quality Filtering Techniques" translate="no">​</a></h3>
+<p>Several techniques are commonly used to improve the quality of training datasets.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="data-cleaning">Data Cleaning<a href="#data-cleaning" class="hash-link" aria-label="Direct link to Data Cleaning" title="Direct link to Data Cleaning" translate="no">​</a></h4>
+<p>Data cleaning removes unnecessary formatting and irrelevant elements from raw documents.</p>
+<p>For example, a web page might contain:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">Home | Products | Pricing | Contact</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">How Database Indexing Works</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">A database index improves query performance...</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">Subscribe to our newsletter.</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">Copyright 2026.</span><br></div></code></pre></div></div>
+<p>The cleaning process attempts to extract the meaningful article content while removing navigation elements, advertisements, and unrelated page information.</p>
+<p>This helps ensure that the model primarily processes useful textual information.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="deduplication">Deduplication<a href="#deduplication" class="hash-link" aria-label="Direct link to Deduplication" title="Direct link to Deduplication" translate="no">​</a></h4>
+<p>Deduplication identifies and removes repeated content from the training dataset.</p>
+<p>Duplicates can occur when the same article is available on multiple websites, when documents are copied, or when the same content appears in different dataset collections.</p>
+<p>For example:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">Document A:</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">A database index improves query performance.</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">Document B:</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">A database index improves query performance.</span><br></div></code></pre></div></div>
+<p>If both documents are included repeatedly, the model may encounter the same information unnecessarily many times.</p>
+<p>Deduplication can be performed at different levels:</p>
+<ul>
+<li class="">Exact document deduplication.</li>
+<li class="">Near-duplicate document detection.</li>
+<li class="">Paragraph-level deduplication.</li>
+<li class="">Sentence-level deduplication.</li>
+</ul>
+<p>Exact deduplication identifies identical content, while near-duplicate detection attempts to identify content that is substantially similar even if minor wording or formatting differences exist.</p>
+<p>Techniques such as hashing, MinHash, and similarity-based comparisons can help identify duplicated or near-duplicated documents.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="quality-filtering">Quality Filtering<a href="#quality-filtering" class="hash-link" aria-label="Direct link to Quality Filtering" title="Direct link to Quality Filtering" translate="no">​</a></h4>
+<p>Quality filtering attempts to remove documents that are unlikely to provide useful training information.</p>
+<p>For example, documents containing excessive spelling errors, broken sentences, random characters, or extremely repetitive content may be classified as low quality.</p>
+<p>Some pipelines use heuristic rules, statistical features, or trained classifiers to estimate document quality.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="language-filtering">Language Filtering<a href="#language-filtering" class="hash-link" aria-label="Direct link to Language Filtering" title="Direct link to Language Filtering" translate="no">​</a></h4>
+<p>Large datasets can contain text in many different languages.</p>
+<p>Depending on the model&#x27;s intended scope, the training pipeline may identify the language of each document and select the appropriate material.</p>
+<p>For example, a multilingual model may retain documents across many languages, whereas a model focused primarily on English may apply stricter language-based filtering.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="toxicity-and-safety-filtering">Toxicity and Safety Filtering<a href="#toxicity-and-safety-filtering" class="hash-link" aria-label="Direct link to Toxicity and Safety Filtering" title="Direct link to Toxicity and Safety Filtering" translate="no">​</a></h4>
+<p>Training datasets may contain abusive, hateful, or otherwise harmful material.</p>
+<p>Filtering systems can identify and remove certain categories of harmful content, depending on the model&#x27;s intended purpose and data policies.</p>
+<p>It is important to understand that removing all potentially harmful content is not always desirable. Some models may need carefully selected examples of harmful content for safety evaluation or other legitimate purposes.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="personally-identifiable-information-filtering">Personally Identifiable Information Filtering<a href="#personally-identifiable-information-filtering" class="hash-link" aria-label="Direct link to Personally Identifiable Information Filtering" title="Direct link to Personally Identifiable Information Filtering" translate="no">​</a></h4>
+<p>Training data can contain sensitive information such as email addresses, phone numbers, and other personal identifiers.</p>
+<p>Privacy-related filtering attempts to identify and remove or appropriately handle such information before it enters the training dataset.</p>
+<p>This is particularly important when working with data collected from public websites or internal organizational sources.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="deduplication-vs-quality-filtering">Deduplication vs Quality Filtering<a href="#deduplication-vs-quality-filtering" class="hash-link" aria-label="Direct link to Deduplication vs Quality Filtering" title="Direct link to Deduplication vs Quality Filtering" translate="no">​</a></h3>
+<p>These two techniques are related but solve different problems.</p>
+<table><thead><tr><th>Aspect</th><th>Deduplication</th><th>Quality Filtering</th></tr></thead><tbody><tr><td>Purpose</td><td>Remove repeated content</td><td>Remove unsuitable content</td></tr><tr><td>Main concern</td><td>Redundancy</td><td>Data quality</td></tr><tr><td>Example</td><td>Identical articles</td><td>Broken or meaningless text</td></tr><tr><td>Techniques</td><td>Hashing, MinHash, similarity detection</td><td>Heuristics, classifiers, quality scoring</td></tr></tbody></table>
+<p>A document can be high quality but duplicated, or unique but extremely poor quality. Therefore, both techniques are important.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="data-mixing-and-dataset-composition">Data Mixing and Dataset Composition<a href="#data-mixing-and-dataset-composition" class="hash-link" aria-label="Direct link to Data Mixing and Dataset Composition" title="Direct link to Data Mixing and Dataset Composition" translate="no">​</a></h3>
+<p>After collecting and filtering data, the training pipeline must also determine how different sources should be combined.</p>
+<p>This is known as dataset composition or data mixing.</p>
+<p>For example, a training dataset might contain:</p>
+<ul>
+<li class="">General web content.</li>
+<li class="">Books and educational material.</li>
+<li class="">Scientific publications.</li>
+<li class="">Programming code.</li>
+<li class="">Reference documents.</li>
+</ul>
+<p>The proportion of each source influences the information and patterns the model encounters during training.</p>
+<p>If the dataset contains too much low-quality web content and very little technical documentation, the model may receive a different learning signal than a dataset with a more balanced composition.</p>
+<p>Therefore, dataset composition is an important consideration when developing general-purpose and specialized language models.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="data-leakage">Data Leakage<a href="#data-leakage" class="hash-link" aria-label="Direct link to Data Leakage" title="Direct link to Data Leakage" translate="no">​</a></h3>
+<p>Another important concern during dataset preparation is data leakage.</p>
+<p>Data leakage occurs when information that should be reserved for evaluation or testing unintentionally becomes part of the training data.</p>
+<p>For example, suppose a model is evaluated using a collection of benchmark questions. If the exact questions and their answers are already present in the training dataset, the evaluation may overestimate the model&#x27;s actual generalization ability.</p>
+<p>The model might reproduce information it has previously encountered instead of demonstrating that it can independently solve the problem.</p>
+<p>Deduplication, dataset tracking, and careful evaluation-data management help reduce this risk.</p>
+<p>The important takeaway is that the quality of a training dataset depends not only on how much data is collected, but also on how effectively that data is selected, cleaned, filtered, and organized.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="tokenization-and-embeddings-in-pre-training">Tokenization and Embeddings in Pre-training<a href="#tokenization-and-embeddings-in-pre-training" class="hash-link" aria-label="Direct link to Tokenization and Embeddings in Pre-training" title="Direct link to Tokenization and Embeddings in Pre-training" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="why-do-we-need-tokenization">Why Do We Need Tokenization?<a href="#why-do-we-need-tokenization" class="hash-link" aria-label="Direct link to Why Do We Need Tokenization?" title="Direct link to Why Do We Need Tokenization?" translate="no">​</a></h3>
+<p>Language models operate on numerical representations rather than directly processing ordinary human-readable text.</p>
+<p>Before textual data can be used for training, it must be converted into a representation that the model can process.</p>
+<p>Tokenization is the process of dividing text into smaller units called tokens.</p>
+<p>A token can represent an entire word, a part of a word, punctuation, or another textual unit, depending on the tokenizer.</p>
+<p>For example, consider the sentence:</p>
+<p>&quot;Building scalable applications.&quot;</p>
+<p>A tokenizer might represent it as:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">[&quot;Building&quot;, &quot; scalable&quot;, &quot; applications&quot;, &quot;.&quot;]</span><br></div></code></pre></div></div>
+<p>However, another tokenizer might divide the same sentence into a different sequence of tokens.</p>
+<p>The important point is that tokenization converts text into a sequence of manageable units that can be mapped to numerical identifiers.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-is-a-token-id">What Is a Token ID?<a href="#what-is-a-token-id" class="hash-link" aria-label="Direct link to What Is a Token ID?" title="Direct link to What Is a Token ID?" translate="no">​</a></h3>
+<p>Once text is divided into tokens, each token is mapped to a unique numerical identifier called a Token ID.</p>
+<p>A tokenizer maintains a vocabulary containing the tokens it recognizes and their corresponding IDs.</p>
+<p>For example:</p>
+<table><thead><tr><th>Token</th><th style="text-align:right">Token ID</th></tr></thead><tbody><tr><td>Building</td><td style="text-align:right">1542</td></tr><tr><td>scalable</td><td style="text-align:right">8271</td></tr><tr><td>applications</td><td style="text-align:right">3918</td></tr><tr><td>.</td><td style="text-align:right">13</td></tr></tbody></table>
+<p>The sentence can now be represented as:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">[1542, 8271, 3918, 13]</span><br></div></code></pre></div></div>
+<p>These numerical identifiers are what the model receives as its tokenized input.</p>
+<p>The actual token IDs depend on the vocabulary and tokenizer being used. They are not universal across different models.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="why-not-simply-use-individual-words">Why Not Simply Use Individual Words?<a href="#why-not-simply-use-individual-words" class="hash-link" aria-label="Direct link to Why Not Simply Use Individual Words?" title="Direct link to Why Not Simply Use Individual Words?" translate="no">​</a></h3>
+<p>One approach would be to create a vocabulary containing every possible word and assign each word a unique identifier.</p>
+<p>However, natural language contains an enormous number of words, spelling variations, compound terms, technical expressions, and newly created words.</p>
+<p>A word-level tokenizer would also struggle with unfamiliar words that were not included in its vocabulary.</p>
+<p>For example, consider a newly introduced technical term.</p>
+<p>If the tokenizer does not recognize that word, it would need some mechanism to represent it.</p>
+<p>Subword tokenization addresses this problem by dividing words into smaller, reusable units.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="subword-tokenization">Subword Tokenization<a href="#subword-tokenization" class="hash-link" aria-label="Direct link to Subword Tokenization" title="Direct link to Subword Tokenization" translate="no">​</a></h3>
+<p>Subword tokenization divides words into smaller units that can be reused across different words.</p>
+<p>For example:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">&quot;unbelievable&quot;</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">Possible tokenization:</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">[&quot;un&quot;, &quot;believ&quot;, &quot;able&quot;]</span><br></div></code></pre></div></div>
+<p>Instead of requiring the complete word to exist in the vocabulary, the tokenizer can represent it using smaller components.</p>
+<p>This offers several advantages:</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="smaller-vocabulary">Smaller Vocabulary<a href="#smaller-vocabulary" class="hash-link" aria-label="Direct link to Smaller Vocabulary" title="Direct link to Smaller Vocabulary" translate="no">​</a></h4>
+<p>The tokenizer does not need to maintain a separate entry for every possible word.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="handling-unseen-words">Handling Unseen Words<a href="#handling-unseen-words" class="hash-link" aria-label="Direct link to Handling Unseen Words" title="Direct link to Handling Unseen Words" translate="no">​</a></h4>
+<p>Unfamiliar words can often be represented using combinations of known subword tokens.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="reusable-components">Reusable Components<a href="#reusable-components" class="hash-link" aria-label="Direct link to Reusable Components" title="Direct link to Reusable Components" translate="no">​</a></h4>
+<p>The same subword units can appear in many different words, making the vocabulary more efficient.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="common-tokenization-algorithms">Common Tokenization Algorithms<a href="#common-tokenization-algorithms" class="hash-link" aria-label="Direct link to Common Tokenization Algorithms" title="Direct link to Common Tokenization Algorithms" translate="no">​</a></h3>
+<p>Several algorithms are used to construct subword vocabularies.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="byte-pair-encoding-bpe">Byte Pair Encoding (BPE)<a href="#byte-pair-encoding-bpe" class="hash-link" aria-label="Direct link to Byte Pair Encoding (BPE)" title="Direct link to Byte Pair Encoding (BPE)" translate="no">​</a></h4>
+<p>BPE starts with smaller units, often individual characters or bytes, and repeatedly merges frequently occurring adjacent units to construct larger tokens.</p>
+<p>For example, suppose a training corpus frequently contains the character sequence:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">l o w</span><br></div></code></pre></div></div>
+<p>The algorithm may learn to merge these units into a single token:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">low</span><br></div></code></pre></div></div>
+<p>Repeated merges gradually build a vocabulary containing frequently occurring subword units.</p>
+<p>BPE is widely used in language-model tokenization.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="wordpiece">WordPiece<a href="#wordpiece" class="hash-link" aria-label="Direct link to WordPiece" title="Direct link to WordPiece" translate="no">​</a></h4>
+<p>WordPiece is another subword tokenization approach that builds a vocabulary by selecting combinations of smaller units based on how effectively they represent the training corpus.</p>
+<p>It is associated with BERT and uses a scoring-based vocabulary construction approach.</p>
+<p>A tokenization might look like:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">&quot;playing&quot;</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">[&quot;play&quot;, &quot;##ing&quot;]</span><br></div></code></pre></div></div>
+<p>The prefix notation indicates that the subword continues a preceding word.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="unigram-language-model-tokenization">Unigram Language Model Tokenization<a href="#unigram-language-model-tokenization" class="hash-link" aria-label="Direct link to Unigram Language Model Tokenization" title="Direct link to Unigram Language Model Tokenization" translate="no">​</a></h4>
+<p>The Unigram approach begins with a relatively large collection of possible subword tokens and progressively removes tokens that contribute less to the overall tokenization objective.</p>
+<p>It selects a tokenization based on the probabilities assigned to possible segmentations.</p>
+<p>SentencePiece is a commonly used tokenization framework that supports Unigram and BPE algorithms.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-are-embeddings">What Are Embeddings?<a href="#what-are-embeddings" class="hash-link" aria-label="Direct link to What Are Embeddings?" title="Direct link to What Are Embeddings?" translate="no">​</a></h3>
+<p>Token IDs are numerical identifiers, but the identifiers themselves do not contain meaningful semantic information.</p>
+<p>For example, consider these two tokens:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">Database  -&gt; 1542</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">Storage   -&gt; 8271</span><br></div></code></pre></div></div>
+<p>The numerical difference between 1542 and 8271 does not tell us that databases and storage are related concepts.</p>
+<p>This is where Embeddings become important.</p>
+<p>An embedding is a numerical vector representing a token in a multidimensional space.</p>
+<p>Instead of using a single integer to represent a token, the model maps its Token ID to a vector containing multiple numerical values.</p>
+<p>For example:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">Database -&gt; [0.21, -0.43, 0.87, 0.15, ...]</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">Storage  -&gt; [0.19, -0.38, 0.82, 0.22, ...]</span><br></div></code></pre></div></div>
+<p>These vectors are learned numerical representations. During training, the model adjusts its embedding parameters so that the representations become useful for the tasks it is learning.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-are-embeddings-learned-during-pre-training">How Are Embeddings Learned During Pre-training?<a href="#how-are-embeddings-learned-during-pre-training" class="hash-link" aria-label="Direct link to How Are Embeddings Learned During Pre-training?" title="Direct link to How Are Embeddings Learned During Pre-training?" translate="no">​</a></h3>
+<p>An embedding layer typically contains a trainable matrix called the embedding matrix.</p>
+<p>Suppose a model has:</p>
+<ul>
+<li class="">Vocabulary size: 50,000 tokens.</li>
+<li class="">Embedding dimension: 768.</li>
+</ul>
+<p>Its embedding matrix contains 50,000 rows and 768 columns.</p>
+<p>Each row represents the learned embedding vector associated with one token in the vocabulary.</p>
+<p>When the model receives a Token ID, it retrieves the corresponding row from the embedding matrix.</p>
+<p>For example:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">Token ID: 1542</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">          Embedding Matrix</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    +---------------------------+</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    | Token 0   -&gt; [ ... ]      |</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    | Token 1   -&gt; [ ... ]      |</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    | Token 2   -&gt; [ ... ]      |</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    | ...                       |</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    | Token 1542-&gt; [ ... ]      |</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    | ...                       |</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    | Token 49999 -&gt; [ ... ]    |</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    +---------------------------+</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">Output: Numerical embedding vector</span><br></div></code></pre></div></div>
+<p>The embedding matrix is generally initialized before training and its parameters are updated through the training process.</p>
+<p>As the model learns, these representations become useful for capturing statistical and semantic relationships between tokens.</p>
+<p>An important distinction is that token embeddings are not fixed dictionary definitions. Their values are learned through optimization and depend on the training process.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="token-embeddings-vs-contextual-representations">Token Embeddings vs Contextual Representations<a href="#token-embeddings-vs-contextual-representations" class="hash-link" aria-label="Direct link to Token Embeddings vs Contextual Representations" title="Direct link to Token Embeddings vs Contextual Representations" translate="no">​</a></h3>
+<p>A token embedding represents a token using its learned embedding vector, whereas a contextual representation reflects how that token is interpreted within a particular input sequence.</p>
+<p>Consider the word &quot;bank&quot;:</p>
+<p>&quot;The bank approved the loan.&quot;</p>
+<p>&quot;The river bank was covered with trees.&quot;</p>
+<p>The same token can appear in both sentences, but its contextual meaning is different.</p>
+<p>The initial token embedding is associated with the token itself. As the model processes the surrounding sequence, its internal representations incorporate contextual information.</p>
+<p>This distinction is important because the model must be able to interpret the same token differently depending on the information surrounding it.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="why-are-tokenization-and-embeddings-important-for-pre-training">Why Are Tokenization and Embeddings Important for Pre-training?<a href="#why-are-tokenization-and-embeddings-important-for-pre-training" class="hash-link" aria-label="Direct link to Why Are Tokenization and Embeddings Important for Pre-training?" title="Direct link to Why Are Tokenization and Embeddings Important for Pre-training?" translate="no">​</a></h3>
+<p>Tokenization and embeddings provide the numerical foundation required for training language models.</p>
+<p>Tokenization converts raw text into token IDs, while embeddings convert those IDs into numerical vectors that the model can learn from.</p>
+<p>Together, they allow a language model to process large textual datasets using numerical operations.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="model-pre-training-objectives">Model Pre-training Objectives<a href="#model-pre-training-objectives" class="hash-link" aria-label="Direct link to Model Pre-training Objectives" title="Direct link to Model Pre-training Objectives" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-is-a-pre-training-objective">What Is a Pre-training Objective?<a href="#what-is-a-pre-training-objective" class="hash-link" aria-label="Direct link to What Is a Pre-training Objective?" title="Direct link to What Is a Pre-training Objective?" translate="no">​</a></h3>
+<p>A pre-training objective defines what a language model is expected to learn during training and how its predictions are evaluated.</p>
+<p>In other words, it determines the prediction or reconstruction task that the model repeatedly performs while processing the training dataset.</p>
+<p>The model is given some input, produces a prediction, and compares that prediction with an expected target.</p>
+<p>The difference between the prediction and the target is measured using a loss function, which is then used to update the model&#x27;s parameters.</p>
+<p>Different pre-training objectives teach models to learn language in different ways.</p>
+<p>Three important objectives are:</p>
+<ol>
+<li class="">Masked Language Modeling (MLM).</li>
+<li class="">Causal Language Modeling (CLM).</li>
+<li class="">Span Corruption.</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="masked-language-modeling-mlm">Masked Language Modeling (MLM)<a href="#masked-language-modeling-mlm" class="hash-link" aria-label="Direct link to Masked Language Modeling (MLM)" title="Direct link to Masked Language Modeling (MLM)" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-is-masked-language-modeling">What Is Masked Language Modeling?<a href="#what-is-masked-language-modeling" class="hash-link" aria-label="Direct link to What Is Masked Language Modeling?" title="Direct link to What Is Masked Language Modeling?" translate="no">​</a></h4>
+<p>Masked Language Modeling is a pre-training objective in which selected tokens in an input sequence are hidden or replaced with a special mask token, and the model is trained to predict the original tokens.</p>
+<p>Instead of predicting the next token in a sequence, the model attempts to reconstruct missing information using the surrounding context.</p>
+<p>For example, consider the sentence:</p>
+<p>&quot;The developer deployed the application because it was ready.&quot;</p>
+<p>A training example might look like:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">Input:</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">The developer deployed the [MASK] because it was ready.</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">Expected Prediction:</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">application</span><br></div></code></pre></div></div>
+<p>The model must use the surrounding words to infer the missing token.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-does-mlm-work">How Does MLM Work?<a href="#how-does-mlm-work" class="hash-link" aria-label="Direct link to How Does MLM Work?" title="Direct link to How Does MLM Work?" translate="no">​</a></h4>
+<p>The process involves the following steps:</p>
+<h5 class="anchor anchorTargetStickyNavbar_Vzrq" id="step-1-select-tokens-for-masking">Step 1: Select Tokens for Masking<a href="#step-1-select-tokens-for-masking" class="hash-link" aria-label="Direct link to Step 1: Select Tokens for Masking" title="Direct link to Step 1: Select Tokens for Masking" translate="no">​</a></h5>
+<p>A subset of tokens is selected from the original input sequence.</p>
+<p>In the original BERT training setup, approximately 15% of the input tokens are selected as prediction targets.</p>
+<h5 class="anchor anchorTargetStickyNavbar_Vzrq" id="step-2-replace-selected-tokens">Step 2: Replace Selected Tokens<a href="#step-2-replace-selected-tokens" class="hash-link" aria-label="Direct link to Step 2: Replace Selected Tokens" title="Direct link to Step 2: Replace Selected Tokens" translate="no">​</a></h5>
+<p>The selected tokens are modified to create a corrupted input.</p>
+<p>In the original BERT approach, the selected positions are handled using a mixture of strategies:</p>
+<ul>
+<li class="">80% are replaced with the special [MASK] token.</li>
+<li class="">10% are replaced with a random token.</li>
+<li class="">10% are left unchanged.</li>
+</ul>
+<p>These percentages apply to the selected prediction positions, not to the entire input sequence.</p>
+<h5 class="anchor anchorTargetStickyNavbar_Vzrq" id="step-3-process-the-corrupted-input">Step 3: Process the Corrupted Input<a href="#step-3-process-the-corrupted-input" class="hash-link" aria-label="Direct link to Step 3: Process the Corrupted Input" title="Direct link to Step 3: Process the Corrupted Input" translate="no">​</a></h5>
+<p>The model processes the sequence containing the masked or modified tokens.</p>
+<h5 class="anchor anchorTargetStickyNavbar_Vzrq" id="step-4-predict-the-original-tokens">Step 4: Predict the Original Tokens<a href="#step-4-predict-the-original-tokens" class="hash-link" aria-label="Direct link to Step 4: Predict the Original Tokens" title="Direct link to Step 4: Predict the Original Tokens" translate="no">​</a></h5>
+<p>The model produces predictions for the selected positions.</p>
+<h5 class="anchor anchorTargetStickyNavbar_Vzrq" id="step-5-calculate-loss">Step 5: Calculate Loss<a href="#step-5-calculate-loss" class="hash-link" aria-label="Direct link to Step 5: Calculate Loss" title="Direct link to Step 5: Calculate Loss" translate="no">​</a></h5>
+<p>The predicted tokens are compared against the original tokens, and the resulting loss is used to update the model&#x27;s parameters.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="why-is-mlm-useful">Why Is MLM Useful?<a href="#why-is-mlm-useful" class="hash-link" aria-label="Direct link to Why Is MLM Useful?" title="Direct link to Why Is MLM Useful?" translate="no">​</a></h4>
+<p>MLM allows the model to learn relationships between tokens using information from both sides of the missing position.</p>
+<p>For example:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">The developer deployed the [MASK] because it was ready.</span><br></div></code></pre></div></div>
+<p>The model can use the words before and after the masked position to infer the missing token.</p>
+<p>This makes MLM particularly useful for learning contextual language representations.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="example-bert">Example: BERT<a href="#example-bert" class="hash-link" aria-label="Direct link to Example: BERT" title="Direct link to Example: BERT" translate="no">​</a></h4>
+<p>BERT (Bidirectional Encoder Representations from Transformers) is a well-known model that uses Masked Language Modeling as one of its original pre-training objectives.</p>
+<p>BERT learns to predict masked tokens using the surrounding context, making it particularly useful for tasks involving language understanding, classification, and information extraction.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="causal-language-modeling-clm">Causal Language Modeling (CLM)<a href="#causal-language-modeling-clm" class="hash-link" aria-label="Direct link to Causal Language Modeling (CLM)" title="Direct link to Causal Language Modeling (CLM)" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-is-causal-language-modeling">What Is Causal Language Modeling?<a href="#what-is-causal-language-modeling" class="hash-link" aria-label="Direct link to What Is Causal Language Modeling?" title="Direct link to What Is Causal Language Modeling?" translate="no">​</a></h4>
+<p>Causal Language Modeling is a pre-training objective in which the model learns to predict the next token in a sequence using only the preceding tokens.</p>
+<p>Unlike Masked Language Modeling, which hides selected tokens and reconstructs them using surrounding context, Causal Language Modeling follows a left-to-right prediction process.</p>
+<p>For example, consider the sentence:</p>
+<p>&quot;The developer deployed the application because it was ready.&quot;</p>
+<p>The model is trained to predict each token using the tokens that appear before it.</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">Input:</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">The</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">Target:</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">developer</span><br></div></code></pre></div></div>
+<p>The next prediction becomes:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">Input:</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">The developer</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">Target:</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">deployed</span><br></div></code></pre></div></div>
+<p>And the process continues:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">Input:</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">The developer deployed</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">Target:</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">the</span><br></div></code></pre></div></div>
+<p>Each prediction depends on the preceding sequence.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-does-clm-work">How Does CLM Work?<a href="#how-does-clm-work" class="hash-link" aria-label="Direct link to How Does CLM Work?" title="Direct link to How Does CLM Work?" translate="no">​</a></h4>
+<h5 class="anchor anchorTargetStickyNavbar_Vzrq" id="step-1-prepare-a-token-sequence">Step 1: Prepare a Token Sequence<a href="#step-1-prepare-a-token-sequence" class="hash-link" aria-label="Direct link to Step 1: Prepare a Token Sequence" title="Direct link to Step 1: Prepare a Token Sequence" translate="no">​</a></h5>
+<p>The training text is tokenized and converted into numerical token IDs.</p>
+<h5 class="anchor anchorTargetStickyNavbar_Vzrq" id="step-2-provide-the-input-sequence">Step 2: Provide the Input Sequence<a href="#step-2-provide-the-input-sequence" class="hash-link" aria-label="Direct link to Step 2: Provide the Input Sequence" title="Direct link to Step 2: Provide the Input Sequence" translate="no">​</a></h5>
+<p>The model receives a sequence of tokens.</p>
+<h5 class="anchor anchorTargetStickyNavbar_Vzrq" id="step-3-predict-the-next-token">Step 3: Predict the Next Token<a href="#step-3-predict-the-next-token" class="hash-link" aria-label="Direct link to Step 3: Predict the Next Token" title="Direct link to Step 3: Predict the Next Token" translate="no">​</a></h5>
+<p>For each position, the model predicts the token that should follow the available preceding context.</p>
+<h5 class="anchor anchorTargetStickyNavbar_Vzrq" id="step-4-calculate-loss">Step 4: Calculate Loss<a href="#step-4-calculate-loss" class="hash-link" aria-label="Direct link to Step 4: Calculate Loss" title="Direct link to Step 4: Calculate Loss" translate="no">​</a></h5>
+<p>The predictions are compared with the actual next tokens in the training sequence.</p>
+<h5 class="anchor anchorTargetStickyNavbar_Vzrq" id="step-5-update-model-parameters">Step 5: Update Model Parameters<a href="#step-5-update-model-parameters" class="hash-link" aria-label="Direct link to Step 5: Update Model Parameters" title="Direct link to Step 5: Update Model Parameters" translate="no">​</a></h5>
+<p>The training process uses the loss to update the model&#x27;s parameters.</p>
+<p>This process is repeated across the training dataset.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="understanding-the-training-objective">Understanding the Training Objective<a href="#understanding-the-training-objective" class="hash-link" aria-label="Direct link to Understanding the Training Objective" title="Direct link to Understanding the Training Objective" translate="no">​</a></h4>
+<p>Consider:</p>
+<p>&quot;The developer deployed the application.&quot;</p>
+<p>The training process can be represented as:</p>
+<table><thead><tr><th>Available Context</th><th>Expected Next Token</th></tr></thead><tbody><tr><td>The</td><td>developer</td></tr><tr><td>The developer</td><td>deployed</td></tr><tr><td>The developer deployed</td><td>the</td></tr><tr><td>The developer deployed the</td><td>application</td></tr></tbody></table>
+<p>The model learns to predict the next token based on the preceding sequence.</p>
+<p>In mathematical terms, the training objective attempts to maximize the probability of the observed token sequence:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">P(x1, x2, x3, ..., xn)</span><br></div></code></pre></div></div>
+<p>This probability can be decomposed into conditional probabilities:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">P(x1) × P(x2 | x1) × P(x3 | x1, x2) × ... × P(xn | x1, ..., xn-1)</span><br></div></code></pre></div></div>
+<p>The model learns to estimate these conditional probabilities during training.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="why-is-clm-useful">Why Is CLM Useful?<a href="#why-is-clm-useful" class="hash-link" aria-label="Direct link to Why Is CLM Useful?" title="Direct link to Why Is CLM Useful?" translate="no">​</a></h4>
+<p>CLM directly trains the model to generate text by predicting what comes next.</p>
+<p>This objective is particularly suitable for applications involving:</p>
+<ul>
+<li class="">Text generation.</li>
+<li class="">Conversational AI.</li>
+<li class="">Code generation.</li>
+<li class="">Story generation.</li>
+<li class="">General-purpose language completion.</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="example-gpt">Example: GPT<a href="#example-gpt" class="hash-link" aria-label="Direct link to Example: GPT" title="Direct link to Example: GPT" translate="no">​</a></h4>
+<p>GPT models are well-known examples of models trained using Causal Language Modeling.</p>
+<p>They learn to generate text by predicting subsequent tokens based on the preceding context.</p>
+<p>This is one of the foundations of autoregressive language generation.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="span-corruption">Span Corruption<a href="#span-corruption" class="hash-link" aria-label="Direct link to Span Corruption" title="Direct link to Span Corruption" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-is-span-corruption">What Is Span Corruption?<a href="#what-is-span-corruption" class="hash-link" aria-label="Direct link to What Is Span Corruption?" title="Direct link to What Is Span Corruption?" translate="no">​</a></h4>
+<p>Span Corruption is a pre-training objective in which contiguous groups of tokens, rather than individual tokens, are removed from an input sequence and the model is trained to reconstruct the missing spans.</p>
+<p>A span is simply a continuous sequence of tokens.</p>
+<p>Unlike Masked Language Modeling, which generally selects individual token positions for masking, Span Corruption focuses on hiding complete portions of text.</p>
+<p>For example, consider:</p>
+<p>&quot;The developer deployed the application because it was ready.&quot;</p>
+<p>A span-corrupted version might look like:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">Original:</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">The developer deployed the application because it was ready.</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">Corrupted:</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">The developer &lt;extra_id_0&gt; because it was ready.</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">Expected Missing Span:</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">&lt;extra_id_0&gt; the application</span><br></div></code></pre></div></div>
+<p>Here, the phrase &quot;deployed the application&quot; has been removed and replaced by a special sentinel token.</p>
+<p>The model is trained to reconstruct the missing span.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-does-span-corruption-work">How Does Span Corruption Work?<a href="#how-does-span-corruption-work" class="hash-link" aria-label="Direct link to How Does Span Corruption Work?" title="Direct link to How Does Span Corruption Work?" translate="no">​</a></h4>
+<h5 class="anchor anchorTargetStickyNavbar_Vzrq" id="step-1-identify-text-spans">Step 1: Identify Text Spans<a href="#step-1-identify-text-spans" class="hash-link" aria-label="Direct link to Step 1: Identify Text Spans" title="Direct link to Step 1: Identify Text Spans" translate="no">​</a></h5>
+<p>The training pipeline selects contiguous groups of tokens from the original text.</p>
+<h5 class="anchor anchorTargetStickyNavbar_Vzrq" id="step-2-replace-the-spans">Step 2: Replace the Spans<a href="#step-2-replace-the-spans" class="hash-link" aria-label="Direct link to Step 2: Replace the Spans" title="Direct link to Step 2: Replace the Spans" translate="no">​</a></h5>
+<p>Each selected span is replaced with a special sentinel token, which identifies the location of the missing content.</p>
+<h5 class="anchor anchorTargetStickyNavbar_Vzrq" id="step-3-construct-the-target">Step 3: Construct the Target<a href="#step-3-construct-the-target" class="hash-link" aria-label="Direct link to Step 3: Construct the Target" title="Direct link to Step 3: Construct the Target" translate="no">​</a></h5>
+<p>The removed spans are collected into a target sequence, usually associated with their corresponding sentinel tokens.</p>
+<h5 class="anchor anchorTargetStickyNavbar_Vzrq" id="step-4-predict-the-missing-content">Step 4: Predict the Missing Content<a href="#step-4-predict-the-missing-content" class="hash-link" aria-label="Direct link to Step 4: Predict the Missing Content" title="Direct link to Step 4: Predict the Missing Content" translate="no">​</a></h5>
+<p>The model receives the corrupted input and learns to generate the missing spans in the expected order.</p>
+<h5 class="anchor anchorTargetStickyNavbar_Vzrq" id="step-5-calculate-loss-1">Step 5: Calculate Loss<a href="#step-5-calculate-loss-1" class="hash-link" aria-label="Direct link to Step 5: Calculate Loss" title="Direct link to Step 5: Calculate Loss" translate="no">​</a></h5>
+<p>The generated reconstruction is compared with the expected target sequence, and the loss is used to update the model&#x27;s parameters.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="example-t5">Example: T5<a href="#example-t5" class="hash-link" aria-label="Direct link to Example: T5" title="Direct link to Example: T5" translate="no">​</a></h4>
+<p>T5 (Text-to-Text Transfer Transformer) uses a Span Corruption objective during its original pre-training process.</p>
+<p>It replaces selected spans with sentinel tokens and trains the model to generate the missing content.</p>
+<p>For example:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">Input:</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">The developer &lt;extra_id_0&gt; because it was ready.</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">Target:</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">&lt;extra_id_0&gt; deployed the application &lt;extra_id_1&gt;</span><br></div></code></pre></div></div>
+<p>The model learns to reconstruct the missing span using the remaining input context.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="why-is-span-corruption-useful">Why Is Span Corruption Useful?<a href="#why-is-span-corruption-useful" class="hash-link" aria-label="Direct link to Why Is Span Corruption Useful?" title="Direct link to Why Is Span Corruption Useful?" translate="no">​</a></h4>
+<p>Span Corruption allows the model to learn how larger missing sections of text relate to their surrounding context.</p>
+<p>Instead of reconstructing isolated missing tokens, the model learns to generate complete missing sequences.</p>
+<p>This makes it useful for text reconstruction and text-to-text learning objectives.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="comparison-mlm-vs-clm-vs-span-corruption">Comparison: MLM vs CLM vs Span Corruption<a href="#comparison-mlm-vs-clm-vs-span-corruption" class="hash-link" aria-label="Direct link to Comparison: MLM vs CLM vs Span Corruption" title="Direct link to Comparison: MLM vs CLM vs Span Corruption" translate="no">​</a></h3>
+<p>These objectives differ primarily in what information is hidden or provided to the model and what the model is expected to predict.</p>
+<table><thead><tr><th>Aspect</th><th>MLM</th><th>CLM</th><th>Span Corruption</th></tr></thead><tbody><tr><td>Training objective</td><td>Predict masked tokens</td><td>Predict next tokens</td><td>Reconstruct missing spans</td></tr><tr><td>Input</td><td>Sequence with selected tokens masked or modified</td><td>Preceding token sequence</td><td>Sequence with selected spans removed</td></tr><tr><td>Prediction</td><td>Selected token positions</td><td>Next token</td><td>Missing token spans</td></tr><tr><td>Context used</td><td>Surrounding context</td><td>Previous context</td><td>Remaining context and reconstruction targets</td></tr><tr><td>Example model</td><td>BERT</td><td>GPT</td><td>T5</td></tr></tbody></table>
+<p>The three approaches represent different ways of teaching a language model to learn from text.</p>
+<p>MLM focuses on reconstructing individual missing tokens, CLM focuses on predicting subsequent tokens, and Span Corruption focuses on reconstructing larger missing sections of text.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="model-size-and-scaling">Model Size and Scaling<a href="#model-size-and-scaling" class="hash-link" aria-label="Direct link to Model Size and Scaling" title="Direct link to Model Size and Scaling" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-is-model-size">What Is Model Size?<a href="#what-is-model-size" class="hash-link" aria-label="Direct link to What Is Model Size?" title="Direct link to What Is Model Size?" translate="no">​</a></h3>
+<p>The size of a language model is commonly described by the number of parameters it contains.</p>
+<p>Parameters are the numerical values learned during training that determine how the model processes information and generates predictions.</p>
+<p>For example, a model might contain:</p>
+<ul>
+<li class="">125 million parameters.</li>
+<li class="">1 billion parameters.</li>
+<li class="">7 billion parameters.</li>
+<li class="">70 billion parameters.</li>
+<li class="">175 billion parameters.</li>
+</ul>
+<p>These are often referred to as 125M, 1B, 7B, 70B, and 175B parameter models.</p>
+<p>A model with 7 billion parameters contains approximately seven billion learned numerical values.</p>
+<p>In general, increasing the number of parameters increases the model&#x27;s capacity to represent complex patterns and relationships.</p>
+<p>However, a larger model does not automatically guarantee better performance. Its effectiveness also depends on training data, training quality, architecture, optimization, and the amount of computational resources available.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="why-do-we-increase-model-size">Why Do We Increase Model Size?<a href="#why-do-we-increase-model-size" class="hash-link" aria-label="Direct link to Why Do We Increase Model Size?" title="Direct link to Why Do We Increase Model Size?" translate="no">​</a></h3>
+<p>A model with a larger parameter count has more numerical capacity available to learn and represent patterns from its training data.</p>
+<p>Consider two language models:</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="model-a-125m-parameters">Model A: 125M Parameters<a href="#model-a-125m-parameters" class="hash-link" aria-label="Direct link to Model A: 125M Parameters" title="Direct link to Model A: 125M Parameters" translate="no">​</a></h4>
+<p>This model has a relatively limited number of parameters and therefore a smaller capacity to represent complex patterns.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="model-b-7b-parameters">Model B: 7B Parameters<a href="#model-b-7b-parameters" class="hash-link" aria-label="Direct link to Model B: 7B Parameters" title="Direct link to Model B: 7B Parameters" translate="no">​</a></h4>
+<p>This model has substantially more parameters and can potentially learn more complex relationships and representations.</p>
+<p>When trained appropriately, the larger model may perform better on a broader range of tasks.</p>
+<p>However, increasing model size also increases the computational resources required for training and inference.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="understanding-parameters">Understanding Parameters<a href="#understanding-parameters" class="hash-link" aria-label="Direct link to Understanding Parameters" title="Direct link to Understanding Parameters" translate="no">​</a></h3>
+<p>A parameter is a numerical value that the training process adjusts to improve the model&#x27;s predictions.</p>
+<p>For example, a model might contain billions of parameters distributed across its internal layers.</p>
+<p>During training, the model calculates gradients that indicate how its parameters should be adjusted to reduce the training loss.</p>
+<p>An optimization algorithm then updates these values.</p>
+<p>Over many training iterations, the parameters gradually adapt to the patterns present in the training dataset.</p>
+<p>The total number of parameters therefore provides an approximate indication of the model&#x27;s capacity and the amount of learned numerical information it contains.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="scaling-the-model">Scaling the Model<a href="#scaling-the-model" class="hash-link" aria-label="Direct link to Scaling the Model" title="Direct link to Scaling the Model" translate="no">​</a></h3>
+<p>Scaling refers to increasing the resources and dimensions involved in training a language model to improve its capabilities.</p>
+<p>There are several dimensions that can be scaled:</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="model-size">Model Size<a href="#model-size" class="hash-link" aria-label="Direct link to Model Size" title="Direct link to Model Size" translate="no">​</a></h4>
+<p>Increasing the number of model parameters gives the model greater representational capacity.</p>
+<p>For example, moving from a 1B-parameter model to a 7B-parameter model increases the number of learned parameters substantially.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="training-data">Training Data<a href="#training-data" class="hash-link" aria-label="Direct link to Training Data" title="Direct link to Training Data" translate="no">​</a></h4>
+<p>Increasing the amount of training data exposes the model to more language patterns, examples, and information.</p>
+<p>However, the additional data must also be sufficiently diverse and high quality to provide meaningful value.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="computational-resources">Computational Resources<a href="#computational-resources" class="hash-link" aria-label="Direct link to Computational Resources" title="Direct link to Computational Resources" translate="no">​</a></h4>
+<p>Larger models and larger training datasets require more computational work.</p>
+<p>Increasing the available GPU resources can help process more training data and perform more operations within a given amount of time.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="training-duration">Training Duration<a href="#training-duration" class="hash-link" aria-label="Direct link to Training Duration" title="Direct link to Training Duration" translate="no">​</a></h4>
+<p>Training for additional steps can allow the model to process more data and continue improving its predictions, provided that the training setup and data support further learning.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="why-doesnt-increasing-model-size-always-improve-performance">Why Doesn&#x27;t Increasing Model Size Always Improve Performance?<a href="#why-doesnt-increasing-model-size-always-improve-performance" class="hash-link" aria-label="Direct link to Why Doesn&#x27;t Increasing Model Size Always Improve Performance?" title="Direct link to Why Doesn&#x27;t Increasing Model Size Always Improve Performance?" translate="no">​</a></h3>
+<p>Increasing model size without appropriately scaling the other training resources can produce diminishing returns.</p>
+<p>For example, consider training a very large model using a relatively small dataset.</p>
+<p>Although the model contains many parameters, it may not receive enough useful training examples to learn effectively across its full capacity.</p>
+<p>Similarly, increasing the dataset size without providing sufficient computational resources may make training prohibitively expensive.</p>
+<p>Model development therefore involves balancing model capacity, training data, computational resources, and training duration.</p>
+<p>The relationship between these variables is an important subject in understanding how modern language models are developed.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="computational-challenges">Computational Challenges<a href="#computational-challenges" class="hash-link" aria-label="Direct link to Computational Challenges" title="Direct link to Computational Challenges" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="why-is-training-an-llm-computationally-expensive">Why Is Training an LLM Computationally Expensive?<a href="#why-is-training-an-llm-computationally-expensive" class="hash-link" aria-label="Direct link to Why Is Training an LLM Computationally Expensive?" title="Direct link to Why Is Training an LLM Computationally Expensive?" translate="no">​</a></h3>
+<p>Training an LLM requires performing an enormous number of numerical operations across billions of model parameters and potentially trillions of training tokens.</p>
+<p>Each training iteration involves processing input data, calculating predictions, evaluating the loss, computing gradients, and updating model parameters.</p>
+<p>These operations require substantial GPU compute, memory bandwidth, and storage resources.</p>
+<p>As the model size and training dataset increase, the computational requirements grow considerably.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="major-computational-challenges">Major Computational Challenges<a href="#major-computational-challenges" class="hash-link" aria-label="Direct link to Major Computational Challenges" title="Direct link to Major Computational Challenges" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="high-computational-requirements">High Computational Requirements<a href="#high-computational-requirements" class="hash-link" aria-label="Direct link to High Computational Requirements" title="Direct link to High Computational Requirements" translate="no">​</a></h4>
+<p>Training involves performing large numbers of matrix multiplications and other numerical operations.</p>
+<p>For a large model, these operations must be repeated across many training batches and iterations.</p>
+<p>GPUs are particularly suitable for this workload because they can perform large numbers of parallel numerical operations.</p>
+<p>However, training very large models can require multiple high-performance GPUs working together.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="gpu-memory-limitations">GPU Memory Limitations<a href="#gpu-memory-limitations" class="hash-link" aria-label="Direct link to GPU Memory Limitations" title="Direct link to GPU Memory Limitations" translate="no">​</a></h4>
+<p>A GPU has a finite amount of memory, commonly referred to as VRAM.</p>
+<p>During training, the GPU must store model parameters, gradients, optimizer states, activations, and temporary computation data.</p>
+<p>As the model grows, these memory requirements can exceed the capacity of an individual GPU.</p>
+<p>This creates a significant challenge when training large language models.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="training-time">Training Time<a href="#training-time" class="hash-link" aria-label="Direct link to Training Time" title="Direct link to Training Time" translate="no">​</a></h4>
+<p>Large models require substantial computational work across enormous datasets.</p>
+<p>Even with powerful GPUs, completing pre-training can take considerable time.</p>
+<p>The total duration depends on several factors, including:</p>
+<ul>
+<li class="">Number of model parameters.</li>
+<li class="">Number of training tokens.</li>
+<li class="">GPU performance.</li>
+<li class="">Number of GPUs.</li>
+<li class="">Training batch size.</li>
+<li class="">Numerical precision.</li>
+<li class="">Efficiency of the training implementation.</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="energy-consumption">Energy Consumption<a href="#energy-consumption" class="hash-link" aria-label="Direct link to Energy Consumption" title="Direct link to Energy Consumption" translate="no">​</a></h4>
+<p>High-performance GPUs consume substantial electrical power, especially when used continuously across large training clusters.</p>
+<p>Training large models therefore creates significant energy and infrastructure costs.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="memory-bandwidth">Memory Bandwidth<a href="#memory-bandwidth" class="hash-link" aria-label="Direct link to Memory Bandwidth" title="Direct link to Memory Bandwidth" translate="no">​</a></h4>
+<p>Training requires continuously moving data between different parts of the GPU&#x27;s memory hierarchy.</p>
+<p>Even when sufficient memory is available, memory bandwidth can become a performance bottleneck if data cannot be supplied to computational units quickly enough.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="numerical-stability">Numerical Stability<a href="#numerical-stability" class="hash-link" aria-label="Direct link to Numerical Stability" title="Direct link to Numerical Stability" translate="no">​</a></h4>
+<p>Training involves repeatedly updating model parameters using numerical calculations.</p>
+<p>Using lower numerical precision can reduce memory requirements and improve computational throughput, but it can also introduce rounding errors and numerical instability.</p>
+<p>This is why choosing an appropriate numerical precision is important when training large models.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="why-are-gpus-used-for-llm-training">Why Are GPUs Used for LLM Training?<a href="#why-are-gpus-used-for-llm-training" class="hash-link" aria-label="Direct link to Why Are GPUs Used for LLM Training?" title="Direct link to Why Are GPUs Used for LLM Training?" translate="no">​</a></h3>
+<p>GPUs are designed to perform many numerical operations in parallel, making them particularly effective for the matrix computations involved in neural network training.</p>
+<p>A CPU generally has fewer, more sophisticated processing cores optimized for a broad range of workloads.</p>
+<p>A GPU contains many processing units designed to execute large numbers of similar operations simultaneously.</p>
+<p>This makes GPUs especially useful for workloads involving large matrices and tensors.</p>
+<p>For example, consider a matrix multiplication involving large collections of numerical values.</p>
+<p>A GPU can distribute portions of the computation across multiple processing units, allowing many operations to execute concurrently.</p>
+<p>This parallelism significantly accelerates the computations required for training neural networks.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-is-a-gpu-cluster">What Is a GPU Cluster?<a href="#what-is-a-gpu-cluster" class="hash-link" aria-label="Direct link to What Is a GPU Cluster?" title="Direct link to What Is a GPU Cluster?" translate="no">​</a></h3>
+<p>When a single GPU cannot provide sufficient compute or memory capacity, multiple GPUs can be used together.</p>
+<p>A collection of GPUs connected through a high-speed interconnect and configured to work together is commonly referred to as a GPU cluster.</p>
+<p>For example, a training setup might use:</p>
+<ul>
+<li class="">8 GPUs on a single server.</li>
+<li class="">Multiple servers containing 8 GPUs each.</li>
+<li class="">High-speed networking between servers.</li>
+</ul>
+<p>This allows large training workloads to use computational resources across multiple devices.</p>
+<p>However, using multiple GPUs introduces additional challenges involving data movement, synchronization, communication overhead, and memory management.</p>
+<p>We will cover these distributed training techniques separately in Part 7.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-cost-of-scaling">The Cost of Scaling<a href="#the-cost-of-scaling" class="hash-link" aria-label="Direct link to The Cost of Scaling" title="Direct link to The Cost of Scaling" translate="no">​</a></h3>
+<p>The computational cost of training a model increases as its parameter count and training workload increase.</p>
+<p>A commonly used approximation for the computational cost of dense Transformer training is:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">FLOPs ≈ 6 × Number of Parameters × Number of Training Tokens</span><br></div></code></pre></div></div>
+<p>Here, <code>FLOPs</code> refers to floating-point operations.</p>
+<p>For example, consider a model with 1 billion parameters trained on 100 billion tokens.</p>
+<p>Using the approximation:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">6 × 1,000,000,000 × 100,000,000,000</span><br></div></code></pre></div></div>
+<p>The approximate training computation is:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">600,000,000,000,000,000,000 FLOPs</span><br></div></code></pre></div></div>
+<p>Or approximately 600 exaFLOPs.</p>
+<p>This is a simplified estimate for dense-model training. Actual computational requirements depend on the model architecture, training implementation, sequence lengths, and other factors.</p>
+<p>The important takeaway is that training an LLM is not merely a data-processing problem. It is also a major computational and infrastructure challenge.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="gpu-memory-requirements-for-training">GPU Memory Requirements for Training<a href="#gpu-memory-requirements-for-training" class="hash-link" aria-label="Direct link to GPU Memory Requirements for Training" title="Direct link to GPU Memory Requirements for Training" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="why-is-gpu-memory-important">Why Is GPU Memory Important?<a href="#why-is-gpu-memory-important" class="hash-link" aria-label="Direct link to Why Is GPU Memory Important?" title="Direct link to Why Is GPU Memory Important?" translate="no">​</a></h3>
+<p>GPU memory is one of the most important constraints when training large language models.</p>
+<p>A GPU must store several categories of information while the model is being trained.</p>
+<p>These include:</p>
+<ol>
+<li class="">Model parameters.</li>
+<li class="">Gradients.</li>
+<li class="">Optimizer states.</li>
+<li class="">Activations.</li>
+<li class="">Temporary computation buffers.</li>
+</ol>
+<p>Understanding these components helps explain why a model containing only a few billion parameters can require considerably more GPU memory than the size of its parameters alone would suggest.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="model-parameters">Model Parameters<a href="#model-parameters" class="hash-link" aria-label="Direct link to Model Parameters" title="Direct link to Model Parameters" translate="no">​</a></h3>
+<p>Model parameters are the learned numerical values that determine the model&#x27;s behaviour.</p>
+<p>During training, the GPU needs to store these parameters so that they can be used in forward and backward computations.</p>
+<p>The memory required depends on:</p>
+<ul>
+<li class="">Number of parameters.</li>
+<li class="">Numerical precision used to represent them.</li>
+</ul>
+<p>For example, a model with 7 billion parameters stored using FP32 requires:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">7 billion × 4 bytes</span><br></div></code></pre></div></div>
+<p>This equals approximately 28 GB of memory, using decimal units.</p>
+<p>If the same parameters are stored using FP16 or BFLOAT16, each parameter requires 2 bytes.</p>
+<p>The corresponding memory requirement becomes approximately 14 GB.</p>
+<p>This illustrates why numerical precision has a major influence on GPU memory consumption.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="gradients">Gradients<a href="#gradients" class="hash-link" aria-label="Direct link to Gradients" title="Direct link to Gradients" translate="no">​</a></h3>
+<p>During training, the model calculates gradients to determine how its parameters should be adjusted to reduce the training loss.</p>
+<p>A gradient represents how the loss changes with respect to a particular model parameter.</p>
+<p>Since the model contains billions of parameters, it also needs to calculate and store gradients for those parameters.</p>
+<p>For example, if a model contains 7 billion parameters and its gradients are stored using FP32, the gradient memory requirement is approximately:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">7 billion × 4 bytes = 28 GB</span><br></div></code></pre></div></div>
+<p>Therefore, gradients can consume an amount of memory comparable to the model parameters themselves, depending on the training configuration.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="optimizer-states">Optimizer States<a href="#optimizer-states" class="hash-link" aria-label="Direct link to Optimizer States" title="Direct link to Optimizer States" translate="no">​</a></h3>
+<p>An optimizer is responsible for updating the model parameters using the calculated gradients.</p>
+<p>Some optimizers maintain additional information about previous gradients and their statistical properties.</p>
+<p>For example, Adam is a widely used optimizer that maintains two additional states:</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="first-moment-estimate">First Moment Estimate<a href="#first-moment-estimate" class="hash-link" aria-label="Direct link to First Moment Estimate" title="Direct link to First Moment Estimate" translate="no">​</a></h4>
+<p>This maintains an exponentially weighted average of previous gradients.</p>
+<p>It helps estimate the direction in which parameters should be updated.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="second-moment-estimate">Second Moment Estimate<a href="#second-moment-estimate" class="hash-link" aria-label="Direct link to Second Moment Estimate" title="Direct link to Second Moment Estimate" translate="no">​</a></h4>
+<p>This maintains an exponentially weighted average of squared gradients.</p>
+<p>It helps estimate the magnitude and variability of the gradients.</p>
+<p>These two states require additional GPU memory.</p>
+<p>If both are stored using FP32, they collectively require 8 bytes per parameter.</p>
+<p>For a model containing 7 billion parameters:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">7 billion × 8 bytes = 56 GB</span><br></div></code></pre></div></div>
+<p>Optimizer states can therefore consume a substantial amount of memory during training.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="activations">Activations<a href="#activations" class="hash-link" aria-label="Direct link to Activations" title="Direct link to Activations" translate="no">​</a></h3>
+<p>Activations are the intermediate numerical values produced while the model processes training inputs.</p>
+<p>During the forward pass, the model performs computations across its layers and produces intermediate outputs.</p>
+<p>These values are often required again during backpropagation to calculate gradients.</p>
+<p>As a result, the training process must retain some of these intermediate values in GPU memory.</p>
+<p>Activation memory depends on several factors:</p>
+<ul>
+<li class="">Batch size.</li>
+<li class="">Sequence length.</li>
+<li class="">Model architecture.</li>
+<li class="">Number of layers.</li>
+<li class="">Hidden dimension.</li>
+<li class="">Numerical precision.</li>
+</ul>
+<p>Increasing the batch size or sequence length generally increases activation memory.</p>
+<p>This is one reason why training a model with very long input sequences can become computationally expensive even when the number of model parameters remains unchanged.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="temporary-buffers-and-additional-memory">Temporary Buffers and Additional Memory<a href="#temporary-buffers-and-additional-memory" class="hash-link" aria-label="Direct link to Temporary Buffers and Additional Memory" title="Direct link to Temporary Buffers and Additional Memory" translate="no">​</a></h3>
+<p>Apart from parameters, gradients, optimizer states, and activations, training also requires memory for temporary computations.</p>
+<p>Examples include:</p>
+<ul>
+<li class="">Intermediate matrix multiplication results.</li>
+<li class="">Attention-related computation buffers.</li>
+<li class="">Memory used by GPU kernels.</li>
+<li class="">Temporary tensors.</li>
+<li class="">Allocator overhead.</li>
+</ul>
+<p>These requirements vary according to the model architecture, GPU framework, and training implementation.</p>
+<p>Therefore, the total GPU memory required is generally higher than the sum of the basic parameter and optimizer-state calculations.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="understanding-total-gpu-memory-requirements">Understanding Total GPU Memory Requirements<a href="#understanding-total-gpu-memory-requirements" class="hash-link" aria-label="Direct link to Understanding Total GPU Memory Requirements" title="Direct link to Understanding Total GPU Memory Requirements" translate="no">​</a></h3>
+<p>Consider a model with 7 billion parameters trained using FP32 parameters, FP32 gradients, and the Adam optimizer with FP32 moment estimates.</p>
+<p>The approximate memory requirements are:</p>
+<table><thead><tr><th>Component</th><th style="text-align:right">Memory Per Parameter</th><th style="text-align:right">Total Memory</th></tr></thead><tbody><tr><td>Model Parameters</td><td style="text-align:right">4 bytes</td><td style="text-align:right">28 GB</td></tr><tr><td>Gradients</td><td style="text-align:right">4 bytes</td><td style="text-align:right">28 GB</td></tr><tr><td>First Moment</td><td style="text-align:right">4 bytes</td><td style="text-align:right">28 GB</td></tr><tr><td>Second Moment</td><td style="text-align:right">4 bytes</td><td style="text-align:right">28 GB</td></tr><tr><td><strong>Total</strong></td><td style="text-align:right"><strong>16 bytes</strong></td><td style="text-align:right"><strong>112 GB</strong></td></tr></tbody></table>
+<p>This estimate excludes activation memory, temporary buffers, and other overhead.</p>
+<p>It demonstrates an important point: a 7B-parameter model does not necessarily require only 28 GB of GPU memory to train.</p>
+<p>The actual training memory requirement can be several times larger than the memory required just to store its parameters.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="memory-requirements-with-mixed-precision">Memory Requirements with Mixed Precision<a href="#memory-requirements-with-mixed-precision" class="hash-link" aria-label="Direct link to Memory Requirements with Mixed Precision" title="Direct link to Memory Requirements with Mixed Precision" translate="no">​</a></h3>
+<p>Using lower-precision numerical formats can significantly reduce training memory requirements.</p>
+<p>For example, a common mixed-precision Adam training setup might use:</p>
+<ul>
+<li class="">FP16 model parameters: 2 bytes.</li>
+<li class="">FP16 gradients: 2 bytes.</li>
+<li class="">FP32 master parameters: 4 bytes.</li>
+<li class="">FP32 first moment: 4 bytes.</li>
+<li class="">FP32 second moment: 4 bytes.</li>
+</ul>
+<p>The approximate memory requirement becomes:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">2 + 2 + 4 + 4 + 4 = 16 bytes per parameter</span><br></div></code></pre></div></div>
+<p>For 7 billion parameters, this is approximately 112 GB, excluding activations and additional overhead.</p>
+<p>This particular example illustrates an important nuance: mixed precision does not always halve the total training memory requirement because master weights and optimizer states may still be stored using FP32.</p>
+<p>Different training frameworks and optimizers use different memory layouts, so actual requirements can vary.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="understanding-the-memory-breakdown">Understanding the Memory Breakdown<a href="#understanding-the-memory-breakdown" class="hash-link" aria-label="Direct link to Understanding the Memory Breakdown" title="Direct link to Understanding the Memory Breakdown" translate="no">​</a></h3>
+<div style="text-align:center"></div>
+<p>The important takeaway is that GPU memory requirements are influenced by much more than the model&#x27;s parameter count.</p>
+<p>Reducing parameter precision, managing activation memory, and selecting appropriate training configurations are all important when working with large models.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="quantization">Quantization<a href="#quantization" class="hash-link" aria-label="Direct link to Quantization" title="Direct link to Quantization" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-is-quantization">What Is Quantization?<a href="#what-is-quantization" class="hash-link" aria-label="Direct link to What Is Quantization?" title="Direct link to What Is Quantization?" translate="no">​</a></h3>
+<p>Quantization is the process of representing numerical values using a lower-precision numerical format to reduce memory consumption and potentially improve computational efficiency.</p>
+<p>Neural networks perform many numerical operations using weights, activations, and other intermediate values.</p>
+<p>Traditionally, these values may be represented using 32-bit floating-point numbers.</p>
+<p>However, storing and processing every value using 32 bits can be expensive, particularly for models containing billions of parameters.</p>
+<p>Quantization reduces the number of bits used to represent numerical values.</p>
+<p>For example:</p>
+<ul>
+<li class="">FP32 uses 32 bits.</li>
+<li class="">FP16 uses 16 bits.</li>
+<li class="">BFLOAT16 uses 16 bits.</li>
+<li class="">INT8 uses 8 bits.</li>
+</ul>
+<p>Using fewer bits generally reduces the amount of memory required to store a model&#x27;s numerical values.</p>
+<p>However, lower precision also means that the represented values may be less accurate than their full-precision counterparts.</p>
+<p>Therefore, quantization involves balancing memory efficiency, computational performance, and model quality.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="understanding-numerical-precision">Understanding Numerical Precision<a href="#understanding-numerical-precision" class="hash-link" aria-label="Direct link to Understanding Numerical Precision" title="Direct link to Understanding Numerical Precision" translate="no">​</a></h3>
+<p>Before exploring the different numerical formats, it is important to understand what numerical precision means.</p>
+<p>A computer cannot represent every possible real number exactly using a finite number of bits.</p>
+<p>Instead, numerical formats allocate a fixed number of bits to represent values.</p>
+<p>For example, a 32-bit floating-point number uses 32 bits to represent a numerical value, while an 8-bit integer uses only 8 bits.</p>
+<p>The number of available bits influences the range of representable values and the precision with which those values can be represented.</p>
+<p>Different numerical formats make different trade-offs between range, precision, and storage requirements.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="fp32-32-bit-floating-point">FP32 (32-bit Floating Point)<a href="#fp32-32-bit-floating-point" class="hash-link" aria-label="Direct link to FP32 (32-bit Floating Point)" title="Direct link to FP32 (32-bit Floating Point)" translate="no">​</a></h3>
+<p>FP32 is a 32-bit floating-point numerical format commonly used in traditional deep learning computations.</p>
+<p>It uses:</p>
+<ul>
+<li class="">1 bit for the sign.</li>
+<li class="">8 bits for the exponent.</li>
+<li class="">23 bits for the fraction.</li>
+</ul>
+<p>The exponent determines the approximate magnitude of the number, while the fraction contributes to its precision.</p>
+<p>FP32 offers a relatively large numerical range and good precision, making it useful for calculations where numerical accuracy is important.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="advantages">Advantages<a href="#advantages" class="hash-link" aria-label="Direct link to Advantages" title="Direct link to Advantages" translate="no">​</a></h4>
+<ul>
+<li class="">High numerical precision compared with lower-precision alternatives.</li>
+<li class="">Large representable numerical range.</li>
+<li class="">Generally stable for many training computations.</li>
+<li class="">Widely supported by machine-learning frameworks and hardware.</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="disadvantages">Disadvantages<a href="#disadvantages" class="hash-link" aria-label="Direct link to Disadvantages" title="Direct link to Disadvantages" translate="no">​</a></h4>
+<ul>
+<li class="">Requires 4 bytes per numerical value.</li>
+<li class="">Consumes more GPU memory.</li>
+<li class="">Can require more memory bandwidth.</li>
+<li class="">May provide lower computational throughput than hardware-supported lower-precision formats.</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="example">Example<a href="#example" class="hash-link" aria-label="Direct link to Example" title="Direct link to Example" translate="no">​</a></h4>
+<p>If a model contains 7 billion parameters, storing all its parameters using FP32 requires approximately 28 GB.</p>
+<p>FP32 is therefore accurate but can become expensive for very large models.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="fp16-16-bit-floating-point">FP16 (16-bit Floating Point)<a href="#fp16-16-bit-floating-point" class="hash-link" aria-label="Direct link to FP16 (16-bit Floating Point)" title="Direct link to FP16 (16-bit Floating Point)" translate="no">​</a></h3>
+<p>FP16, also called Half Precision, is a 16-bit floating-point format that uses half the storage of FP32.</p>
+<p>It uses:</p>
+<ul>
+<li class="">1 bit for the sign.</li>
+<li class="">5 bits for the exponent.</li>
+<li class="">10 bits for the fraction.</li>
+</ul>
+<p>Because FP16 uses fewer bits, it requires only 2 bytes per numerical value.</p>
+<p>This reduces memory requirements and can improve computational performance on GPUs that support efficient FP16 operations.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="advantages-1">Advantages<a href="#advantages-1" class="hash-link" aria-label="Direct link to Advantages" title="Direct link to Advantages" translate="no">​</a></h4>
+<ul>
+<li class="">Uses half the memory of FP32.</li>
+<li class="">Can provide higher computational throughput on supported GPUs.</li>
+<li class="">Reduces memory bandwidth requirements.</li>
+<li class="">Useful for mixed-precision training and inference.</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="disadvantages-1">Disadvantages<a href="#disadvantages-1" class="hash-link" aria-label="Direct link to Disadvantages" title="Direct link to Disadvantages" translate="no">​</a></h4>
+<ul>
+<li class="">Has a smaller numerical range than FP32.</li>
+<li class="">Can experience numerical overflow or underflow.</li>
+<li class="">Has lower precision than FP32.</li>
+<li class="">May require loss scaling during training.</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-is-loss-scaling">What Is Loss Scaling?<a href="#what-is-loss-scaling" class="hash-link" aria-label="Direct link to What Is Loss Scaling?" title="Direct link to What Is Loss Scaling?" translate="no">​</a></h4>
+<p>During training, gradients can sometimes become extremely small.</p>
+<p>When using FP16, these small gradient values may become too small to represent accurately and can effectively turn into zero.</p>
+<p>This is known as underflow.</p>
+<p>Loss scaling helps address this problem.</p>
+<p>The training process multiplies the loss by a scaling factor before calculating gradients. This increases the magnitude of the gradients, helping them remain representable in FP16.</p>
+<p>Before applying the optimizer update, the gradients are divided by the same scaling factor to recover their original magnitude.</p>
+<p>Dynamic loss scaling can automatically adjust the scaling factor depending on whether numerical overflow is detected.</p>
+<p>This helps make FP16 training more numerically stable.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="bfloat16-brain-floating-point-16">BFLOAT16 (Brain Floating Point 16)<a href="#bfloat16-brain-floating-point-16" class="hash-link" aria-label="Direct link to BFLOAT16 (Brain Floating Point 16)" title="Direct link to BFLOAT16 (Brain Floating Point 16)" translate="no">​</a></h3>
+<p>BFLOAT16, commonly called BF16, is another 16-bit floating-point format designed for machine-learning workloads.</p>
+<p>It uses:</p>
+<ul>
+<li class="">1 bit for the sign.</li>
+<li class="">8 bits for the exponent.</li>
+<li class="">7 bits for the fraction.</li>
+</ul>
+<p>The important distinction between FP16 and BF16 is how their 16 bits are distributed.</p>
+<p>FP16 uses more bits for the fraction, whereas BF16 uses more bits for the exponent.</p>
+<p>BF16 therefore has approximately the same exponent range as FP32 but lower precision in the fraction.</p>
+<p>This makes BF16 particularly useful for large-scale neural network training, where maintaining a sufficiently large numerical range is important.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="advantages-2">Advantages<a href="#advantages-2" class="hash-link" aria-label="Direct link to Advantages" title="Direct link to Advantages" translate="no">​</a></h4>
+<ul>
+<li class="">Uses half the memory of FP32.</li>
+<li class="">Has a much larger numerical range than FP16.</li>
+<li class="">Reduces the likelihood of overflow and underflow.</li>
+<li class="">Often works well for mixed-precision training without requiring loss scaling.</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="disadvantages-2">Disadvantages<a href="#disadvantages-2" class="hash-link" aria-label="Direct link to Disadvantages" title="Direct link to Disadvantages" translate="no">​</a></h4>
+<ul>
+<li class="">Has lower numerical precision than FP16.</li>
+<li class="">Has fewer fraction bits.</li>
+<li class="">Requires hardware support for efficient BF16 operations.</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="fp16-vs-bfloat16">FP16 vs BFLOAT16<a href="#fp16-vs-bfloat16" class="hash-link" aria-label="Direct link to FP16 vs BFLOAT16" title="Direct link to FP16 vs BFLOAT16" translate="no">​</a></h4>
+<p>Although both formats use 16 bits, their numerical characteristics are different.</p>
+<table><thead><tr><th>Aspect</th><th>FP16</th><th>BFLOAT16</th></tr></thead><tbody><tr><td>Total bits</td><td>16</td><td>16</td></tr><tr><td>Sign bits</td><td>1</td><td>1</td></tr><tr><td>Exponent bits</td><td>5</td><td>8</td></tr><tr><td>Fraction bits</td><td>10</td><td>7</td></tr><tr><td>Numerical range</td><td>Smaller</td><td>Similar to FP32</td></tr><tr><td>Fraction precision</td><td>Higher</td><td>Lower</td></tr><tr><td>Loss scaling</td><td>Often useful</td><td>Usually not required</td></tr><tr><td>Memory per value</td><td>2 bytes</td><td>2 bytes</td></tr></tbody></table>
+<p>BFLOAT16 is particularly attractive for large-scale training because its larger exponent range helps avoid numerical overflow and underflow.</p>
+<p>FP16 provides more fraction precision, but its smaller exponent range can make training more challenging.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="int8-8-bit-integer">INT8 (8-bit Integer)<a href="#int8-8-bit-integer" class="hash-link" aria-label="Direct link to INT8 (8-bit Integer)" title="Direct link to INT8 (8-bit Integer)" translate="no">​</a></h3>
+<p>INT8 is an 8-bit integer numerical format that represents values using a much smaller number of bits than traditional floating-point formats.</p>
+<p>Unlike FP16 and FP32, which use floating-point representations, INT8 represents values using integers.</p>
+<p>An 8-bit signed integer can represent values between -128 and 127.</p>
+<p>However, neural network weights and activations are not generally restricted to this range.</p>
+<p>Quantization therefore maps floating-point values into a smaller integer range using a scaling factor and, optionally, a zero-point offset.</p>
+<p>A common quantization representation is:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">Quantized Value = Round(Original Value / Scale) + Zero Point</span><br></div></code></pre></div></div>
+<p>The exact mapping and clipping behaviour depend on the quantization scheme.</p>
+<p>For example, suppose a floating-point value is 2.5 and the quantization scale is 0.1, with a zero point of 0.</p>
+<p>The quantized representation becomes:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">Round(2.5 / 0.1) = 25</span><br></div></code></pre></div></div>
+<p>The original value can approximately be reconstructed by multiplying the integer representation by the scale:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">25 × 0.1 = 2.5</span><br></div></code></pre></div></div>
+<p>In real applications, quantization introduces rounding and representation errors, so the reconstructed value may not always equal the original value.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="why-is-int8-useful">Why Is INT8 Useful?<a href="#why-is-int8-useful" class="hash-link" aria-label="Direct link to Why Is INT8 Useful?" title="Direct link to Why Is INT8 Useful?" translate="no">​</a></h4>
+<p>INT8 can significantly reduce the memory required to store model weights.</p>
+<p>For example, consider a model containing 7 billion parameters:</p>
+<ul>
+<li class="">FP32: approximately 28 GB.</li>
+<li class="">FP16: approximately 14 GB.</li>
+<li class="">INT8: approximately 7 GB.</li>
+</ul>
+<p>These figures represent parameter storage only, using decimal units.</p>
+<p>INT8 can also improve inference performance on hardware with efficient integer arithmetic support.</p>
+<h5 class="anchor anchorTargetStickyNavbar_Vzrq" id="advantages-3">Advantages<a href="#advantages-3" class="hash-link" aria-label="Direct link to Advantages" title="Direct link to Advantages" translate="no">​</a></h5>
+<ul>
+<li class="">Uses one-quarter of the memory of FP32.</li>
+<li class="">Uses half the memory of FP16.</li>
+<li class="">Can improve inference throughput.</li>
+<li class="">Reduces memory bandwidth requirements.</li>
+<li class="">Makes larger models easier to deploy on resource-constrained hardware.</li>
+</ul>
+<h5 class="anchor anchorTargetStickyNavbar_Vzrq" id="disadvantages-3">Disadvantages<a href="#disadvantages-3" class="hash-link" aria-label="Direct link to Disadvantages" title="Direct link to Disadvantages" translate="no">​</a></h5>
+<ul>
+<li class="">Introduces quantization error.</li>
+<li class="">Can reduce model accuracy if quantization is not handled carefully.</li>
+<li class="">Requires suitable hardware and software support for efficient execution.</li>
+<li class="">May need calibration or additional training techniques to maintain model quality.</li>
+</ul>
+<p>INT8 is particularly common in model optimization and deployment, although quantization techniques can also be incorporated into training workflows.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="comparing-fp32-fp16-bfloat16-and-int8">Comparing FP32, FP16, BFLOAT16, and INT8<a href="#comparing-fp32-fp16-bfloat16-and-int8" class="hash-link" aria-label="Direct link to Comparing FP32, FP16, BFLOAT16, and INT8" title="Direct link to Comparing FP32, FP16, BFLOAT16, and INT8" translate="no">​</a></h3>
+<p>The following table summarizes the numerical formats covered so far.</p>
+<table><thead><tr><th>Format</th><th style="text-align:right">Bits</th><th style="text-align:right">Memory Per Value</th><th>Primary Characteristic</th></tr></thead><tbody><tr><td>FP32</td><td style="text-align:right">32</td><td style="text-align:right">4 bytes</td><td>Higher numerical precision</td></tr><tr><td>FP16</td><td style="text-align:right">16</td><td style="text-align:right">2 bytes</td><td>Reduced memory with higher fraction precision than BF16</td></tr><tr><td>BFLOAT16</td><td style="text-align:right">16</td><td style="text-align:right">2 bytes</td><td>Large numerical range with lower fraction precision</td></tr><tr><td>INT8</td><td style="text-align:right">8</td><td style="text-align:right">1 byte</td><td>Compact integer representation</td></tr></tbody></table>
+<p>The key distinction is that FP32, FP16, and BFLOAT16 are floating-point formats, whereas INT8 is an integer format commonly used for quantized representations.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="post-training-quantization-ptq">Post-Training Quantization (PTQ)<a href="#post-training-quantization-ptq" class="hash-link" aria-label="Direct link to Post-Training Quantization (PTQ)" title="Direct link to Post-Training Quantization (PTQ)" translate="no">​</a></h3>
+<p>Post-Training Quantization is a technique in which an already trained model is converted to a lower-precision representation without performing a full additional training process.</p>
+<p>For example, suppose we have a model trained using FP32.</p>
+<p>After training is complete, we can convert its weights into INT8 representations to reduce the memory required for deployment.</p>
+<p>The resulting model can use significantly less memory while attempting to preserve as much of its original performance as possible.</p>
+<p>Some post-training quantization methods also use a calibration dataset to determine appropriate quantization ranges for weights and activations.</p>
+<p>Calibration helps the quantization process understand the numerical distributions encountered during model execution.</p>
+<p>PTQ is attractive because it does not require repeating the expensive pre-training process.</p>
+<p>However, aggressive quantization can introduce accuracy degradation, particularly for models that are sensitive to numerical precision.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="quantization-aware-training-qat">Quantization-Aware Training (QAT)<a href="#quantization-aware-training-qat" class="hash-link" aria-label="Direct link to Quantization-Aware Training (QAT)" title="Direct link to Quantization-Aware Training (QAT)" translate="no">​</a></h3>
+<p>Quantization-Aware Training is a training technique in which the model is trained or further trained while accounting for the numerical effects of quantization.</p>
+<p>Unlike ordinary post-training quantization, which converts an already trained model after training, QAT exposes the model to simulated quantization effects during training.</p>
+<p>The objective is to help the model adapt to the rounding and precision limitations introduced by lower-bit numerical representations.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-does-qat-work">How Does QAT Work?<a href="#how-does-qat-work" class="hash-link" aria-label="Direct link to How Does QAT Work?" title="Direct link to How Does QAT Work?" translate="no">​</a></h4>
+<p>Consider a model that will eventually be deployed using INT8 weights.</p>
+<p>If we train the model entirely using FP32 and only convert it to INT8 at the end, the quantization process may introduce errors that negatively affect its predictions.</p>
+<p>QAT attempts to reduce this problem.</p>
+<h5 class="anchor anchorTargetStickyNavbar_Vzrq" id="step-1-start-with-a-model">Step 1: Start with a Model<a href="#step-1-start-with-a-model" class="hash-link" aria-label="Direct link to Step 1: Start with a Model" title="Direct link to Step 1: Start with a Model" translate="no">​</a></h5>
+<p>The process can begin with a pre-trained model or a model undergoing training.</p>
+<h5 class="anchor anchorTargetStickyNavbar_Vzrq" id="step-2-introduce-fake-quantization">Step 2: Introduce Fake Quantization<a href="#step-2-introduce-fake-quantization" class="hash-link" aria-label="Direct link to Step 2: Introduce Fake Quantization" title="Direct link to Step 2: Introduce Fake Quantization" translate="no">​</a></h5>
+<p>During training, fake quantization operations simulate the effects of converting numerical values into a lower-precision representation.</p>
+<p>The model&#x27;s computations account for the rounding and quantization effects that will occur during deployment.</p>
+<h5 class="anchor anchorTargetStickyNavbar_Vzrq" id="step-3-calculate-predictions-and-loss">Step 3: Calculate Predictions and Loss<a href="#step-3-calculate-predictions-and-loss" class="hash-link" aria-label="Direct link to Step 3: Calculate Predictions and Loss" title="Direct link to Step 3: Calculate Predictions and Loss" translate="no">​</a></h5>
+<p>The model generates predictions using the simulated quantization behaviour.</p>
+<p>The predictions are compared with the expected targets, and the training loss is calculated.</p>
+<h5 class="anchor anchorTargetStickyNavbar_Vzrq" id="step-4-update-model-parameters">Step 4: Update Model Parameters<a href="#step-4-update-model-parameters" class="hash-link" aria-label="Direct link to Step 4: Update Model Parameters" title="Direct link to Step 4: Update Model Parameters" translate="no">​</a></h5>
+<p>The training process updates the model parameters so that the model becomes more resilient to the simulated quantization errors.</p>
+<h5 class="anchor anchorTargetStickyNavbar_Vzrq" id="step-5-export-the-quantized-model">Step 5: Export the Quantized Model<a href="#step-5-export-the-quantized-model" class="hash-link" aria-label="Direct link to Step 5: Export the Quantized Model" title="Direct link to Step 5: Export the Quantized Model" translate="no">​</a></h5>
+<p>After training or fine-tuning is complete, the model can be converted into the intended lower-precision representation, such as INT8.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-is-fake-quantization">What Is Fake Quantization?<a href="#what-is-fake-quantization" class="hash-link" aria-label="Direct link to What Is Fake Quantization?" title="Direct link to What Is Fake Quantization?" translate="no">​</a></h4>
+<p>Fake quantization simulates the effect of quantization during training without necessarily storing every parameter as an actual low-bit integer throughout the training process.</p>
+<p>For example, the model might maintain floating-point parameters while applying simulated rounding and clipping operations during the forward pass.</p>
+<p>The training process then uses these simulated effects to help the model adapt to the eventual lower-precision representation.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="why-is-qat-useful">Why Is QAT Useful?<a href="#why-is-qat-useful" class="hash-link" aria-label="Direct link to Why Is QAT Useful?" title="Direct link to Why Is QAT Useful?" translate="no">​</a></h4>
+<p>QAT can improve the accuracy of a quantized model compared with applying aggressive post-training quantization without additional adaptation.</p>
+<p>It is particularly useful when:</p>
+<ul>
+<li class="">Model accuracy must be preserved.</li>
+<li class="">Lower-precision deployment is required.</li>
+<li class="">Post-training quantization produces unacceptable degradation.</li>
+<li class="">A suitable training or fine-tuning dataset is available.</li>
+</ul>
+<p>However, QAT introduces additional training complexity and computational cost compared with ordinary post-training quantization.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="post-training-quantization-vs-quantization-aware-training">Post-Training Quantization vs Quantization-Aware Training<a href="#post-training-quantization-vs-quantization-aware-training" class="hash-link" aria-label="Direct link to Post-Training Quantization vs Quantization-Aware Training" title="Direct link to Post-Training Quantization vs Quantization-Aware Training" translate="no">​</a></h3>
+<table><thead><tr><th>Aspect</th><th>PTQ</th><th>QAT</th></tr></thead><tbody><tr><td>When it happens</td><td>After model training</td><td>During training or additional fine-tuning</td></tr><tr><td>Additional training</td><td>Generally not required</td><td>Required</td></tr><tr><td>Quantization effects during training</td><td>Not simulated</td><td>Simulated</td></tr><tr><td>Computational cost</td><td>Lower</td><td>Higher</td></tr><tr><td>Accuracy preservation</td><td>Depends on quantization method</td><td>Can provide better accuracy retention</td></tr><tr><td>Main purpose</td><td>Efficient model conversion</td><td>Adapt model to quantization</td></tr></tbody></table>
+<p>The important distinction is that PTQ converts an already trained model, whereas QAT makes the model account for quantization effects while its parameters are being optimized.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="quantization-vs-mixed-precision-training">Quantization vs Mixed-Precision Training<a href="#quantization-vs-mixed-precision-training" class="hash-link" aria-label="Direct link to Quantization vs Mixed-Precision Training" title="Direct link to Quantization vs Mixed-Precision Training" translate="no">​</a></h3>
+<p>It is important not to confuse quantization with mixed-precision training.</p>
+<p>Both techniques use lower-precision numerical representations, but their purposes and implementations can differ.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="mixed-precision-training">Mixed-Precision Training<a href="#mixed-precision-training" class="hash-link" aria-label="Direct link to Mixed-Precision Training" title="Direct link to Mixed-Precision Training" translate="no">​</a></h4>
+<p>Mixed-precision training uses different numerical precisions during training to improve computational efficiency and reduce memory consumption.</p>
+<p>For example, a model might perform many computations using FP16 or BFLOAT16 while retaining certain sensitive values, such as optimizer states, in FP32.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="quantization-1">Quantization<a href="#quantization-1" class="hash-link" aria-label="Direct link to Quantization" title="Direct link to Quantization" translate="no">​</a></h4>
+<p>Quantization focuses on representing model weights, activations, or other numerical values using lower-bit formats, such as INT8.</p>
+<p>It is commonly used to reduce model storage and inference memory requirements, although it can also be incorporated into training through QAT.</p>
+<table><thead><tr><th>Aspect</th><th>Mixed-Precision Training</th><th>Quantization</th></tr></thead><tbody><tr><td>Common formats</td><td>FP16, BFLOAT16, FP32</td><td>INT8 and other low-bit formats</td></tr><tr><td>Primary purpose</td><td>Improve training efficiency</td><td>Reduce numerical storage and computation costs</td></tr><tr><td>Typical use</td><td>Training</td><td>Primarily deployment and inference</td></tr><tr><td>Numerical representation</td><td>Different floating-point precisions</td><td>Lower-bit representations, often integers</td></tr><tr><td>Accuracy considerations</td><td>Numerical stability</td><td>Quantization error</td></tr></tbody></table>
+<p>Both approaches help make large models more computationally efficient, but they address different aspects of the problem.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="summary-understanding-the-complete-pre-training-process">Summary: Understanding the Complete Pre-training Process<a href="#summary-understanding-the-complete-pre-training-process" class="hash-link" aria-label="Direct link to Summary: Understanding the Complete Pre-training Process" title="Direct link to Summary: Understanding the Complete Pre-training Process" translate="no">​</a></h2>
+<p>We have covered the major components involved in preparing and training a Large Language Model.</p>
+<p>The process begins with collecting a large and diverse training dataset, followed by cleaning, filtering, and organizing the data to ensure that the model receives useful training examples.</p>
+<p>The cleaned text is then tokenized into smaller units and converted into numerical token IDs. These IDs are mapped to learned embeddings so that the model can process the textual information through numerical operations.</p>
+<p>The model is trained using a pre-training objective that determines what it should predict or reconstruct. Masked Language Modeling teaches the model to reconstruct hidden tokens, Causal Language Modeling teaches it to predict subsequent tokens, and Span Corruption teaches it to reconstruct missing sequences of tokens.</p>
+<p>As model size increases, the training process requires more computational resources and GPU memory. Parameters, gradients, optimizer states, activations, and temporary buffers all contribute to the total memory requirements.</p>
+<p>Finally, numerical precision techniques help address these resource constraints. FP32 offers higher precision, FP16 and BFLOAT16 reduce memory requirements using 16-bit representations, and INT8 provides a more compact representation that is particularly useful for model optimization and deployment. Quantization-Aware Training helps a model adapt to the numerical effects of quantization during training.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="key-concepts-at-a-glance">Key Concepts at a Glance<a href="#key-concepts-at-a-glance" class="hash-link" aria-label="Direct link to Key Concepts at a Glance" title="Direct link to Key Concepts at a Glance" translate="no">​</a></h3>
+<table><thead><tr><th>Topic</th><th>What It Addresses</th></tr></thead><tbody><tr><td>LLM Pre-training</td><td>Learning general-purpose language capabilities</td></tr><tr><td>Training Data Collection</td><td>Gathering information for model training</td></tr><tr><td>Data Quality Filtering</td><td>Improving the quality and usefulness of training data</td></tr><tr><td>Tokenization</td><td>Converting text into tokens and numerical IDs</td></tr><tr><td>Embeddings</td><td>Representing tokens as learned numerical vectors</td></tr><tr><td>Masked Language Modeling</td><td>Predicting hidden tokens</td></tr><tr><td>Causal Language Modeling</td><td>Predicting subsequent tokens</td></tr><tr><td>Span Corruption</td><td>Reconstructing missing spans of text</td></tr><tr><td>Model Size</td><td>Measuring the number of learned parameters</td></tr><tr><td>Computational Challenges</td><td>Managing the compute requirements of training</td></tr><tr><td>GPU Memory</td><td>Storing parameters, gradients, optimizer states, and activations</td></tr><tr><td>FP32</td><td>Higher-precision floating-point representation</td></tr><tr><td>FP16</td><td>Lower-precision floating-point representation</td></tr><tr><td>BFLOAT16</td><td>16-bit representation with a large numerical range</td></tr><tr><td>INT8</td><td>Compact integer representation</td></tr><tr><td>Quantization</td><td>Reducing the number of bits used to represent numerical values</td></tr><tr><td>Quantization-Aware Training</td><td>Adapting a model to quantization effects during training</td></tr></tbody></table>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="final-takeaway">Final Takeaway<a href="#final-takeaway" class="hash-link" aria-label="Direct link to Final Takeaway" title="Direct link to Final Takeaway" translate="no">​</a></h3>
+<p>Pre-training is the foundation of a Large Language Model. It is the process through which a model learns general language patterns and develops the capabilities that can later be adapted for different applications.</p>
+<p>However, successfully training an LLM requires more than selecting a model and feeding it a large dataset. The quality of training data, the chosen prediction objective, the number of model parameters, and the available computational resources all influence the final result.</p>
+<p>As models grow larger, GPU memory and numerical precision become increasingly important. Techniques such as mixed-precision training and quantization help make the training and deployment of large models more efficient while balancing computational cost and model quality.</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/imdeepmind/imdeepmind.github.io/blob/main/docs/ml/language-models/model-pre-training.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"><span class="theme-last-updated">Last updated<!-- --> on <b><time datetime="2026-11-06T16:55:52.000Z" itemprop="dateModified">Nov 6, 2026</time></b> by <b>Abhishek Chatterjee</b></span></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/ml/language-models/inference-configuration/"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Inference Configuration</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/ml/language-models/distributed-training/"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Distributed Training</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#llm-pre-training-overview" class="table-of-contents__link toc-highlight">LLM Pre-training Overview</a><ul><li><a href="#what-is-pre-training" class="table-of-contents__link toc-highlight">What Is Pre-training?</a></li><li><a href="#how-does-pre-training-work" class="table-of-contents__link toc-highlight">How Does Pre-training Work?</a></li><li><a href="#understanding-the-complete-pre-training-pipeline" class="table-of-contents__link toc-highlight">Understanding the Complete Pre-training Pipeline</a></li><li><a href="#what-does-a-model-learn-during-pre-training" class="table-of-contents__link toc-highlight">What Does a Model Learn During Pre-training?</a></li><li><a href="#pre-training-vs-fine-tuning" class="table-of-contents__link toc-highlight">Pre-training vs Fine-tuning</a></li></ul></li><li><a href="#training-data-collection-and-data-quality-filtering" class="table-of-contents__link toc-highlight">Training Data Collection and Data Quality Filtering</a><ul><li><a href="#why-is-training-data-important" class="table-of-contents__link toc-highlight">Why Is Training Data Important?</a></li><li><a href="#sources-of-training-data" class="table-of-contents__link toc-highlight">Sources of Training Data</a></li><li><a href="#why-does-raw-data-need-filtering" class="table-of-contents__link toc-highlight">Why Does Raw Data Need Filtering?</a></li><li><a href="#data-quality-filtering-techniques" class="table-of-contents__link toc-highlight">Data Quality Filtering Techniques</a></li><li><a href="#deduplication-vs-quality-filtering" class="table-of-contents__link toc-highlight">Deduplication vs Quality Filtering</a></li><li><a href="#data-mixing-and-dataset-composition" class="table-of-contents__link toc-highlight">Data Mixing and Dataset Composition</a></li><li><a href="#data-leakage" class="table-of-contents__link toc-highlight">Data Leakage</a></li></ul></li><li><a href="#tokenization-and-embeddings-in-pre-training" class="table-of-contents__link toc-highlight">Tokenization and Embeddings in Pre-training</a><ul><li><a href="#why-do-we-need-tokenization" class="table-of-contents__link toc-highlight">Why Do We Need Tokenization?</a></li><li><a href="#what-is-a-token-id" class="table-of-contents__link toc-highlight">What Is a Token ID?</a></li><li><a href="#why-not-simply-use-individual-words" class="table-of-contents__link toc-highlight">Why Not Simply Use Individual Words?</a></li><li><a href="#subword-tokenization" class="table-of-contents__link toc-highlight">Subword Tokenization</a></li><li><a href="#common-tokenization-algorithms" class="table-of-contents__link toc-highlight">Common Tokenization Algorithms</a></li><li><a href="#what-are-embeddings" class="table-of-contents__link toc-highlight">What Are Embeddings?</a></li><li><a href="#how-are-embeddings-learned-during-pre-training" class="table-of-contents__link toc-highlight">How Are Embeddings Learned During Pre-training?</a></li><li><a href="#token-embeddings-vs-contextual-representations" class="table-of-contents__link toc-highlight">Token Embeddings vs Contextual Representations</a></li><li><a href="#why-are-tokenization-and-embeddings-important-for-pre-training" class="table-of-contents__link toc-highlight">Why Are Tokenization and Embeddings Important for Pre-training?</a></li></ul></li><li><a href="#model-pre-training-objectives" class="table-of-contents__link toc-highlight">Model Pre-training Objectives</a><ul><li><a href="#what-is-a-pre-training-objective" class="table-of-contents__link toc-highlight">What Is a Pre-training Objective?</a></li><li><a href="#masked-language-modeling-mlm" class="table-of-contents__link toc-highlight">Masked Language Modeling (MLM)</a></li><li><a href="#causal-language-modeling-clm" class="table-of-contents__link toc-highlight">Causal Language Modeling (CLM)</a></li><li><a href="#span-corruption" class="table-of-contents__link toc-highlight">Span Corruption</a></li><li><a href="#comparison-mlm-vs-clm-vs-span-corruption" class="table-of-contents__link toc-highlight">Comparison: MLM vs CLM vs Span Corruption</a></li></ul></li><li><a href="#model-size-and-scaling" class="table-of-contents__link toc-highlight">Model Size and Scaling</a><ul><li><a href="#what-is-model-size" class="table-of-contents__link toc-highlight">What Is Model Size?</a></li><li><a href="#why-do-we-increase-model-size" class="table-of-contents__link toc-highlight">Why Do We Increase Model Size?</a></li><li><a href="#understanding-parameters" class="table-of-contents__link toc-highlight">Understanding Parameters</a></li><li><a href="#scaling-the-model" class="table-of-contents__link toc-highlight">Scaling the Model</a></li><li><a href="#why-doesnt-increasing-model-size-always-improve-performance" class="table-of-contents__link toc-highlight">Why Doesn&#39;t Increasing Model Size Always Improve Performance?</a></li></ul></li><li><a href="#computational-challenges" class="table-of-contents__link toc-highlight">Computational Challenges</a><ul><li><a href="#why-is-training-an-llm-computationally-expensive" class="table-of-contents__link toc-highlight">Why Is Training an LLM Computationally Expensive?</a></li><li><a href="#major-computational-challenges" class="table-of-contents__link toc-highlight">Major Computational Challenges</a></li><li><a href="#why-are-gpus-used-for-llm-training" class="table-of-contents__link toc-highlight">Why Are GPUs Used for LLM Training?</a></li><li><a href="#what-is-a-gpu-cluster" class="table-of-contents__link toc-highlight">What Is a GPU Cluster?</a></li><li><a href="#the-cost-of-scaling" class="table-of-contents__link toc-highlight">The Cost of Scaling</a></li></ul></li><li><a href="#gpu-memory-requirements-for-training" class="table-of-contents__link toc-highlight">GPU Memory Requirements for Training</a><ul><li><a href="#why-is-gpu-memory-important" class="table-of-contents__link toc-highlight">Why Is GPU Memory Important?</a></li><li><a href="#model-parameters" class="table-of-contents__link toc-highlight">Model Parameters</a></li><li><a href="#gradients" class="table-of-contents__link toc-highlight">Gradients</a></li><li><a href="#optimizer-states" class="table-of-contents__link toc-highlight">Optimizer States</a></li><li><a href="#activations" class="table-of-contents__link toc-highlight">Activations</a></li><li><a href="#temporary-buffers-and-additional-memory" class="table-of-contents__link toc-highlight">Temporary Buffers and Additional Memory</a></li><li><a href="#understanding-total-gpu-memory-requirements" class="table-of-contents__link toc-highlight">Understanding Total GPU Memory Requirements</a></li><li><a href="#memory-requirements-with-mixed-precision" class="table-of-contents__link toc-highlight">Memory Requirements with Mixed Precision</a></li><li><a href="#understanding-the-memory-breakdown" class="table-of-contents__link toc-highlight">Understanding the Memory Breakdown</a></li></ul></li><li><a href="#quantization" class="table-of-contents__link toc-highlight">Quantization</a><ul><li><a href="#what-is-quantization" class="table-of-contents__link toc-highlight">What Is Quantization?</a></li><li><a href="#understanding-numerical-precision" class="table-of-contents__link toc-highlight">Understanding Numerical Precision</a></li><li><a href="#fp32-32-bit-floating-point" class="table-of-contents__link toc-highlight">FP32 (32-bit Floating Point)</a></li><li><a href="#fp16-16-bit-floating-point" class="table-of-contents__link toc-highlight">FP16 (16-bit Floating Point)</a></li><li><a href="#bfloat16-brain-floating-point-16" class="table-of-contents__link toc-highlight">BFLOAT16 (Brain Floating Point 16)</a></li><li><a href="#int8-8-bit-integer" class="table-of-contents__link toc-highlight">INT8 (8-bit Integer)</a></li><li><a href="#comparing-fp32-fp16-bfloat16-and-int8" class="table-of-contents__link toc-highlight">Comparing FP32, FP16, BFLOAT16, and INT8</a></li><li><a href="#post-training-quantization-ptq" class="table-of-contents__link toc-highlight">Post-Training Quantization (PTQ)</a></li><li><a href="#quantization-aware-training-qat" class="table-of-contents__link toc-highlight">Quantization-Aware Training (QAT)</a></li><li><a href="#post-training-quantization-vs-quantization-aware-training" class="table-of-contents__link toc-highlight">Post-Training Quantization vs Quantization-Aware Training</a></li><li><a href="#quantization-vs-mixed-precision-training" class="table-of-contents__link toc-highlight">Quantization vs Mixed-Precision Training</a></li></ul></li><li><a href="#summary-understanding-the-complete-pre-training-process" class="table-of-contents__link toc-highlight">Summary: Understanding the Complete Pre-training Process</a><ul><li><a href="#key-concepts-at-a-glance" class="table-of-contents__link toc-highlight">Key Concepts at a Glance</a></li><li><a href="#final-takeaway" class="table-of-contents__link toc-highlight">Final Takeaway</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/intro/">Notes</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://profile.fyi/imdeepmind" target="_blank" rel="noopener noreferrer" class="footer__link-item">Profile.fyi<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://github.com/imdeepmind" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://linkedin.com/in/imdeepmind" target="_blank" rel="noopener noreferrer" class="footer__link-item">LinkedIn<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://blog.rocketapi.net" target="_blank" rel="noopener noreferrer" class="footer__link-item">Blog<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 Abhishek Chatterjee. Last built on 6/11/2026. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>
