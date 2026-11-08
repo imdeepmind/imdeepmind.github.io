@@ -1,8 +1,8 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 ---
 
-# AWS SNS
+# SNS
 
 Amazon Simple Notification Service (SNS) is a fully managed messaging service provided by AWS that enables the decoupling of microservices, distributed systems, and serverless applications through a **publish-subscribe (pub/sub)** messaging pattern. It is primarily used for sending notifications in real-time to multiple subscribers over different protocols.
 
