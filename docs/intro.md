@@ -241,28 +241,28 @@ If you come across any issues or errors in the notes, feel free to open an issue
       6. [SSE](/docs/networking/communication-design-patterns/sse.md)
 
 2. [Database](/docs/databases/introduction.md)
-   1. [SQL](/docs/databases/sql/introduction.md)
-      1. [Introduction](/docs/databases/sql/introduction.md)
-      2. [SELECT Queries](/docs/databases/sql/select.md)
-      3. [Aggregations Queries](/docs/databases/sql/aggregation.md)
-      4. [GROUP BY Queries](/docs/databases/sql/group-by.md)
-      5. [String, Date, and Time Operations](/docs/databases/sql/string-date.md)
-      6. [Join Queries](/docs/databases/sql/join.md)
-      7. [Subqueries and Nested Queries](/docs/databases/sql/subqueries.md)
-      8. [Common Table Expressions (CTEs)](/docs/databases/sql/cte.md)
-      9. [Window Functions](/docs/databases/sql/window-functions.md)
-   2. [Database Engineering](/docs/databases/database-engineering/introduction.md)
-      1. [Introduction](/docs/databases/database-engineering/introduction.md)
-      2. [Connection Pooling](/docs/databases/database-engineering/pooling.md)
-      3. [Transactions](/docs/databases/database-engineering/transactions.md)
-      4. [ACID](/docs/databases/database-engineering/acid.md)
-      5. [Database Locking](/docs/databases/database-engineering/locks.md)
-      6. [Indexes](/docs/databases/database-engineering/indexes.md)
-      7. [Query Optimization](/docs/databases/database-engineering/query-optimization.md)
-      8. [Partitioning](/docs/databases/database-engineering/partitioning.md)
-      9. [Sharding](/docs/databases/database-engineering/sharding.md)
-      10. [Replication](/docs/databases/database-engineering/replication.md)
-      11. [Cursors](/docs/databases/database-engineering/cursor.md)
+   1. [SQL](/docs/databases/sql/introduction.md) <StableStatus />
+      1. [Introduction](/docs/databases/sql/introduction.md) <StableStatus />
+      2. [SELECT Queries](/docs/databases/sql/select.md) <StableStatus />
+      3. [Aggregations Queries](/docs/databases/sql/aggregation.md) <StableStatus />
+      4. [GROUP BY Queries](/docs/databases/sql/group-by.md) <StableStatus />
+      5. [String, Date, and Time Operations](/docs/databases/sql/string-date.md) <StableStatus />
+      6. [Join Queries](/docs/databases/sql/join.md) <StableStatus />
+      7. [Subqueries and Nested Queries](/docs/databases/sql/subqueries.md) <StableStatus />
+      8. [Common Table Expressions (CTEs)](/docs/databases/sql/cte.md) <StableStatus />
+      9. [Window Functions](/docs/databases/sql/window-functions.md) <StableStatus />
+   2. [Database Engineering](/docs/databases/database-engineering/introduction.md) <StableStatus />
+      1. [Introduction](/docs/databases/database-engineering/introduction.md) <StableStatus />
+      2. [Connection Pooling](/docs/databases/database-engineering/pooling.md) <StableStatus />
+      3. [Transactions](/docs/databases/database-engineering/transactions.md) <StableStatus />
+      4. [ACID](/docs/databases/database-engineering/acid.md) <StableStatus />
+      5. [Database Locking](/docs/databases/database-engineering/locks.md) <StableStatus />
+      6. [Indexes](/docs/databases/database-engineering/indexes.md) <StableStatus />
+      7. [Query Optimization](/docs/databases/database-engineering/query-optimization.md) <StableStatus />
+      8. [Partitioning](/docs/databases/database-engineering/partitioning.md) <StableStatus />
+      9. [Sharding](/docs/databases/database-engineering/sharding.md) <StableStatus />
+      10. [Replication](/docs/databases/database-engineering/replication.md) <StableStatus />
+      11. [Cursors](/docs/databases/database-engineering/cursor.md) <StableStatus />
    3. [Database Systems](/docs/databases/database-systems/introduction.md)
       1. [Introduction](/docs/databases/database-systems/introduction.md)
       2. [Relational Algebra](/docs/databases/database-systems/relational-algebra.md)

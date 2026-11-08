@@ -4,6 +4,12 @@ sidebar_position: 6
 
 # Indexes
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 Database indexes are fundamental to database performance optimization. They allow for quick data retrieval by minimizing the amount of data the database system has to scan. Without indexes, databases would need to perform a full table scan for every query, which is inefficient for large datasets. Indexes are widely used in relational databases such as PostgreSQL, MySQL, and Oracle to enhance the performance of queries involving search, filtering, sorting, and joins.
 
 ## What Is a Database Index?
@@ -32,10 +38,11 @@ Indexes are crucial for optimizing database queries, and the two widely used ind
   - Allows ordered traversal and efficient sorting.
   - Logarithmic (`O(log n)`) performance for lookups.
 - **Example**:
-  ```sql
-  CREATE INDEX idx_btree_salary ON employees(salary);
-  SELECT * FROM employees WHERE salary BETWEEN 50000 AND 100000;
-  ```
+
+    ```sql
+    CREATE INDEX idx_btree_salary ON employees(salary);
+    SELECT * FROM employees WHERE salary BETWEEN 50000 AND 100000;
+    ```
 
 ### Hash Table Index
 
@@ -46,6 +53,7 @@ Indexes are crucial for optimizing database queries, and the two widely used ind
   - Faster constant-time (`O(1)`) lookups but no range support.
   - Cannot handle sorting or ordering.
 - **Example**:
+
   ```sql
   CREATE INDEX idx_hash_username ON employees USING hash(username);
   SELECT * FROM employees WHERE username = 'abhishek123';
@@ -72,6 +80,7 @@ Indexes in databases are specialized data structures that optimize query perform
 - **Description**: An index created on a single column of a table.
 - **Use Case**: Speeds up queries that filter or sort by a single column.
 - **Example (PostgreSQL)**:
+
   ```sql
   CREATE INDEX idx_employee_id ON employees(employee_id);
   ```
@@ -81,9 +90,11 @@ Indexes in databases are specialized data structures that optimize query perform
 - **Description**: An index created on multiple columns of a table.
 - **Use Case**: Improves performance for queries that involve filtering or sorting on multiple columns.
 - **Example**:
+
   ```sql
   CREATE INDEX idx_name_dept ON employees(last_name, department_id);
   ```
+
 - **Note**: The order of columns in a composite index matters. For example, the above index is useful for queries that filter by `last_name` or by both `last_name` and `department_id`, but not for filtering solely by `department_id`.
 
 ### Unique Index
@@ -91,6 +102,7 @@ Indexes in databases are specialized data structures that optimize query perform
 - **Description**: Ensures that all values in the indexed column(s) are unique.
 - **Use Case**: Used to enforce uniqueness constraints (e.g., on primary keys or email addresses).
 - **Example**:
+
   ```sql
   CREATE UNIQUE INDEX idx_unique_email ON employees(email);
   ```
@@ -100,6 +112,7 @@ Indexes in databases are specialized data structures that optimize query perform
 - **Description**: Automatically created when a `PRIMARY KEY` constraint is defined. It is a unique index.
 - **Use Case**: Enforces the uniqueness and non-nullability of the primary key column(s).
 - **Example**:
+
   ```sql
   ALTER TABLE employees ADD PRIMARY KEY (employee_id);
   ```
@@ -109,6 +122,7 @@ Indexes in databases are specialized data structures that optimize query perform
 - **Description**: Determines the physical order of data in the table. A table can have only one clustered index.
 - **Use Case**: Optimizes range queries and queries requiring ordered results.
 - **Example** (PostgreSQL uses `PRIMARY KEY` or `UNIQUE` constraints to create clustered indexes):
+
   ```sql
   CREATE INDEX idx_ordered_employees ON employees(employee_id);
   ```
@@ -118,6 +132,7 @@ Indexes in databases are specialized data structures that optimize query perform
 - **Description**: Does not affect the physical order of data in the table. Stores pointers to the rows in a separate data structure.
 - **Use Case**: Useful for columns frequently queried but not requiring data to be stored in order.
 - **Example**:
+
   ```sql
   CREATE INDEX idx_lastname ON employees(last_name);
   ```
@@ -127,6 +142,7 @@ Indexes in databases are specialized data structures that optimize query perform
 - **Description**: Optimized for searching large text fields.
 - **Use Case**: Used for full-text search in applications like search engines.
 - **Example**:
+
   ```sql
   CREATE INDEX idx_fulltext_description ON products USING gin(to_tsvector('english', description));
   ```
@@ -136,6 +152,7 @@ Indexes in databases are specialized data structures that optimize query perform
 - **Description**: Indexes only a subset of rows based on a condition.
 - **Use Case**: Reduces index size and improves performance by indexing only frequently queried rows.
 - **Example**:
+
   ```sql
   CREATE INDEX idx_active_employees ON employees(employee_id) WHERE status = 'active';
   ```
@@ -145,6 +162,7 @@ Indexes in databases are specialized data structures that optimize query perform
 - **Description**: Uses a hash table for indexing. Only supports equality comparisons (`=`).
 - **Use Case**: Efficient for equality searches but not for range queries.
 - **Example**:
+
   ```sql
   CREATE INDEX idx_hash_username ON users USING hash(username);
   ```
@@ -162,6 +180,7 @@ Indexes in databases are specialized data structures that optimize query perform
 - **Description**: Indexes the result of an expression or function.
 - **Use Case**: Optimizes queries involving calculated or derived values.
 - **Example**:
+
   ```sql
   CREATE INDEX idx_lowercase_email ON employees(LOWER(email));
   ```
@@ -171,6 +190,7 @@ Indexes in databases are specialized data structures that optimize query perform
 - **Description**: Supports complex queries like range searches, proximity searches, and custom data types.
 - **Use Case**: Often used for spatial and full-text search.
 - **Example**:
+
   ```sql
   CREATE INDEX idx_gist_location ON locations USING gist(geom);
   ```
@@ -180,6 +200,7 @@ Indexes in databases are specialized data structures that optimize query perform
 - **Description**: A variant of GiST optimized for partitioned or hierarchical data.
 - **Use Case**: Suitable for range queries on data with natural partitions.
 - **Example**:
+
   ```sql
   CREATE INDEX idx_spgist_coordinates ON locations USING spgist(coordinates);
   ```
@@ -189,6 +210,7 @@ Indexes in databases are specialized data structures that optimize query perform
 - **Description**: Stores summaries of ranges of physical blocks. Designed for large datasets where the data is naturally ordered.
 - **Use Case**: Optimizes queries for large, sequentially stored data, such as time-series data.
 - **Example**:
+
   ```sql
   CREATE INDEX idx_brin_timestamp ON logs USING brin(timestamp);
   ```
@@ -198,6 +220,7 @@ Indexes in databases are specialized data structures that optimize query perform
 - **Description**: Stores additional non-indexed columns in the index for faster retrieval.
 - **Use Case**: Avoids accessing the table when retrieving indexed and additional columns.
 - **Example** (PostgreSQL doesn’t support included columns directly, but it can be emulated with composite indexes):
+
   ```sql
   CREATE INDEX idx_employee_id_name ON employees(employee_id, first_name);
   ```
@@ -207,6 +230,7 @@ Indexes in databases are specialized data structures that optimize query perform
 - **Description**: Similar to expression indexes, but focuses on the results of database functions.
 - **Use Case**: Optimizes queries where a function is applied to a column.
 - **Example**:
+
   ```sql
   CREATE INDEX idx_monthly_salary ON employees(salary * 12);
   ```
@@ -271,9 +295,11 @@ CREATE INDEX index_name ON table_name(column_name);
    Optimizes full-text search on the `description` column.
 
 6. **Hash Index**:
+
    ```sql
    CREATE INDEX idx_hash_username ON users USING hash(username);
    ```
+
    Useful for equality comparisons but not for range queries.
 
 ## Types of Index Scans in PostgreSQL
@@ -285,9 +311,11 @@ When a query is executed, the database query planner decides how to use the inde
 - The database reads every row of the table sequentially.
 - Used when no relevant index exists or for very small tables.
 - **Example**:
+
   ```sql
   EXPLAIN SELECT * FROM employees WHERE department_id = 10;
   ```
+
   If no index exists on `department_id`, a sequential scan is performed.
 
 ### Index Scan
@@ -295,9 +323,11 @@ When a query is executed, the database query planner decides how to use the inde
 - The database uses an index to directly find the rows that satisfy the query.
 - It retrieves rows from the index and accesses the table for additional data.
 - **Example**:
+
   ```sql
   EXPLAIN SELECT * FROM employees WHERE employee_id = 123;
   ```
+
   If an index exists on `employee_id`, an index scan is performed.
 
 ### Bitmap Index Scan
@@ -305,9 +335,11 @@ When a query is executed, the database query planner decides how to use the inde
 - Combines results from multiple indexes and retrieves rows in batches for efficiency.
 - Used when multiple conditions in a query reference different indexes.
 - **Example**:
+
   ```sql
   EXPLAIN SELECT * FROM employees WHERE department_id = 10 AND last_name = 'Smith';
   ```
+
   If indexes exist on both `department_id` and `last_name`, a bitmap index scan may be used.
 
 ### Table Scan (Heap Scan)
@@ -372,6 +404,7 @@ If an index exists on `employee_id`, the output will show whether the query uses
 
    - Over time, indexes can become fragmented, reducing performance. Use `REINDEX` to rebuild them.
    - Example:
+
      ```sql
      REINDEX INDEX idx_employee_id;
      ```
@@ -379,6 +412,7 @@ If an index exists on `employee_id`, the output will show whether the query uses
 2. **Dropping Unused Indexes**:
    - Unused indexes consume space and slow down write operations.
    - Example:
+
      ```sql
      DROP INDEX idx_employee_id;
      ```
