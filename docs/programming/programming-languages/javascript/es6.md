@@ -4,6 +4,12 @@ sidebar_position: 21
 
 # ES6 and Beyond
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 Modern JavaScript (ES6+) introduced several powerful features that simplify code, improve readability, and enable developers to write more expressive and maintainable applications. Below is a detailed explanation of these features.
 
 ## Template Literals

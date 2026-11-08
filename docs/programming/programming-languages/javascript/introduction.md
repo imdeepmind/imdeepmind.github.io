@@ -4,6 +4,12 @@ sidebar_position: 1
 
 # Introduction
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 - JavaScript is a high-level, interpreted programming language.
 - Primarily used for enhancing web pages, enabling interactive features.
 

@@ -4,6 +4,12 @@ sidebar_position: 3
 
 # Data Types
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 JavaScript is a dynamically typed language, which means variables are not bound to specific data types. However, it still categorizes values into distinct data types, broadly divided into _primitive_ and _non-primitive_ types.
 
 ## Primitive Data Types

@@ -4,6 +4,12 @@ sidebar_position: 8
 
 # Execution Context
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 JavaScript is a single-threaded, synchronous programming language. Despite its asynchronous capabilities (using features like `setTimeout`, Promises, etc.), its execution model revolves around the **Execution Context**, which is the environment in which JavaScript code is evaluated and executed.
 
 An **Execution Context** contains information about the code being executed, including variable declarations, functions, `this` keyword binding, and the outer environment.

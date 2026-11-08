@@ -4,6 +4,12 @@ sidebar_position: 14
 
 # Currying and IIFE
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 JavaScript has several advanced functional programming concepts that make it highly versatile. Two such concepts are **currying** and **Immediately Invoked Function Expressions (IIFE)**. This note explains these concepts in detail, with examples.
 
 ## Currying

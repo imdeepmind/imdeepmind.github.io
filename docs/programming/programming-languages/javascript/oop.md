@@ -4,6 +4,12 @@ sidebar_position: 16
 
 # Object-Oriented Programming (OOPs)
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 Object-Oriented Programming (OOPs) is a programming paradigm that models real-world entities using objects. It provides a structured approach to organize and manage code by encapsulating data and functionality together. OOPs promotes reusability, scalability, and maintainability by employing key principles such as inheritance, encapsulation, polymorphism, and abstraction.
 
 ## Core Concepts of OOP

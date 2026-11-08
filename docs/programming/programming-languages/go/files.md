@@ -4,6 +4,12 @@ sidebar_position: 9
 
 # File Handling
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 File operations are a core part of many Go applications. Go provides a rich set of APIs in the `os`, `io`, and `io/fs` packages for file and directory management. This note covers file creation, reading, writing, permissions, metadata, directory operations, and best practices.
 
 ## File Creation and Opening

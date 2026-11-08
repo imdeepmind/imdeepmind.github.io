@@ -4,6 +4,12 @@ sidebar_position: 1
 
 # Introduction
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 Go, often referred to as **Golang**, is an open-source, statically typed, compiled programming language designed at Google. It was created by **Robert Griesemer**, **Rob Pike**, and **Ken Thompson** in 2007 and released publicly in 2009. Go was designed to address the shortcomings of existing languages when it comes to building scalable, efficient systems. With a strong focus on simplicity, performance, and concurrency, Go has gained widespread adoption, particularly in the cloud-native and microservices space.
 
 ## Why Use Go?

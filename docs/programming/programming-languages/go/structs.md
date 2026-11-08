@@ -4,6 +4,12 @@ sidebar_position: 11
 
 # Structs and Custom Types
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 Structs are Go's way of creating user-defined types that group together related data. They are similar to classes in other languages but without inheritance. Go also allows us to create custom types based on existing types, providing flexibility and type safety.
 
 ## Defining Structs

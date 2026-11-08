@@ -4,6 +4,12 @@ sidebar_position: 12
 
 # Closures and Lexical Scoping
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 ## Closures
 
 A **closure** is a fundamental concept in programming, particularly in languages like JavaScript, Python, and Go, that captures the idea of a function "remembering" the variables from its surrounding scope even after that scope has exited. Closures allow functions to access variables defined outside their immediate scope, and this capability is often used for creating encapsulation, maintaining state, and implementing higher-order functions.

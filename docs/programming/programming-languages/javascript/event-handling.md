@@ -4,6 +4,12 @@ sidebar_position: 20
 
 # Event Handling
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 **Event handling** is a crucial part of JavaScript, enabling interactivity in web applications. Events are actions or occurrences, such as user interactions (clicks, key presses, or mouse movements), browser events (page load, resize, etc.), or programmatically triggered events. Event handling in JavaScript involves listening for these events and executing specific functions in response.
 
 ## What Are Events in JavaScript?

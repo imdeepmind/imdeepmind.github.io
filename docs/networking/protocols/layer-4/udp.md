@@ -4,6 +4,12 @@ sidebar_position: 2
 
 # UDP
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 User Datagram Protocol (UDP) is a transport layer protocol defined by the Internet Protocol Suite. It is designed for simplicity and speed, providing a connectionless communication mechanism between applications.
 
 ## Key Characteristics

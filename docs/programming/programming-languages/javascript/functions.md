@@ -4,6 +4,12 @@ sidebar_position: 5
 
 # Functions
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 In JavaScript, **functions** are core building blocks. A function is a reusable block of code that performs a specific task. Functions allow for modular code, encapsulation, and are essential for asynchronous operations and callback handling.
 
 ## Declaring Functions
@@ -121,8 +127,6 @@ setTimeout(function () {
   console.log("IIFE Executed!");
 })();
 ```
-
----
 
 ## Higher-Order Functions
 

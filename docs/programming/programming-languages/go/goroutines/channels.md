@@ -4,6 +4,12 @@ sidebar_position: 5
 
 # Channels
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 In Go, a channel is a typed conduit for sending and receiving values between goroutines. Channels are a core concurrency primitive managed by the Go runtime.
 
 **Channels:**

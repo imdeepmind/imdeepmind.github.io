@@ -4,6 +4,12 @@ sidebar_position: 1
 
 # Introduction
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 A **goroutine** is a lightweight, independently executing function managed by the Go runtime. Goroutines are Go’s built-in way of handling concurrency, allowing functions to run **asynchronously** and enabling many tasks to execute seemingly at the same time.
 
 ## What is a Goroutine?

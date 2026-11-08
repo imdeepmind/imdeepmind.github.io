@@ -4,6 +4,12 @@ sidebar_position: 4
 
 # Mutex
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 Mutexes are synchronization primitives from the `sync` package that prevent race conditions when multiple goroutines access shared data. Only one goroutine can hold the lock at a time, ensuring safe access.
 
 ## Basic Usage

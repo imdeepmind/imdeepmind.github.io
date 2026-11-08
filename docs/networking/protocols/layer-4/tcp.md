@@ -4,7 +4,11 @@ sidebar_position: 1
 
 # TCP
 
-## Overview
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
 
 - **TCP** stands for **Transmission Control Protocol**.
 - It is a connection-oriented protocol in the **Transport Layer** of the OSI and TCP/IP models.
@@ -83,13 +87,21 @@ The three-way handshake is used to establish a reliable connection between two d
 
 **Diagram:**
 
+<div style={{textAlign: 'center'}}>
+
+```mermaid
+sequenceDiagram
+    participant Client
+    participant Server
+
+    Client->>Server: SYN
+    Server-->>Client: SYN-ACK
+    Client->>Server: ACK
+
+    Note over Client,Server: Connection Established
 ```
-Client         Server
-  | SYN      ->     |
-  |          <-  SYN-ACK |
-  | ACK      ->     |
-Connection Established!
-```
+
+</div>
 
 ## TCP Connection Termination
 
@@ -102,14 +114,22 @@ To close a TCP connection, a **four-step process** is used:
 
 **Diagram:**
 
+<div style={{textAlign: 'center'}}>
+
+```mermaid
+sequenceDiagram
+    participant Client
+    participant Server
+
+    Client->>Server: FIN
+    Server-->>Client: ACK
+    Server-->>Client: FIN
+    Client->>Server: ACK
+
+    Note over Client,Server: Connection Closed
 ```
-Client           Server
-  | FIN     ->      |
-  |         <-   ACK |
-  |         <-   FIN |
-  | ACK     ->      |
-Connection Closed!
-```
+
+</div>
 
 ## Reliability in TCP
 
@@ -185,14 +205,3 @@ TCP is used where reliability is crucial. Examples:
 - **Email:** SMTP, POP3, and IMAP use TCP.
 - **Remote Access:** SSH and Telnet use TCP.
 - **Streaming Services:** Some non-time-critical video and audio streaming services use TCP.
-
-## Comparison: TCP vs. UDP
-
-| **Feature**         | **TCP**                          | **UDP**               |
-| ------------------- | -------------------------------- | --------------------- |
-| **Connection Type** | Connection-oriented              | Connectionless        |
-| **Reliability**     | Reliable (ACKs, retransmissions) | Unreliable            |
-| **Data Order**      | Ordered                          | Unordered             |
-| **Error Checking**  | Yes (Checksum)                   | Yes (Checksum)        |
-| **Speed**           | Slower                           | Faster                |
-| **Use Case**        | File transfers, web browsing     | VoIP, video streaming |
