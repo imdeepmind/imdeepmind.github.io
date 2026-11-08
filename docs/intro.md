@@ -285,11 +285,25 @@ If you come across any issues or errors in the notes, feel free to open an issue
    2. [Database Engineering](/docs/databases/database-engineering/introduction.md)
    3. [Database Systems](/docs/databases/database-systems/introduction.md)
    4. [Communication Design Patterns](/docs/networking/communication-design-patterns/request-response.md)
-2. [System Design](/docs/system-design/introduction.md)
+-->
+
+3. [System Design](/docs/system-design/introduction.md)
    1. [Fundamental Concepts](/docs/system-design/fundamental-concepts/high-and-low-level-design.md)
    2. [Communication in Distributed Systems](/docs/system-design/distributed-system-communication/mq-vs-ms.md)
+      1. [Message Queues and Message Streams](/docs/system-design/distributed-system-communication/mq-vs-ms.md)
+      2. [Kafka](/docs/system-design/distributed-system-communication/kafka/introduction.md)
+         1. [Introduction](/docs/system-design/distributed-system-communication/kafka/introduction.md)
+         2. [Architecture](/docs/system-design/distributed-system-communication/kafka/kafka-architecture.md)
+         3. [Producers and Consumers](/docs/system-design/distributed-system-communication/kafka/producer-consumer.md)
+         4. [Replication and Fault Tolerance](/docs/system-design/distributed-system-communication/kafka/replication.md)
+         5. [Storage Internals](/docs/system-design/distributed-system-communication/kafka/storage-internals.md)
+         6. [Networking and Cluster Coordination](/docs/system-design/distributed-system-communication/kafka/networking.md)
+      3. [SQS](/docs/system-design/distributed-system-communication/sqs.md)
+      4. [SNS](/docs/system-design/distributed-system-communication/sns.md)
+      5. [RabbitMQ](/docs/system-design/distributed-system-communication/rabbit-mq.md)
    3. [Containers](/docs/system-design/containers/introduction.md)
 
+<!--
 ### Other tools and utilities
 
 1. [Version Control](/docs/version-control/introduction.md)
