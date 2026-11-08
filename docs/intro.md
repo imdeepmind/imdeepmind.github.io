@@ -288,7 +288,13 @@ If you come across any issues or errors in the notes, feel free to open an issue
 -->
 
 3. [System Design](/docs/system-design/introduction.md)
-   1. [Fundamental Concepts](/docs/system-design/fundamental-concepts/high-and-low-level-design.md)
+   1. [Fundamental Concepts](/docs/system-design/fundamental-concepts/high-and-low-level-design.md) <StableStatus />
+      1. [High and Low Level Design](/docs/system-design/fundamental-concepts/high-and-low-level-design.md) <StableStatus />
+      2. [CAP Theorem](/docs/system-design/fundamental-concepts/cap-theorem.md) <StableStatus />
+      3. [Latency and Throughput](/docs/system-design/fundamental-concepts/latency-and-throughput.md) <StableStatus />
+      4. [Caching](/docs/system-design/fundamental-concepts/caching.md) <StableStatus />
+      5. [Load Balancer](/docs/system-design/fundamental-concepts/load-balancer.md) <StableStatus />
+      6. [Proxies](/docs/system-design/fundamental-concepts/proxies.md) <StableStatus />
    2. [Communication in Distributed Systems](/docs/system-design/distributed-system-communication/mq-vs-ms.md)
       1. [Message Queues and Message Streams](/docs/system-design/distributed-system-communication/mq-vs-ms.md)
       2. [Kafka](/docs/system-design/distributed-system-communication/kafka/introduction.md)

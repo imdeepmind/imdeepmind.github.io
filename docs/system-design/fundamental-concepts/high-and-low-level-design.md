@@ -4,6 +4,12 @@ sidebar_position: 1
 
 # High and Low Level Design
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 Low-Level Design (LLD) and High-Level Design (HLD) are essential components of software development, specifically in the architecture and design phases of a project. Both serve distinct purposes and focus on different levels of abstraction in system design. Below is a detailed breakdown of both concepts.
 
 ## High-Level Design (HLD)

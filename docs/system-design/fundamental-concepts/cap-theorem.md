@@ -4,11 +4,17 @@ sidebar_position: 2
 
 # CAP Theorem
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 The **CAP Theorem**, also known as Brewer's Theorem, is a fundamental principle in distributed systems. It was introduced by Eric Brewer in 2000 and formally proven by Seth Gilbert and Nancy Lynch in 2002. The theorem states that in a distributed system, it is impossible to simultaneously guarantee all three of the following properties:
 
-1.  **Consistency (C):** Every read receives the most recent write or an error. In other words, all nodes in the system see the same data at the same time.
-2.  **Availability (A):** Every request (read or write) receives a response, even if some nodes in the system are down.
-3.  **Partition Tolerance (P):** The system continues to operate despite arbitrary partitioning due to network failures.
+1. **Consistency (C):** Every read receives the most recent write or an error. In other words, all nodes in the system see the same data at the same time.
+2. **Availability (A):** Every request (read or write) receives a response, even if some nodes in the system are down.
+3. **Partition Tolerance (P):** The system continues to operate despite arbitrary partitioning due to network failures.
 
 In the presence of a network partition, a distributed system must choose between **consistency** and **availability**, as achieving both is theoretically impossible.
 
@@ -22,30 +28,30 @@ Vertical scaling, also known as scaling up, involves adding more resources (e.g.
 
 #### Key Characteristics
 
-1.  **Resource Augmentation:** Upgrades a single machine with better hardware.
-2.  **Centralized Architecture:** Focuses on improving the performance of one node.
-3.  **Easier Management:** Fewer nodes to manage compared to horizontal scaling.
+1. **Resource Augmentation:** Upgrades a single machine with better hardware.
+2. **Centralized Architecture:** Focuses on improving the performance of one node.
+3. **Easier Management:** Fewer nodes to manage compared to horizontal scaling.
 
 #### Benefits
 
-1.  **Simplified Architecture:** No need for load balancers or distributed systems.
-2.  **Ease of Implementation:** Easier to upgrade an existing server than to manage a cluster.
-3.  **Consistency:** Single-node systems do not face distributed consistency issues.
-4.  **Optimized Resource Utilization:** Makes full use of hardware capabilities.
+1. **Simplified Architecture:** No need for load balancers or distributed systems.
+2. **Ease of Implementation:** Easier to upgrade an existing server than to manage a cluster.
+3. **Consistency:** Single-node systems do not face distributed consistency issues.
+4. **Optimized Resource Utilization:** Makes full use of hardware capabilities.
 
 #### Challenges
 
-1.  **Hardware Limits:** Physical hardware imposes a ceiling on how much you can scale.
-2.  **Downtime:** Upgrading a server often requires downtime.
-3.  **Cost:** High-performance servers are more expensive.
-4.  **Single Point of Failure:** If the server fails, the entire system is affected.
+1. **Hardware Limits:** Physical hardware imposes a ceiling on how much you can scale.
+2. **Downtime:** Upgrading a server often requires downtime.
+3. **Cost:** High-performance servers are more expensive.
+4. **Single Point of Failure:** If the server fails, the entire system is affected.
 
 #### Use Cases
 
-1.  **Legacy Systems:** Applications not designed for distributed architecture.
-2.  **Databases:** High-performance databases that require more memory or CPU.
-3.  **Enterprise Applications:** Systems with predictable workloads.
-4.  **Quick Fixes:** Temporary solutions where horizontal scaling is not immediately feasible.
+1. **Legacy Systems:** Applications not designed for distributed architecture.
+2. **Databases:** High-performance databases that require more memory or CPU.
+3. **Enterprise Applications:** Systems with predictable workloads.
+4. **Quick Fixes:** Temporary solutions where horizontal scaling is not immediately feasible.
 
 ### Horizontal Scaling
 
@@ -53,31 +59,31 @@ Horizontal scaling, also known as scaling out, involves adding more machines or 
 
 #### Key Characteristics
 
-1.  **Node Addition:** Increases capacity by adding more servers to the cluster.
-2.  **Redundancy:** Multiple nodes improve fault tolerance.
-3.  **Distribution:** Requires load balancing to distribute traffic among the nodes.
-4.  **Decentralized Architecture:** Often associated with distributed systems like microservices.
+1. **Node Addition:** Increases capacity by adding more servers to the cluster.
+2. **Redundancy:** Multiple nodes improve fault tolerance.
+3. **Distribution:** Requires load balancing to distribute traffic among the nodes.
+4. **Decentralized Architecture:** Often associated with distributed systems like microservices.
 
 #### Benefits
 
-1.  **Improved Fault Tolerance:** If one server fails, others can take over the workload.
-2.  **Cost-Effective Scaling:** Commodity hardware can be used instead of investing in high-end servers.
-3.  **Infinite Scalability:** There is theoretically no limit to how many nodes you can add.
-4.  **Geographic Distribution:** Nodes can be deployed across different regions for better latency and user experience.
+1. **Improved Fault Tolerance:** If one server fails, others can take over the workload.
+2. **Cost-Effective Scaling:** Commodity hardware can be used instead of investing in high-end servers.
+3. **Infinite Scalability:** There is theoretically no limit to how many nodes you can add.
+4. **Geographic Distribution:** Nodes can be deployed across different regions for better latency and user experience.
 
 #### Challenges
 
-1.  **Complexity:** Managing and orchestrating multiple nodes can be complex.
-2.  **Consistency Issues:** Data consistency can be harder to maintain in distributed databases.
-3.  **Load Balancing:** Requires robust mechanisms to evenly distribute traffic.
-4.  **Inter-node Communication:** High latency between nodes can affect performance.
+1. **Complexity:** Managing and orchestrating multiple nodes can be complex.
+2. **Consistency Issues:** Data consistency can be harder to maintain in distributed databases.
+3. **Load Balancing:** Requires robust mechanisms to evenly distribute traffic.
+4. **Inter-node Communication:** High latency between nodes can affect performance.
 
 #### Use Cases
 
-1.  **Web Applications:** High-traffic websites like e-commerce platforms.
-2.  **Cloud Services:** Systems like Amazon Web Services (AWS), Google Cloud Platform (GCP), and Microsoft Azure.
-3.  **Big Data Systems:** Distributed data processing systems such as Hadoop and Apache Spark.
-4.  **Content Delivery Networks (CDNs):** Distributing content closer to users for faster delivery.
+1. **Web Applications:** High-traffic websites like e-commerce platforms.
+2. **Cloud Services:** Systems like Amazon Web Services (AWS), Google Cloud Platform (GCP), and Microsoft Azure.
+3. **Big Data Systems:** Distributed data processing systems such as Hadoop and Apache Spark.
+4. **Content Delivery Networks (CDNs):** Distributing content closer to users for faster delivery.
 
 ### Comparison Table
 
@@ -96,25 +102,25 @@ Horizontal scaling, also known as scaling out, involves adding more machines or 
 
 The choice between horizontal and vertical scaling depends on various factors:
 
-1.  **Workload Characteristics:**
+1. **Workload Characteristics:**
 
     - Horizontal scaling is ideal for unpredictable workloads with spikes.
     - Vertical scaling works for steady workloads that demand high resource usage.
 
-2.  **Budget:**
+2. **Budget:**
 
     - Horizontal scaling can be more cost-effective with commodity hardware.
     - Vertical scaling may incur higher initial costs for hardware upgrades.
 
-3.  **Fault Tolerance Needs:**
+3. **Fault Tolerance Needs:**
 
     - If high availability is crucial, horizontal scaling is preferable.
 
-4.  **Legacy Constraints:**
+4. **Legacy Constraints:**
 
     - Applications not designed for distributed environments may require vertical scaling.
 
-5.  **Future Growth:**
+5. **Future Growth:**
 
     - Horizontal scaling offers more flexibility for long-term growth.
 
@@ -210,20 +216,20 @@ Google Spanner is a globally distributed database that appears to challenge the 
 
 ### Key Features of Google Spanner
 
-1.  **TrueTime API:**
+1. **TrueTime API:**
 
     - Spanner leverages Google's TrueTime API, a globally synchronized clock with bounded uncertainty. This allows Spanner to timestamp transactions with confidence, ensuring strong consistency.
     - TrueTime's API enables linearizable consistency by defining precise time intervals during which events occur, avoiding ambiguity.
 
-2.  **Synchronous Replication:**
+2. **Synchronous Replication:**
 
     - Spanner uses Paxos-based consensus protocols for synchronous replication across multiple nodes. This ensures that all replicas agree on the order of transactions, maintaining consistency.
 
-3.  **Partition Tolerance:**
+3. **Partition Tolerance:**
 
     - By design, Spanner ensures that partitions do not compromise the integrity of the system. While partitions might delay operations, Spanner's synchronous replication and distributed consensus allow it to resume consistent operations once connectivity is restored.
 
-4.  **High Availability:**
+4. **High Availability:**
 
     - Spanner's architecture is designed to mitigate the impact of network partitions. It replicates data across geographically dispersed nodes, ensuring availability even during localized failures.
 

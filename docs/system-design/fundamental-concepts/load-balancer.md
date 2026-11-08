@@ -4,6 +4,12 @@ sidebar_position: 5
 
 # Distributed Load Balancer
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 A **Distributed Load Balancer** is a specialized system designed to distribute network traffic across multiple servers or resources in a distributed environment. Unlike traditional load balancers, which may operate within a single data center, distributed load balancers function across multiple geographic locations or cloud regions.
 
 The primary goal of a distributed load balancer is to:

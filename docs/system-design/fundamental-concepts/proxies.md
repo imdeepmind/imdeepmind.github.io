@@ -4,6 +4,12 @@ sidebar_position: 6
 
 # Proxies
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 A **proxy** is an intermediary server that sits between a client and a server to facilitate communication, enforce security, or enhance performance. Depending on its position and purpose, a proxy can be categorized as:
 
 1. **Forward Proxy**

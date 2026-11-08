@@ -4,6 +4,12 @@ sidebar_position: 3
 
 # Latency and Throughput
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 Latency and throughput are key performance metrics often used to assess the performance of systems, networks, and applications. While they are related, they measure different aspects of performance. Understanding the distinction and the interplay between them is crucial in designing and optimizing systems.
 
 ## Latency

@@ -4,6 +4,12 @@ sidebar_position: 4
 
 # Caching
 
+:::tip[Status]
+
+This note is complete, reviewed, and considered stable.
+
+:::
+
 Caching is a technique used to store copies of data temporarily in high-speed storage (cache) so that future requests for that data can be served faster. Caching improves application performance and reduces latency by reducing the need to repeatedly fetch or compute the same data.
 
 ## Different Layers of Caching
